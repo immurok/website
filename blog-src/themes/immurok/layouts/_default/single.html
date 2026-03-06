@@ -1,0 +1,27 @@
+{{ define "main" }}
+<article class="article">
+  <header class="article-header">
+    <div class="container-sm">
+      <a href="{{ "/" | relURL }}" class="back-link">&larr; All posts</a>
+      <h1 class="article-title">{{ .Title }}</h1>
+      {{ with .Description }}
+      <p class="article-desc">{{ . }}</p>
+      {{ end }}
+      <div class="article-meta">
+        <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ with .Params.tags }}
+        <div class="post-tags">
+          {{ range . }}<span class="tag">{{ . }}</span>{{ end }}
+        </div>
+        {{ end }}
+      </div>
+    </div>
+  </header>
+
+  <div class="container-sm">
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

@@ -1,0 +1,6 @@
+name = "immurok"
+license = "MIT"
+description = "Blog theme matching immurok product website"
+
+[author]
+  name = "immurok"

@@ -1,0 +1,20 @@
+baseURL = "/blog/"
+languageCode = "en"
+title = "immurok Blog"
+theme = "immurok"
+
+[params]
+  description = "Engineering notes, product updates, and security deep-dives from the immurok team."
+
+[permalinks]
+  posts = "/:slug/"
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.highlight]
+  style = "github-dark"
+  lineNos = false
+
+[outputs]
+  home = ["HTML", "RSS"]

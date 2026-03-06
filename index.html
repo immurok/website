@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>immurok — Wireless fingerprint auth for Mac and Linux</title>
+  <meta name="description" content="Wireless biometric key for macOS & Linux. Screen unlock, sudo, SSH signing — all with your fingerprint.">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
+  <nav class="nav" id="nav">
+    <div class="nav-inner">
+      <a href="#" class="nav-logo">
+        <span class="nav-logo-dot"></span>
+        immurok
+      </a>
+      <div class="nav-links">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How It Works</a>
+        <a href="#specs">Specs</a>
+        <a href="#pricing">Pricing</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="nav-actions">
+        <a href="https://github.com/mkatsu/immurok" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          GitHub
+        </a>
+        <a href="#pricing" class="btn btn-primary btn-sm">Buy</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ═══════════════════════════════════ HERO ═══════════════════════════════════ -->
+  <section class="hero">
+    <h1 class="hero-title">
+      Wireless fingerprint auth<br>
+      <span class="accent">for Mac and Linux.</span>
+    </h1>
+    <p class="hero-subtitle">
+      A tiny wireless key that replaces passwords with your fingerprint.
+      Screen unlock, sudo, SSH &mdash; one touch.
+    </p>
+    <a href="#pricing" class="btn btn-primary">Buy immurok</a>
+
+    <!-- Device + Terminal side by side -->
+    <div style="display: flex; align-items: center; justify-content: center; gap: 64px; margin-top: 64px; flex-wrap: wrap;">
+
+      <!-- Terminal -->
+      <div class="terminal" style="width: 380px; height: 210px; display: flex; flex-direction: column;">
+        <div class="terminal-header">
+          <span class="terminal-dot terminal-dot--red"></span>
+          <span class="terminal-dot terminal-dot--yellow"></span>
+          <span class="terminal-dot terminal-dot--green"></span>
+          <span style="margin-left: 8px; font-size: 0.7rem; color: #555;">terminal</span>
+        </div>
+        <div class="terminal-body" id="hero-terminal"></div>
+      </div>
+
+      <!-- Device -->
+      <div class="hero-device" style="perspective: 800px;">
+        <img src="img/render_v4_led_transparent.png" alt="immurok device">
+        <!-- Fingerprint overlay -->
+        <div class="fp-touch" id="fp-touch">
+          <div class="fp-icon">
+            <svg width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" style="padding: 15%; transform: rotate(-45deg)">
+              <path d="M12 2C9.5 2 7.2 3.2 5.8 5.2"/>
+              <path d="M4.5 8A9 9 0 0 0 4 11c0 3.5 1.2 6.5 3 8.5"/>
+              <path d="M18.2 5.2A9 9 0 0 1 20 11c0 2-.3 3.8-1 5.5"/>
+              <path d="M8 3.8A7 7 0 0 0 6 11c0 3 .8 5.8 2.2 7.8"/>
+              <path d="M16 3.8A7 7 0 0 1 18 11c0 2.5-.6 4.8-1.5 6.5"/>
+              <path d="M9.5 5.5A5 5 0 0 0 8 11c0 2.8.7 5.2 2 7"/>
+              <path d="M14.5 5.5A5 5 0 0 1 16 11c0 2-.4 4-1.2 5.5"/>
+              <path d="M11 7a3 3 0 0 0-1 2.2c0 2.5.5 5 1.5 7"/>
+              <path d="M13 7a3 3 0 0 1 1 2.2c0 2-.3 3.8-.8 5.3"/>
+              <path d="M12 9c0 2 .2 4.2.5 6"/>
+            </svg>
+          </div>
+        </div>
+        <!-- Tags -->
+        <div class="device-tag" style="top: 8%; left: -30px;">Bluetooth LE</div>
+        <div class="device-tag" style="bottom: 8%; left: -20px;">&lt;0.5s match</div>
+        <div class="device-tag" style="top: 8%; right: -40px;">Open source</div>
+        <div class="device-tag" style="bottom: 8%; right: -50px;">On-device encryption</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ PROBLEM ═══════════════════════════════════ -->
+  <section class="section section-alt" id="problem">
+    <div class="container-sm">
+      <div class="fade-in" style="text-align: center; max-width: 800px; margin: 0 auto;">
+        <h2 class="section-title" style="margin-bottom: 20px;">Problem: No biometrics on desktop Mac and Linux.</h2>
+        <p style="font-size: 22px; color: var(--text-secondary); line-height: 1.7; margin-bottom: 32px;">
+          Millions of developers have no fingerprint option at all.<br>
+          They just type passwords. Every. Single. Time.
+        </p>
+        <div style="display: flex; flex-direction: column; gap: 12px; text-align: left; max-width: 640px; margin: 0 auto; font-size: 18px; color: var(--text-secondary); line-height: 1.7;">
+          <p><span style="color: var(--text); font-weight: 600;">Mac desktop &amp; clamshell MacBooks</span> &mdash; Apple's only fix is a $199 keyboard. If you use a mechanical keyboard, you're out of luck.</p>
+          <p><span style="color: var(--text); font-weight: 600;">Linux</span> &mdash; fprintd exists, but few hardware to go with it.</p>
+          <p style="margin-top: 8px;"><span style="color: var(--green); font-weight: 600;">What we need</span> &mdash; an efficient, simple, elegant, and secure wireless fingerprint authenticator.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ HOW IT WORKS ═══════════════════════════════════ -->
+  <section class="section" id="how-it-works">
+    <div class="container-sm">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">How it works</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Three steps. Half a second. Zero passwords.</p>
+      </div>
+
+      <div class="steps-grid fade-in">
+        <div class="step">
+          <div class="step-number">1</div>
+          <h3>Touch</h3>
+          <p>Place your finger on the capacitive sensor. Matched entirely on-device &mdash; biometric data never leaves the hardware.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">2</div>
+          <h3>Verify</h3>
+          <p>Device sends an HMAC-SHA256 signed response over Bluetooth LE. The companion app verifies the signature with a shared key established during ECDH pairing.</p>
+        </div>
+        <div class="step">
+          <div class="step-number">3</div>
+          <h3>Authenticate</h3>
+          <p>The app handles authentication depending on context &mdash; PAM module for sudo and lock screen, SSH agent for Git signing and remote login.</p>
+        </div>
+      </div>
+
+      <!-- Under the hood -->
+      <div class="fade-in" style="margin-top: 64px;">
+        <h3 style="font-size: 14px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--text-muted); text-align: center; margin-bottom: 24px; font-weight: 600;">Under the hood</h3>
+        <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px;">
+          <div style="padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); background: white;">
+            <h4 style="font-weight: 700; margin-bottom: 6px; font-size: 18px;">PAM integration</h4>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">Custom PAM module intercepts sudo, lock screen, and system auth prompts. Talks to the companion app via Unix socket &mdash; the app triggers fingerprint verification on the device and returns the result.</p>
+          </div>
+          <div style="padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); background: white;">
+            <h4 style="font-weight: 700; margin-bottom: 6px; font-size: 18px;">SSH agent &amp; signing</h4>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">ECDSA private key generated and stored on device. The companion app acts as an SSH agent &mdash; when a signature is requested, it forwards the challenge to the device, which signs after fingerprint confirmation.</p>
+          </div>
+          <div style="padding: 24px; border-radius: var(--radius); border: 1px solid var(--border); background: white;">
+            <h4 style="font-weight: 700; margin-bottom: 6px; font-size: 18px;">Mutual authentication</h4>
+            <p style="font-size: 16px; color: var(--text-secondary); line-height: 1.7;">ECDH P-256 key exchange during pairing establishes a shared secret. Every BLE message is signed with HMAC-SHA256 &mdash; the device authenticates to the app, and the app authenticates to the device.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FEATURES ═══════════════════════════════════ -->
+  <section class="section section-alt" id="features">
+    <div class="container">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">Everything you need</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Built for security, performance, and simplicity.</p>
+      </div>
+
+      <div class="feature-grid">
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <h3>Screen unlock</h3>
+          <p>Lock screen &rarr; touch &rarr; unlocked. Works with Mac mini, clamshell MacBooks, and Linux.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15 7a2 2 0 012 2m4 0a6 6 0 01-7.743 5.743L11 17H9v2H7v2H4a1 1 0 01-1-1v-2.586a1 1 0 01.293-.707l5.964-5.964A6 6 0 1121 9z"/></svg>
+          </div>
+          <h3>SSH &amp; Git signing</h3>
+          <p>Push commits signed with your fingerprint. On-device ECDSA private keys.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8 9l3 3-3 3m5 0h3M5 20h14a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+          </div>
+          <h3>sudo &amp; PAM</h3>
+          <p>Replace sudo passwords with a fingerprint touch. Full PAM integration for macOS and Linux.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+          </div>
+          <h3>Months of battery</h3>
+          <p>&lt;30&micro;A idle current. USB-C charging. The device sleeps until your finger wakes it.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <h3>ECDH + HMAC-SHA256</h3>
+          <p>Secure pairing with P-256 key exchange. Every auth response is cryptographically signed.</p>
+        </div>
+
+        <div class="feature-card fade-in">
+          <div class="feature-icon">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <h3>Open-source app</h3>
+          <p>macOS app and PAM module are fully open source. Audit it yourself.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ COMPARISON ═══════════════════════════════════ -->
+  <section class="section" id="comparison">
+    <div class="container-sm">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">Why immurok</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">The only standalone wireless fingerprint authenticator for Mac and Linux.</p>
+      </div>
+
+      <div class="fade-in" style="overflow-x: auto;">
+        <table class="comparison-table">
+          <thead>
+            <tr>
+              <th></th>
+              <th class="col-highlight" style="color: var(--green);">immurok<br><span style="font-weight: 400; font-size: 0.75rem; color: var(--text-muted);">from $*</span></th>
+              <th>Magic Keyboard<br><span style="font-weight: 400; font-size: 0.75rem; color: var(--text-muted);">Touch ID &middot; $199</span></th>
+              <th>USB dongles<br><span style="font-weight: 400; font-size: 0.75rem; color: var(--text-muted);">various</span></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td style="color: var(--text-secondary);">Mac mini / Mac Studio</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td>&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Clamshell mode</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td>&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Linux support</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Wireless</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003; BLE</td>
+              <td>&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">SSH Agent</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">sudo / PAM</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td>&#10003; macOS only</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Standalone (no keyboard)</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+              <td>&#10003;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Open-source app</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 600;">&#10003;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+              <td style="color: var(--text-muted);">&#10007;</td>
+            </tr>
+            <tr>
+              <td style="color: var(--text-secondary);">Price</td>
+              <td class="col-highlight" style="color: var(--green); font-weight: 700;">$*</td>
+              <td>$199</td>
+              <td>N/A</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ TRUST ═══════════════════════════════════ -->
+  <section class="section section-alt" id="trust">
+    <div class="container-sm">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">Security by design</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Your biometric data never leaves the device. No cloud. No account. No telemetry.</p>
+      </div>
+
+      <div class="trust-grid fade-in">
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+          </div>
+          <div>
+            <h3>Private keys never leave the device</h3>
+            <p>Fingerprint templates and crypto keys are stored on the device. Nothing is transmitted or stored on your computer.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636"/></svg>
+          </div>
+          <div>
+            <h3>No cloud. No account. No telemetry.</h3>
+            <p>Zero network calls. Zero analytics. Works entirely offline via Bluetooth &mdash; no internet required.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/></svg>
+          </div>
+          <div>
+            <h3>ECDH pairing + signed firmware</h3>
+            <p>ECDH P-256 key exchange for secure pairing. OTA firmware updates are cryptographically verified.</p>
+          </div>
+        </div>
+
+        <div class="trust-item">
+          <div class="trust-icon">
+            <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+          </div>
+          <div>
+            <h3>Open-source app &amp; PAM module</h3>
+            <p>macOS app and PAM module are on GitHub. Audit it yourself or have your security team review it.</p>
+          </div>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 48px;" class="fade-in">
+        <a href="https://github.com/mkatsu/immurok" target="_blank" rel="noopener"
+           style="color: var(--green); font-weight: 600;">
+          Don't trust us. Read the source. &rarr;
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ SPECS ═══════════════════════════════════ -->
+  <section class="section" id="specs">
+    <div class="container-sm">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">Tech specs</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Built for engineers, by engineers.</p>
+      </div>
+
+      <div class="specs-grid fade-in">
+        <div class="specs-block">
+          <h3>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2zM9 9h6v6H9V9z"/></svg>
+            Hardware
+          </h3>
+          <table class="specs-table">
+            <tr><td>Processor</td><td>Custom embedded MCU</td></tr>
+            <tr><td>Connectivity</td><td>Bluetooth LE</td></tr>
+            <tr><td>Fingerprint sensor</td><td>Capacitive</td></tr>
+            <tr><td>Idle current</td><td>&lt;30&micro;A</td></tr>
+            <tr><td>Recognition time</td><td>&lt;500ms</td></tr>
+            <tr><td>Battery</td><td>LiPo 300mAh (USB-C)</td></tr>
+            <tr><td>Battery life</td><td>~3 months standby</td></tr>
+            <tr><td>Dimensions</td><td>52 &times; 32 &times; 12 mm</td></tr>
+            <tr><td>Weight</td><td>38g / 63g</td></tr>
+          </table>
+        </div>
+
+        <div class="specs-block">
+          <h3>
+            <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            Software
+          </h3>
+          <table class="specs-table">
+            <tr><td>macOS App</td><td>Swift, macOS 13+</td></tr>
+            <tr><td>PAM Module</td><td>C, open source</td></tr>
+            <tr><td>Firmware</td><td>C (bare-metal)</td></tr>
+            <tr><td>Security</td><td>ECDH + HMAC-SHA256</td></tr>
+            <tr><td>Auth methods</td><td>Lock &middot; sudo &middot; SSH</td></tr>
+            <tr><td>Templates stored</td><td>Up to 10 fingers</td></tr>
+            <tr><td>Compatibility</td><td>macOS 13+ / Linux</td></tr>
+            <tr><td>Updates</td><td>OTA via macOS app</td></tr>
+            <tr><td>License</td><td>MIT (App &amp; PAM)</td></tr>
+          </table>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ PRICING ═══════════════════════════════════ -->
+  <section class="section section-alt" id="pricing">
+    <div class="container" style="text-align: center;">
+      <div style="margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">Simple, honest pricing</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">No subscription. No hidden fees. One device, forever.</p>
+      </div>
+
+      <div class="pricing-grid fade-in">
+        <div class="sku-card">
+          <div class="sku-name">Developer Edition</div>
+          <div class="sku-price">$*</div>
+          <div class="sku-note">one-time</div>
+          <ul class="sku-features">
+            <li><span class="check">&#10003;</span> Fully assembled</li>
+            <li><span class="check">&#10003;</span> Polycarbonate shell</li>
+            <li><span class="check">&#10003;</span> macOS app included</li>
+            <li><span class="check">&#10003;</span> 1-year warranty</li>
+            <li><span class="check">&#10003;</span> Free firmware updates</li>
+          </ul>
+        </div>
+
+        <div class="sku-card featured">
+          <div class="sku-badge">Popular</div>
+          <div class="sku-name">Pro Edition</div>
+          <div class="sku-price">$*</div>
+          <div class="sku-note">one-time</div>
+          <ul class="sku-features">
+            <li><span class="check">&#10003;</span> Everything in Developer</li>
+            <li><span class="check">&#10003;</span> CNC aluminum body</li>
+            <li><span class="check">&#10003;</span> Premium anodized finish</li>
+            <li><span class="check">&#10003;</span> 2-year warranty</li>
+            <li><span class="check">&#10003;</span> Priority support</li>
+          </ul>
+        </div>
+      </div>
+
+      <div style="margin-top: 48px;" class="fade-in">
+        <div class="newsletter-form-container">
+          <form class="newsletter-form" action="https://app.loops.so/api/newsletter-form/cmmaapzvl1k150iz7l6uhvult" method="POST" style="display: flex; align-items: center; justify-content: center; gap: 12px; flex-wrap: wrap;">
+            <input class="newsletter-form-input email-input" placeholder="you@example.com" required type="email" name="newsletter-form-input">
+            <button type="submit" class="newsletter-form-button btn btn-primary btn-sm">Join Waitlist</button>
+            <button type="button" class="newsletter-loading-button btn btn-primary btn-sm" style="display: none; opacity: 0.7;">Please wait...</button>
+          </form>
+          <div class="newsletter-success" style="display: none; align-items: center; justify-content: center; width: 100%;">
+            <p style="font-size: 0.95rem; color: var(--green); font-weight: 600; margin-top: 8px;">Thanks! We'll be in touch!</p>
+          </div>
+          <div class="newsletter-error" style="display: none; align-items: center; justify-content: center; width: 100%;">
+            <p class="newsletter-error-message" style="font-size: 0.9rem; color: #b91c1c; margin-top: 8px;">Oops! Something went wrong, please try again</p>
+          </div>
+          <button class="newsletter-back-button" type="button" style="color: var(--text-muted); font: inherit; font-size: 0.85rem; margin: 10px auto; text-align: center; display: none; background: transparent; border: none; cursor: pointer;" onmouseout="this.style.textDecoration='none'" onmouseover="this.style.textDecoration='underline'">&larr; Back</button>
+        </div>
+        <p style="margin-top: 12px; font-size: 0.85rem; color: var(--text-muted);">
+          Launching 2026. Join the waitlist to get early access.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ DEVELOPERS ═══════════════════════════════════ -->
+  <section class="section" id="developers">
+    <div class="container-sm">
+      <div style="text-align: center; margin-bottom: 60px;" class="fade-in">
+        <h2 class="section-title">For developers</h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Open-source macOS app and PAM module. Documented BLE API. Build your own integrations.</p>
+      </div>
+
+      <div class="dev-cards fade-in">
+        <div class="dev-card" style="text-align: center;">
+          <div style="color: var(--green); font-size: 14px; font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">macOS App</div>
+          <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">Swift</div>
+          <p style="font-size: 16px; color: var(--text-secondary);">Menu bar app + PAM integration</p>
+        </div>
+        <div class="dev-card" style="text-align: center;">
+          <div style="color: var(--green); font-size: 14px; font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">Linux PAM</div>
+          <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">C</div>
+          <p style="font-size: 16px; color: var(--text-secondary);">PAM module for sudo &amp; login</p>
+        </div>
+        <div class="dev-card" style="text-align: center;">
+          <div style="color: var(--green); font-size: 14px; font-weight: 600; margin-bottom: 8px; font-family: 'JetBrains Mono', monospace;">Device API</div>
+          <div style="font-size: 1.5rem; font-weight: 800; margin-bottom: 4px;">BLE GATT</div>
+          <p style="font-size: 16px; color: var(--text-secondary);">Full protocol docs for custom clients</p>
+        </div>
+      </div>
+
+      <p style="text-align: center; margin-top: 40px;" class="fade-in">
+        <a href="https://github.com/mkatsu/immurok" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
+          <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+          View on GitHub
+        </a>
+      </p>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════ FOOTER ═══════════════════════════════════ -->
+  <footer class="footer">
+    <div class="footer-inner">
+      <div class="footer-col">
+        <h4>immurok</h4>
+        <a href="#">Home</a>
+        <a href="#features">Features</a>
+        <a href="#pricing">Pricing</a>
+        <a href="#specs">Specs</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Developers</h4>
+        <a href="https://github.com/mkatsu/immurok" target="_blank">GitHub</a>
+        <a href="#">Documentation</a>
+        <a href="#">BLE Protocol</a>
+      </div>
+      <div class="footer-col">
+        <h4>Legal</h4>
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="mailto:hello@immurok.com">hello@immurok.com</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 immurok. MIT License (App &amp; PAM).
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
