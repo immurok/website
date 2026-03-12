@@ -37,6 +37,10 @@ class TerminalAnimator {
     this.containerEl = el.closest('.terminal');
     this.currentScenario = 0;
     this.running = false;
+    const styles = getComputedStyle(document.documentElement);
+    this.colorWarning = '#eab308';
+    this.colorSuccess = styles.getPropertyValue('--green').trim() || '#1faa20';
+    this.colorText = '#d1d5db';
   }
 
   start() {
@@ -93,7 +97,7 @@ class TerminalAnimator {
 
     const spinnerLine = this.createLine();
     const spinnerSpan = document.createElement('span');
-    spinnerSpan.style.color = '#eab308';
+    spinnerSpan.style.color = this.colorWarning;
     spinnerLine.appendChild(spinnerSpan);
 
     const spinnerChar = document.createElement('span');
@@ -115,7 +119,7 @@ class TerminalAnimator {
     spinnerLine.remove();
     const successLine = this.createLine();
     const successSpan = document.createElement('span');
-    successSpan.style.color = '#22c55e';
+    successSpan.style.color = this.colorSuccess;
     successSpan.textContent = scenario.lines[2].text;
     successLine.appendChild(successSpan);
 
@@ -167,7 +171,7 @@ class TerminalAnimator {
 
     await this.sleep(400);
 
-    field.style.borderColor = '#22c55e';
+    field.style.borderColor = this.colorSuccess;
     status.textContent = '✓ Unlocked';
     status.className = 'ls-status ls-status--success';
 
@@ -188,7 +192,7 @@ class TerminalAnimator {
 
   async typeText(container, text, cls) {
     const span = document.createElement('span');
-    span.style.color = '#d1d5db';
+    span.style.color = this.colorText;
     container.appendChild(span);
 
     const cursor = document.createElement('span');
@@ -212,15 +216,15 @@ class TerminalAnimator {
 
 function submitHandler(event) {
   event.preventDefault();
-  var container = event.target.parentNode;
-  var form = container.querySelector(".newsletter-form");
-  var formInput = container.querySelector(".newsletter-form-input");
-  var success = container.querySelector(".newsletter-success");
-  var errorContainer = container.querySelector(".newsletter-error");
-  var errorMessage = container.querySelector(".newsletter-error-message");
-  var backButton = container.querySelector(".newsletter-back-button");
-  var submitButton = container.querySelector(".newsletter-form-button");
-  var loadingButton = container.querySelector(".newsletter-loading-button");
+  const container = event.target.parentNode;
+  const form = container.querySelector(".newsletter-form");
+  const formInput = container.querySelector(".newsletter-form-input");
+  const success = container.querySelector(".newsletter-success");
+  const errorContainer = container.querySelector(".newsletter-error");
+  const errorMessage = container.querySelector(".newsletter-error-message");
+  const backButton = container.querySelector(".newsletter-back-button");
+  const submitButton = container.querySelector(".newsletter-form-button");
+  const loadingButton = container.querySelector(".newsletter-loading-button");
 
   const rateLimit = () => {
     errorContainer.style.display = "flex";
@@ -230,9 +234,9 @@ function submitHandler(event) {
     backButton.style.display = "block";
   };
 
-  var time = new Date();
-  var timestamp = time.valueOf();
-  var previousTimestamp = localStorage.getItem("loops-form-timestamp");
+  const time = new Date();
+  const timestamp = time.valueOf();
+  const previousTimestamp = localStorage.getItem("loops-form-timestamp");
 
   if (previousTimestamp && Number(previousTimestamp) + 60000 > timestamp) {
     rateLimit();
@@ -243,7 +247,7 @@ function submitHandler(event) {
   submitButton.style.display = "none";
   loadingButton.style.display = "flex";
 
-  var formBody = "userGroup=&mailingLists=&email=" + encodeURIComponent(formInput.value);
+  const formBody = "userGroup=&mailingLists=&email=" + encodeURIComponent(formInput.value);
 
   fetch(event.target.action, {
     method: "POST",
@@ -279,13 +283,13 @@ function submitHandler(event) {
 }
 
 function resetFormHandler(event) {
-  var container = event.target.parentNode;
-  var formInput = container.querySelector(".newsletter-form-input");
-  var success = container.querySelector(".newsletter-success");
-  var errorContainer = container.querySelector(".newsletter-error");
-  var errorMessage = container.querySelector(".newsletter-error-message");
-  var backButton = container.querySelector(".newsletter-back-button");
-  var submitButton = container.querySelector(".newsletter-form-button");
+  const container = event.target.parentNode;
+  const formInput = container.querySelector(".newsletter-form-input");
+  const success = container.querySelector(".newsletter-success");
+  const errorContainer = container.querySelector(".newsletter-error");
+  const errorMessage = container.querySelector(".newsletter-error-message");
+  const backButton = container.querySelector(".newsletter-back-button");
+  const submitButton = container.querySelector(".newsletter-form-button");
 
   success.style.display = "none";
   errorContainer.style.display = "none";
@@ -296,9 +300,9 @@ function resetFormHandler(event) {
 }
 
 function setupLoopsForms() {
-  var formContainers = document.getElementsByClassName("newsletter-form-container");
-  for (var i = 0; i < formContainers.length; i++) {
-    var formContainer = formContainers[i];
+  const formContainers = document.getElementsByClassName("newsletter-form-container");
+  for (let i = 0; i < formContainers.length; i++) {
+    const formContainer = formContainers[i];
     if (formContainer.classList.contains('newsletter-handlers-added')) continue;
     formContainer.querySelector(".newsletter-form").addEventListener("submit", submitHandler);
     formContainer.querySelector(".newsletter-back-button").addEventListener("click", resetFormHandler);
@@ -348,16 +352,36 @@ function setupSmoothScroll() {
   });
 }
 
+// ── Mobile nav ──
+
+function setupMobileNav() {
+  const toggle = document.querySelector('.nav-toggle');
+  const links = document.querySelector('.nav-links');
+  if (!toggle || !links) return;
+  toggle.addEventListener('click', () => {
+    const open = links.classList.toggle('open');
+    toggle.setAttribute('aria-expanded', open);
+  });
+  links.querySelectorAll('a').forEach((a) => {
+    a.addEventListener('click', () => {
+      links.classList.remove('open');
+      toggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // ── Init ──
 
 document.addEventListener('DOMContentLoaded', () => {
   const terminalBody = document.getElementById('hero-terminal');
   const fpTouch = document.getElementById('fp-touch');
-  if (terminalBody) {
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  if (terminalBody && !prefersReducedMotion) {
     const animator = new TerminalAnimator(terminalBody, fpTouch);
     animator.start();
   }
 
+  setupMobileNav();
   setupLoopsForms();
   setupFadeIn();
   setupNavScroll();
