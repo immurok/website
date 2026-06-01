@@ -259,6 +259,14 @@ function submitHandler(event) {
       if (ok) {
         success.style.display = "flex";
         form.reset();
+        // Track waitlist signup conversion (only fires if the user accepted
+        // consent — fbq / gtag are no-ops on reject).
+        if (typeof window.fbq === "function") {
+          window.fbq("track", "Lead", { content_name: "Waitlist Signup" });
+        }
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "waitlist_signup", { method: "loops_form" });
+        }
       } else {
         dataPromise.then(data => {
           errorContainer.style.display = "flex";
@@ -279,11 +287,16 @@ function submitHandler(event) {
       formInput.style.display = "none";
       loadingButton.style.display = "none";
       backButton.style.display = "block";
+      // Hide the form's pill wrapper too so we don't leave an empty styled
+      // container behind (visible on the hero variant where the form has its
+      // own pill background).
+      form.style.display = "none";
     });
 }
 
 function resetFormHandler(event) {
   const container = event.target.parentNode;
+  const form = container.querySelector(".newsletter-form");
   const formInput = container.querySelector(".newsletter-form-input");
   const success = container.querySelector(".newsletter-success");
   const errorContainer = container.querySelector(".newsletter-error");
@@ -295,8 +308,9 @@ function resetFormHandler(event) {
   errorContainer.style.display = "none";
   errorMessage.innerText = "Oops! Something went wrong, please try again";
   backButton.style.display = "none";
-  formInput.style.display = "flex";
-  submitButton.style.display = "flex";
+  formInput.style.display = "";
+  submitButton.style.display = "";
+  if (form) form.style.display = "";
 }
 
 function setupLoopsForms() {
@@ -386,4 +400,53 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFadeIn();
   setupNavScroll();
   setupSmoothScroll();
+  setupSpecs3DVisibility();
+  setupHeroCtaExpand();
 });
+
+// Hero "Join Waitlist" button expands in-place to an email input + Join
+// button instead of scrolling to the pricing form. The form submission is
+// wired by setupLoopsForms() since it shares the .newsletter-form-container.
+function setupHeroCtaExpand() {
+  const trigger = document.querySelector('.hero-cta-trigger');
+  const container = document.querySelector('.hero-waitlist');
+  if (!trigger || !container) return;
+  trigger.addEventListener('click', () => {
+    trigger.hidden = true;
+    container.hidden = false;
+    const input = container.querySelector('.newsletter-form-input');
+    if (input) input.focus();
+  });
+  // Allow showing the trigger again from the success-state "Back" button
+  const back = container.querySelector('.newsletter-back-button');
+  if (back) {
+    back.addEventListener('click', () => {
+      // Brief delay so the form's own reset handler runs first
+      setTimeout(() => {
+        container.hidden = true;
+        trigger.hidden = false;
+      }, 0);
+    });
+  }
+}
+
+// Pause the 3D viewer's render loop when its iframe leaves the viewport so
+// scrolling stays smooth (constant WebGL rendering on a hidden iframe was
+// causing perceptible jank).
+function setupSpecs3DVisibility() {
+  const iframe = document.querySelector('.specs-3d iframe');
+  if (!iframe) return;
+  const post = (visible) => {
+    if (iframe.contentWindow) {
+      iframe.contentWindow.postMessage({ type: 'ik1-visibility', visible }, '*');
+    }
+  };
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach((e) => post(e.isIntersecting));
+  }, { threshold: 0 });
+  io.observe(iframe);
+  // Initial probe — iframe likely off-screen on first load.
+  const rect = iframe.getBoundingClientRect();
+  const onscreen = rect.bottom > 0 && rect.top < window.innerHeight;
+  iframe.addEventListener('load', () => post(onscreen), { once: true });
+}

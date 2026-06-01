@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+Disallow: /3d/
+Disallow: /.wrangler/
+
+Sitemap: https://immurok.com/sitemap.xml
+Sitemap: https://immurok.com/blog/sitemap.xml

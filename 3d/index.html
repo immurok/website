@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>IK-1 3D Preview</title>
+<style>
+  :root {
+    --bg-page: #d9d9d9;
+    --fg: #0f1810;
+    --fg-dim: #6b7a69;
+    --line: rgba(15, 24, 16, 0.65);
+    --line-soft: rgba(15, 24, 16, 0.18);
+    --pill-bg: #ffffff;
+    --pill-shadow: 0 4px 14px rgba(15, 24, 16, 0.08), 0 1px 3px rgba(15, 24, 16, 0.06);
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0; padding: 0; height: 100%;
+    background: var(--bg-page);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", "PingFang SC", "Microsoft YaHei", sans-serif;
+    overflow: hidden;
+  }
+  #viewport { position: fixed; inset: 0; }
+  #viewport canvas { display: block; outline: none; }
+
+  /* Loading */
+  #loading {
+    position: fixed; inset: 0; display: flex; align-items: center; justify-content: center;
+    flex-direction: column; gap: 14px; z-index: 10;
+    background: var(--bg-page);
+    transition: opacity .35s ease;
+  }
+  #loading.hidden { opacity: 0; pointer-events: none; }
+  .spinner {
+    width: 36px; height: 36px;
+    border: 2px solid rgba(15, 24, 16, 0.1);
+    border-top-color: var(--fg-dim);
+    border-radius: 50%;
+    animation: spin 0.9s linear infinite;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  #loading .label { font-size: 12px; color: var(--fg-dim); letter-spacing: 0.04em; }
+
+  /* Hidden chrome (kept in DOM for JS hooks but invisible to user) */
+  .brand, .views, .variants, .hint, .debug { display: none !important; }
+
+  /* Toolbar — slider with icon buttons on each side */
+  .toolbar {
+    position: fixed; bottom: 6%; left: 50%; transform: translateX(-50%);
+    z-index: 5;
+    display: flex; align-items: center; gap: 24px;
+    width: min(560px, 92vw);
+  }
+  @media (max-width: 600px) {
+    .toolbar { gap: 14px; bottom: 8%; }
+    .toolbar .pill-btn { width: 48px; height: 48px; }
+  }
+  .toolbar .pill-btn {
+    flex-shrink: 0;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: var(--pill-bg);
+    border: 0;
+    color: var(--fg);
+    cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--pill-shadow);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+  }
+  .toolbar .pill-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 6px 18px rgba(15, 24, 16, 0.12), 0 2px 4px rgba(15, 24, 16, 0.08);
+  }
+  .toolbar .pill-btn:active { transform: scale(0.96); }
+  .toolbar .pill-btn.active {
+    background: var(--fg);
+    color: var(--pill-bg);
+  }
+
+  .toolbar .slider-wrap {
+    flex: 1;
+    display: flex; align-items: center;
+    height: 44px;
+    position: relative;
+  }
+  .toolbar .slider-wrap label,
+  .toolbar .slider-wrap .val { display: none; }
+  .toolbar .slider-wrap input[type=range] {
+    width: 100%;
+    -webkit-appearance: none; appearance: none;
+    height: 1.5px; background: var(--line);
+    cursor: pointer;
+    margin: 0;
+    border-radius: 1px;
+  }
+  .toolbar .slider-wrap input[type=range]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--pill-bg);
+    border: 1.5px solid var(--line);
+    box-shadow: 0 1px 3px rgba(15, 24, 16, 0.12);
+    cursor: grab;
+  }
+  .toolbar .slider-wrap input[type=range]::-moz-range-thumb {
+    width: 20px; height: 20px; border-radius: 50%;
+    background: var(--pill-bg);
+    border: 1.5px solid var(--line);
+    box-shadow: 0 1px 3px rgba(15, 24, 16, 0.12);
+    cursor: grab;
+  }
+  .toolbar .slider-wrap input[type=range]:focus { outline: none; }
+
+  /* Capture mode (legacy) */
+  body.capture-on .toolbar { display: none !important; }
+  body.capture-on { background: #ffffff !important; }
+</style>
+</head>
+<body>
+  <div id="viewport"></div>
+
+  <div class="brand"><strong>immurok</strong> · IK-1 3D Preview</div>
+
+  <div id="loading">
+    <div class="spinner"></div>
+    <div class="label">Loading model …</div>
+  </div>
+
+  <div class="variants" id="variants">
+    <div class="swatch" data-variant="silver" title="Silver"></div>
+    <div class="swatch active" data-variant="space-gray" title="Space Gray"></div>
+  </div>
+
+  <div class="views" id="views">
+    <button data-preset="iso" class="active">3/4</button>
+    <button data-preset="front">前</button>
+    <button data-preset="back">后</button>
+    <button data-preset="side">侧</button>
+    <button data-preset="top">顶</button>
+    <button data-preset="iso-bottom">底</button>
+  </div>
+
+  <div class="toolbar" id="toolbar">
+    <button class="pill-btn" id="btn-collapse" title="3D 模式" aria-label="Collapse / 3D mode">
+      <svg width="26" height="26" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon stroke-width="6" points="63.36 53.49 63.36 26.51 40 13.03 16.64 26.51 16.64 53.49 40 66.97 63.36 53.49"/>
+        <polyline stroke-width="4" points="16.64 26.51 40 40 63.36 26.51"/>
+        <line stroke-width="4" x1="40" y1="40" x2="40" y2="66.97"/>
+      </svg>
+    </button>
+    <div class="slider-wrap">
+      <label>爆炸</label>
+      <input id="explode-slider" type="range" min="0" max="100" value="0" />
+      <span class="val" id="explode-val">0%</span>
+    </div>
+    <button class="pill-btn" id="btn-explode" title="爆炸图" aria-label="Exploded view">
+      <svg width="26" height="26" viewBox="0 0 80 80" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <polygon stroke-width="6" points="64.22 35.5 64.22 24.62 40 10.64 15.78 24.62 15.78 35.5 40 49.48 64.22 35.5"/>
+        <polyline stroke-width="4" points="15.78 24.62 40 38.61 64.22 24.62"/>
+        <line stroke-width="4" x1="40" y1="38.61" x2="40" y2="49.48"/>
+        <polyline stroke-width="6" points="24.53 40.55 15.78 45.6 15.78 56.47 40 70.45 64.22 56.47 64.22 45.6 55.85 40.76"/>
+        <polyline stroke-width="4" points="64.22 45.6 40 59.58 15.78 45.6"/>
+        <line stroke-width="4" x1="40" y1="59.58" x2="40" y2="70.45"/>
+      </svg>
+    </button>
+    <button id="btn-reset" style="display:none">↻ 重置</button>
+  </div>
+
+  <div class="hint">
+    <kbd>左键</kbd> 旋转 &nbsp; <kbd>滚轮</kbd> 缩放
+  </div>
+
+  <div class="debug" id="debug"></div>
+
+  <script type="importmap">
+  {
+    "imports": {
+      "three": "https://cdn.jsdelivr.net/npm/three@0.171.0/build/three.module.min.js",
+      "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.171.0/examples/jsm/"
+    }
+  }
+  </script>
+  <script type="module" src="./main.js"></script>
+  <script>
+    // Wire up the new pill buttons (collapse / explode) to the existing __setExplode API
+    document.addEventListener('DOMContentLoaded', () => {
+      const collapse = document.getElementById('btn-collapse');
+      const explode  = document.getElementById('btn-explode');
+      const slider   = document.getElementById('explode-slider');
+
+      function updateActiveStates() {
+        const v = parseFloat(slider.value || 0);
+        collapse.classList.toggle('active', v < 2);
+        explode.classList.toggle('active', v > 98);
+      }
+
+      collapse.addEventListener('click', () => {
+        if (window.__setExplode) window.__setExplode(0);
+        else { slider.value = 0; slider.dispatchEvent(new Event('input', { bubbles: true })); }
+        updateActiveStates();
+      });
+      explode.addEventListener('click', () => {
+        if (window.__setExplode) window.__setExplode(1);
+        else { slider.value = 100; slider.dispatchEvent(new Event('input', { bubbles: true })); }
+        updateActiveStates();
+      });
+      slider.addEventListener('input', updateActiveStates);
+      updateActiveStates();
+    });
+  </script>
+</body>
+</html>

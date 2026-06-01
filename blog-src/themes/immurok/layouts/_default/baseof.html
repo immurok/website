@@ -9,12 +9,38 @@
     {{ block "main" . }}{{ end }}
   </main>
   {{ partial "footer.html" . }}
+
+  <div id="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
+    <p>We use analytics cookies to understand how visitors use the site.
+       You can accept or reject — your choice is remembered.</p>
+    <div class="cookie-banner-actions">
+      <button type="button" id="cookie-reject">Reject</button>
+      <button type="button" id="cookie-accept">Accept</button>
+    </div>
+  </div>
+
   <script>
     document.querySelector('.nav-toggle')?.addEventListener('click', function() {
       var links = document.querySelector('.nav-links');
       var open = links.classList.toggle('open');
       this.setAttribute('aria-expanded', open);
     });
+    (function(){
+      var banner = document.getElementById('cookie-banner');
+      if (!banner) return;
+      var accept = document.getElementById('cookie-accept');
+      var reject = document.getElementById('cookie-reject');
+      window.__showConsentBanner = function(){ banner.hidden = false; };
+      if (window.__needsConsent) window.__showConsentBanner();
+      accept.addEventListener('click', function(){
+        window.__acceptConsent && window.__acceptConsent();
+        banner.hidden = true;
+      });
+      reject.addEventListener('click', function(){
+        window.__rejectConsent && window.__rejectConsent();
+        banner.hidden = true;
+      });
+    })();
   </script>
 </body>
 </html>
