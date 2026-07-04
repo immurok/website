@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 380" font-family="'DM Sans', system-ui, -apple-system, sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="10" markerHeight="10" refX="7" refY="3" orient="auto" markerUnits="strokeWidth">
+      <path d="M0,0 L7,3 L0,6 Z" fill="#6b7a69"/>
+    </marker>
+  </defs>
+
+  <rect x="0" y="0" width="940" height="380" fill="#fafcfa"/>
+
+  <!-- Device -->
+  <rect x="24" y="96" width="218" height="188" rx="14" fill="#e4f2e4" stroke="#1faa20" stroke-width="1.5"/>
+  <circle cx="133" cy="150" r="26" fill="none" stroke="#1faa20" stroke-width="2"/>
+  <path d="M120 150 a13 13 0 0 1 26 0 M125 150 a8 8 0 0 1 16 0 M131 150 a2 2 0 0 1 4 0" fill="none" stroke="#1faa20" stroke-width="1.6"/>
+  <text x="133" y="200" text-anchor="middle" font-size="18" font-weight="700" fill="#0f1810">immurok key</text>
+  <text x="133" y="224" text-anchor="middle" font-size="13" fill="#4a5548">Fingerprint sensor</text>
+  <text x="133" y="244" text-anchor="middle" font-size="13" fill="#4a5548">On-device matching</text>
+  <text x="133" y="264" text-anchor="middle" font-size="13" fill="#4a5548">Battery · BLE</text>
+
+  <!-- BLE link -->
+  <line x1="242" y1="190" x2="362" y2="190" stroke="#6b7a69" stroke-width="2" marker-end="url(#arrow)"/>
+  <text x="302" y="176" text-anchor="middle" font-size="13" font-weight="600" fill="#0f1810">Bluetooth LE</text>
+  <text x="302" y="212" text-anchor="middle" font-size="11" fill="#6b7a69">HID anchor +</text>
+  <text x="302" y="226" text-anchor="middle" font-size="11" fill="#6b7a69">encrypted GATT</text>
+
+  <!-- Host -->
+  <text x="478" y="80" text-anchor="middle" font-size="13" font-weight="600" fill="#6b7a69">Mac / Linux host</text>
+  <rect x="372" y="92" width="212" height="196" rx="14" fill="#ffffff" stroke="#dde3dd" stroke-width="1.5"/>
+  <rect x="392" y="116" width="172" height="64" rx="8" fill="#f2f5f2" stroke="#dde3dd" stroke-width="1"/>
+  <text x="478" y="143" text-anchor="middle" font-size="15" font-weight="700" fill="#0f1810">Companion app</text>
+  <text x="478" y="164" text-anchor="middle" font-size="12" fill="#6b7a69">CLI/TUI · menu bar</text>
+  <rect x="392" y="196" width="172" height="64" rx="8" fill="#e4f2e4" stroke="#1faa20" stroke-width="1.2"/>
+  <text x="478" y="223" text-anchor="middle" font-size="15" font-weight="700" fill="#0f1810">PAM module</text>
+  <text x="478" y="244" text-anchor="middle" font-size="12" fill="#178a17">native auth integration</text>
+
+  <!-- Arrows to outcomes -->
+  <line x1="584" y1="130" x2="712" y2="118" stroke="#6b7a69" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="584" y1="190" x2="712" y2="190" stroke="#6b7a69" stroke-width="2" marker-end="url(#arrow)"/>
+  <line x1="584" y1="250" x2="712" y2="262" stroke="#6b7a69" stroke-width="2" marker-end="url(#arrow)"/>
+
+  <!-- Outcomes -->
+  <rect x="716" y="96" width="200" height="50" rx="8" fill="#ffffff" stroke="#dde3dd" stroke-width="1.5"/>
+  <text x="816" y="118" text-anchor="middle" font-size="14" font-weight="700" fill="#0f1810">sudo &amp; system auth</text>
+  <text x="816" y="135" text-anchor="middle" font-size="11" fill="#6b7a69">via PAM (Linux + macOS)</text>
+
+  <rect x="716" y="165" width="200" height="50" rx="8" fill="#ffffff" stroke="#dde3dd" stroke-width="1.5"/>
+  <text x="816" y="187" text-anchor="middle" font-size="14" font-weight="700" fill="#0f1810">screen unlock</text>
+  <text x="816" y="204" text-anchor="middle" font-size="11" fill="#6b7a69">PAM on Linux · keystroke on macOS</text>
+
+  <rect x="716" y="234" width="200" height="50" rx="8" fill="#ffffff" stroke="#dde3dd" stroke-width="1.5"/>
+  <text x="816" y="256" text-anchor="middle" font-size="14" font-weight="700" fill="#0f1810">SSH &amp; secrets</text>
+  <text x="816" y="273" text-anchor="middle" font-size="11" fill="#6b7a69">imk:// for AI agents</text>
+
+  <text x="20" y="338" font-size="12" fill="#6b7a69">Fingerprint templates never leave the device · pairing over ECDH · every touch HMAC-signed</text>
+</svg>

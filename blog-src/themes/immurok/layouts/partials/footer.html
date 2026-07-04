@@ -1,22 +1,30 @@
 <footer class="footer">
   <div class="footer-inner">
-    <div class="footer-col">
-      <h4>immurok</h4>
-      <a href="/">Home</a>
-      <a href="/#features">Features</a>
-      <a href="/#pricing">Pricing</a>
-      <a href="/blog/">Blog</a>
+    <div class="footer-brand">
+      <img class="footer-logo" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
+      <p class="footer-tagline">Wireless fingerprint authentication for Mac &amp; Linux.</p>
+      <!-- Email assembled by JS in baseof.html — raw HTML carries no address,
+           "@", or mail link. Parts are reversed to defeat scrapers. -->
+      <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
     </div>
-    <div class="footer-col">
-      <h4>Developers</h4>
-      <a href="https://github.com/immurok" target="_blank">GitHub</a>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <a href="mailto:hello@immurok.com">hello@immurok.com</a>
-    </div>
+    <nav class="footer-links" aria-label="Footer">
+      <div class="footer-col">
+        <h4>Product</h4>
+        <a href="/#features">Features</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/#specs">Specs</a>
+        <a href="/blog/">Blog</a>
+      </div>
+      <div class="footer-col">
+        <h4>Community</h4>
+        <a href="https://discord.gg/FtWm7bhXXE" target="_blank" rel="noopener">Discord</a>
+        <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://mariadb.com/bsl11/" target="_blank" rel="noopener">License</a>
+      </div>
+    </nav>
   </div>
   <div class="footer-bottom">
-    &copy; {{ now.Year }} immurok
+    <span>&copy; {{ now.Year }} immurok</span>
+    <span>Source available under BSL 1.1</span>
   </div>
 </footer>

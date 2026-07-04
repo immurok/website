@@ -25,6 +25,27 @@
       var open = links.classList.toggle('open');
       this.setAttribute('aria-expanded', open);
     });
+
+    // Nav scroll state — matches main site (style.css .nav.scrolled).
+    (function(){
+      var nav = document.getElementById('nav');
+      if (!nav) return;
+      var onScroll = function(){ nav.classList.toggle('scrolled', window.scrollY > 20); };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+
+    // Anti-scrape email: reassemble from reversed data-eu/data-ed parts so the
+    // raw HTML never contains the address, "@", or a mail link.
+    document.querySelectorAll('a[data-eu][data-ed]').forEach(function(a){
+      var rev = function(s){ return s.split('').reverse().join(''); };
+      var addr = rev(a.dataset.eu) + '@' + rev(a.dataset.ed);
+      a.href = 'mailto:' + addr;
+      a.textContent = addr;
+      a.removeAttribute('data-eu');
+      a.removeAttribute('data-ed');
+    });
+
     (function(){
       var banner = document.getElementById('cookie-banner');
       if (!banner) return;

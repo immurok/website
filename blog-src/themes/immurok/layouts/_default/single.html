@@ -15,6 +15,38 @@
         </div>
         {{ end }}
       </div>
+
+      <div class="article-actions" data-slug="{{ path.Base .RelPermalink }}" data-title="{{ .Title }}">
+        <button type="button" class="icon-btn like-btn" id="like-btn" aria-pressed="false" aria-label="Like this post" title="Like">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+          <span id="like-count" hidden></span>
+        </button>
+        <div class="share-btns">
+          <button type="button" class="icon-btn" id="share-native" aria-label="Share" title="Share" hidden>
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M4 12v8a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-8"/>
+              <polyline points="16 6 12 2 8 6"/>
+              <line x1="12" y1="2" x2="12" y2="15"/>
+            </svg>
+          </button>
+          <button type="button" class="icon-btn" id="share-copy" aria-label="Copy link" title="Copy link">
+            <svg class="icon-link" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/>
+              <path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/>
+            </svg>
+            <svg class="icon-check" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" hidden>
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </button>
+          <a class="icon-btn" id="share-x" target="_blank" rel="noopener" aria-label="Share on X" title="Share on X">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+              <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+            </svg>
+          </a>
+        </div>
+      </div>
     </div>
   </header>
 
@@ -24,4 +56,81 @@
     </div>
   </div>
 </article>
+
+<script>
+(function(){
+  var actions = document.querySelector('.article-actions');
+  if (!actions) return;
+  var slug = actions.dataset.slug;
+  var title = actions.dataset.title;
+  var url = location.origin + location.pathname;
+
+  // ── Share ──
+  var nativeBtn = document.getElementById('share-native');
+  if (navigator.share) {
+    nativeBtn.hidden = false;
+    nativeBtn.addEventListener('click', function(){
+      navigator.share({ title: title, url: url }).catch(function(){});
+    });
+  }
+  var copyBtn = document.getElementById('share-copy');
+  var copyTimer;
+  copyBtn.addEventListener('click', function(){
+    navigator.clipboard.writeText(url).then(function(){
+      var link = copyBtn.querySelector('.icon-link');
+      var check = copyBtn.querySelector('.icon-check');
+      link.setAttribute('hidden', '');
+      check.removeAttribute('hidden');
+      clearTimeout(copyTimer);
+      copyTimer = setTimeout(function(){
+        check.setAttribute('hidden', '');
+        link.removeAttribute('hidden');
+      }, 1000);
+    });
+  });
+  document.getElementById('share-x').href =
+    'https://twitter.com/intent/tweet?text=' + encodeURIComponent(title) + '&url=' + encodeURIComponent(url);
+
+  // ── Like ──
+  var likeBtn = document.getElementById('like-btn');
+  var likeCount = document.getElementById('like-count');
+  var storageKey = 'immurok-liked:' + slug;
+  var shown = null;
+
+  // Counts only ever grow, so never let a stale/raced response lower the
+  // displayed value (e.g. the page-load GET resolving after a click).
+  function setCount(n) {
+    if (typeof n !== 'number' || isNaN(n)) return;
+    if (shown !== null && n < shown) return;
+    shown = n;
+    likeCount.textContent = n;
+    likeCount.hidden = false;
+  }
+  function setLiked() {
+    likeBtn.setAttribute('aria-pressed', 'true');
+  }
+
+  if (localStorage.getItem(storageKey)) setLiked();
+
+  fetch('/api/like?slug=' + encodeURIComponent(slug))
+    .then(function(r){ return r.ok ? r.json() : null; })
+    .then(function(d){ if (d) setCount(d.count); })
+    .catch(function(){});
+
+  likeBtn.addEventListener('click', function(){
+    if (likeBtn.getAttribute('aria-pressed') === 'true') return;
+    setLiked();
+    setCount((shown || 0) + 1);
+    localStorage.setItem(storageKey, '1');
+    fetch('/api/like', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ slug: slug })
+    })
+      .then(function(r){ return r.ok ? r.json() : null; })
+      .then(function(d){ if (d) setCount(d.count); })
+      .catch(function(){});
+  });
+})();
+</script>
 {{ end }}

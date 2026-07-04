@@ -1,0 +1,11 @@
+# Cloudflare Pages config for the immurok website.
+# Deploy from this directory: npx wrangler pages deploy . --project-name=immurok
+name = "immurok"
+pages_build_output_dir = "."
+
+# KV namespace for blog post likes (functions/api/like.js).
+# Create once: npx wrangler kv namespace create LIKES
+# then paste the returned id below.
+[[kv_namespaces]]
+binding = "LIKES"
+id = "118327c2fb864100af7b8e32906f9459"

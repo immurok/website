@@ -521,7 +521,7 @@ let LOCAL_WORLD_UP = new THREE.Vector3(0, 1, 0); // world-up expressed in asm-lo
 // position of the USB-C port (front) and LED (side).
 const FRONT_DIR = new THREE.Vector3(0, 0, 1);
 const SIDE_DIR  = new THREE.Vector3(1, 0, 0);
-let currentVariant = 'space-gray';
+let currentVariant = 'silver';
 let explodeT = 0;      // 0 = assembled, 1 = fully exploded
 let targetT = 0;
 const PCB_GROUP_COLOR_BY_GLB_MAT = new WeakMap();
@@ -1102,11 +1102,23 @@ async function loadPrecisionPcb(asm) {
 
 
 // ---------------------------- camera helpers ----------------------------
+// Padding multiplier sets the device's apparent size in the iframe — smaller
+// number = closer camera = bigger model. Apparent width ≈ 100 / multiplier %.
+//   desktop 1.667 → ~60% of iframe width (1.5× the old 2.5 ≈ 40% framing)
+//   mobile  1.25  → ~80% of iframe width
+// We key off the *parent page* width (same-origin, so readable) so the
+// breakpoint matches the site's 600px mobile cutoff instead of the iframe's
+// own (much smaller) width.
+function frameMultiplier() {
+  let w = window.innerWidth;
+  try {
+    if (window.parent && window.parent !== window) w = window.parent.innerWidth;
+  } catch (e) { /* cross-origin — fall back to own width */ }
+  return w <= 600 ? 1.25 : 1.667;
+}
+
 function cameraFrame(center, radius, preset = 'iso') {
-  // Padding multiplier sets device's apparent size in the iframe.
-  // 1.15 = fills viewport (~87%); 2.5 = device renders at ~40% of iframe width,
-  // which is 20% of the parent section (iframe occupies center 50%).
-  const dist = radius / Math.sin(THREE.MathUtils.degToRad(camera.fov * 0.5)) * 2.5;
+  const dist = radius / Math.sin(THREE.MathUtils.degToRad(camera.fov * 0.5)) * frameMultiplier();
   let off;
   const F = FRONT_DIR, S = SIDE_DIR;
   switch (preset) {

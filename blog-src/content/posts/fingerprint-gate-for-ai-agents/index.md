@@ -4,7 +4,10 @@ date: 2026-05-08
 description: "Claude Code, Cursor, Codex, Aider — they all want to run sudo, push to git, or read API keys on your behalf. Here's how immurok turns one fingerprint touch into the human in the loop."
 tags: ["product", "ai-agents"]
 slug: "fingerprint-gate-for-ai-agents"
+cover: "imk-agent-hud.webp"
 ---
+
+![The immurok HUD overlay asking for a fingerprint touch while an AI agent runs imk run --agent --env-file .env -- python deploy.py in the terminal](imk-agent-hud.webp)
 
 Your AI coding agent now writes code, runs the tests, restarts the daemon, pushes the branch, and tails the prod logs. Most of those last four want **sudo**, **SSH signing**, or **API keys**. None of those want to type a password.
 
