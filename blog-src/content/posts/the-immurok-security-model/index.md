@@ -132,7 +132,7 @@ Security is as much about absence as presence:
 - **No cloud and no account.** There's no backend that could be breached, no credential database, no password-reset flow to socially engineer.
 - **No telemetry.** The device and app don't report usage anywhere.
 - **We don't touch `authorizationdb`.** macOS's authorization database governs deeply sensitive system rights; immurok integrates through PAM and the screen-unlock path and leaves that subsystem alone entirely.
-- **Open and auditable.** The hardware design, the macOS app, the PAM module, and the Linux app are all open source. The firmware will be opened up before the end of the year — we're holding it back only long enough to protect against cheap clones at launch, not to hide anything. The crypto described here isn't a marketing claim you have to take on faith — it's `CryptoKit` calls you can read in `ImmurokSecurity.swift`.
+- **Open and auditable.** The macOS app, the Linux app, and the PAM modules are open source under Apache 2.0. The hardware design and firmware are source-available under BSL 1.1 (converting to Apache 2.0 in 2030) — the only right we reserve until then is selling competing hardware, not your ability to read, build, or flash it. The crypto described here isn't a marketing claim you have to take on faith — it's `CryptoKit` calls you can read in `ImmurokSecurity.swift`.
 
 ## The short version
 

@@ -37,7 +37,7 @@ A small wireless key with a capacitive fingerprint sensor that pairs to your com
 - **macOS `sudo` / system-prompt support through PAM integration**, for the auth prompts that *do* consult PAM.
 - **Mac desk-setup workflows** — Mac mini, Studio, clamshell, external keyboards — where Touch ID is missing or impractical.
 - **Fingerprint matching on the device.** Your fingerprint template is enrolled and matched on the key itself; it never travels over Bluetooth, never lands on your disk, and there is no cloud to send it to.
-- **Open-source firmware and software.** The macOS app, the PAM module, the Linux app, and the hardware design are open; the firmware will be opened up before the end of the year.
+- **Open-source companion software.** The macOS app, the Linux app, and the PAM modules are open source under Apache 2.0. The firmware and hardware design are source-available under BSL 1.1, converting to Apache 2.0 in 2030 — everything is on GitHub for you to read, build, and flash.
 
 It is deliberately a single-purpose device. No screen, no account, no app store — a key that proves a fingerprint touch happened, and lets your OS act on it.
 

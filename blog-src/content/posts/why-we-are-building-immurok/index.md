@@ -28,7 +28,7 @@ immurok is a tiny wireless device with a capacitive fingerprint sensor. It conne
 - **Screen unlock** — touch the sensor, screen unlocks
 - **sudo & PAM** — custom PAM module intercepts auth prompts
 - **SSH agent** — sign commits and SSH into servers with your fingerprint
-- **Open source** — the macOS app and PAM module are fully auditable
+- **Open source** — the macOS & Linux apps and PAM modules are Apache 2.0, fully auditable
 
 ## Security first
 
