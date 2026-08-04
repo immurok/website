@@ -558,6 +558,84 @@ class AuthDemoAnimator {
 
 // ── Loops.so Newsletter Form ──
 
+// Local dedup: remember which emails already joined the waitlist from this
+// browser so a repeat submit is a friendly no-op (no GA event, no POST).
+const JOINED_EMAILS_KEY = "immurok-waitlist-emails";
+
+function normalizeEmail(value) {
+  return (value || "").trim().toLowerCase();
+}
+
+function getJoinedEmails() {
+  try {
+    const raw = localStorage.getItem(JOINED_EMAILS_KEY);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch (e) {
+    return [];
+  }
+}
+
+function hasJoined(email) {
+  return getJoinedEmails().includes(normalizeEmail(email));
+}
+
+function addJoinedEmail(email) {
+  const normalized = normalizeEmail(email);
+  if (!normalized) return;
+  const emails = getJoinedEmails();
+  if (emails.includes(normalized)) return;
+  emails.push(normalized);
+  try {
+    localStorage.setItem(JOINED_EMAILS_KEY, JSON.stringify(emails));
+  } catch (e) { /* storage full / disabled — dedup is best-effort */ }
+}
+
+// ── Discord guide modal ──
+
+let discordModalLastFocus = null;
+
+function openDiscordModal() {
+  const modal = document.getElementById("discord-modal");
+  if (!modal) return;
+  discordModalLastFocus = document.activeElement;
+  modal.hidden = false;
+  // Force a reflow so the transition runs from the hidden state.
+  void modal.offsetWidth;
+  modal.classList.add("is-open");
+  const primary = modal.querySelector("[data-discord-primary]");
+  if (primary) primary.focus();
+}
+
+function closeDiscordModal() {
+  const modal = document.getElementById("discord-modal");
+  if (!modal || modal.hidden) return;
+  modal.classList.remove("is-open");
+  const finish = () => {
+    modal.hidden = true;
+    modal.removeEventListener("transitionend", finish);
+  };
+  modal.addEventListener("transitionend", finish);
+  // Fallback in case transitionend doesn't fire (reduced motion, etc.).
+  setTimeout(finish, 350);
+  if (discordModalLastFocus && typeof discordModalLastFocus.focus === "function") {
+    discordModalLastFocus.focus();
+  }
+  discordModalLastFocus = null;
+}
+
+function setupDiscordModal() {
+  const modal = document.getElementById("discord-modal");
+  if (!modal || modal.classList.contains("discord-handlers-added")) return;
+  modal.querySelectorAll("[data-discord-close]").forEach((el) => {
+    el.addEventListener("click", closeDiscordModal);
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && !modal.hidden) closeDiscordModal();
+  });
+  modal.classList.add("discord-handlers-added");
+}
+
 function submitHandler(event) {
   event.preventDefault();
   const container = event.target.parentNode;
@@ -570,13 +648,7 @@ function submitHandler(event) {
   const submitButton = container.querySelector(".newsletter-form-button");
   const loadingButton = container.querySelector(".newsletter-loading-button");
 
-  // Which of the two waitlist forms fired (hero vs pricing section) — lets
-  // GA4 compare conversion by placement. gtag/fbq are head-script stubs that
-  // queue until consent, so these calls are consent-safe no-ops on reject.
   const formLocation = container.classList.contains("hero-waitlist") ? "hero" : "pricing";
-  if (typeof window.gtag === "function") {
-    window.gtag("event", "join_click", { form_location: formLocation });
-  }
 
   const rateLimit = () => {
     errorContainer.style.display = "flex";
@@ -586,15 +658,44 @@ function submitHandler(event) {
     backButton.style.display = "block";
   };
 
+  // Local dedup — if this email already joined from this browser, it's a
+  // friendly no-op: show an "already on the list" note, guide them to Discord,
+  // and record NOTHING to GA (no join_click, no signup) nor POST to Loops.
+  if (hasJoined(formInput.value)) {
+    const successText = success.querySelector("p");
+    if (successText) successText.innerText = "You're already on the list 🎉";
+    success.style.display = "flex";
+    form.reset();
+    form.style.display = "none";
+    formInput.style.display = "none";
+    submitButton.style.display = "none";
+    backButton.style.display = "block";
+    openDiscordModal();
+    return;
+  }
+
+  // Which of the two waitlist forms fired (hero vs pricing section) — lets
+  // GA4 compare conversion by placement. gtag/fbq are head-script stubs that
+  // queue until consent, so these calls are consent-safe no-ops on reject.
+  if (typeof window.gtag === "function") {
+    window.gtag("event", "join_click", { form_location: formLocation });
+  }
+
   const time = new Date();
   const timestamp = time.valueOf();
   const previousTimestamp = localStorage.getItem("loops-form-timestamp");
 
   if (previousTimestamp && Number(previousTimestamp) + 60000 > timestamp) {
+    if (typeof window.gtag === "function") {
+      window.gtag("event", "waitlist_error", { error_type: "local_throttle", form_location: formLocation });
+    }
     rateLimit();
     return;
   }
   localStorage.setItem("loops-form-timestamp", timestamp);
+
+  // Capture the email before form.reset() clears it on success.
+  const submittedEmail = formInput.value;
 
   submitButton.style.display = "none";
   loadingButton.style.display = "flex";
@@ -611,6 +712,20 @@ function submitHandler(event) {
       if (ok) {
         success.style.display = "flex";
         form.reset();
+        // Remember this email so a repeat submit is deduped locally.
+        addJoinedEmail(submittedEmail);
+        // Mark the signup in the URL (no navigation / reload) so analytics
+        // can segment by landing state and manual checks are easy. GA4
+        // enhanced measurement picks this up as a page_view on history change.
+        if (window.history && typeof history.replaceState === "function") {
+          try {
+            const successUrl = new URL(window.location.href);
+            successUrl.searchParams.set("success", "true");
+            history.replaceState(null, "", successUrl);
+          } catch (e) { /* URL API unavailable — cosmetic feature, skip */ }
+        }
+        // Guide the new signup into the Discord community.
+        openDiscordModal();
         // Track waitlist signup conversion (only fires if the user accepted
         // consent — fbq / gtag are no-ops on reject).
         if (typeof window.fbq === "function") {
@@ -620,19 +735,32 @@ function submitHandler(event) {
           window.gtag("event", "waitlist_signup", { method: "loops_form", form_location: formLocation });
         }
       } else {
+        // Loops replied with a readable (CORS-visible) error — record the
+        // HTTP status so GA can tell these apart from opaque failures.
+        if (typeof window.gtag === "function") {
+          window.gtag("event", "waitlist_error", { error_type: "loops_reject_" + res.status, form_location: formLocation });
+        }
         dataPromise.then(data => {
           errorContainer.style.display = "flex";
           errorMessage.innerText = data.message ? data.message : res.statusText;
         });
       }
     })
-    .catch(error => {
-      if (error.message === "Failed to fetch") {
-        rateLimit();
-        return;
+    .catch(() => {
+      // A rejection here is always a network-level failure — the browser could
+      // not complete the request. The most common cause is Loops returning a
+      // rate-limit 429 WITHOUT CORS headers (it throttles per IP), which the
+      // browser surfaces as an opaque cross-origin block: "Failed to fetch"
+      // in Chrome, "Load failed" in Safari. We can't read the status, so show
+      // one friendly, browser-agnostic retry message instead of matching a
+      // single engine's wording (which leaked the raw error to Safari users).
+      if (typeof window.gtag === "function") {
+        window.gtag("event", "waitlist_error", { error_type: "fetch_failed", form_location: formLocation });
       }
       errorContainer.style.display = "flex";
-      if (error.message) errorMessage.innerText = error.message;
+      errorMessage.innerText = "Hmm, that didn't go through — please try again in a little while.";
+      // The failure wasn't the user mistyping, so clear our own 60s throttle
+      // to let them retry as soon as the transient issue clears.
       localStorage.setItem("loops-form-timestamp", '');
     })
     .finally(() => {
@@ -764,6 +892,25 @@ function setupMobileNav() {
   });
 }
 
+// ── Discord link click tracking ──
+
+// GA event on every Discord invite click, tagged by placement so we can see
+// which entry point (nav button / footer / post-signup modal) actually
+// converts people into the community. Links open in a new tab, so firing
+// synchronously here is safe — the page stays alive.
+function setupDiscordTracking() {
+  document.querySelectorAll('a[href*="discord.gg"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      let location = 'header';
+      if (link.closest('#discord-modal')) location = 'signup_modal';
+      else if (link.closest('footer')) location = 'footer';
+      if (typeof window.gtag === 'function') {
+        window.gtag('event', 'discord_click', { link_location: location });
+      }
+    });
+  });
+}
+
 // ── Init ──
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -777,6 +924,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   setupMobileNav();
   setupLoopsForms();
+  setupDiscordModal();
+  setupDiscordTracking();
   setupFadeIn();
   setupNavScroll();
   setupSmoothScroll();

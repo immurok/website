@@ -1,7 +1,7 @@
 ---
 title: "Eight PCB revisions for a tiny wireless fingerprint key"
 date: 2026-06-09
-description: "Notes from building immurok: a wrong MCU choice, a sensor swap, a tamper switch that only worked while powered, and a long fight to get standby current down to 40 uA."
+description: "Notes from building immurok: a wrong MCU choice, a sensor swap, a tamper switch that only worked while powered, and a long fight to get standby current down to 50 uA."
 tags: ["engineering", "hardware"]
 slug: "hardware-story-behind-a-tiny-wireless-fingerprint-key"
 cover: "hardware-iterations.webp"
@@ -19,7 +19,7 @@ The first prototypes used ESP32-S3 and ESP32-C3. Familiar, well documented, easy
 
 Then we looked at the power budget. immurok sits on a desk for weeks, wakes on touch, and does nothing the rest of the time. The number that matters is idle current, not peak current during BLE traffic. The ESP32 direction projected over 200 uA static before the design was even finished. For a battery-powered key, that drains the battery while the user is doing nothing.
 
-So we moved to CH592F. Tighter RAM, less convenient, but it gave us the sleep budget a desk key needs. The shipping design idles around 40 uA, after a lot of measurement and firmware tuning — BLE intervals, sensor rails, pull resistors, LEDs, wake paths, and every GPIO default.
+So we moved to CH592F. Tighter RAM, less convenient, but it gave us the sleep budget a desk key needs. The shipping design idles around 50 uA, after a lot of measurement and firmware tuning — BLE intervals, sensor rails, pull resistors, LEDs, wake paths, and every GPIO default.
 
 Takeaway: for a device that's supposed to disappear into the desk, the MCU choice is the product, not an implementation detail.
 
@@ -79,7 +79,7 @@ The full checklist, applied every revision:
 - Increase BLE slave latency where possible, within Apple's connection rules.
 - Re-check every revision — a pin that was safe in VER3 may be expensive in VER5.
 
-The target was the whole product — battery, regulator, sensor, radio, GPIOs, board leakage — not a heroic number on a bare MCU. Around 40 uA standby is where it stopped asking to be charged.
+The target was the whole product — battery, regulator, sensor, radio, GPIOs, board leakage — not a heroic number on a bare MCU. Around 50 uA standby is where it stopped asking to be charged.
 
 ## BLE connection parameters
 

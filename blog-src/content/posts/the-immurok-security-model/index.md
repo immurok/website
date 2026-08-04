@@ -107,7 +107,7 @@ The update itself uses a dual-image (A/B) layout with a tiny separate bootloader
 
 ## When the attacker has the device in hand
 
-Everything above assumes the attacker is on the radio. But a fingerprint key is a small object that lives on your desk, and the more interesting attacks happen once someone is holding it. We treat physical possession as its own threat, with two layers.
+Everything above assumes the attacker is on the radio. But a fingerprint key is a small object that lives on your desk, and the more interesting attacks happen once someone is holding it. We treat physical possession as its own threat, with three layers.
 
 **A stolen device can't be re-paired.** The moment a device has a saved shared key, the firmware flips its BLE bonding policy to refuse new bond requests. A thief can't simply walk the device over to their own machine and pair it — the pairing slot is already claimed, and there's no "forget and re-pair" path that doesn't go through a wipe first.
 
@@ -120,6 +120,8 @@ Everything above assumes the attacker is on the radio. But a fingerprint key is 
 Then it lights a solid red LED, shuts off the radio, and halts until the device is power-cycled. By the time anyone has the case open far enough to touch the flash, there's nothing left on it.
 
 The part that took the most care is making the wipe **un-interruptible**. The obvious attack is to pop the case and immediately cut power, hoping to freeze the chip mid-erase with secrets still intact. So the wipe is a transaction: before erasing a single byte, the firmware writes a `case_opened` marker to a reserved flash page. If power is lost halfway through, the *next* boot sees that marker still set and resumes the wipe before doing anything else. The marker is cleared only after the erase fully completes. You cannot win the race by yanking the battery.
+
+**A high-voltage strike on the sensor also triggers the wipe.** Case-opening isn't the only physical attack we planned for. A number of fingerprint smart locks on the market have been defeated by attackers who never touch the enclosure at all — they hold a coil charged to a high voltage against the fingerprint sensor and discharge it, hoping the resulting electrical fault glitches the sensor or its controller into reporting a false match. We treat that fault signature the same way we treat a cracked case: an out-of-range or malformed signal coming back from the sensor isn't something the firmware tries to interpret or recover from — it's an attack indicator, and it drops straight into the same erase path described above. Pairing key, keystore, bonds, and fingerprint templates are gone before the attacker gets a second try.
 
 Getting the detection itself reliable was its own small saga. The tamper line is read as a high-impedance signal (an open case pulls it to ~3 V through a high-value divider), so the pin has to be a true floating input — an early build that enabled the chip's internal pull-down crushed the open-case signal down to 0.23 V and missed it entirely. Boot also deliberately checks only the stored marker, not the live line, so a case that's open on the assembly bench during flashing still boots normally; it's the *act of opening* a sealed unit that trips the wipe, not the static state.
 
