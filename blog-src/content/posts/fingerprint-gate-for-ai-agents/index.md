@@ -91,4 +91,4 @@ A fair question: why not just have the OS prompt for an admin password every tim
 
 We're shipping immurok for general availability later this year. The agent integration ships in App 1.13 + Firmware 1.3.x (already in the daily builds). The imk-skill is open from day one and works with any agent that reads a rules file.
 
-If you'd like to try it before launch, [join the waitlist](/#pricing). If you maintain an AI agent or coding assistant and want first-class immurok support, [open an issue on imk-skill](https://github.com/immurok/imk-skill/issues) — we'll add the rules file path for your platform.
+If you'd like to try it, [back it on Kickstarter](https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux). If you maintain an AI agent or coding assistant and want first-class immurok support, [open an issue on imk-skill](https://github.com/immurok/imk-skill/issues) — we'll add the rules file path for your platform.

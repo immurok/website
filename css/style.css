@@ -1086,6 +1086,8 @@ img.nav-logo-mark { display: none; }
 
 .compat-logo--lg { width: 96px; height: 96px; }
 
+.compat-logo--sm img { width: 70%; height: 70%; }
+
 .compat-name {
   font-size: 16px;
   font-weight: 600;
@@ -1932,8 +1934,18 @@ img.nav-logo-mark { display: none; }
 /* ═════════════════════════ DEVELOPERS ═════════════════════════ */
 .dev-cards {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 24px;
+}
+
+.dev-card-logo--text {
+  color: var(--text);
+}
+.dev-card-logo-glyph {
+  font-family: var(--font-display);
+  font-size: 56px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
 }
 
 .dev-card {
@@ -2157,9 +2169,10 @@ img.nav-logo-mark { display: none; }
     transition: max-height 0.3s, padding 0.3s;
   }
   .nav-links.open {
-    max-height: 320px;
+    max-height: min(80vh, 480px);
     padding: 16px 32px;
     border-bottom-color: var(--border);
+    overflow-y: auto;
   }
   .nav-links a {
     padding: 14px 0;
@@ -2406,7 +2419,7 @@ img.nav-logo-mark { display: none; }
 }
 .agent-gate-cta a:hover { color: var(--green-hover); }
 @media (max-width: 860px) {
-  .agent-gate { grid-template-columns: 1fr; }
+  .agent-gate { grid-template-columns: minmax(0, 1fr); }
 }
 
 /* ═════════════════════════ FAQ ═════════════════════════ */
@@ -2509,4 +2522,152 @@ img.nav-logo-mark { display: none; }
     padding: 10px 0;
     margin: -4px 0;
   }
+}
+
+/* ═════════════════════════ DOWNLOAD PAGE ═════════════════════════ */
+.download-page { padding-top: 160px; }
+
+.download-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--green-deep);
+  margin-bottom: 12px;
+}
+
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  align-items: stretch;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  min-width: 0;
+  padding: 40px 28px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease), border-color 0.3s var(--ease);
+}
+.download-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-md);
+  border-color: var(--border-strong);
+}
+
+.download-card-platform {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 10px;
+}
+
+.download-card-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+.download-card-req {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  min-height: 42px;
+  margin-bottom: 28px;
+}
+
+.download-card-cta {
+  width: 100%;
+  min-height: 52px;
+  margin-bottom: 14px;
+  padding: 8px 12px;
+  white-space: normal;
+  text-align: center;
+}
+.download-card-cta svg { flex-shrink: 0; }
+
+.download-card-alt {
+  font-size: 14px;
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  margin-bottom: 20px;
+  transition: color 0.2s var(--ease);
+}
+.download-card-alt:hover { color: var(--text); }
+
+.download-card-releases {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin-top: auto;
+  padding-top: 8px;
+}
+.download-card-releases:not(.download-card-releases--static):hover { color: var(--text-secondary); }
+
+.download-footnote {
+  text-align: center;
+  color: var(--text-muted);
+  font-size: 15px;
+  margin-top: 56px;
+}
+.download-footnote a { color: var(--green-deep); text-decoration: underline; text-underline-offset: 3px; }
+
+@media (max-width: 1020px) {
+  .download-page { padding-top: 120px; }
+  .download-grid { grid-template-columns: 1fr; max-width: 420px; margin: 0 auto; }
+}
+
+/* ── Getting Started guide ── */
+.guide-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 24px;
+  align-items: start;
+}
+
+.guide-card {
+  padding: 28px 22px;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-sm);
+  text-align: left;
+}
+
+.guide-card-num {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--green-deep);
+  margin-bottom: 10px;
+}
+
+.guide-card-title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  margin-bottom: 10px;
+}
+
+.guide-card-desc {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+@media (max-width: 900px) {
+  .guide-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
 }
