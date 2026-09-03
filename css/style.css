@@ -2423,6 +2423,16 @@ img.nav-logo-mark { display: none; }
 }
 
 /* ═════════════════════════ FAQ ═════════════════════════ */
+/* ── Language row under the FAQ ─────────────────────────────────────────── */
+.qa-langs {
+  max-width: 1000px;
+  margin: 28px auto 0;
+  text-align: center;
+  font-size: 14px;
+  color: var(--text-muted);
+}
+.qa-langs a { color: var(--text-secondary); text-decoration: underline; text-underline-offset: 2px; }
+
 .faq-list {
   max-width: 760px;
   margin: 0 auto;

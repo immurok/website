@@ -8,9 +8,26 @@
 // so mainland-China clients (blocked from google-analytics.com) can still report
 // via immurok.com. Client IP / User-Agent are NOT forwarded to GA.
 //
+// These are app events, not website traffic. Measurement Protocol hits carry
+// no page_location, so in GA4 they land on an empty path / "(not set)" and get
+// mixed into the website's user and key-event counts. To keep the two apart:
+//
+//   * Preferred: point GA_MEASUREMENT_ID_APP / GA_API_SECRET_APP at a separate
+//     GA4 data stream (or property) for the app. Website reports then never
+//     see these hits at all.
+//   * Fallback: when only the shared stream is configured, every forwarded
+//     event is stamped with a synthetic page_location and client_source so it
+//     shows up as one identifiable row instead of a blank one, and can be
+//     excluded from website reports with a single filter.
+//
 // Env (Pages project settings -> Environment variables / Secrets):
-//   GA_MEASUREMENT_ID  e.g. "G-XXXXXXXXXX"
-//   GA_API_SECRET      GA4 Measurement Protocol API secret
+//   GA_MEASUREMENT_ID      e.g. "G-XXXXXXXXXX"   (shared / website stream)
+//   GA_API_SECRET          GA4 Measurement Protocol API secret
+//   GA_MEASUREMENT_ID_APP  optional, dedicated app stream (preferred)
+//   GA_API_SECRET_APP      optional, secret for that stream
+
+// Synthetic path for app-originated hits (see the note above). Not a real URL.
+const APP_PAGE_LOCATION = "https://app.immurok.invalid/macos/firmware-update";
 
 const ALLOWED_EVENTS = new Set([
   "fw_check", "fw_prompt_shown", "fw_update_started", "fw_hop_done",
@@ -38,15 +55,34 @@ export async function onRequestPost({ request, env }) {
     }
   }
 
+  // Route to the dedicated app stream when one is configured, otherwise fall
+  // back to the shared stream.
+  const dedicated = Boolean(env.GA_MEASUREMENT_ID_APP && env.GA_API_SECRET_APP);
+  const measurementId = dedicated ? env.GA_MEASUREMENT_ID_APP : env.GA_MEASUREMENT_ID;
+  const apiSecret = dedicated ? env.GA_API_SECRET_APP : env.GA_API_SECRET;
+
+  // Stamp every event so app hits are never indistinguishable from web traffic.
+  // APP_PAGE_LOCATION is a synthetic, non-routable URL: it exists only to give
+  // these hits a label in the page-path dimension instead of "(not set)".
+  const stamped = events.map((ev) => ({
+    name: ev.name,
+    params: {
+      ...(ev.params || {}),
+      client_source: "macos_app",
+      page_location: APP_PAGE_LOCATION,
+      page_title: "immurok macOS app (firmware update)",
+    },
+  }));
+
   // Forward to GA4 Measurement Protocol. Fire-and-forget: GA failures must not
   // surface to the client. Only client_id + whitelisted events go out (no IP/UA).
-  if (env.GA_MEASUREMENT_ID && env.GA_API_SECRET) {
+  if (measurementId && apiSecret) {
     const url = "https://www.google-analytics.com/mp/collect" +
-      `?measurement_id=${env.GA_MEASUREMENT_ID}&api_secret=${env.GA_API_SECRET}`;
+      `?measurement_id=${measurementId}&api_secret=${apiSecret}`;
     await fetch(url, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ client_id, events }),
+      body: JSON.stringify({ client_id, events: stamped }),
     }).catch(() => {});
   }
 

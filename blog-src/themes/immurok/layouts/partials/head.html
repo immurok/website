@@ -2,73 +2,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="facebook-domain-verification" content="gy7hxm8n47fptpt76lxeqyz70qvvrv" />
 
-<!-- Geo-gated tracking (Google Analytics + Meta Pixel): load freely
-     outside EU/EEA/UK/CH; inside EU show consent banner first. -->
-<script>
-  (function(){
-    var GA_ID = 'G-N8YY5HG63Y';
-    var FB_PIXEL_ID = '28061587893441067';
-
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){ dataLayer.push(arguments); }
-    window.gtag = gtag;
-
-    !function(f,b,e,v,n,t,s){
-      if(f.fbq) return;
-      n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments); };
-      if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
-    }(window);
-
-    function loadGtag(){
-      if (window.__gaLoaded) return;
-      window.__gaLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-      document.head.appendChild(s);
-      gtag('js', new Date());
-      gtag('config', GA_ID, { anonymize_ip: true });
-    }
-    function loadFbPixel(){
-      if (window.__fbqLoaded) return;
-      window.__fbqLoaded = true;
-      var s = document.createElement('script');
-      s.async = true;
-      s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-      document.head.appendChild(s);
-      fbq('init', FB_PIXEL_ID);
-      fbq('track', 'PageView');
-    }
-    function loadTrackers(){ loadGtag(); loadFbPixel(); }
-
-    var EU = {AT:1,BE:1,BG:1,HR:1,CY:1,CZ:1,DK:1,EE:1,FI:1,FR:1,DE:1,GR:1,HU:1,
-              IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PL:1,PT:1,RO:1,SK:1,SI:1,ES:1,
-              SE:1,IS:1,LI:1,NO:1,GB:1,CH:1};
-    var stored = null;
-    try { stored = localStorage.getItem('ik-consent'); } catch(e){}
-    if (stored === 'accept') { loadTrackers(); return; }
-    if (stored === 'reject') return;
-    function requestBanner(){
-      if (window.__showConsentBanner) window.__showConsentBanner();
-      else window.__needsConsent = true;
-    }
-    fetch('/cdn-cgi/trace').then(function(r){ return r.text(); }).then(function(t){
-      var m = t.match(/loc=([A-Z]{2})/);
-      var country = m ? m[1] : '';
-      if (EU[country]) requestBanner();
-      else loadTrackers();
-    }).catch(function(){
-      requestBanner();
-    });
-    window.__acceptConsent = function(){
-      try { localStorage.setItem('ik-consent', 'accept'); } catch(e){}
-      loadTrackers();
-    };
-    window.__rejectConsent = function(){
-      try { localStorage.setItem('ik-consent', 'reject'); } catch(e){}
-    };
-  })();
-</script>
+<!-- Analytics + consent (shared with every page; see js/analytics.js). -->
+<script src="/js/analytics.js"></script>
 
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">

@@ -4,85 +4,26 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Geo-gated tracking (Google Analytics + Meta Pixel): load freely
-       outside EU/EEA/UK/CH; inside EU show consent banner first and only
-       load after the user clicks Accept. -->
-  <script>
-    (function(){
-      var GA_ID = 'G-N8YY5HG63Y';
-      var FB_PIXEL_ID = '28061587893441067';
-
-      // gtag stub — queues calls before the real script loads
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){ dataLayer.push(arguments); }
-      window.gtag = gtag;
-
-      // fbq stub — matches the official Meta snippet so other code can
-      // call fbq() at any time and the queue replays after load
-      !function(f,b,e,v,n,t,s){
-        if(f.fbq) return;
-        n=f.fbq=function(){ n.callMethod ? n.callMethod.apply(n,arguments) : n.queue.push(arguments); };
-        if(!f._fbq) f._fbq=n; n.push=n; n.loaded=!0; n.version='2.0'; n.queue=[];
-      }(window);
-
-      function loadGtag(){
-        if (window.__gaLoaded) return;
-        window.__gaLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
-        document.head.appendChild(s);
-        gtag('js', new Date());
-        gtag('config', GA_ID, { anonymize_ip: true });
-      }
-      function loadFbPixel(){
-        if (window.__fbqLoaded) return;
-        window.__fbqLoaded = true;
-        var s = document.createElement('script');
-        s.async = true;
-        s.src = 'https://connect.facebook.net/en_US/fbevents.js';
-        document.head.appendChild(s);
-        fbq('init', FB_PIXEL_ID);
-        fbq('track', 'PageView');
-      }
-      function loadTrackers(){ loadGtag(); loadFbPixel(); }
-
-      var EU = {AT:1,BE:1,BG:1,HR:1,CY:1,CZ:1,DK:1,EE:1,FI:1,FR:1,DE:1,GR:1,HU:1,
-                IE:1,IT:1,LV:1,LT:1,LU:1,MT:1,NL:1,PL:1,PT:1,RO:1,SK:1,SI:1,ES:1,
-                SE:1,IS:1,LI:1,NO:1,GB:1,CH:1};
-      var stored = null;
-      try { stored = localStorage.getItem('ik-consent'); } catch(e){}
-      if (stored === 'accept') { loadTrackers(); return; }
-      if (stored === 'reject') return;
-      // No stored choice yet — check geo via Cloudflare's free trace endpoint
-      function requestBanner(){
-        if (window.__showConsentBanner) window.__showConsentBanner();
-        else window.__needsConsent = true;  // banner DOM not parsed yet
-      }
-      fetch('/cdn-cgi/trace').then(function(r){ return r.text(); }).then(function(t){
-        var m = t.match(/loc=([A-Z]{2})/);
-        var country = m ? m[1] : '';
-        if (EU[country]) requestBanner();
-        else loadTrackers();
-      }).catch(function(){
-        // Trace failed (unlikely on CF Pages) — default to deny tracking,
-        // show banner so the user can opt in if they want.
-        requestBanner();
-      });
-      window.__acceptConsent = function(){
-        try { localStorage.setItem('ik-consent', 'accept'); } catch(e){}
-        loadTrackers();
-      };
-      window.__rejectConsent = function(){
-        try { localStorage.setItem('ik-consent', 'reject'); } catch(e){}
-      };
-    })();
-  </script>
+  <!-- Analytics + consent (shared with every page; see js/analytics.js). -->
+  <script src="/js/analytics.js"></script>
 
   <title>immurok: Wireless Fingerprint Key for Mac, Windows & Linux · Live on Kickstarter</title>
   <meta name="description" content="A wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. One touch unlocks your screen, runs sudo/admin, signs SSH commits. Source-available, no cloud. Live on Kickstarter now with early-bird pricing.">
   <meta name="keywords" content="wireless fingerprint, biometric authenticator, Mac fingerprint, Windows fingerprint, Linux fingerprint, sudo fingerprint, SSH key fingerprint, fingerprint security key, Bluetooth LE security key, PAM module, Mac mini fingerprint, Kickstarter">
   <link rel="canonical" href="https://immurok.com/">
+  <link rel="alternate" hreflang="en" href="https://immurok.com/">
+  <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
+  <link rel="alternate" hreflang="ja" href="https://immurok.com/ja/">
+  <link rel="alternate" hreflang="es" href="https://immurok.com/es/">
+  <link rel="alternate" hreflang="pt" href="https://immurok.com/pt/">
+  <link rel="alternate" hreflang="de" href="https://immurok.com/de/">
+  <link rel="alternate" hreflang="ko" href="https://immurok.com/ko/">
+  <link rel="alternate" hreflang="ru" href="https://immurok.com/ru/">
+  <link rel="alternate" hreflang="nl" href="https://immurok.com/nl/">
+  <link rel="alternate" hreflang="pl" href="https://immurok.com/pl/">
+  <link rel="alternate" hreflang="id" href="https://immurok.com/id/">
+  <link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/">
+  <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
   <meta name="theme-color" content="#1bed43">
   <meta name="facebook-domain-verification" content="gy7hxm8n47fptpt76lxeqyz70qvvrv" />
 
@@ -117,7 +58,9 @@
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
 
-  <!-- Structured data: Organization + WebSite + Product -->
+  <!-- Structured data: Organization + WebSite + Product + app + FAQ.
+       The FAQPage entries must stay word-for-word in sync with the visible
+       "Straight answers" section, or Google flags a content mismatch. -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -128,7 +71,21 @@
         "name": "immurok",
         "url": "https://immurok.com/",
         "logo": "https://immurok.com/favicon-512.png",
-        "sameAs": ["https://github.com/immurok"]
+        "sameAs": [
+          "https://github.com/immurok",
+          "https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux"
+        ],
+        "parentOrganization": {
+          "@type": "Organization",
+          "name": "Nervina Next Pte. Ltd.",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "24 Sin Ming Lane, #06-97, Midview City",
+            "addressLocality": "Singapore",
+            "postalCode": "573970",
+            "addressCountry": "SG"
+          }
+        }
       },
       {
         "@type": "WebSite",
@@ -136,24 +93,92 @@
         "url": "https://immurok.com/",
         "name": "immurok",
         "description": "Wireless fingerprint authenticator for Mac, Windows, and Linux.",
-        "publisher": {"@id": "https://immurok.com/#org"},
+        "publisher": {
+          "@id": "https://immurok.com/#org"
+        },
         "inLanguage": "en-US"
       },
       {
         "@type": "Product",
+        "@id": "https://immurok.com/#product",
         "name": "immurok IK-1",
-        "description": "A tiny wireless biometric key that replaces passwords with your fingerprint. Compatible with macOS, Windows, and Linux for screen unlock, sudo/admin authorization, SSH signing, and Git commits.",
-        "brand": {"@id": "https://immurok.com/#org"},
+        "description": "A wireless fingerprint key for desktop computers. One touch unlocks the screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes on macOS, Windows and Linux. Fingerprints are stored and matched on the device; no cloud and no account.",
+        "brand": {
+          "@id": "https://immurok.com/#org"
+        },
+        "manufacturer": {
+          "@id": "https://immurok.com/#org"
+        },
         "image": "https://immurok.com/img/og-image.jpg",
         "url": "https://immurok.com/",
         "category": "Security key / biometric authenticator",
+        "sku": "IK-1",
+        "gtin14": "00884400414250",
+        "additionalProperty": [
+          {
+            "@type": "PropertyValue",
+            "name": "Supported operating systems",
+            "value": "macOS 13.0 or later (Apple Silicon and Intel), Windows 10 and 11 (x64 and Arm64), Linux (Ubuntu, Fedora, Arch, Debian and most other distributions)"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Connectivity",
+            "value": "Bluetooth LE"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Battery life",
+            "value": "1+ month of typical use, LiPo 110 mAh, USB-C charging"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Dimensions",
+            "value": "44 x 44 x 14.2 mm, approximately 40 g"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Subscription required",
+            "value": "No"
+          },
+          {
+            "@type": "PropertyValue",
+            "name": "Cloud account required",
+            "value": "No"
+          }
+        ],
         "offers": {
           "@type": "Offer",
+          "@id": "https://immurok.com/#offer",
           "url": "https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux",
           "availability": "https://schema.org/PreOrder",
           "priceCurrency": "USD",
+          "price": "59",
+          "priceValidUntil": "2026-09-22",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@id": "https://immurok.com/#org"
+          }
+        },
+        "isRelatedTo": {
+          "@id": "https://immurok.com/#app"
+        }
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://immurok.com/#app",
+        "name": "immurok companion app",
+        "applicationCategory": "SecurityApplication",
+        "operatingSystem": "macOS 13.0+, Windows 10, Windows 11, Linux",
+        "url": "https://immurok.com/download/",
+        "downloadUrl": "https://immurok.com/download/",
+        "license": "https://www.apache.org/licenses/LICENSE-2.0",
+        "publisher": {
+          "@id": "https://immurok.com/#org"
+        },
+        "offers": {
+          "@type": "Offer",
           "price": "0",
-          "priceValidUntil": "2026-12-31"
+          "priceCurrency": "USD"
         }
       },
       {
@@ -162,26 +187,50 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "Is this Apple's Touch ID?",
+            "name": "What is immurok?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "No. Touch ID is Apple's closed platform fused to the Secure Enclave. immurok is an independent fingerprint key: sudo and admin prompts go through PAM, and screen unlock uses a separately documented helper path."
+              "text": "immurok is a small wireless fingerprint key for desktop computers. It sits on your desk and pairs over Bluetooth LE. One touch unlocks your screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes. It exists because most desktops have no fingerprint sensor: a Mac mini, a Mac Studio, an iMac, a MacBook running closed on an external monitor, any external keyboard, and nearly every Windows or Linux desktop."
             }
           },
           {
             "@type": "Question",
-            "name": "Where do my fingerprints live?",
+            "name": "How much does immurok cost?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "On the device. Templates are stored and matched on the device itself; only an HMAC-signed match notification crosses Bluetooth. Nothing touches your computer's disk, the network, or any cloud."
+              "text": "US$59 on Kickstarter, US$69 at retail. You pay once for the device. There is no subscription and no account fee. Shipping is calculated separately at checkout and is not included in those prices. The Kickstarter early-bird tiers have sold out."
             }
           },
           {
             "@type": "Question",
-            "name": "What happens if I lose the device?",
+            "name": "Where can I buy it, and when will it ship?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Fingerprint templates never leave the hardware, and opening the case trips a tamper switch that wipes pairing data. Unpair it from the app and the lost device is useless to whoever finds it."
+              "text": "On Kickstarter, until the campaign ends on 22 September 2026. Estimated delivery for backers is November 2026. The hardware is on its sixth revision and a pilot batch of 50 units has been built and tested, so the campaign funds mass production rather than a prototype. After the campaign, the key will be sold from this site. Back it on Kickstarter ."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which countries do you ship to?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "The Kickstarter checkout shows the current list of destinations, and that list is the authoritative one. Pick your country there and it will tell you whether we can ship to you and what shipping costs. Shipping is not included in the pledge amount. Import duties, VAT and any local customs charges are the recipient's responsibility, as is normal for crowdfunded hardware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Which computers and operating systems does it work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13.0 or later, Windows 10 and 11, and most Linux distributions. The Mac app is a single universal build for Apple Silicon and Intel. Windows has native x64 and Arm64 installers and integrates through a Credential Provider, so it works on the lock screen. Linux is a Rust daemon with PAM and polkit integration, tested on Ubuntu, Fedora, Arch and Debian, and it builds on most other distributions. Because the key is a separate Bluetooth device rather than a sensor built into a laptop, it works the same on a Mac mini, a Mac Studio, an iMac, a clamshell MacBook, an external keyboard, or a desktop PC. One device can be bound to two computers at once and switched between them with a dedicated fingerprint."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How secure is it? Where do my fingerprints live?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "On the device, and nowhere else. Fingerprint templates are stored and matched on the key itself. They never reach your computer's disk, the network, or any cloud service. What crosses Bluetooth is an HMAC-signed \"match succeeded\" notification, never the fingerprint. Pairing is a direct ECDH exchange between the device and your machine. Firmware updates are signed and verified before they are installed. There is no account, no server and no telemetry, so everything works offline and keeps working if we disappear."
             }
           },
           {
@@ -189,15 +238,31 @@
             "name": "Is it open source?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "All source code is public on GitHub. The macOS, Windows, and Linux apps, including the PAM modules and Windows Credential Provider, are open source under Apache 2.0; firmware and hardware are source-available under BSL 1.1, converting to Apache 2.0 in 2030. You can audit, patch, build, and flash your own unit; the only reserved right until conversion is selling competing hardware."
+              "text": "All the source code is public on GitHub, under two different licences. The macOS, Windows and Linux apps, including the PAM modules and the Windows Credential Provider, are open source under Apache 2.0. The firmware and hardware are source-available under BSL 1.1 and convert to Apache 2.0 in 2030. You can read all of it, patch it, and build and flash your own unit. The only right reserved until conversion is selling competing hardware. We would rather state that precisely than stretch the word. Everything is at github.com/immurok ."
             }
           },
           {
             "@type": "Question",
-            "name": "When does it ship?",
+            "name": "How is this different from a YubiKey, a password manager, or Touch ID?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "The Kickstarter campaign is live now. The hardware is on its 6th revision, firmware 1.6.0 ships with signed OTA updates, and the first pilot batch of 50 units is built and tested. Shipping timeline is on the campaign page."
+              "text": "Different layer, and they work together. A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a subscription?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. No subscription, no account, no cloud service. You pay once for the device. The macOS, Windows and Linux apps are free, and so are firmware updates. Nothing stops working if you never connect the device to the internet, because it never needs to."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How do I reset it, and what if I lose it?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Hold the button for about ten seconds to factory reset. The device erases everything, pairing keys, every enrolled fingerprint and any stored credentials, then restarts ready to pair again. That cannot be undone. To move the key to another computer without a full reset, choose Unpair in the app. If you lose the device, your fingerprints cannot be extracted from it: templates never leave the hardware, and forcing the case open trips a tamper switch that wipes everything and leaves the light steady red. Every unit includes a one-year warranty. For help, use the support address printed in the user manual and shown in the app, or email support ."
             }
           }
         ]
@@ -264,10 +329,10 @@
       </p>
       <div class="hero-cta">
         <a class="btn btn-primary" data-ks-location="hero"
-           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux"
+           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_hero"
            target="_blank" rel="noopener">Back us on Kickstarter</a>
         <p class="hero-promise">
-          The Kickstarter is live. Early-bird pricing starts at $49.
+          Live on Kickstarter until 22 September 2026. US$59 there, US$69 at retail.
         </p>
       </div>
     </div>
@@ -414,6 +479,11 @@
     <div class="container-sm">
       <div class="section-header fade-in">
         <h2 class="section-title">Works with Every Mac, Windows PC &amp; All Major Linux Distros</h2>
+        <p class="section-subtitle">macOS 13.0 or later as a single universal build for Apple Silicon and Intel.
+          Windows 10 and 11 with native x64 and Arm64 installers, integrated through a Credential Provider
+          so it works on the lock screen. Linux as a Rust daemon with PAM and polkit integration, tested on
+          Ubuntu, Fedora, Arch and Debian. The key is a separate Bluetooth device, so a Mac mini, a Mac Studio,
+          an iMac, a clamshell MacBook, an external keyboard and a desktop PC all work the same way.</p>
       </div>
 
       <div class="compat-block fade-in">
@@ -665,15 +735,15 @@
     <div class="container">
       <div class="section-header fade-in">
         <h2 class="section-title">Simple, honest pricing</h2>
-        <p class="section-subtitle">No subscription. No hidden fees. One device, forever.</p>
+        <p class="section-subtitle">US$59 on Kickstarter, US$69 at retail. No subscription, no account, no hidden fees.</p>
       </div>
 
       <div class="pricing-grid fade-in">
         <div class="sku-card">
           <div class="sku-name">Silver Edition</div>
-          <div class="sku-retail"><s>$69</s> retail</div>
-          <div class="sku-price">$49<span class="sku-price-plus">+</span><span class="sku-price-tag">early-bird</span></div>
-          <div class="sku-note">Kickstarter early-bird starts at $49. Limited quantities</div>
+          <div class="sku-retail"><s>US$69</s> retail</div>
+          <div class="sku-price">US$59<span class="sku-price-tag">on Kickstarter</span></div>
+          <div class="sku-note">One payment, no subscription. Ships November 2026, one-year warranty</div>
           <ul class="sku-features">
             <li><span class="check">✓</span> Fully assembled</li>
             <li><span class="check">✓</span> CNC aluminum body</li>
@@ -687,9 +757,10 @@
 
       <div class="waitlist-block fade-in">
         <a class="btn btn-primary" data-ks-location="pricing"
-           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux"
+           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_pricing"
            target="_blank" rel="noopener">Back us on Kickstarter</a>
-        <p class="waitlist-note">The Kickstarter is live. Early-bird tiers are limited.</p>
+        <p class="waitlist-note">The campaign ends 22 September 2026. The early-bird tiers have sold out;
+          the current Kickstarter price is US$59.</p>
       </div>
     </div>
   </section>
@@ -755,6 +826,11 @@
   </section>
 
   <!-- ═══════════════════════════════════ FAQ ═══════════════════════════════════ -->
+  <!-- Accordion, but every answer sits in the initial HTML, not behind JS: a
+       third of our search impressions are AI assistants reading this page.
+       Each answer opens with a one-sentence direct reply in bold, and the same
+       ten answers are mirrored word for word in the FAQPage JSON-LD in <head>
+       (tools/check-faq-sync.py enforces that). -->
   <section class="section section-alt" id="faq">
     <div class="container-sm">
       <div class="section-header fade-in">
@@ -763,34 +839,61 @@
 
       <div class="faq-list fade-in">
         <details class="faq-item">
-          <summary>Is this Apple's Touch ID?</summary>
-          <p>No, and we won't pretend it is. Touch ID is Apple's closed platform, fused to the Secure Enclave. No third party can plug into it. immurok is an independent fingerprint key: sudo and admin prompts go through PAM (a real system mechanism), and screen unlock uses a separately documented helper path. Same one-touch convenience on the desks Apple left behind, with a different mechanism, honestly documented.</p>
+          <summary>What is immurok?</summary>
+          <p><strong>immurok is a small wireless fingerprint key for desktop computers.</strong> It sits on your desk and pairs over Bluetooth LE. One touch unlocks your screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes. It exists because most desktops have no fingerprint sensor: a Mac mini, a Mac Studio, an iMac, a MacBook running closed on an external monitor, any external keyboard, and nearly every Windows or Linux desktop.</p>
         </details>
         <details class="faq-item">
-          <summary>Where do my fingerprints live?</summary>
-          <p>On the device, full stop. Templates are stored and matched on the device itself. What crosses Bluetooth is an HMAC-signed &ldquo;match succeeded&rdquo; notification, never the fingerprint. Nothing touches your computer's disk, the network, or any cloud.</p>
+          <summary>How much does immurok cost?</summary>
+          <p><strong>US$59 on Kickstarter, US$69 at retail.</strong> You pay once for the device. There is no subscription and no account fee. Shipping is calculated separately at checkout and is not included in those prices. The Kickstarter early-bird tiers have sold out.</p>
         </details>
         <details class="faq-item">
-          <summary>What happens if I lose it?</summary>
-          <p>Your fingerprints can't be extracted: templates never leave the hardware, and opening the case trips a tamper switch that wipes the pairing data. Unpair the device from the app and whoever finds it is holding a paperweight. The full threat model is in the <a href="/blog/the-immurok-security-model/">security writeup</a>.</p>
+          <summary>Where can I buy it, and when will it ship?</summary>
+          <p><strong>On Kickstarter, until the campaign ends on 22 September 2026.</strong> Estimated delivery for backers is November 2026. The hardware is on its sixth revision and a pilot batch of 50 units has been built and tested, so the campaign funds mass production rather than a prototype. After the campaign, the key will be sold from this site. <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_answers" target="_blank" rel="noopener">Back it on Kickstarter</a>.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which countries do you ship to?</summary>
+          <p><strong>The Kickstarter checkout shows the current list of destinations, and that list is the authoritative one.</strong> Pick your country there and it will tell you whether we can ship to you and what shipping costs. Shipping is not included in the pledge amount. Import duties, VAT and any local customs charges are the recipient's responsibility, as is normal for crowdfunded hardware.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Which computers and operating systems does it work with?</summary>
+          <p><strong>macOS 13.0 or later, Windows 10 and 11, and most Linux distributions.</strong> The Mac app is a single universal build for Apple Silicon and Intel. Windows has native x64 and Arm64 installers and integrates through a Credential Provider, so it works on the lock screen. Linux is a Rust daemon with PAM and polkit integration, tested on Ubuntu, Fedora, Arch and Debian, and it builds on most other distributions. Because the key is a separate Bluetooth device rather than a sensor built into a laptop, it works the same on a Mac mini, a Mac Studio, an iMac, a clamshell MacBook, an external keyboard, or a desktop PC. One device can be bound to two computers at once and switched between them with a dedicated fingerprint.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How secure is it? Where do my fingerprints live?</summary>
+          <p><strong>On the device, and nowhere else.</strong> Fingerprint templates are stored and matched on the key itself. They never reach your computer's disk, the network, or any cloud service. What crosses Bluetooth is an HMAC-signed &ldquo;match succeeded&rdquo; notification, never the fingerprint. Pairing is a direct ECDH exchange between the device and your machine. Firmware updates are signed and verified before they are installed. There is no account, no server and no telemetry, so everything works offline and keeps working if we disappear.</p>
         </details>
         <details class="faq-item">
           <summary>Is it open source?</summary>
-          <p>All source code is public on GitHub. The macOS, Windows, and Linux apps — including the PAM modules and the Windows Credential Provider — are open source under Apache 2.0. The firmware and hardware are source-available under BSL 1.1, converting to Apache 2.0 in 2030. You can audit everything, patch it, and build and flash your own unit. The only reserved right until conversion is selling competing hardware with it. We'd rather state that precisely than stretch the term.</p>
+          <p><strong>All the source code is public on GitHub, under two different licences.</strong> The macOS, Windows and Linux apps, including the PAM modules and the Windows Credential Provider, are open source under Apache 2.0. The firmware and hardware are source-available under BSL 1.1 and convert to Apache 2.0 in 2030. You can read all of it, patch it, and build and flash your own unit. The only right reserved until conversion is selling competing hardware. We would rather state that precisely than stretch the word. Everything is at <a href="https://github.com/immurok" target="_blank" rel="noopener">github.com/immurok</a>.</p>
         </details>
         <details class="faq-item">
-          <summary>Why not just use a YubiKey or passkeys?</summary>
-          <p>Different layer. YubiKeys and passkeys prove who you are to websites (FIDO). immurok removes password friction on the machine in front of you: screen unlock, sudo, SSH signing. It also stores TOTP secrets on-device and releases one-time codes only after a fingerprint touch, so your 2FA seeds never sit in a desktop password manager. They coexist nicely. Many of us use both.</p>
+          <summary>How is this different from a YubiKey, a password manager, or Touch ID?</summary>
+          <p><strong>Different layer, and they work together.</strong> A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too.</p>
         </details>
         <details class="faq-item">
-          <summary>Does it need an account or internet?</summary>
-          <p>No cloud, no account, no telemetry. Pairing is direct ECDH over Bluetooth LE between the device and your machine. Everything works offline, and keeps working even if we disappear tomorrow.</p>
+          <summary>Is there a subscription?</summary>
+          <p><strong>No. No subscription, no account, no cloud service.</strong> You pay once for the device. The macOS, Windows and Linux apps are free, and so are firmware updates. Nothing stops working if you never connect the device to the internet, because it never needs to.</p>
         </details>
         <details class="faq-item">
-          <summary>When does it ship?</summary>
-          <p>The Kickstarter campaign is <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux" target="_blank" rel="noopener">live now</a>. This isn't a concept: the hardware is on its 6th revision, firmware 1.6.0 is shipping with signed OTA updates, and the first pilot batch of 50 units is built and tested. Shipping timeline is on the campaign page.</p>
+          <summary>How do I reset it, and what if I lose it?</summary>
+          <p><strong>Hold the button for about ten seconds to factory reset.</strong> The device erases everything, pairing keys, every enrolled fingerprint and any stored credentials, then restarts ready to pair again. That cannot be undone. To move the key to another computer without a full reset, choose Unpair in the app. If you lose the device, your fingerprints cannot be extracted from it: templates never leave the hardware, and forcing the case open trips a tamper switch that wipes everything and leaves the light steady red. Every unit includes a one-year warranty. For help, use the support address printed in the user manual and shown in the app, or <a data-eu="troppus" data-ed="moc.korummi" rel="nofollow">email support</a>.</p>
         </details>
       </div>
+
+      <p class="qa-langs">
+        Also answered in
+        <a href="/ja/" hreflang="ja" lang="ja">日本語</a>,
+        <a href="/es/" hreflang="es" lang="es">Espa&ntilde;ol</a>,
+        <a href="/pt/" hreflang="pt" lang="pt">Portugu&ecirc;s</a>,
+        <a href="/de/" hreflang="de" lang="de">Deutsch</a>,
+        <a href="/ko/" hreflang="ko" lang="ko">&#54620;&#44397;&#50612;</a>,
+        <a href="/ru/" hreflang="ru" lang="ru">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;</a>,
+        <a href="/nl/" hreflang="nl" lang="nl">Nederlands</a>,
+        <a href="/pl/" hreflang="pl" lang="pl">Polski</a>,
+        <a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a>,
+        <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">&#31616;&#20307;&#20013;&#25991;</a>,
+        <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">&#32321;&#39636;&#20013;&#25991;</a>.
+      </p>
     </div>
   </section>
 
@@ -817,6 +920,20 @@
           <a href="/blog/">Blog</a>
         </div>
         <div class="footer-col">
+          <h4>Languages</h4>
+          <a href="/ja/" hreflang="ja" lang="ja">日本語</a>
+          <a href="/es/" hreflang="es" lang="es">Espa&ntilde;ol</a>
+          <a href="/pt/" hreflang="pt" lang="pt">Portugu&ecirc;s</a>
+          <a href="/de/" hreflang="de" lang="de">Deutsch</a>
+          <a href="/ko/" hreflang="ko" lang="ko">&#54620;&#44397;&#50612;</a>
+          <a href="/ru/" hreflang="ru" lang="ru">&#1056;&#1091;&#1089;&#1089;&#1082;&#1080;&#1081;</a>
+          <a href="/nl/" hreflang="nl" lang="nl">Nederlands</a>
+          <a href="/pl/" hreflang="pl" lang="pl">Polski</a>
+          <a href="/id/" hreflang="id" lang="id">Bahasa Indonesia</a>
+          <a href="/zh-hans/" hreflang="zh-Hans" lang="zh-Hans">&#31616;&#20307;&#20013;&#25991;</a>
+          <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">&#32321;&#39636;&#20013;&#25991;</a>
+        </div>
+        <div class="footer-col">
           <h4>Community</h4>
           <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
           <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
@@ -829,34 +946,6 @@
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>
-
-  <!-- Cookie consent banner (only shown to EU/EEA/UK/CH visitors with no
-       stored choice; injected by the head script via __showConsentBanner). -->
-  <div id="cookie-banner" role="dialog" aria-label="Cookie consent" hidden>
-    <p>We use analytics cookies to understand how visitors use the site.
-       You can accept or reject. Your choice is remembered.</p>
-    <div class="cookie-banner-actions">
-      <button type="button" id="cookie-reject">Reject</button>
-      <button type="button" id="cookie-accept">Accept</button>
-    </div>
-  </div>
-  <script>
-    (function(){
-      var banner = document.getElementById('cookie-banner');
-      var accept = document.getElementById('cookie-accept');
-      var reject = document.getElementById('cookie-reject');
-      window.__showConsentBanner = function(){ banner.hidden = false; };
-      if (window.__needsConsent) window.__showConsentBanner();
-      accept.addEventListener('click', function(){
-        window.__acceptConsent && window.__acceptConsent();
-        banner.hidden = true;
-      });
-      reject.addEventListener('click', function(){
-        window.__rejectConsent && window.__rejectConsent();
-        banner.hidden = true;
-      });
-    })();
-  </script>
 
   <script src="js/main.js"></script>
 </body>

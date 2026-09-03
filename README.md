@@ -130,6 +130,46 @@ cd blog-src
 hugo -d ../blog
 ```
 
+## Generated Files
+
+Two small generators keep parts of the site from drifting. Run both before
+deploying if you touched their inputs.
+
+```bash
+# Per-language FAQ pages (ja, es, pt, de, ko, ru, nl, pl, id, zh-hans, zh-hant).
+# Translations live inside the script; edit there, then regenerate.
+# --check also fails if Simplified and Traditional Chinese have swapped
+# vocabulary (软件/軟體, 固件/韌體, ...), which is easy to do by hand.
+python3 tools/build-lang-pages.py
+python3 tools/build-lang-pages.py --check   # CI-friendly staleness check
+
+# sitemap.xml, discovered from the files actually on disk.
+# Run it after `hugo -d ../blog` and after build-lang-pages.py.
+python3 tools/build-sitemap.py
+python3 tools/build-sitemap.py --check
+```
+
+Analytics and the cookie-consent banner live in one place, `js/analytics.js`,
+loaded by every page with `<script src="/js/analytics.js"></script>`. Do not
+inline a second copy: `/download/` once shipped without one and disappeared
+from GA4 entirely. To check that no page is missing it:
+
+```bash
+for f in $(find . -name "*.html" -not -path "./blog-src/*" -not -path "./.wrangler/*" -not -path "./3d/*"); do
+  [ "$(grep -c 'js/analytics.js' "$f")" = "0" ] && echo "missing analytics: $f"
+done
+```
+
+The FAQ answers on the homepage exist twice: in the `#faq` accordion, whose
+text sits in the initial HTML rather than behind JS, and as `FAQPage` JSON-LD
+in `<head>`. They must stay in sync,
+or Google flags a content mismatch. Edit the visible text, then:
+
+```bash
+python3 tools/check-faq-sync.py         # fails if the two have drifted
+python3 tools/check-faq-sync.py --fix   # regenerate the JSON-LD from the page
+```
+
 ## Deployment
 
 The entire `website/` directory is deployed to Cloudflare Pages.
@@ -139,8 +179,12 @@ The entire `website/` directory is deployed to Cloudflare Pages.
 cd website/blog-src
 hugo -d ../blog
 
-# 2. Deploy to Cloudflare Pages
+# 2. Regenerate the language pages and the sitemap
 cd ..
+python3 tools/build-lang-pages.py
+python3 tools/build-sitemap.py
+
+# 3. Deploy to Cloudflare Pages
 npx wrangler pages deploy . --project-name=immurok
 ```
 

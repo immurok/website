@@ -687,6 +687,66 @@ function setupDiscordTracking() {
   });
 }
 
+// ── Download click tracking ──
+
+// /download/<target> is a 302 to a GitHub release asset, so the visitor leaves
+// the site in the same tab and a normal pageview never records the outcome.
+// Fire an explicit intent event before the navigation, with beacon transport
+// so it survives the unload. Search Console counts clicks *to* /download/;
+// this counts what people do once they get there.
+function setupDownloadTracking() {
+  const PLATFORMS = {
+    '/download/mac': { platform: 'macos', arch: 'universal' },
+    '/download/win-x64': { platform: 'windows', arch: 'x64' },
+    '/download/win-arm64': { platform: 'windows', arch: 'arm64' },
+  };
+
+  const placement = (link) => (link.closest('footer') ? 'footer' : 'page');
+
+  document.querySelectorAll('a[href^="/download/"]').forEach((link) => {
+    const meta = PLATFORMS[link.getAttribute('href')];
+    if (!meta) return; // /download/ itself is a normal page, not an installer
+    link.addEventListener('click', () => {
+      if (typeof window.ikTrack === 'function') {
+        window.ikTrack('download_click', {
+          platform: meta.platform,
+          arch: meta.arch,
+          link_location: placement(link),
+          source_path: window.location.pathname,
+          transport_type: 'beacon',
+        });
+      }
+    });
+  });
+
+  // Linux has no installer redirect: the CTA goes straight to GitHub. Count it
+  // the same way so the three platforms stay comparable.
+  document.querySelectorAll('a[href*="github.com/immurok/app-linux-rs"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (typeof window.ikTrack === 'function') {
+        window.ikTrack('download_click', {
+          platform: 'linux',
+          arch: 'source',
+          link_location: placement(link),
+          source_path: window.location.pathname,
+          transport_type: 'beacon',
+        });
+      }
+    });
+  });
+
+  document.querySelectorAll('a[href$=".pdf"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      if (typeof window.ikTrack === 'function') {
+        window.ikTrack('doc_download', {
+          file_name: link.getAttribute('href').split('/').pop(),
+          transport_type: 'beacon',
+        });
+      }
+    });
+  });
+}
+
 // ── Init ──
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -701,6 +761,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupMobileNav();
   setupKickstarterCta();
   setupDiscordTracking();
+  setupDownloadTracking();
   setupFadeIn();
   setupNavScroll();
   setupSmoothScroll();

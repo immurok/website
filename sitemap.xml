@@ -1,33 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://immurok.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#features</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#how-it-works</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#specs</loc>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#pricing</loc>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#security</loc>
-    <priority>0.7</priority>
-  </url>
-  <url>
-    <loc>https://immurok.com/#developers</loc>
-    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://immurok.com/blog/</loc>
@@ -35,8 +25,251 @@
     <priority>0.9</priority>
   </url>
   <url>
+    <loc>https://immurok.com/de/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
     <loc>https://immurok.com/download/</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/es/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/id/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/ja/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/ko/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/nl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/pl/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/pt/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/zh-hans/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/zh-hant/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://immurok.com/"/>
+    <xhtml:link rel="alternate" hreflang="ja" href="https://immurok.com/ja/"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://immurok.com/es/"/>
+    <xhtml:link rel="alternate" hreflang="pt" href="https://immurok.com/pt/"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://immurok.com/de/"/>
+    <xhtml:link rel="alternate" hreflang="ko" href="https://immurok.com/ko/"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://immurok.com/ru/"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://immurok.com/nl/"/>
+    <xhtml:link rel="alternate" hreflang="pl" href="https://immurok.com/pl/"/>
+    <xhtml:link rel="alternate" hreflang="id" href="https://immurok.com/id/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://immurok.com/zh-hans/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://immurok.com/"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/a-close-call-before-mass-production/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/desktop-fingerprint-auth-on-mac-and-linux/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/dual-host-fingerprint-key/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/fingerprint-gate-for-ai-agents/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/hardware-story-behind-a-tiny-wireless-fingerprint-key/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/how-immurok-verifies-its-own-firmware/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/macos-authentication-modes/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/the-immurok-security-model/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://immurok.com/blog/why-we-are-building-immurok/</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 </urlset>
