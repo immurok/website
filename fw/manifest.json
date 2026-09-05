@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "latest": {
-    "version": "1.7.0",
+    "version": "1.7.10",
     "sec_version": 1,
     "format": "v2",
-    "url": "https://immurok.com/fw/immurok-ik1-v1.7.0.imfw",
-    "sha256": "1aad24dd6dcf288068c1a7c12b42f6b2ecbf548ca63a38e0a9966ef83dd8a012",
-    "size": 194168,
+    "url": "https://immurok.com/fw/immurok-ik1-v1.7.10.imfw",
+    "sha256": "d0639b92f7888dd31ef7362f081add1d80bcb17bf1b39d02654f6b63aad02bc1",
+    "size": 197256,
     "min_direct": "1.6.0",
-    "notes": "Dual-host device switching; BLE pairing and fingerprint reliability fixes"
+    "notes": "Fixes a bug where a full pairing store could erase the pairing of the host still in use. Unpairing now disconnects cleanly before the device resets. Fixes the fingerprint sensor stopping after back-to-back authorization requests. Connection parameter requests now stop when the host rejects them."
   },
   "bridge": {
     "version": "1.6.0",
