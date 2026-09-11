@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "有沒有給 Mac 用的獨立 Touch ID",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "蘋果沒有出過。Touch ID 只內建在 MacBook 和帶 Touch ID 的巧控鍵盤裡，那把鍵盤賣 US$149 到 US$199，需要 Apple 晶片的 Mac，而且感測器和鍵盤綁死，你未必想要那把鍵盤。單獨的 Touch ID 感測器並不存在，Touch ID 和 Secure Enclave 綁在一起，第三方也做不出來。immurok 是最接近的東西：一把獨立的無線指紋鑰匙，放在桌上、挨著你現在用的任何鍵盤。在 Mac mini、Mac Studio、iMac 或闔上的 MacBook 上，它能解鎖螢幕、核准 sudo 和系統管理員提示、解鎖 1Password 和 Bitwarden、為 SSH 和 Git 提交簽章。它不是 Touch ID，也不假裝是：它是一台單獨的裝置，有自己的感測器和自己的安全模型，而且 Windows 和 Linux 也能用。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "需要訂閱嗎",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>和 YubiKey、密碼管理器、Touch ID 有什麼差別</summary>
           <p>層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS 上可以一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。</p>
+        </details>
+        <details class="faq-item">
+          <summary>有沒有給 Mac 用的獨立 Touch ID</summary>
+          <p>蘋果沒有出過。Touch ID 只內建在 MacBook 和帶 Touch ID 的巧控鍵盤裡，那把鍵盤賣 US$149 到 US$199，需要 Apple 晶片的 Mac，而且感測器和鍵盤綁死，你未必想要那把鍵盤。單獨的 Touch ID 感測器並不存在，Touch ID 和 Secure Enclave 綁在一起，第三方也做不出來。immurok 是最接近的東西：一把獨立的無線指紋鑰匙，放在桌上、挨著你現在用的任何鍵盤。在 Mac mini、Mac Studio、iMac 或闔上的 MacBook 上，它能解鎖螢幕、核准 sudo 和系統管理員提示、解鎖 1Password 和 Bitwarden、為 SSH 和 Git 提交簽章。它不是 Touch ID，也不假裝是：它是一台單獨的裝置，有自己的感測器和自己的安全模型，而且 Windows 和 Linux 也能用。</p>
         </details>
         <details class="faq-item">
           <summary>需要訂閱嗎</summary>

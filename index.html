@@ -7,9 +7,9 @@
   <!-- Analytics + consent (shared with every page; see js/analytics.js). -->
   <script src="/js/analytics.js"></script>
 
-  <title>immurok: Wireless Fingerprint Key for Mac, Windows & Linux · Live on Kickstarter</title>
-  <meta name="description" content="A wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. One touch unlocks your screen, runs sudo/admin, signs SSH commits. Source-available, no cloud. Live on Kickstarter now with early-bird pricing.">
-  <meta name="keywords" content="wireless fingerprint, biometric authenticator, Mac fingerprint, Windows fingerprint, Linux fingerprint, sudo fingerprint, SSH key fingerprint, fingerprint security key, Bluetooth LE security key, PAM module, Mac mini fingerprint, Kickstarter">
+  <title>immurok: Standalone Wireless Fingerprint Key for Mac, Windows & Linux · Live on Kickstarter</title>
+  <meta name="description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one touch unlocks your screen, runs sudo/admin, signs SSH commits. Source-available, no cloud. Live on Kickstarter now.">
+  <meta name="keywords" content="wireless fingerprint, standalone Touch ID, Touch ID alternative, Touch ID for Mac mini, external fingerprint reader for Mac, standalone fingerprint sensor, biometric authenticator, Mac fingerprint, Windows fingerprint, Linux fingerprint, sudo fingerprint, SSH key fingerprint, fingerprint security key, Bluetooth LE security key, PAM module, Mac mini fingerprint, Kickstarter">
   <link rel="canonical" href="https://immurok.com/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -28,8 +28,8 @@
   <meta name="facebook-domain-verification" content="gy7hxm8n47fptpt76lxeqyz70qvvrv" />
 
   <!-- Open Graph -->
-  <meta property="og:title" content="immurok: Wireless Fingerprint Key for Mac, Windows & Linux">
-  <meta property="og:description" content="A wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. One-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now with early-bird pricing.">
+  <meta property="og:title" content="immurok: Standalone Wireless Fingerprint Key for Mac, Windows & Linux">
+  <meta property="og:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/">
   <meta property="og:site_name" content="immurok">
@@ -40,8 +40,8 @@
   <meta property="og:locale" content="en_US">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
-  <meta name="twitter:title" content="immurok: Wireless Fingerprint Key for Mac, Windows &amp; Linux">
-  <meta name="twitter:description" content="A wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. One-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now with early-bird pricing.">
+  <meta name="twitter:title" content="immurok: Standalone Wireless Fingerprint Key for Mac, Windows &amp; Linux">
+  <meta name="twitter:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <!-- Icons -->
@@ -247,6 +247,14 @@
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "Different layer, and they work together. A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is there a standalone Touch ID for the Mac?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Not from Apple. Touch ID only ships built into MacBooks and the Magic Keyboard with Touch ID, which costs US$149 to US$199, needs an Apple Silicon Mac, and ties the sensor to a keyboard you may not want. There is no standalone Touch ID sensor, and because Touch ID is fused to the Secure Enclave, a third party cannot make one. immurok is the closest thing: a standalone wireless fingerprint key that sits on your desk next to whatever keyboard you already use. On a Mac mini, Mac Studio, iMac or clamshell MacBook it unlocks the screen, approves sudo and admin prompts, unlocks 1Password and Bitwarden, and signs SSH and Git commits. It is not Touch ID and does not pretend to be: it is a separate device with its own sensor and its own security model, and it works on Windows and Linux too."
             }
           },
           {
@@ -577,7 +585,7 @@
     <div class="container-sm">
       <div class="section-header fade-in">
         <h2 class="section-title">Why Immurok</h2>
-        <p class="section-subtitle">The only standalone wireless fingerprint authenticator for Mac, Windows, and Linux.</p>
+        <p class="section-subtitle">The only standalone wireless fingerprint authenticator for Mac, Windows, and Linux. A standalone alternative to Touch ID that works with any keyboard, on any OS.</p>
       </div>
 
       <div class="fade-in compare-wrap">
@@ -593,7 +601,7 @@
               <th scope="col"><span class="sr-only">Feature</span></th>
               <th scope="col">
                 <img class="compare-logo" src="img/figma/logo-wordmark.png" alt="immurok">
-                <span class="compare-price">Kickstarter early-bird</span>
+                <span class="compare-price">Kickstarter: US$59</span>
               </th>
               <th scope="col">
                 <span class="compare-product">Magic Keyboard</span>
@@ -615,7 +623,7 @@
             <tr><td>sudo / PAM</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"><span class="cmp-label">macOS only</span></span></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
             <tr><td>Standalone (no keyboard)</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
             <tr><td>Source-available</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Price</td><td class="cmp-price">Revealed at launch</td><td class="cmp-price">$199</td><td class="cmp-price">Various</td></tr>
+            <tr><td>Price</td><td class="cmp-price">US$59</td><td class="cmp-price">$199</td><td class="cmp-price">Various</td></tr>
           </tbody>
         </table>
       </div>
@@ -869,6 +877,10 @@
         <details class="faq-item">
           <summary>How is this different from a YubiKey, a password manager, or Touch ID?</summary>
           <p><strong>Different layer, and they work together.</strong> A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is there a standalone Touch ID for the Mac?</summary>
+          <p><strong>Not from Apple.</strong> Touch ID only ships built into MacBooks and the Magic Keyboard with Touch ID, which costs US$149 to US$199, needs an Apple Silicon Mac, and ties the sensor to a keyboard you may not want. There is no standalone Touch ID sensor, and because Touch ID is fused to the Secure Enclave, a third party cannot make one. immurok is the closest thing: a standalone wireless fingerprint key that sits on your desk next to whatever keyboard you already use. On a Mac mini, Mac Studio, iMac or clamshell MacBook it unlocks the screen, approves sudo and admin prompts, unlocks 1Password and Bitwarden, and signs SSH and Git commits. It is not Touch ID and does not pretend to be: it is a separate device with its own sensor and its own security model, and it works on Windows and Linux too.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a subscription?</summary>

@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "Czy istnieje samodzielny Touch ID do Maca?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Od Apple nie. Touch ID jest tylko wbudowany w MacBooki i w Magic Keyboard z Touch ID, która kosztuje od US$149 do US$199, wymaga Maca z Apple Silicon i wiąże czytnik z klawiaturą, której możesz wcale nie chcieć. Samodzielny czytnik Touch ID nie istnieje, a ponieważ Touch ID jest zespolony z Secure Enclave, firma trzecia też go nie zrobi. immurok jest najbliżej tego: samodzielny bezprzewodowy klucz z czytnikiem linii papilarnych, który leży na biurku obok klawiatury, której już używasz. Na Mac mini, Mac Studio, iMacu albo zamkniętym MacBooku odblokowuje ekran, zatwierdza sudo i pytania administratora, odblokowuje 1Password i Bitwarden oraz podpisuje commity SSH i Git. To nie jest Touch ID i nie udaje go: to osobne urządzenie z własnym czytnikiem i własnym modelem bezpieczeństwa, które działa też na Windows i Linuksie."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Czy potrzebny jest abonament?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>Czym różni się od YubiKey, menedżera haseł albo Touch ID?</summary>
           <p>To inna warstwa i dobrze się uzupełniają. YubiKey i passkeys dowodzą stronie internetowej, kim jesteś. immurok usuwa mordęgę z hasłem na komputerze, który masz przed sobą: odblokowanie ekranu, sudo, pytania administratora, podpisywanie SSH i Git. Menedżer haseł przechowuje hasła; immurok odblokowuje 1Password i Bitwarden dotknięciem na macOS i trzyma nasiona TOTP w samym urządzeniu, żeby sekrety dwuskładnikowe nie leżały w aplikacji na pulpicie. Touch ID to własny czytnik Apple, zespolony z Secure Enclave, zamknięty dla firm trzecich, a w Mac mini czy klawiaturze zewnętrznej po prostu go nie ma. immurok jest urządzeniem niezależnym: sudo i pytania administratora idą przez PAM, czyli prawdziwy mechanizm systemowy, a odblokowanie ekranu korzysta z osobno udokumentowanej ścieżki.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Czy istnieje samodzielny Touch ID do Maca?</summary>
+          <p>Od Apple nie. Touch ID jest tylko wbudowany w MacBooki i w Magic Keyboard z Touch ID, która kosztuje od US$149 do US$199, wymaga Maca z Apple Silicon i wiąże czytnik z klawiaturą, której możesz wcale nie chcieć. Samodzielny czytnik Touch ID nie istnieje, a ponieważ Touch ID jest zespolony z Secure Enclave, firma trzecia też go nie zrobi. immurok jest najbliżej tego: samodzielny bezprzewodowy klucz z czytnikiem linii papilarnych, który leży na biurku obok klawiatury, której już używasz. Na Mac mini, Mac Studio, iMacu albo zamkniętym MacBooku odblokowuje ekran, zatwierdza sudo i pytania administratora, odblokowuje 1Password i Bitwarden oraz podpisuje commity SSH i Git. To nie jest Touch ID i nie udaje go: to osobne urządzenie z własnym czytnikiem i własnym modelem bezpieczeństwa, które działa też na Windows i Linuksie.</p>
         </details>
         <details class="faq-item">
           <summary>Czy potrzebny jest abonament?</summary>

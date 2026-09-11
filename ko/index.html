@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "Mac용 단독 Touch ID가 있나요?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Apple에서는 나오지 않습니다. Touch ID는 MacBook에 내장된 것과 Touch ID 탑재 Magic Keyboard뿐이며, 이 키보드는 US$149에서 US$199이고 Apple Silicon Mac이 필요하며 센서가 키보드에 묶여 있습니다. 단독 Touch ID 센서는 존재하지 않고, Touch ID가 Secure Enclave와 결합되어 있어 서드파티가 만들 수도 없습니다. immurok이 그에 가장 가까운 제품입니다. 지금 쓰는 키보드 옆 책상 위에 두는 독립형 무선 지문 키로, Mac mini, Mac Studio, iMac, 덮어 둔 MacBook에서 화면 잠금 해제, sudo와 관리자 승인, 1Password와 Bitwarden 잠금 해제, SSH와 Git 커밋 서명을 처리합니다. Touch ID가 아니고 그런 척하지도 않습니다. 자체 센서와 자체 보안 모델을 가진 별도의 기기이며 Windows와 Linux에서도 씁니다."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "구독이 필요한가요?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>YubiKey, 비밀번호 관리자, Touch ID와는 어떻게 다른가요?</summary>
           <p>계층이 달라서 함께 쓸 수 있습니다. YubiKey와 패스키는 웹사이트에 대해 본인임을 증명합니다. immurok은 눈앞의 컴퓨터에서 비밀번호를 입력하는 번거로움을 없앱니다. 화면 잠금 해제, sudo, 관리자 승인, SSH와 Git 서명이 그렇습니다. 비밀번호 관리자는 비밀번호를 보관하지만, immurok은 macOS에서 1Password와 Bitwarden을 터치 한 번으로 잠금 해제하고 TOTP 시드를 기기 안에 보관해 2단계 인증 시드가 데스크톱 앱에 남지 않게 합니다. Touch ID는 Apple 자체 센서로 Secure Enclave와 결합되어 있어 서드파티가 쓸 수 없고, Mac mini나 외장 키보드에는 아예 없습니다. immurok은 독립된 기기이며, sudo와 관리자 승인은 PAM이라는 실제 시스템 메커니즘을 통하고 화면 잠금 해제는 별도로 문서화된 경로를 사용합니다.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Mac용 단독 Touch ID가 있나요?</summary>
+          <p>Apple에서는 나오지 않습니다. Touch ID는 MacBook에 내장된 것과 Touch ID 탑재 Magic Keyboard뿐이며, 이 키보드는 US$149에서 US$199이고 Apple Silicon Mac이 필요하며 센서가 키보드에 묶여 있습니다. 단독 Touch ID 센서는 존재하지 않고, Touch ID가 Secure Enclave와 결합되어 있어 서드파티가 만들 수도 없습니다. immurok이 그에 가장 가까운 제품입니다. 지금 쓰는 키보드 옆 책상 위에 두는 독립형 무선 지문 키로, Mac mini, Mac Studio, iMac, 덮어 둔 MacBook에서 화면 잠금 해제, sudo와 관리자 승인, 1Password와 Bitwarden 잠금 해제, SSH와 Git 커밋 서명을 처리합니다. Touch ID가 아니고 그런 척하지도 않습니다. 자체 센서와 자체 보안 모델을 가진 별도의 기기이며 Windows와 Linux에서도 씁니다.</p>
         </details>
         <details class="faq-item">
           <summary>구독이 필요한가요?</summary>

@@ -155,7 +155,7 @@ inline a second copy: `/download/` once shipped without one and disappeared
 from GA4 entirely. To check that no page is missing it:
 
 ```bash
-for f in $(find . -name "*.html" -not -path "./blog-src/*" -not -path "./.wrangler/*" -not -path "./3d/*"); do
+for f in $(find . -name "*.html" -not -path "./blog-src/*" -not -path "./.wrangler/*" -not -path "./3d/*" -not -name "qc.html"); do
   [ "$(grep -c 'js/analytics.js' "$f")" = "0" ] && echo "missing analytics: $f"
 done
 ```
@@ -173,6 +173,12 @@ python3 tools/check-faq-sync.py --fix   # regenerate the JSON-LD from the page
 ## Deployment
 
 The entire `website/` directory is deployed to Cloudflare Pages.
+
+`qc.html` is the internal factory QC manual (a copy of `qc/qc-app-manual-zh.html`
+with a noindex tag). It is deployed but deliberately unlisted: robots.txt
+disallows it, `_headers` adds `X-Robots-Tag: noindex`, the sitemap generator
+never sees it (it only lists directories with an `index.html`), it carries no
+analytics, and `scripts/sync-github.sh` excludes it from the public repo.
 
 ```bash
 # 1. Build the blog

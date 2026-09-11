@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "¿Existe un Touch ID independiente para el Mac?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "De Apple, no. Touch ID solo viene integrado en los MacBook y en el Magic Keyboard con Touch ID, que cuesta entre US$149 y US$199, exige un Mac con Apple Silicon y ata el sensor a un teclado que quizá no quieras. No existe un sensor Touch ID suelto, y como Touch ID está fundido con el Secure Enclave, un tercero tampoco puede fabricarlo. immurok es lo más parecido: una llave de huella inalámbrica independiente que se queda en tu escritorio junto al teclado que ya usas. En un Mac mini, Mac Studio, iMac o MacBook cerrado desbloquea la pantalla, aprueba sudo y las peticiones de administrador, desbloquea 1Password y Bitwarden y firma commits de SSH y Git. No es Touch ID ni pretende serlo: es un dispositivo aparte, con su propio sensor y su propio modelo de seguridad, y además funciona en Windows y Linux."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "¿Hace falta una suscripción?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>¿En qué se diferencia de una YubiKey, un gestor de contraseñas o Touch ID?</summary>
           <p>Son capas distintas y se complementan. Una YubiKey y las passkeys demuestran quién eres ante una web. immurok elimina la fricción de la contraseña en la máquina que tienes delante: desbloqueo de pantalla, sudo, peticiones de administrador, firma de SSH y Git. Un gestor de contraseñas guarda tus contraseñas; immurok desbloquea 1Password y Bitwarden con un toque en macOS y guarda las semillas TOTP en el propio dispositivo, para que tus códigos de doble factor no vivan en una app del escritorio. Touch ID es el sensor propio de Apple, fundido con el Secure Enclave, cerrado a terceros, y sencillamente no existe en un Mac mini ni en un teclado externo. immurok es un dispositivo independiente: sudo y las peticiones de administrador pasan por PAM, un mecanismo real del sistema, y el desbloqueo de pantalla usa una ruta auxiliar documentada aparte.</p>
+        </details>
+        <details class="faq-item">
+          <summary>¿Existe un Touch ID independiente para el Mac?</summary>
+          <p>De Apple, no. Touch ID solo viene integrado en los MacBook y en el Magic Keyboard con Touch ID, que cuesta entre US$149 y US$199, exige un Mac con Apple Silicon y ata el sensor a un teclado que quizá no quieras. No existe un sensor Touch ID suelto, y como Touch ID está fundido con el Secure Enclave, un tercero tampoco puede fabricarlo. immurok es lo más parecido: una llave de huella inalámbrica independiente que se queda en tu escritorio junto al teclado que ya usas. En un Mac mini, Mac Studio, iMac o MacBook cerrado desbloquea la pantalla, aprueba sudo y las peticiones de administrador, desbloquea 1Password y Bitwarden y firma commits de SSH y Git. No es Touch ID ni pretende serlo: es un dispositivo aparte, con su propio sensor y su propio modelo de seguridad, y además funciona en Windows y Linux.</p>
         </details>
         <details class="faq-item">
           <summary>¿Hace falta una suscripción?</summary>

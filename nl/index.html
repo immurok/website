@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "Bestaat er een losse Touch ID voor de Mac?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Van Apple niet. Touch ID zit alleen ingebouwd in MacBooks en in het Magic Keyboard met Touch ID, dat US$149 tot US$199 kost, een Mac met Apple Silicon vereist en de sensor vastmaakt aan een toetsenbord dat je misschien niet wilt. Een losse Touch ID-sensor bestaat niet, en omdat Touch ID vastzit aan de Secure Enclave kan een derde partij er ook geen maken. immurok komt het dichtst in de buurt: een zelfstandige draadloze vingerafdruksleutel die op je bureau ligt naast het toetsenbord dat je al gebruikt. Op een Mac mini, Mac Studio, iMac of dichtgeklapte MacBook ontgrendelt hij het scherm, keurt hij sudo en beheerdersvragen goed, ontgrendelt hij 1Password en Bitwarden en ondertekent hij SSH- en Git-commits. Het is geen Touch ID en doet zich niet zo voor: het is een apart apparaat met een eigen sensor en een eigen beveiligingsmodel, en het werkt ook op Windows en Linux."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Heb ik een abonnement nodig?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>Wat is het verschil met een YubiKey, een wachtwoordmanager of Touch ID?</summary>
           <p>Andere laag, en ze vullen elkaar aan. Een YubiKey en passkeys bewijzen aan een website wie je bent. immurok haalt de wachtwoordwrijving weg op de machine die voor je staat: scherm ontgrendelen, sudo, beheerdersvragen, SSH- en Git-ondertekening. Een wachtwoordmanager bewaart je wachtwoorden; immurok ontgrendelt 1Password en Bitwarden met een aanraking op macOS en houdt TOTP-seeds op het apparaat, zodat je tweefactorgeheimen niet in een desktop-app staan. Touch ID is Apple&#x27;s eigen sensor, vastgeklonken aan de Secure Enclave, gesloten voor derden, en bestaat gewoonweg niet op een Mac mini of een extern toetsenbord. immurok is een zelfstandig apparaat: sudo en beheerdersvragen lopen via PAM, een echt systeemmechanisme, en schermontgrendeling gebruikt een apart gedocumenteerde route.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bestaat er een losse Touch ID voor de Mac?</summary>
+          <p>Van Apple niet. Touch ID zit alleen ingebouwd in MacBooks en in het Magic Keyboard met Touch ID, dat US$149 tot US$199 kost, een Mac met Apple Silicon vereist en de sensor vastmaakt aan een toetsenbord dat je misschien niet wilt. Een losse Touch ID-sensor bestaat niet, en omdat Touch ID vastzit aan de Secure Enclave kan een derde partij er ook geen maken. immurok komt het dichtst in de buurt: een zelfstandige draadloze vingerafdruksleutel die op je bureau ligt naast het toetsenbord dat je al gebruikt. Op een Mac mini, Mac Studio, iMac of dichtgeklapte MacBook ontgrendelt hij het scherm, keurt hij sudo en beheerdersvragen goed, ontgrendelt hij 1Password en Bitwarden en ondertekent hij SSH- en Git-commits. Het is geen Touch ID en doet zich niet zo voor: het is een apart apparaat met een eigen sensor en een eigen beveiligingsmodel, en het werkt ook op Windows en Linux.</p>
         </details>
         <details class="faq-item">
           <summary>Heb ik een abonnement nodig?</summary>

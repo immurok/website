@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "Apakah ada Touch ID mandiri untuk Mac?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Dari Apple tidak ada. Touch ID hanya tersedia tertanam di MacBook dan di Magic Keyboard dengan Touch ID, yang harganya US$149 sampai US$199, butuh Mac dengan Apple Silicon, dan mengikat sensornya ke keyboard yang mungkin tidak Anda inginkan. Sensor Touch ID lepas tidak ada, dan karena Touch ID menyatu dengan Secure Enclave, pihak ketiga juga tidak bisa membuatnya. immurok adalah yang paling mendekati: kunci sidik jari nirkabel mandiri yang diletakkan di meja di samping keyboard yang sudah Anda pakai. Di Mac mini, Mac Studio, iMac, atau MacBook yang tertutup, ia membuka kunci layar, menyetujui sudo dan permintaan administrator, membuka kunci 1Password dan Bitwarden, serta menandatangani commit SSH dan Git. Ini bukan Touch ID dan tidak berpura-pura menjadi Touch ID: ini perangkat terpisah dengan sensor sendiri dan model keamanan sendiri, dan juga berjalan di Windows dan Linux."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Apakah perlu langganan?",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>Apa bedanya dengan YubiKey, pengelola kata sandi, atau Touch ID?</summary>
           <p>Lapisannya berbeda dan justru saling melengkapi. YubiKey dan passkey membuktikan identitas Anda kepada sebuah situs web. immurok menghilangkan repotnya mengetik kata sandi di komputer yang ada di depan Anda: membuka kunci layar, sudo, permintaan administrator, penandatanganan SSH dan Git. Pengelola kata sandi menyimpan kata sandi Anda; immurok membuka kunci 1Password dan Bitwarden dengan satu sentuhan di macOS dan menyimpan seed TOTP di dalam perangkat, sehingga kunci dua faktor Anda tidak menumpuk di aplikasi desktop. Touch ID adalah sensor milik Apple sendiri, menyatu dengan Secure Enclave, tertutup bagi pihak ketiga, dan memang tidak ada di Mac mini atau keyboard eksternal. immurok adalah perangkat mandiri: sudo dan permintaan administrator lewat PAM, mekanisme sistem yang sebenarnya, sedangkan membuka kunci layar memakai jalur bantu yang didokumentasikan terpisah.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah ada Touch ID mandiri untuk Mac?</summary>
+          <p>Dari Apple tidak ada. Touch ID hanya tersedia tertanam di MacBook dan di Magic Keyboard dengan Touch ID, yang harganya US$149 sampai US$199, butuh Mac dengan Apple Silicon, dan mengikat sensornya ke keyboard yang mungkin tidak Anda inginkan. Sensor Touch ID lepas tidak ada, dan karena Touch ID menyatu dengan Secure Enclave, pihak ketiga juga tidak bisa membuatnya. immurok adalah yang paling mendekati: kunci sidik jari nirkabel mandiri yang diletakkan di meja di samping keyboard yang sudah Anda pakai. Di Mac mini, Mac Studio, iMac, atau MacBook yang tertutup, ia membuka kunci layar, menyetujui sudo dan permintaan administrator, membuka kunci 1Password dan Bitwarden, serta menandatangani commit SSH dan Git. Ini bukan Touch ID dan tidak berpura-pura menjadi Touch ID: ini perangkat terpisah dengan sensor sendiri dan model keamanan sendiri, dan juga berjalan di Windows dan Linux.</p>
         </details>
         <details class="faq-item">
           <summary>Apakah perlu langganan?</summary>

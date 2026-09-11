@@ -121,6 +121,14 @@
       },
       {
         "@type": "Question",
+        "name": "Mac 用の単体の Touch ID はありますか",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Apple からは出ていません。Touch ID は MacBook に内蔵されているものと、Touch ID 搭載 Magic Keyboard（US$149〜199、Apple Silicon の Mac が必要）だけで、センサーはキーボードと一体です。単体の Touch ID センサーは存在せず、Touch ID は Secure Enclave と一体化しているため、他社が作ることもできません。immurok はそれに最も近い製品です。机の上に置く単体のワイヤレス指紋キーで、今使っているキーボードの横に置くだけで使えます。Mac mini、Mac Studio、iMac、閉じたままの MacBook で、画面ロックの解除、sudo と管理者承認、1Password と Bitwarden のロック解除、SSH と Git のコミット署名ができます。Touch ID ではありませんし、そう名乗るつもりもありません。独自のセンサーと独自のセキュリティモデルを持つ別の機器で、Windows と Linux でも使えます。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "サブスクリプションは必要ですか",
         "acceptedAnswer": {
           "@type": "Answer",
@@ -200,6 +208,10 @@
         <details class="faq-item">
           <summary>YubiKey やパスワードマネージャー、Touch ID とは何が違いますか</summary>
           <p>レイヤーが違うので、併用できます。YubiKey やパスキーは「Web サイトに対して本人であることを証明する」ものです。immurok は「目の前のパソコンでパスワードを打つ手間をなくす」ものです。画面ロックの解除、sudo、管理者承認、SSH と Git の署名がそれにあたります。パスワードマネージャーはパスワードを保管するものですが、immurok は macOS で 1Password や Bitwarden のロックを指一本で解除でき、TOTP のシードを本体に保存できるので、二要素認証の種をパソコン上のアプリに置かずに済みます。Touch ID は Apple 自身のセンサーで、Secure Enclave と一体化していて他社は利用できず、そもそも Mac mini や外付けキーボードには存在しません。immurok は独立した機器で、sudo と管理者承認は PAM という OS 本来の仕組みを通り、画面ロック解除は別途文書化された経路を使います。</p>
+        </details>
+        <details class="faq-item">
+          <summary>Mac 用の単体の Touch ID はありますか</summary>
+          <p>Apple からは出ていません。Touch ID は MacBook に内蔵されているものと、Touch ID 搭載 Magic Keyboard（US$149〜199、Apple Silicon の Mac が必要）だけで、センサーはキーボードと一体です。単体の Touch ID センサーは存在せず、Touch ID は Secure Enclave と一体化しているため、他社が作ることもできません。immurok はそれに最も近い製品です。机の上に置く単体のワイヤレス指紋キーで、今使っているキーボードの横に置くだけで使えます。Mac mini、Mac Studio、iMac、閉じたままの MacBook で、画面ロックの解除、sudo と管理者承認、1Password と Bitwarden のロック解除、SSH と Git のコミット署名ができます。Touch ID ではありませんし、そう名乗るつもりもありません。独自のセンサーと独自のセキュリティモデルを持つ別の機器で、Windows と Linux でも使えます。</p>
         </details>
         <details class="faq-item">
           <summary>サブスクリプションは必要ですか</summary>

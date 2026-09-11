@@ -1,3 +1,10 @@
 
 /fw/manifest.json
   Cache-Control: public, max-age=300
+
+# Internal factory QC manual: reachable by link only, never indexed.
+# Pages 308-redirects /qc.html to /qc, so both paths need the header.
+/qc.html
+  X-Robots-Tag: noindex, nofollow, noarchive
+/qc
+  X-Robots-Tag: noindex, nofollow, noarchive
