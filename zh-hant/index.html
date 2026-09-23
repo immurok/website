@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok 價格、購買方式與相容性 | 適用於 Mac、Windows、Linux 的無線指紋鑰匙</title>
-  <meta name="description" content="immurok 的價格（Kickstarter US$59，零售 US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
+  <meta name="description" content="immurok 的價格（US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
   <link rel="canonical" href="https://immurok.com/zh-hant/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok 價格、購買方式與相容性 | 適用於 Mac、Windows、Linux 的無線指紋鑰匙">
-  <meta property="og:description" content="immurok 的價格（Kickstarter US$59，零售 US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
+  <meta property="og:description" content="immurok 的價格（US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/zh-hant/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok 價格、購買方式與相容性 | 適用於 Mac、Windows、Linux 的無線指紋鑰匙">
-  <meta name="twitter:description" content="immurok 的價格（Kickstarter US$59，零售 US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
+  <meta name="twitter:description" content="immurok 的價格（US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "immurok 是什麼",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "immurok 是一把用在桌上型電腦的小型無線指紋鑰匙。它放在桌面上，透過藍牙 LE 與電腦配對，手指一碰就能解鎖螢幕、核准 sudo 和系統管理員密碼提示、為 SSH 與 Git 提交簽章、取出 TOTP 驗證碼。會做它是因為大多數桌上型電腦沒有指紋感測器：Mac mini、Mac Studio、iMac、闔蓋外接螢幕的 MacBook、任何外接鍵盤，以及幾乎所有 Windows 和 Linux 桌機。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "多少錢",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Kickstarter 上 US$59，零售價 US$69。一次付清，沒有訂閱費，也沒有帳號費用。運費不含在內，結帳時另計。Kickstarter 的早鳥檔次已經售完。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "在哪買，什麼時候出貨",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "現在在 Kickstarter 上，募資到 2026 年 9 月 22 日結束。支持者的預計出貨時間是 2026 年 11 月。硬體已經是第六版，50 台試產完成並通過測試，所以這次的資金用於量產而不是做原型。募資結束後會在本站販售。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "寄到哪些國家",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "可出貨國家的最新清單顯示在 Kickstarter 的結帳頁面，以那份清單為準。在結帳頁選擇你所在的國家，就能看到能不能寄以及運費多少。運費不含在支持金額裡。進口關稅、加值稅和報關費用由收件人負擔，這是群眾募資硬體的通行做法。"
-        }
-      },
-      {
-        "@type": "Question",
         "name": "支援哪些電腦和作業系統",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 以上、Windows 10 和 11，以及大多數 Linux 發行版。Mac 版是同時支援 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安裝程式，透過 Credential Provider 整合，所以在鎖定畫面上也能用。Linux 版是用 Rust 寫的常駐程式，整合 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上測試過，多數其他發行版也能編譯。因為這把鑰匙是獨立的藍牙裝置，不是嵌在筆電裡的感測器，所以在 Mac mini、Mac Studio、iMac、闔蓋的 MacBook、外接鍵盤和桌機上用法完全一樣。一把裝置可以同時綁定兩台電腦，用一根專門的手指在兩者之間切換。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支援 Windows Hello 嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "它不是 Windows Hello 裝置，也不需要是。Windows Hello 是微軟給筆電內建感測器、認證鍵盤和攝影機準備的框架。immurok 走的是另一條路：一個跑在 Windows 登入畫面裡的 Credential Provider，所以觸碰一下就能像 Hello 感測器一樣解開鎖定畫面，而且在沒有 Hello 感測器的桌上型電腦和外接鍵盤上也一樣能用。然後它比 Hello 走得更遠。同一次觸碰還能為 SSH 和 Git 提交簽章、解鎖 1Password 和 Bitwarden、放出 TOTP 驗證碼，同一把鑰匙在 macOS 和 Linux 上也能用。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支援 passkey 或 FIDO 嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不支援。immurok 不是 FIDO 裝置。它不會作為 passkey 或安全金鑰註冊到網站上，也不能取代 YubiKey。它做的是低一層的事，在你面前這台電腦上：解鎖螢幕、核准 sudo 和系統管理員提示、為 SSH 和 Git 簽章、解鎖密碼管理器、放出 TOTP 驗證碼。登入網站繼續用你的 passkey 或安全金鑰，其餘的交給 immurok，我們很多人兩樣都用。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支援 ChromeOS 嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不支援。ChromeOS 不給第三方軟體任何參與螢幕解鎖或系統驗證的入口，immurok 沒有地方可以接進去。它支援 macOS 13 及以上、Windows 10 和 11，以及大多數 Linux 發行版。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "一把鑰匙能在多台電腦上用嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "能，最多兩台，但同一時間只連線其中一台。鑰匙內部保存兩份獨立的配對，各有各的金鑰，兩台電腦都一直綁著，但任一時刻只和其中一台通訊。你把一根手指錄成「切換指紋」，觸碰它鑰匙就從一台電腦切到另一台，目標電腦自動重新連線。移除其中一台只清掉那一份配對，另一台電腦和已錄入的指紋不受影響。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "能解鎖 1Password、Bitwarden、LastPass 或 Proton Pass 嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "四個都可以，在 macOS、Windows 和 Linux 上都支援。密碼管理器跳出解鎖框時，觸碰一下就會填入一段存在鑰匙上的專用密碼並送出，這段密碼與登入密碼分開保存、分開開關。只有在簽章白名單裡的應用程式才能拿到它。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "能用 USB 連接嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "只能用來充電。USB-C 埠只給電池充電，不走資料。配對、指紋結果和其他一切都走藍牙 LE，所以電腦需要有藍牙，而工作時鑰匙不佔任何連接埠。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "電池可以更換嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以。鑰匙用一顆 110 mAh 的可充電鋰電池，透過 USB-C 充電，正常使用一次充電能用一個多月。它是市面上的標準規格，不是客製件，你可以自己換。換之前先取消配對或回復原廠設定：已配對的鑰匙一開蓋就會觸發防拆開關，把資料全部清除。換好電池、闔上外殼，再重新配對。"
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "能自己編譯、燒錄韌體嗎",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "能。韌體和硬體的原始碼都是公開的，PCB 上預留了燒錄介面，你可以自己編譯韌體並燒進去。開蓋之前先把鑰匙重置，因為已配對的鑰匙開蓋會觸發防拆開關。一旦裝置跑的是你自己編譯的韌體，就不再享有保固，也不再收到官方韌體更新。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "和 YubiKey、密碼管理器、Touch ID 有什麼差別",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS 上可以一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。"
+          "text": "層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS、Windows、Linux 上都能一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。"
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_zh-hant" target="_blank" rel="noopener" class="btn btn-primary btn-sm">在 Kickstarter 上支持</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">立即購買 · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>immurok 是什麼</summary>
-          <p>immurok 是一把用在桌上型電腦的小型無線指紋鑰匙。它放在桌面上，透過藍牙 LE 與電腦配對，手指一碰就能解鎖螢幕、核准 sudo 和系統管理員密碼提示、為 SSH 與 Git 提交簽章、取出 TOTP 驗證碼。會做它是因為大多數桌上型電腦沒有指紋感測器：Mac mini、Mac Studio、iMac、闔蓋外接螢幕的 MacBook、任何外接鍵盤，以及幾乎所有 Windows 和 Linux 桌機。</p>
-        </details>
-        <details class="faq-item">
-          <summary>多少錢</summary>
-          <p>Kickstarter 上 US$59，零售價 US$69。一次付清，沒有訂閱費，也沒有帳號費用。運費不含在內，結帳時另計。Kickstarter 的早鳥檔次已經售完。</p>
-        </details>
-        <details class="faq-item">
-          <summary>在哪買，什麼時候出貨</summary>
-          <p>現在在 Kickstarter 上，募資到 2026 年 9 月 22 日結束。支持者的預計出貨時間是 2026 年 11 月。硬體已經是第六版，50 台試產完成並通過測試，所以這次的資金用於量產而不是做原型。募資結束後會在本站販售。</p>
-        </details>
-        <details class="faq-item">
-          <summary>寄到哪些國家</summary>
-          <p>可出貨國家的最新清單顯示在 Kickstarter 的結帳頁面，以那份清單為準。在結帳頁選擇你所在的國家，就能看到能不能寄以及運費多少。運費不含在支持金額裡。進口關稅、加值稅和報關費用由收件人負擔，這是群眾募資硬體的通行做法。</p>
-        </details>
-        <details class="faq-item">
           <summary>支援哪些電腦和作業系統</summary>
           <p>macOS 13.0 以上、Windows 10 和 11，以及大多數 Linux 發行版。Mac 版是同時支援 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安裝程式，透過 Credential Provider 整合，所以在鎖定畫面上也能用。Linux 版是用 Rust 寫的常駐程式，整合 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上測試過，多數其他發行版也能編譯。因為這把鑰匙是獨立的藍牙裝置，不是嵌在筆電裡的感測器，所以在 Mac mini、Mac Studio、iMac、闔蓋的 MacBook、外接鍵盤和桌機上用法完全一樣。一把裝置可以同時綁定兩台電腦，用一根專門的手指在兩者之間切換。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支援 Windows Hello 嗎</summary>
+          <p>它不是 Windows Hello 裝置，也不需要是。Windows Hello 是微軟給筆電內建感測器、認證鍵盤和攝影機準備的框架。immurok 走的是另一條路：一個跑在 Windows 登入畫面裡的 Credential Provider，所以觸碰一下就能像 Hello 感測器一樣解開鎖定畫面，而且在沒有 Hello 感測器的桌上型電腦和外接鍵盤上也一樣能用。然後它比 Hello 走得更遠。同一次觸碰還能為 SSH 和 Git 提交簽章、解鎖 1Password 和 Bitwarden、放出 TOTP 驗證碼，同一把鑰匙在 macOS 和 Linux 上也能用。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支援 passkey 或 FIDO 嗎</summary>
+          <p>不支援。immurok 不是 FIDO 裝置。它不會作為 passkey 或安全金鑰註冊到網站上，也不能取代 YubiKey。它做的是低一層的事，在你面前這台電腦上：解鎖螢幕、核准 sudo 和系統管理員提示、為 SSH 和 Git 簽章、解鎖密碼管理器、放出 TOTP 驗證碼。登入網站繼續用你的 passkey 或安全金鑰，其餘的交給 immurok，我們很多人兩樣都用。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支援 ChromeOS 嗎</summary>
+          <p>不支援。ChromeOS 不給第三方軟體任何參與螢幕解鎖或系統驗證的入口，immurok 沒有地方可以接進去。它支援 macOS 13 及以上、Windows 10 和 11，以及大多數 Linux 發行版。</p>
+        </details>
+        <details class="faq-item">
+          <summary>一把鑰匙能在多台電腦上用嗎</summary>
+          <p>能，最多兩台，但同一時間只連線其中一台。鑰匙內部保存兩份獨立的配對，各有各的金鑰，兩台電腦都一直綁著，但任一時刻只和其中一台通訊。你把一根手指錄成「切換指紋」，觸碰它鑰匙就從一台電腦切到另一台，目標電腦自動重新連線。移除其中一台只清掉那一份配對，另一台電腦和已錄入的指紋不受影響。</p>
+        </details>
+        <details class="faq-item">
+          <summary>能解鎖 1Password、Bitwarden、LastPass 或 Proton Pass 嗎</summary>
+          <p>四個都可以，在 macOS、Windows 和 Linux 上都支援。密碼管理器跳出解鎖框時，觸碰一下就會填入一段存在鑰匙上的專用密碼並送出，這段密碼與登入密碼分開保存、分開開關。只有在簽章白名單裡的應用程式才能拿到它。</p>
+        </details>
+        <details class="faq-item">
+          <summary>能用 USB 連接嗎</summary>
+          <p>只能用來充電。USB-C 埠只給電池充電，不走資料。配對、指紋結果和其他一切都走藍牙 LE，所以電腦需要有藍牙，而工作時鑰匙不佔任何連接埠。</p>
+        </details>
+        <details class="faq-item">
+          <summary>電池可以更換嗎</summary>
+          <p>可以。鑰匙用一顆 110 mAh 的可充電鋰電池，透過 USB-C 充電，正常使用一次充電能用一個多月。它是市面上的標準規格，不是客製件，你可以自己換。換之前先取消配對或回復原廠設定：已配對的鑰匙一開蓋就會觸發防拆開關，把資料全部清除。換好電池、闔上外殼，再重新配對。</p>
         </details>
         <details class="faq-item">
           <summary>安全性如何，指紋存在哪裡</summary>
@@ -206,8 +250,12 @@
           <p>全部原始碼都公開在 GitHub 上，採用兩種授權。macOS、Windows 和 Linux 的應用程式，包含 PAM 模組和 Windows Credential Provider，是 Apache 2.0 的開源軟體。韌體和硬體採 BSL 1.1 的原始碼公開授權，2030 年轉為 Apache 2.0。你可以讀全部程式碼、修改它、自己編譯並燒錄到自己的裝置上。轉換之前我們保留的唯一權利是販售與之競爭的硬體。</p>
         </details>
         <details class="faq-item">
+          <summary>能自己編譯、燒錄韌體嗎</summary>
+          <p>能。韌體和硬體的原始碼都是公開的，PCB 上預留了燒錄介面，你可以自己編譯韌體並燒進去。開蓋之前先把鑰匙重置，因為已配對的鑰匙開蓋會觸發防拆開關。一旦裝置跑的是你自己編譯的韌體，就不再享有保固，也不再收到官方韌體更新。</p>
+        </details>
+        <details class="faq-item">
           <summary>和 YubiKey、密碼管理器、Touch ID 有什麼差別</summary>
-          <p>層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS 上可以一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。</p>
+          <p>層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS、Windows、Linux 上都能一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。</p>
         </details>
         <details class="faq-item">
           <summary>有沒有給 Mac 用的獨立 Touch ID</summary>

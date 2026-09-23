@@ -20,10 +20,26 @@
  *      so one page stays one row in the reports. utm_* is deliberately kept,
  *      GA4 needs it for source/medium attribution.
  *   4. Exposes window.ikTrack(name, params) — a consent-safe event helper.
+ *   5. Google Consent Mode v2 (basic): EU visitors start with everything
+ *      denied and the tags only load after "update granted". Google Ads
+ *      refuses to attribute or model EEA conversions without these signals.
+ *   6. Cross-domain linker for the Shopify checkout, and the Google Ads tag
+ *      once AW_ID is filled in.
  */
 (function () {
   var GA_ID = 'G-N8YY5HG63Y';
   var FB_PIXEL_ID = '28061587893441067';
+  // Google Ads conversion ID (AW-xxxxxxxxx). Empty = no Ads tag. Purchase is
+  // imported into Ads from GA4 (it fires on the Shopify checkout), so the
+  // only site-side Ads events are the ones listed in AW_CONVERSIONS.
+  var AW_ID = '';
+  // GA4 event name → Ads conversion label, e.g. { begin_checkout: 'AbCdEfGh' }.
+  // Left empty until the conversion actions exist in the Ads account.
+  var AW_CONVERSIONS = {};
+  // Sessions must survive the hop to the checkout domain, or every order shows
+  // up in GA4 as a fresh "direct" visit. Shopify's Google channel accepts the
+  // _gl parameter on the other side.
+  var LINKER_DOMAINS = ['immurok.com', 'checkout.immurok.com', 'erjmi0-6n.myshopify.com'];
 
   // ── gtag / fbq stubs ──────────────────────────────────────────────────────
 
@@ -45,7 +61,23 @@
    */
   window.ikTrack = function (name, params) {
     try { gtag('event', name, params || {}); } catch (e) {}
+    try {
+      if (AW_ID && AW_CONVERSIONS[name]) {
+        var p = params || {};
+        gtag('event', 'conversion', { send_to: AW_ID + '/' + AW_CONVERSIONS[name], value: p.value, currency: p.currency || 'USD' });
+      }
+    } catch (e) {}
   };
+
+  // ── Consent Mode v2 ───────────────────────────────────────────────────────
+
+  var CONSENT_TYPES = ['ad_storage', 'ad_user_data', 'ad_personalization', 'analytics_storage'];
+
+  function consentAll(state) {
+    var c = {};
+    CONSENT_TYPES.forEach(function (k) { c[k] = state; });
+    return c;
+  }
 
   // ── page_location normalisation ───────────────────────────────────────────
 
@@ -79,10 +111,12 @@
     s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_ID;
     (document.head || document.documentElement).appendChild(s);
     gtag('js', new Date());
+    gtag('set', 'linker', { domains: LINKER_DOMAINS, accept_incoming: true });
     gtag('config', GA_ID, {
       anonymize_ip: true,
       page_location: normalisedLocation()
     });
+    if (AW_ID) gtag('config', AW_ID, { allow_enhanced_conversions: true });
   }
 
   function loadFbPixel() {
@@ -96,7 +130,14 @@
     fbq('track', 'PageView');
   }
 
-  function loadTrackers() { loadGtag(); loadFbPixel(); }
+  function loadTrackers() {
+    gtag('consent', 'update', consentAll('granted'));
+    loadGtag();
+    loadFbPixel();
+    // Let other scripts (js/shop.js analytics) know tracking is allowed.
+    window.ikConsentGranted = true;
+    try { document.dispatchEvent(new CustomEvent('ik-consent-granted')); } catch (e) {}
+  }
 
   // ── Consent banner ────────────────────────────────────────────────────────
 
@@ -168,6 +209,10 @@
   var stored = null;
   try { stored = localStorage.getItem('ik-consent'); } catch (e) {}
   if (stored === 'accept') { loadTrackers(); return; }
+  // Denied by default until the visitor accepts (or geo says no banner is
+  // needed). Must be queued before any config call; the stub queue keeps
+  // the order once gtag.js loads.
+  gtag('consent', 'default', consentAll('denied'));
   if (stored === 'reject') { return; }
 
   // No stored choice yet — check geo via Cloudflare's free trace endpoint.

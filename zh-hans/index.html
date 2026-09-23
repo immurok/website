@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok 价格、购买方式与兼容性 | 适用于 Mac、Windows、Linux 的无线指纹钥匙</title>
-  <meta name="description" content="immurok 的价格（Kickstarter US$59，零售 US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
+  <meta name="description" content="immurok 的价格（US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
   <link rel="canonical" href="https://immurok.com/zh-hans/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok 价格、购买方式与兼容性 | 适用于 Mac、Windows、Linux 的无线指纹钥匙">
-  <meta property="og:description" content="immurok 的价格（Kickstarter US$59，零售 US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
+  <meta property="og:description" content="immurok 的价格（US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/zh-hans/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok 价格、购买方式与兼容性 | 适用于 Mac、Windows、Linux 的无线指纹钥匙">
-  <meta name="twitter:description" content="immurok 的价格（Kickstarter US$59，零售 US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
+  <meta name="twitter:description" content="immurok 的价格（US$69）、在哪购买、发货国家、支持的系统、安全性、是否需要订阅以及重置方法。">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "immurok 是什么",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "immurok 是一把用在台式电脑上的小型无线指纹钥匙。它放在桌面上，通过蓝牙 LE 与电脑配对，手指一碰就能解锁屏幕、批准 sudo 和管理员密码提示、给 SSH 和 Git 提交签名、取出 TOTP 验证码。做它是因为大多数台式电脑没有指纹传感器：Mac mini、Mac Studio、iMac、合盖接外接显示器的 MacBook、任何外接键盘，以及几乎所有 Windows 和 Linux 台式机。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "多少钱",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Kickstarter 上 US$59，零售价 US$69。一次性付款，没有订阅费，也没有账号费用。运费不含在内，结算时另算。Kickstarter 的早鸟档已经售罄。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "在哪买，什么时候发货",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "现在在 Kickstarter 上，众筹到 2026 年 9 月 22 日结束。支持者的预计发货时间是 2026 年 11 月。硬件已经是第六版，50 台试产做完并测试通过，所以这次的资金用于量产而不是做样机。众筹结束后会在本站销售。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "发到哪些国家",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "可发货国家的最新清单显示在 Kickstarter 的结算页面，以那份清单为准。在结算页选择你所在的国家，就能看到能不能发以及运费多少。运费不含在支持金额里。进口关税、增值税和清关费用由收件人承担，这是众筹硬件的通行做法。"
-        }
-      },
-      {
-        "@type": "Question",
         "name": "支持哪些电脑和操作系统",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 及以上、Windows 10 和 11，以及大多数 Linux 发行版。Mac 版是同时支持 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安装包，通过 Credential Provider 集成，所以在锁屏界面上也能用。Linux 版是 Rust 写的守护进程，集成 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上测试过，多数其他发行版也能编译。因为这把钥匙是独立的蓝牙设备，不是嵌在笔记本里的传感器，所以在 Mac mini、Mac Studio、iMac、合盖的 MacBook、外接键盘和台式 PC 上用法完全一样。一把设备可以同时绑定两台电脑，用一根专门的手指在两者之间切换。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支持 Windows Hello 吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "它不是 Windows Hello 设备，也不需要是。Windows Hello 是微软给笔记本内置传感器、认证键盘和摄像头准备的框架。immurok 走的是另一条路：一个跑在 Windows 登录界面里的 Credential Provider，所以触摸一下就能像 Hello 传感器一样解开锁屏，而且在没有 Hello 传感器的台式机和外接键盘上也一样能用。然后它比 Hello 走得更远。同一次触摸还能给 SSH 和 Git 提交签名、解锁 1Password 和 Bitwarden、放出 TOTP 验证码，同一把钥匙在 macOS 和 Linux 上也能用。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支持 passkey 或 FIDO 吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不支持。immurok 不是 FIDO 设备。它不会作为 passkey 或安全密钥注册到网站上，也不能替代 YubiKey。它干的是低一层的活，在你面前这台电脑上：解锁屏幕、批准 sudo 和管理员提示、给 SSH 和 Git 签名、解锁密码管理器、放出 TOTP 验证码。登录网站继续用你的 passkey 或安全密钥，其余的交给 immurok，我们很多人两样都用。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "支持 ChromeOS 吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "不支持。ChromeOS 不给第三方软件任何参与锁屏解锁或系统认证的入口，immurok 没有地方可以接进去。它支持 macOS 13 及以上、Windows 10 和 11，以及大多数 Linux 发行版。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "一把钥匙能在多台电脑上用吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "能，最多两台，但同一时间只连接其中一台。钥匙内部保存两份独立的配对，各有各的密钥，两台电脑都一直绑着，但任一时刻只和其中一台通信。你把一根手指录成「切换指纹」，触摸它钥匙就从一台电脑切到另一台，目标电脑自动重连。移除其中一台只清掉那一份配对，另一台电脑和已录入的指纹不受影响。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "能解锁 1Password、Bitwarden、LastPass 或 Proton Pass 吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "四个都可以，在 macOS、Windows 和 Linux 上都支持。密码管理器弹出解锁框时，触摸一下就会填入一段存在钥匙上的专用密码并提交，这段密码与登录密码分开保存、分开开关。只有在签名白名单里的应用才能拿到它。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "能用 USB 连接吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "只能用来充电。USB-C 口只给电池充电，不走数据。配对、指纹结果和其他一切都走蓝牙 LE，所以电脑需要有蓝牙，而工作时钥匙不占任何接口。"
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "电池可以更换吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "可以。钥匙用一块 110 mAh 的可充电锂电池，通过 USB-C 充电，正常使用一次充电能用一个多月。它是市面上的标准规格，不是定制件，你可以自己换。换之前先取消配对或恢复出厂设置：已配对的钥匙一开盖就会触发防拆开关，把数据全部擦掉。换好电池、合上外壳，再重新配对。"
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "能自己编译、烧录固件吗",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "能。固件和硬件的源码都是公开的，PCB 上预留了烧录接口，你可以自己编译固件并烧进去。开盖之前先把钥匙重置，因为已配对的钥匙开盖会触发防拆开关。一旦设备跑的是你自己编译的固件，就不再享受保修，也不再收到官方固件更新。"
+        }
+      },
+      {
+        "@type": "Question",
         "name": "和 YubiKey、密码管理器、Touch ID 有什么区别",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "层次不同，可以一起用。YubiKey 和 passkey 解决的是向网站证明你是谁。immurok 解决的是眼前这台电脑上输密码的麻烦：解锁屏幕、sudo、管理员提示、SSH 和 Git 签名。密码管理器保存你的密码；immurok 在 macOS 上可以一碰解锁 1Password 和 Bitwarden，还能把 TOTP 种子存在设备里，这样两步验证的种子就不用躺在桌面 App 中。Touch ID 是苹果自己的传感器，和 Secure Enclave 焊死在一起，第三方用不了，而且 Mac mini 和外接键盘上根本就没有。immurok 是一台独立设备：sudo 和管理员提示走 PAM 这一真实的系统机制，解锁屏幕走另一条单独文档化的辅助路径。"
+          "text": "层次不同，可以一起用。YubiKey 和 passkey 解决的是向网站证明你是谁。immurok 解决的是眼前这台电脑上输密码的麻烦：解锁屏幕、sudo、管理员提示、SSH 和 Git 签名。密码管理器保存你的密码；immurok 在 macOS、Windows、Linux 上都能一碰解锁 1Password 和 Bitwarden，还能把 TOTP 种子存在设备里，这样两步验证的种子就不用躺在桌面 App 中。Touch ID 是苹果自己的传感器，和 Secure Enclave 焊死在一起，第三方用不了，而且 Mac mini 和外接键盘上根本就没有。immurok 是一台独立设备：sudo 和管理员提示走 PAM 这一真实的系统机制，解锁屏幕走另一条单独文档化的辅助路径。"
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_zh-hans" target="_blank" rel="noopener" class="btn btn-primary btn-sm">在 Kickstarter 上支持</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">立即购买 · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>immurok 是什么</summary>
-          <p>immurok 是一把用在台式电脑上的小型无线指纹钥匙。它放在桌面上，通过蓝牙 LE 与电脑配对，手指一碰就能解锁屏幕、批准 sudo 和管理员密码提示、给 SSH 和 Git 提交签名、取出 TOTP 验证码。做它是因为大多数台式电脑没有指纹传感器：Mac mini、Mac Studio、iMac、合盖接外接显示器的 MacBook、任何外接键盘，以及几乎所有 Windows 和 Linux 台式机。</p>
-        </details>
-        <details class="faq-item">
-          <summary>多少钱</summary>
-          <p>Kickstarter 上 US$59，零售价 US$69。一次性付款，没有订阅费，也没有账号费用。运费不含在内，结算时另算。Kickstarter 的早鸟档已经售罄。</p>
-        </details>
-        <details class="faq-item">
-          <summary>在哪买，什么时候发货</summary>
-          <p>现在在 Kickstarter 上，众筹到 2026 年 9 月 22 日结束。支持者的预计发货时间是 2026 年 11 月。硬件已经是第六版，50 台试产做完并测试通过，所以这次的资金用于量产而不是做样机。众筹结束后会在本站销售。</p>
-        </details>
-        <details class="faq-item">
-          <summary>发到哪些国家</summary>
-          <p>可发货国家的最新清单显示在 Kickstarter 的结算页面，以那份清单为准。在结算页选择你所在的国家，就能看到能不能发以及运费多少。运费不含在支持金额里。进口关税、增值税和清关费用由收件人承担，这是众筹硬件的通行做法。</p>
-        </details>
-        <details class="faq-item">
           <summary>支持哪些电脑和操作系统</summary>
           <p>macOS 13.0 及以上、Windows 10 和 11，以及大多数 Linux 发行版。Mac 版是同时支持 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安装包，通过 Credential Provider 集成，所以在锁屏界面上也能用。Linux 版是 Rust 写的守护进程，集成 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上测试过，多数其他发行版也能编译。因为这把钥匙是独立的蓝牙设备，不是嵌在笔记本里的传感器，所以在 Mac mini、Mac Studio、iMac、合盖的 MacBook、外接键盘和台式 PC 上用法完全一样。一把设备可以同时绑定两台电脑，用一根专门的手指在两者之间切换。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支持 Windows Hello 吗</summary>
+          <p>它不是 Windows Hello 设备，也不需要是。Windows Hello 是微软给笔记本内置传感器、认证键盘和摄像头准备的框架。immurok 走的是另一条路：一个跑在 Windows 登录界面里的 Credential Provider，所以触摸一下就能像 Hello 传感器一样解开锁屏，而且在没有 Hello 传感器的台式机和外接键盘上也一样能用。然后它比 Hello 走得更远。同一次触摸还能给 SSH 和 Git 提交签名、解锁 1Password 和 Bitwarden、放出 TOTP 验证码，同一把钥匙在 macOS 和 Linux 上也能用。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支持 passkey 或 FIDO 吗</summary>
+          <p>不支持。immurok 不是 FIDO 设备。它不会作为 passkey 或安全密钥注册到网站上，也不能替代 YubiKey。它干的是低一层的活，在你面前这台电脑上：解锁屏幕、批准 sudo 和管理员提示、给 SSH 和 Git 签名、解锁密码管理器、放出 TOTP 验证码。登录网站继续用你的 passkey 或安全密钥，其余的交给 immurok，我们很多人两样都用。</p>
+        </details>
+        <details class="faq-item">
+          <summary>支持 ChromeOS 吗</summary>
+          <p>不支持。ChromeOS 不给第三方软件任何参与锁屏解锁或系统认证的入口，immurok 没有地方可以接进去。它支持 macOS 13 及以上、Windows 10 和 11，以及大多数 Linux 发行版。</p>
+        </details>
+        <details class="faq-item">
+          <summary>一把钥匙能在多台电脑上用吗</summary>
+          <p>能，最多两台，但同一时间只连接其中一台。钥匙内部保存两份独立的配对，各有各的密钥，两台电脑都一直绑着，但任一时刻只和其中一台通信。你把一根手指录成「切换指纹」，触摸它钥匙就从一台电脑切到另一台，目标电脑自动重连。移除其中一台只清掉那一份配对，另一台电脑和已录入的指纹不受影响。</p>
+        </details>
+        <details class="faq-item">
+          <summary>能解锁 1Password、Bitwarden、LastPass 或 Proton Pass 吗</summary>
+          <p>四个都可以，在 macOS、Windows 和 Linux 上都支持。密码管理器弹出解锁框时，触摸一下就会填入一段存在钥匙上的专用密码并提交，这段密码与登录密码分开保存、分开开关。只有在签名白名单里的应用才能拿到它。</p>
+        </details>
+        <details class="faq-item">
+          <summary>能用 USB 连接吗</summary>
+          <p>只能用来充电。USB-C 口只给电池充电，不走数据。配对、指纹结果和其他一切都走蓝牙 LE，所以电脑需要有蓝牙，而工作时钥匙不占任何接口。</p>
+        </details>
+        <details class="faq-item">
+          <summary>电池可以更换吗</summary>
+          <p>可以。钥匙用一块 110 mAh 的可充电锂电池，通过 USB-C 充电，正常使用一次充电能用一个多月。它是市面上的标准规格，不是定制件，你可以自己换。换之前先取消配对或恢复出厂设置：已配对的钥匙一开盖就会触发防拆开关，把数据全部擦掉。换好电池、合上外壳，再重新配对。</p>
         </details>
         <details class="faq-item">
           <summary>安全性如何，指纹存在哪里</summary>
@@ -206,8 +250,12 @@
           <p>全部源代码都公开在 GitHub 上，用了两种许可。macOS、Windows 和 Linux 的 App，包括 PAM 模块和 Windows Credential Provider，是 Apache 2.0 的开源软件。固件和硬件是 BSL 1.1 的源码公开许可，2030 年转为 Apache 2.0。你可以读全部代码、修改它、自己编译并烧录到自己的设备上。转换之前我们保留的唯一权利是销售与之竞争的硬件。</p>
         </details>
         <details class="faq-item">
+          <summary>能自己编译、烧录固件吗</summary>
+          <p>能。固件和硬件的源码都是公开的，PCB 上预留了烧录接口，你可以自己编译固件并烧进去。开盖之前先把钥匙重置，因为已配对的钥匙开盖会触发防拆开关。一旦设备跑的是你自己编译的固件，就不再享受保修，也不再收到官方固件更新。</p>
+        </details>
+        <details class="faq-item">
           <summary>和 YubiKey、密码管理器、Touch ID 有什么区别</summary>
-          <p>层次不同，可以一起用。YubiKey 和 passkey 解决的是向网站证明你是谁。immurok 解决的是眼前这台电脑上输密码的麻烦：解锁屏幕、sudo、管理员提示、SSH 和 Git 签名。密码管理器保存你的密码；immurok 在 macOS 上可以一碰解锁 1Password 和 Bitwarden，还能把 TOTP 种子存在设备里，这样两步验证的种子就不用躺在桌面 App 中。Touch ID 是苹果自己的传感器，和 Secure Enclave 焊死在一起，第三方用不了，而且 Mac mini 和外接键盘上根本就没有。immurok 是一台独立设备：sudo 和管理员提示走 PAM 这一真实的系统机制，解锁屏幕走另一条单独文档化的辅助路径。</p>
+          <p>层次不同，可以一起用。YubiKey 和 passkey 解决的是向网站证明你是谁。immurok 解决的是眼前这台电脑上输密码的麻烦：解锁屏幕、sudo、管理员提示、SSH 和 Git 签名。密码管理器保存你的密码；immurok 在 macOS、Windows、Linux 上都能一碰解锁 1Password 和 Bitwarden，还能把 TOTP 种子存在设备里，这样两步验证的种子就不用躺在桌面 App 中。Touch ID 是苹果自己的传感器，和 Secure Enclave 焊死在一起，第三方用不了，而且 Mac mini 和外接键盘上根本就没有。immurok 是一台独立设备：sudo 和管理员提示走 PAM 这一真实的系统机制，解锁屏幕走另一条单独文档化的辅助路径。</p>
         </details>
         <details class="faq-item">
           <summary>有没有给 Mac 用的独立 Touch ID</summary>

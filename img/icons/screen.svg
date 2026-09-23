@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #baf91e;
+      }
+    </style>
+  </defs>
+  <circle class="cls-1" cx="100" cy="100" r="90"/>
+  <g fill="none" stroke="#000" stroke-width="7" stroke-linecap="round" stroke-linejoin="round">
+    <rect x="58" y="62" width="84" height="56" rx="7"/>
+    <path d="M100 118v16"/>
+    <path d="M82 138h36"/>
+  </g>
+</svg>

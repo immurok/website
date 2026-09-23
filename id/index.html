@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok: harga, cara beli, dan kompatibilitas | Kunci sidik jari nirkabel untuk Mac, Windows, dan Linux</title>
-  <meta name="description" content="Harga immurok (US$59 di Kickstarter, US$69 harga ritel), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
+  <meta name="description" content="Harga immurok (US$69), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
   <link rel="canonical" href="https://immurok.com/id/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok: harga, cara beli, dan kompatibilitas | Kunci sidik jari nirkabel untuk Mac, Windows, dan Linux">
-  <meta property="og:description" content="Harga immurok (US$59 di Kickstarter, US$69 harga ritel), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
+  <meta property="og:description" content="Harga immurok (US$69), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/id/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok: harga, cara beli, dan kompatibilitas | Kunci sidik jari nirkabel untuk Mac, Windows, dan Linux">
-  <meta name="twitter:description" content="Harga immurok (US$59 di Kickstarter, US$69 harga ritel), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
+  <meta name="twitter:description" content="Harga immurok (US$69), cara membeli, negara pengiriman, sistem yang didukung, keamanan, langganan, dan cara reset.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Apa itu immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Kunci sidik jari nirkabel berukuran kecil untuk komputer desktop. Alat ini diletakkan di meja dan dipasangkan lewat Bluetooth LE. Satu sentuhan membuka kunci layar, menyetujui permintaan sudo dan administrator, menandatangani commit SSH dan Git, serta mengeluarkan kode TOTP. Produk ini ada karena sebagian besar komputer desktop tidak punya sensor sidik jari: Mac mini, Mac Studio, iMac, MacBook yang dipakai tertutup dengan monitor eksternal, keyboard eksternal apa pun, dan hampir semua PC Windows atau Linux."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Berapa harga immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "US$59 di Kickstarter dan US$69 harga ritel. Bayar sekali saja. Tidak ada langganan dan tidak ada biaya akun. Ongkos kirim dihitung terpisah saat checkout dan tidak termasuk dalam harga itu. Kuota early bird di Kickstarter sudah habis."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Di mana bisa membelinya dan kapan dikirim?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Di Kickstarter, sampai kampanye berakhir pada 22 September 2026. Perkiraan pengiriman untuk backer adalah November 2026. Perangkat kerasnya sudah revisi keenam dan satu batch percobaan 50 unit sudah diproduksi dan diuji, jadi dana kampanye dipakai untuk produksi massal, bukan prototipe. Setelah kampanye selesai, penjualan berlanjut lewat situs ini."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Dikirim ke negara mana saja?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Daftar negara tujuan yang berlaku ditampilkan di halaman checkout Kickstarter, dan daftar itulah yang menjadi acuan. Pilih negara Anda di sana, lalu sistem akan memberi tahu apakah kami bisa mengirim dan berapa ongkos kirimnya. Ongkos kirim tidak termasuk dalam nilai dukungan. Bea masuk, PPN, dan biaya kepabeanan menjadi tanggung jawab penerima, seperti lazimnya perangkat keras hasil crowdfunding."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "Kompatibel dengan komputer dan sistem operasi apa saja?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 atau lebih baru, Windows 10 dan 11, serta sebagian besar distribusi Linux. Aplikasi Mac berupa satu build universal untuk Apple Silicon dan Intel. Windows punya installer native x64 dan Arm64 dan terintegrasi sebagai Credential Provider, jadi bisa dipakai di layar kunci. Linux berupa daemon Rust dengan integrasi PAM dan polkit, sudah diuji di Ubuntu, Fedora, Arch, dan Debian, dan bisa dikompilasi di kebanyakan distribusi lain. Karena kuncinya adalah perangkat Bluetooth terpisah, bukan sensor yang tertanam di laptop, cara kerjanya sama pada Mac mini, Mac Studio, iMac, MacBook tertutup, keyboard eksternal, maupun PC desktop. Satu kunci bisa terhubung ke dua komputer sekaligus dan berpindah di antaranya lewat sidik jari khusus."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah bisa dipakai dengan Windows Hello?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ini bukan perangkat Windows Hello, dan memang tidak perlu. Windows Hello adalah kerangka Microsoft untuk sensor yang tertanam di laptop atau di keyboard atau webcam bersertifikat. immurok memasukkan Anda lewat jalur lain: Credential Provider yang berjalan di dalam layar masuk Windows, jadi satu sentuhan membuka layar kunci persis seperti sensor Hello, di PC desktop atau keyboard eksternal mana pun yang tidak punya sensor Hello. Lalu ia melangkah lebih jauh dari Hello. Sentuhan yang sama menandatangani commit SSH dan Git, membuka 1Password dan Bitwarden, mengeluarkan kode TOTP, dan kunci yang sama juga bekerja di macOS dan Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah mendukung passkey atau FIDO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tidak. immurok bukan perangkat FIDO. Ia tidak mendaftar ke situs web sebagai passkey atau kunci keamanan, dan tidak menggantikan YubiKey. Ia bekerja satu lapis di bawahnya, di komputer yang ada di depan Anda: membuka layar kunci, menyetujui prompt sudo dan admin, menandatangani SSH dan Git, membuka pengelola kata sandi, dan kode TOTP. Tetap pakai passkey atau kunci keamanan Anda untuk masuk ke situs web; immurok mengurus sisanya, dan banyak dari kami memakai keduanya."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah mendukung ChromeOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Tidak. ChromeOS tidak memberi perangkat lunak pihak ketiga jalan untuk ikut dalam pembukaan layar kunci atau autentikasi sistem, jadi tidak ada tempat bagi immurok untuk masuk. Ia bekerja dengan macOS 13 atau lebih baru, Windows 10 dan 11, dan sebagian besar distribusi Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bisakah satu kunci dipakai di lebih dari satu komputer?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bisa, dengan maksimal dua komputer, tersambung ke satu pada satu waktu. Kunci menyimpan dua pemasangan independen, masing-masing dengan kuncinya sendiri, jadi kedua mesin tetap terikat, tetapi ia hanya berbicara dengan satu di antaranya pada satu waktu. Anda mendaftarkan satu jari sebagai jari pengalih. Menyentuhnya memindahkan kunci dari satu komputer ke komputer lain, dan komputer tujuan menyambung kembali sendiri. Menghapus satu komputer hanya menghapus pemasangan itu; komputer satunya dan sidik jari yang terdaftar tidak tersentuh."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah bisa membuka 1Password, Bitwarden, LastPass, atau Proton Pass?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ya, keempatnya, di macOS, Windows, dan Linux. Saat pengelola menampilkan layar bukanya, satu sentuhan mengisi kata sandi khusus yang tersimpan di kunci, disimpan terpisah dari kata sandi login dan diaktifkan terpisah, lalu mengirimkannya. Hanya aplikasi dalam daftar izin bertanda tangan yang pernah menerimanya."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Bisakah disambungkan lewat USB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Hanya untuk mengisi daya. Port USB-C mengisi baterai dan tidak membawa data. Pemasangan, hasil sidik jari, dan semua yang lain lewat Bluetooth LE, jadi komputer Anda butuh Bluetooth dan kunci tidak memakai port apa pun saat Anda bekerja."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Apakah baterainya bisa diganti?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bisa. Kunci ini memakai sel litium isi ulang 110 mAh yang diisi lewat USB-C dan tahan lebih dari sebulan pemakaian normal per pengisian. Ukurannya standar pasaran, bukan komponen khusus, dan Anda bisa menggantinya sendiri. Lepaskan pemasangan atau reset pabrik dulu: membuka casing kunci yang masih terpasang memicu sakelar anti-bongkar dan menghapusnya. Ganti sel, tutup casing, lalu pasangkan lagi."
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "Bisakah saya membangun dan mem-flash firmware sendiri?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Bisa. Sumber firmware dan perangkat kerasnya terbuka, dan PCB menyediakan antarmuka pemrograman sehingga Anda bisa membangun firmware sendiri dan mem-flash-nya. Reset kunci sebelum membukanya, karena membuka kunci yang masih terpasang memicu sakelar anti-bongkar. Begitu sebuah unit menjalankan firmware buatan Anda, garansinya gugur dan tidak lagi menerima pembaruan firmware resmi."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Apa bedanya dengan YubiKey, pengelola kata sandi, atau Touch ID?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Lapisannya berbeda dan justru saling melengkapi. YubiKey dan passkey membuktikan identitas Anda kepada sebuah situs web. immurok menghilangkan repotnya mengetik kata sandi di komputer yang ada di depan Anda: membuka kunci layar, sudo, permintaan administrator, penandatanganan SSH dan Git. Pengelola kata sandi menyimpan kata sandi Anda; immurok membuka kunci 1Password dan Bitwarden dengan satu sentuhan di macOS dan menyimpan seed TOTP di dalam perangkat, sehingga kunci dua faktor Anda tidak menumpuk di aplikasi desktop. Touch ID adalah sensor milik Apple sendiri, menyatu dengan Secure Enclave, tertutup bagi pihak ketiga, dan memang tidak ada di Mac mini atau keyboard eksternal. immurok adalah perangkat mandiri: sudo dan permintaan administrator lewat PAM, mekanisme sistem yang sebenarnya, sedangkan membuka kunci layar memakai jalur bantu yang didokumentasikan terpisah."
+          "text": "Lapisannya berbeda dan justru saling melengkapi. YubiKey dan passkey membuktikan identitas Anda kepada sebuah situs web. immurok menghilangkan repotnya mengetik kata sandi di komputer yang ada di depan Anda: membuka kunci layar, sudo, permintaan administrator, penandatanganan SSH dan Git. Pengelola kata sandi menyimpan kata sandi Anda; immurok membuka kunci 1Password dan Bitwarden dengan satu sentuhan di macOS, Windows, dan Linux, dan menyimpan seed TOTP di dalam perangkat, sehingga kunci dua faktor Anda tidak menumpuk di aplikasi desktop. Touch ID adalah sensor milik Apple sendiri, menyatu dengan Secure Enclave, tertutup bagi pihak ketiga, dan memang tidak ada di Mac mini atau keyboard eksternal. immurok adalah perangkat mandiri: sudo dan permintaan administrator lewat PAM, mekanisme sistem yang sebenarnya, sedangkan membuka kunci layar memakai jalur bantu yang didokumentasikan terpisah."
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_id" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Dukung di Kickstarter</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">Beli sekarang · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Apa itu immurok?</summary>
-          <p>Kunci sidik jari nirkabel berukuran kecil untuk komputer desktop. Alat ini diletakkan di meja dan dipasangkan lewat Bluetooth LE. Satu sentuhan membuka kunci layar, menyetujui permintaan sudo dan administrator, menandatangani commit SSH dan Git, serta mengeluarkan kode TOTP. Produk ini ada karena sebagian besar komputer desktop tidak punya sensor sidik jari: Mac mini, Mac Studio, iMac, MacBook yang dipakai tertutup dengan monitor eksternal, keyboard eksternal apa pun, dan hampir semua PC Windows atau Linux.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Berapa harga immurok?</summary>
-          <p>US$59 di Kickstarter dan US$69 harga ritel. Bayar sekali saja. Tidak ada langganan dan tidak ada biaya akun. Ongkos kirim dihitung terpisah saat checkout dan tidak termasuk dalam harga itu. Kuota early bird di Kickstarter sudah habis.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Di mana bisa membelinya dan kapan dikirim?</summary>
-          <p>Di Kickstarter, sampai kampanye berakhir pada 22 September 2026. Perkiraan pengiriman untuk backer adalah November 2026. Perangkat kerasnya sudah revisi keenam dan satu batch percobaan 50 unit sudah diproduksi dan diuji, jadi dana kampanye dipakai untuk produksi massal, bukan prototipe. Setelah kampanye selesai, penjualan berlanjut lewat situs ini.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Dikirim ke negara mana saja?</summary>
-          <p>Daftar negara tujuan yang berlaku ditampilkan di halaman checkout Kickstarter, dan daftar itulah yang menjadi acuan. Pilih negara Anda di sana, lalu sistem akan memberi tahu apakah kami bisa mengirim dan berapa ongkos kirimnya. Ongkos kirim tidak termasuk dalam nilai dukungan. Bea masuk, PPN, dan biaya kepabeanan menjadi tanggung jawab penerima, seperti lazimnya perangkat keras hasil crowdfunding.</p>
-        </details>
-        <details class="faq-item">
           <summary>Kompatibel dengan komputer dan sistem operasi apa saja?</summary>
           <p>macOS 13.0 atau lebih baru, Windows 10 dan 11, serta sebagian besar distribusi Linux. Aplikasi Mac berupa satu build universal untuk Apple Silicon dan Intel. Windows punya installer native x64 dan Arm64 dan terintegrasi sebagai Credential Provider, jadi bisa dipakai di layar kunci. Linux berupa daemon Rust dengan integrasi PAM dan polkit, sudah diuji di Ubuntu, Fedora, Arch, dan Debian, dan bisa dikompilasi di kebanyakan distribusi lain. Karena kuncinya adalah perangkat Bluetooth terpisah, bukan sensor yang tertanam di laptop, cara kerjanya sama pada Mac mini, Mac Studio, iMac, MacBook tertutup, keyboard eksternal, maupun PC desktop. Satu kunci bisa terhubung ke dua komputer sekaligus dan berpindah di antaranya lewat sidik jari khusus.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah bisa dipakai dengan Windows Hello?</summary>
+          <p>Ini bukan perangkat Windows Hello, dan memang tidak perlu. Windows Hello adalah kerangka Microsoft untuk sensor yang tertanam di laptop atau di keyboard atau webcam bersertifikat. immurok memasukkan Anda lewat jalur lain: Credential Provider yang berjalan di dalam layar masuk Windows, jadi satu sentuhan membuka layar kunci persis seperti sensor Hello, di PC desktop atau keyboard eksternal mana pun yang tidak punya sensor Hello. Lalu ia melangkah lebih jauh dari Hello. Sentuhan yang sama menandatangani commit SSH dan Git, membuka 1Password dan Bitwarden, mengeluarkan kode TOTP, dan kunci yang sama juga bekerja di macOS dan Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah mendukung passkey atau FIDO?</summary>
+          <p>Tidak. immurok bukan perangkat FIDO. Ia tidak mendaftar ke situs web sebagai passkey atau kunci keamanan, dan tidak menggantikan YubiKey. Ia bekerja satu lapis di bawahnya, di komputer yang ada di depan Anda: membuka layar kunci, menyetujui prompt sudo dan admin, menandatangani SSH dan Git, membuka pengelola kata sandi, dan kode TOTP. Tetap pakai passkey atau kunci keamanan Anda untuk masuk ke situs web; immurok mengurus sisanya, dan banyak dari kami memakai keduanya.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah mendukung ChromeOS?</summary>
+          <p>Tidak. ChromeOS tidak memberi perangkat lunak pihak ketiga jalan untuk ikut dalam pembukaan layar kunci atau autentikasi sistem, jadi tidak ada tempat bagi immurok untuk masuk. Ia bekerja dengan macOS 13 atau lebih baru, Windows 10 dan 11, dan sebagian besar distribusi Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bisakah satu kunci dipakai di lebih dari satu komputer?</summary>
+          <p>Bisa, dengan maksimal dua komputer, tersambung ke satu pada satu waktu. Kunci menyimpan dua pemasangan independen, masing-masing dengan kuncinya sendiri, jadi kedua mesin tetap terikat, tetapi ia hanya berbicara dengan satu di antaranya pada satu waktu. Anda mendaftarkan satu jari sebagai jari pengalih. Menyentuhnya memindahkan kunci dari satu komputer ke komputer lain, dan komputer tujuan menyambung kembali sendiri. Menghapus satu komputer hanya menghapus pemasangan itu; komputer satunya dan sidik jari yang terdaftar tidak tersentuh.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah bisa membuka 1Password, Bitwarden, LastPass, atau Proton Pass?</summary>
+          <p>Ya, keempatnya, di macOS, Windows, dan Linux. Saat pengelola menampilkan layar bukanya, satu sentuhan mengisi kata sandi khusus yang tersimpan di kunci, disimpan terpisah dari kata sandi login dan diaktifkan terpisah, lalu mengirimkannya. Hanya aplikasi dalam daftar izin bertanda tangan yang pernah menerimanya.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Bisakah disambungkan lewat USB?</summary>
+          <p>Hanya untuk mengisi daya. Port USB-C mengisi baterai dan tidak membawa data. Pemasangan, hasil sidik jari, dan semua yang lain lewat Bluetooth LE, jadi komputer Anda butuh Bluetooth dan kunci tidak memakai port apa pun saat Anda bekerja.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Apakah baterainya bisa diganti?</summary>
+          <p>Bisa. Kunci ini memakai sel litium isi ulang 110 mAh yang diisi lewat USB-C dan tahan lebih dari sebulan pemakaian normal per pengisian. Ukurannya standar pasaran, bukan komponen khusus, dan Anda bisa menggantinya sendiri. Lepaskan pemasangan atau reset pabrik dulu: membuka casing kunci yang masih terpasang memicu sakelar anti-bongkar dan menghapusnya. Ganti sel, tutup casing, lalu pasangkan lagi.</p>
         </details>
         <details class="faq-item">
           <summary>Seberapa aman? Di mana sidik jari saya disimpan?</summary>
@@ -206,8 +250,12 @@
           <p>Seluruh kode sumber terbuka di GitHub, dengan dua lisensi berbeda. Aplikasi macOS, Windows, dan Linux, termasuk modul PAM dan Credential Provider untuk Windows, bersifat open source dengan lisensi Apache 2.0. Firmware dan perangkat kerasnya source-available dengan BSL 1.1 dan beralih ke Apache 2.0 pada 2030. Anda bisa membaca semuanya, memodifikasi, membangun sendiri, dan mem-flash ke unit Anda. Satu-satunya hak yang kami tahan sampai peralihan itu adalah menjual perangkat keras pesaing.</p>
         </details>
         <details class="faq-item">
+          <summary>Bisakah saya membangun dan mem-flash firmware sendiri?</summary>
+          <p>Bisa. Sumber firmware dan perangkat kerasnya terbuka, dan PCB menyediakan antarmuka pemrograman sehingga Anda bisa membangun firmware sendiri dan mem-flash-nya. Reset kunci sebelum membukanya, karena membuka kunci yang masih terpasang memicu sakelar anti-bongkar. Begitu sebuah unit menjalankan firmware buatan Anda, garansinya gugur dan tidak lagi menerima pembaruan firmware resmi.</p>
+        </details>
+        <details class="faq-item">
           <summary>Apa bedanya dengan YubiKey, pengelola kata sandi, atau Touch ID?</summary>
-          <p>Lapisannya berbeda dan justru saling melengkapi. YubiKey dan passkey membuktikan identitas Anda kepada sebuah situs web. immurok menghilangkan repotnya mengetik kata sandi di komputer yang ada di depan Anda: membuka kunci layar, sudo, permintaan administrator, penandatanganan SSH dan Git. Pengelola kata sandi menyimpan kata sandi Anda; immurok membuka kunci 1Password dan Bitwarden dengan satu sentuhan di macOS dan menyimpan seed TOTP di dalam perangkat, sehingga kunci dua faktor Anda tidak menumpuk di aplikasi desktop. Touch ID adalah sensor milik Apple sendiri, menyatu dengan Secure Enclave, tertutup bagi pihak ketiga, dan memang tidak ada di Mac mini atau keyboard eksternal. immurok adalah perangkat mandiri: sudo dan permintaan administrator lewat PAM, mekanisme sistem yang sebenarnya, sedangkan membuka kunci layar memakai jalur bantu yang didokumentasikan terpisah.</p>
+          <p>Lapisannya berbeda dan justru saling melengkapi. YubiKey dan passkey membuktikan identitas Anda kepada sebuah situs web. immurok menghilangkan repotnya mengetik kata sandi di komputer yang ada di depan Anda: membuka kunci layar, sudo, permintaan administrator, penandatanganan SSH dan Git. Pengelola kata sandi menyimpan kata sandi Anda; immurok membuka kunci 1Password dan Bitwarden dengan satu sentuhan di macOS, Windows, dan Linux, dan menyimpan seed TOTP di dalam perangkat, sehingga kunci dua faktor Anda tidak menumpuk di aplikasi desktop. Touch ID adalah sensor milik Apple sendiri, menyatu dengan Secure Enclave, tertutup bagi pihak ketiga, dan memang tidak ada di Mac mini atau keyboard eksternal. immurok adalah perangkat mandiri: sudo dan permintaan administrator lewat PAM, mekanisme sistem yang sebenarnya, sedangkan membuka kunci layar memakai jalur bantu yang didokumentasikan terpisah.</p>
         </details>
         <details class="faq-item">
           <summary>Apakah ada Touch ID mandiri untuk Mac?</summary>

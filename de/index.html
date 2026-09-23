@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok: Preis, Kauf und Kompatibilität | Kabelloser Fingerabdruck-Key für Mac, Windows und Linux</title>
-  <meta name="description" content="immurok Preis (US$59 auf Kickstarter, US$69 im Handel), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
+  <meta name="description" content="immurok Preis (US$69), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
   <link rel="canonical" href="https://immurok.com/de/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok: Preis, Kauf und Kompatibilität | Kabelloser Fingerabdruck-Key für Mac, Windows und Linux">
-  <meta property="og:description" content="immurok Preis (US$59 auf Kickstarter, US$69 im Handel), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
+  <meta property="og:description" content="immurok Preis (US$69), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/de/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok: Preis, Kauf und Kompatibilität | Kabelloser Fingerabdruck-Key für Mac, Windows und Linux">
-  <meta name="twitter:description" content="immurok Preis (US$59 auf Kickstarter, US$69 im Handel), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
+  <meta name="twitter:description" content="immurok Preis (US$69), wo man ihn kauft, Versandländer, unterstützte Systeme, Sicherheit, Abo und Zurücksetzen.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Was ist immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Ein kleiner kabelloser Fingerabdruck-Key für Desktop-Rechner. Er liegt auf dem Schreibtisch und wird per Bluetooth LE gekoppelt. Eine Berührung entsperrt den Bildschirm, bestätigt sudo- und Administratorabfragen, signiert SSH- und Git-Commits und gibt TOTP-Codes frei. Es gibt ihn, weil die meisten Desktop-Rechner keinen Fingerabdrucksensor haben: ein Mac mini, ein Mac Studio, ein iMac, ein zugeklappter MacBook am externen Monitor, jede externe Tastatur und praktisch jeder Windows- oder Linux-Desktop."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Was kostet immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "US$59 auf Kickstarter, US$69 im regulären Verkauf. Einmalzahlung. Kein Abo, keine Kontogebühr. Der Versand wird separat an der Kasse berechnet und ist in diesen Preisen nicht enthalten. Die Early-Bird-Kontingente auf Kickstarter sind bereits ausverkauft."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wo kann ich ihn kaufen und wann wird geliefert?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Auf Kickstarter, bis die Kampagne am 22. September 2026 endet. Die geschätzte Lieferung für Unterstützer ist November 2026. Die Hardware ist in der sechsten Revision, und eine Pilotserie von 50 Stück ist gebaut und geprüft. Die Kampagne finanziert also die Serienfertigung, keinen Prototyp. Nach der Kampagne verkaufen wir über diese Website."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "In welche Länder versendet ihr?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Die aktuelle Liste der Versandziele steht im Kickstarter-Checkout, und diese Liste ist maßgeblich. Wählen Sie dort Ihr Land aus, dann sehen Sie, ob wir liefern können und was der Versand kostet. Der Versand ist im Unterstützungsbetrag nicht enthalten. Einfuhrzölle, Mehrwertsteuer und Zollgebühren trägt die empfangende Person, wie bei crowdfinanzierter Hardware üblich."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "Mit welchen Rechnern und Betriebssystemen funktioniert er?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 oder neuer, Windows 10 und 11 sowie die meisten Linux-Distributionen. Die Mac-App ist ein einziges Universal-Build für Apple Silicon und Intel. Für Windows gibt es native x64- und Arm64-Installer, und die Integration läuft über einen Credential Provider, funktioniert also auf dem Sperrbildschirm. Linux ist ein Rust-Daemon mit PAM- und polkit-Integration, getestet auf Ubuntu, Fedora, Arch und Debian, und er baut auf den meisten anderen Distributionen. Weil der Key ein eigenständiges Bluetooth-Gerät ist und kein im Laptop verbauter Sensor, funktioniert er auf einem Mac mini, einem Mac Studio, einem iMac, einem zugeklappten MacBook, einer externen Tastatur oder einem Desktop-PC gleich gut. Ein Key kann gleichzeitig an zwei Rechner gebunden sein; mit einem eigens dafür angelernten Finger wechselt man zwischen ihnen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Funktioniert es mit Windows Hello?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Es ist kein Windows-Hello-Gerät, und das muss es auch nicht sein. Windows Hello ist Microsofts Rahmen für Sensoren, die in ein Notebook oder eine zertifizierte Tastatur oder Webcam eingebaut sind. immurok meldet dich auf einem anderen Weg an: über einen Credential Provider, der im Windows-Anmeldebildschirm läuft. Eine Berührung entsperrt den Sperrbildschirm also genau wie ein Hello-Sensor, an jedem Desktop-PC und jeder externen Tastatur, wo es keinen Hello-Sensor gibt. Und es geht über Hello hinaus. Dieselbe Berührung signiert SSH- und Git-Commits, entsperrt 1Password und Bitwarden und gibt TOTP-Codes frei, und derselbe Schlüssel funktioniert auch unter macOS und Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Unterstützt es Passkeys oder FIDO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. immurok ist kein FIDO-Gerät. Es registriert sich bei Websites weder als Passkey noch als Sicherheitsschlüssel, und es ersetzt keinen YubiKey. Es arbeitet eine Ebene tiefer, auf dem Rechner vor dir: Bildschirmentsperrung, sudo- und Admin-Abfragen, SSH- und Git-Signaturen, Entsperren des Passwortmanagers und TOTP-Codes. Behalte deine Passkeys oder deinen Sicherheitsschlüssel für die Anmeldung bei Websites; immurok übernimmt den Rest, und viele von uns benutzen beides."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Unterstützt es ChromeOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nein. ChromeOS gibt Software von Drittanbietern keine Möglichkeit, sich an der Bildschirmentsperrung oder der Systemauthentifizierung zu beteiligen, also gibt es für immurok nichts, wo es ansetzen könnte. Es funktioniert mit macOS 13 oder neuer, Windows 10 und 11 und den meisten Linux-Distributionen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich einen Schlüssel mit mehr als einem Computer benutzen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, mit bis zu zwei Computern, verbunden mit jeweils einem. Der Schlüssel hält zwei unabhängige Kopplungen, jede mit eigenen Schlüsseln, sodass beide Rechner gebunden bleiben, verbunden ist er aber immer nur mit einem. Du registrierst einen Finger als Wechselfinger. Berührst du ihn, wechselt der Schlüssel von einem Computer zum anderen, und der Zielcomputer verbindet sich von selbst neu. Entfernst du einen Computer, wird nur diese Kopplung gelöscht; der andere Computer und deine registrierten Fingerabdrücke bleiben unberührt."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Entsperrt es 1Password, Bitwarden, LastPass oder Proton Pass?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, alle vier, unter macOS, Windows und Linux. Zeigt der Manager seine Entsperrabfrage, trägt eine Berührung ein eigenes Passwort ein, das auf dem Schlüssel liegt, getrennt von deinem Anmeldepasswort gespeichert und getrennt einschaltbar, und schickt es ab. Nur Apps auf einer signierten Positivliste bekommen es je zu sehen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kann ich es per USB verbinden?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nur zum Laden. Der USB-C-Anschluss lädt den Akku und überträgt keine Daten. Kopplung, Fingerabdruck-Ergebnisse und alles andere laufen über Bluetooth LE. Dein Computer braucht also Bluetooth, und der Schlüssel belegt beim Arbeiten keinen Anschluss."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ist der Akku austauschbar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Der Schlüssel läuft mit einer wiederaufladbaren 110-mAh-Lithiumzelle, die per USB-C geladen wird und bei normaler Nutzung mehr als einen Monat pro Ladung hält. Es ist eine handelsübliche Standardgröße, kein Sonderteil, und du kannst sie selbst tauschen. Entkopple den Schlüssel vorher oder setze ihn auf Werkseinstellungen zurück: Öffnest du das Gehäuse eines gekoppelten Schlüssels, löst der Manipulationsschalter aus und löscht ihn. Zelle tauschen, Gehäuse schließen, neu koppeln."
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "Kann ich meine eigene Firmware bauen und aufspielen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. Die Quellen von Firmware und Hardware sind öffentlich, und die Platine hat eine Programmierschnittstelle, über die du deine eigene Firmware bauen und aufspielen kannst. Setze den Schlüssel zurück, bevor du ihn öffnest, denn das Öffnen eines gekoppelten Schlüssels löst den Manipulationsschalter aus. Sobald ein Gerät selbst gebaute Firmware ausführt, erlischt die Garantie, und es erhält keine offiziellen Firmware-Updates mehr."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Worin unterscheidet er sich von einem YubiKey, einem Passwortmanager oder Touch ID?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Andere Ebene, und sie ergänzen sich. Ein YubiKey und Passkeys weisen gegenüber einer Website nach, wer Sie sind. immurok nimmt die Passworthürde an dem Rechner weg, vor dem Sie sitzen: Bildschirm entsperren, sudo, Administratorabfragen, SSH- und Git-Signaturen. Ein Passwortmanager speichert Ihre Passwörter; immurok entsperrt 1Password und Bitwarden unter macOS mit einer Berührung und hält TOTP-Seeds auf dem Gerät, damit Ihre Zwei-Faktor-Geheimnisse nicht in einer Desktop-App liegen. Touch ID ist Apples eigener Sensor, fest mit der Secure Enclave verbunden, für Dritte verschlossen, und auf einem Mac mini oder einer externen Tastatur schlicht nicht vorhanden. immurok ist ein eigenständiges Gerät: sudo und Administratorabfragen laufen über PAM, einen echten Systemmechanismus, und das Entsperren des Bildschirms nutzt einen separat dokumentierten Hilfsweg."
+          "text": "Andere Ebene, und sie ergänzen sich. Ein YubiKey und Passkeys weisen gegenüber einer Website nach, wer Sie sind. immurok nimmt die Passworthürde an dem Rechner weg, vor dem Sie sitzen: Bildschirm entsperren, sudo, Administratorabfragen, SSH- und Git-Signaturen. Ein Passwortmanager speichert Ihre Passwörter; immurok entsperrt 1Password und Bitwarden unter macOS, Windows und Linux mit einer Berührung und hält TOTP-Seeds auf dem Gerät, damit Ihre Zwei-Faktor-Geheimnisse nicht in einer Desktop-App liegen. Touch ID ist Apples eigener Sensor, fest mit der Secure Enclave verbunden, für Dritte verschlossen, und auf einem Mac mini oder einer externen Tastatur schlicht nicht vorhanden. immurok ist ein eigenständiges Gerät: sudo und Administratorabfragen laufen über PAM, einen echten Systemmechanismus, und das Entsperren des Bildschirms nutzt einen separat dokumentierten Hilfsweg."
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_de" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Auf Kickstarter unterstützen</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">Jetzt kaufen · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Was ist immurok?</summary>
-          <p>Ein kleiner kabelloser Fingerabdruck-Key für Desktop-Rechner. Er liegt auf dem Schreibtisch und wird per Bluetooth LE gekoppelt. Eine Berührung entsperrt den Bildschirm, bestätigt sudo- und Administratorabfragen, signiert SSH- und Git-Commits und gibt TOTP-Codes frei. Es gibt ihn, weil die meisten Desktop-Rechner keinen Fingerabdrucksensor haben: ein Mac mini, ein Mac Studio, ein iMac, ein zugeklappter MacBook am externen Monitor, jede externe Tastatur und praktisch jeder Windows- oder Linux-Desktop.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Was kostet immurok?</summary>
-          <p>US$59 auf Kickstarter, US$69 im regulären Verkauf. Einmalzahlung. Kein Abo, keine Kontogebühr. Der Versand wird separat an der Kasse berechnet und ist in diesen Preisen nicht enthalten. Die Early-Bird-Kontingente auf Kickstarter sind bereits ausverkauft.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Wo kann ich ihn kaufen und wann wird geliefert?</summary>
-          <p>Auf Kickstarter, bis die Kampagne am 22. September 2026 endet. Die geschätzte Lieferung für Unterstützer ist November 2026. Die Hardware ist in der sechsten Revision, und eine Pilotserie von 50 Stück ist gebaut und geprüft. Die Kampagne finanziert also die Serienfertigung, keinen Prototyp. Nach der Kampagne verkaufen wir über diese Website.</p>
-        </details>
-        <details class="faq-item">
-          <summary>In welche Länder versendet ihr?</summary>
-          <p>Die aktuelle Liste der Versandziele steht im Kickstarter-Checkout, und diese Liste ist maßgeblich. Wählen Sie dort Ihr Land aus, dann sehen Sie, ob wir liefern können und was der Versand kostet. Der Versand ist im Unterstützungsbetrag nicht enthalten. Einfuhrzölle, Mehrwertsteuer und Zollgebühren trägt die empfangende Person, wie bei crowdfinanzierter Hardware üblich.</p>
-        </details>
-        <details class="faq-item">
           <summary>Mit welchen Rechnern und Betriebssystemen funktioniert er?</summary>
           <p>macOS 13.0 oder neuer, Windows 10 und 11 sowie die meisten Linux-Distributionen. Die Mac-App ist ein einziges Universal-Build für Apple Silicon und Intel. Für Windows gibt es native x64- und Arm64-Installer, und die Integration läuft über einen Credential Provider, funktioniert also auf dem Sperrbildschirm. Linux ist ein Rust-Daemon mit PAM- und polkit-Integration, getestet auf Ubuntu, Fedora, Arch und Debian, und er baut auf den meisten anderen Distributionen. Weil der Key ein eigenständiges Bluetooth-Gerät ist und kein im Laptop verbauter Sensor, funktioniert er auf einem Mac mini, einem Mac Studio, einem iMac, einem zugeklappten MacBook, einer externen Tastatur oder einem Desktop-PC gleich gut. Ein Key kann gleichzeitig an zwei Rechner gebunden sein; mit einem eigens dafür angelernten Finger wechselt man zwischen ihnen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Funktioniert es mit Windows Hello?</summary>
+          <p>Es ist kein Windows-Hello-Gerät, und das muss es auch nicht sein. Windows Hello ist Microsofts Rahmen für Sensoren, die in ein Notebook oder eine zertifizierte Tastatur oder Webcam eingebaut sind. immurok meldet dich auf einem anderen Weg an: über einen Credential Provider, der im Windows-Anmeldebildschirm läuft. Eine Berührung entsperrt den Sperrbildschirm also genau wie ein Hello-Sensor, an jedem Desktop-PC und jeder externen Tastatur, wo es keinen Hello-Sensor gibt. Und es geht über Hello hinaus. Dieselbe Berührung signiert SSH- und Git-Commits, entsperrt 1Password und Bitwarden und gibt TOTP-Codes frei, und derselbe Schlüssel funktioniert auch unter macOS und Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Unterstützt es Passkeys oder FIDO?</summary>
+          <p>Nein. immurok ist kein FIDO-Gerät. Es registriert sich bei Websites weder als Passkey noch als Sicherheitsschlüssel, und es ersetzt keinen YubiKey. Es arbeitet eine Ebene tiefer, auf dem Rechner vor dir: Bildschirmentsperrung, sudo- und Admin-Abfragen, SSH- und Git-Signaturen, Entsperren des Passwortmanagers und TOTP-Codes. Behalte deine Passkeys oder deinen Sicherheitsschlüssel für die Anmeldung bei Websites; immurok übernimmt den Rest, und viele von uns benutzen beides.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Unterstützt es ChromeOS?</summary>
+          <p>Nein. ChromeOS gibt Software von Drittanbietern keine Möglichkeit, sich an der Bildschirmentsperrung oder der Systemauthentifizierung zu beteiligen, also gibt es für immurok nichts, wo es ansetzen könnte. Es funktioniert mit macOS 13 oder neuer, Windows 10 und 11 und den meisten Linux-Distributionen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kann ich einen Schlüssel mit mehr als einem Computer benutzen?</summary>
+          <p>Ja, mit bis zu zwei Computern, verbunden mit jeweils einem. Der Schlüssel hält zwei unabhängige Kopplungen, jede mit eigenen Schlüsseln, sodass beide Rechner gebunden bleiben, verbunden ist er aber immer nur mit einem. Du registrierst einen Finger als Wechselfinger. Berührst du ihn, wechselt der Schlüssel von einem Computer zum anderen, und der Zielcomputer verbindet sich von selbst neu. Entfernst du einen Computer, wird nur diese Kopplung gelöscht; der andere Computer und deine registrierten Fingerabdrücke bleiben unberührt.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Entsperrt es 1Password, Bitwarden, LastPass oder Proton Pass?</summary>
+          <p>Ja, alle vier, unter macOS, Windows und Linux. Zeigt der Manager seine Entsperrabfrage, trägt eine Berührung ein eigenes Passwort ein, das auf dem Schlüssel liegt, getrennt von deinem Anmeldepasswort gespeichert und getrennt einschaltbar, und schickt es ab. Nur Apps auf einer signierten Positivliste bekommen es je zu sehen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kann ich es per USB verbinden?</summary>
+          <p>Nur zum Laden. Der USB-C-Anschluss lädt den Akku und überträgt keine Daten. Kopplung, Fingerabdruck-Ergebnisse und alles andere laufen über Bluetooth LE. Dein Computer braucht also Bluetooth, und der Schlüssel belegt beim Arbeiten keinen Anschluss.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ist der Akku austauschbar?</summary>
+          <p>Ja. Der Schlüssel läuft mit einer wiederaufladbaren 110-mAh-Lithiumzelle, die per USB-C geladen wird und bei normaler Nutzung mehr als einen Monat pro Ladung hält. Es ist eine handelsübliche Standardgröße, kein Sonderteil, und du kannst sie selbst tauschen. Entkopple den Schlüssel vorher oder setze ihn auf Werkseinstellungen zurück: Öffnest du das Gehäuse eines gekoppelten Schlüssels, löst der Manipulationsschalter aus und löscht ihn. Zelle tauschen, Gehäuse schließen, neu koppeln.</p>
         </details>
         <details class="faq-item">
           <summary>Wie sicher ist er? Wo liegen meine Fingerabdrücke?</summary>
@@ -206,8 +250,12 @@
           <p>Der gesamte Quellcode ist auf GitHub öffentlich, unter zwei verschiedenen Lizenzen. Die Apps für macOS, Windows und Linux, einschließlich der PAM-Module und des Windows Credential Provider, sind Open Source unter Apache 2.0. Firmware und Hardware sind source-available unter BSL 1.1 und wechseln 2030 zu Apache 2.0. Sie können alles lesen, ändern, selbst bauen und auf Ihr eigenes Gerät flashen. Bis zur Umstellung behalten wir uns nur ein Recht vor: konkurrierende Hardware zu verkaufen.</p>
         </details>
         <details class="faq-item">
+          <summary>Kann ich meine eigene Firmware bauen und aufspielen?</summary>
+          <p>Ja. Die Quellen von Firmware und Hardware sind öffentlich, und die Platine hat eine Programmierschnittstelle, über die du deine eigene Firmware bauen und aufspielen kannst. Setze den Schlüssel zurück, bevor du ihn öffnest, denn das Öffnen eines gekoppelten Schlüssels löst den Manipulationsschalter aus. Sobald ein Gerät selbst gebaute Firmware ausführt, erlischt die Garantie, und es erhält keine offiziellen Firmware-Updates mehr.</p>
+        </details>
+        <details class="faq-item">
           <summary>Worin unterscheidet er sich von einem YubiKey, einem Passwortmanager oder Touch ID?</summary>
-          <p>Andere Ebene, und sie ergänzen sich. Ein YubiKey und Passkeys weisen gegenüber einer Website nach, wer Sie sind. immurok nimmt die Passworthürde an dem Rechner weg, vor dem Sie sitzen: Bildschirm entsperren, sudo, Administratorabfragen, SSH- und Git-Signaturen. Ein Passwortmanager speichert Ihre Passwörter; immurok entsperrt 1Password und Bitwarden unter macOS mit einer Berührung und hält TOTP-Seeds auf dem Gerät, damit Ihre Zwei-Faktor-Geheimnisse nicht in einer Desktop-App liegen. Touch ID ist Apples eigener Sensor, fest mit der Secure Enclave verbunden, für Dritte verschlossen, und auf einem Mac mini oder einer externen Tastatur schlicht nicht vorhanden. immurok ist ein eigenständiges Gerät: sudo und Administratorabfragen laufen über PAM, einen echten Systemmechanismus, und das Entsperren des Bildschirms nutzt einen separat dokumentierten Hilfsweg.</p>
+          <p>Andere Ebene, und sie ergänzen sich. Ein YubiKey und Passkeys weisen gegenüber einer Website nach, wer Sie sind. immurok nimmt die Passworthürde an dem Rechner weg, vor dem Sie sitzen: Bildschirm entsperren, sudo, Administratorabfragen, SSH- und Git-Signaturen. Ein Passwortmanager speichert Ihre Passwörter; immurok entsperrt 1Password und Bitwarden unter macOS, Windows und Linux mit einer Berührung und hält TOTP-Seeds auf dem Gerät, damit Ihre Zwei-Faktor-Geheimnisse nicht in einer Desktop-App liegen. Touch ID ist Apples eigener Sensor, fest mit der Secure Enclave verbunden, für Dritte verschlossen, und auf einem Mac mini oder einer externen Tastatur schlicht nicht vorhanden. immurok ist ein eigenständiges Gerät: sudo und Administratorabfragen laufen über PAM, einen echten Systemmechanismus, und das Entsperren des Bildschirms nutzt einen separat dokumentierten Hilfsweg.</p>
         </details>
         <details class="faq-item">
           <summary>Gibt es ein eigenständiges Touch ID für den Mac?</summary>

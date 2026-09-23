@@ -556,31 +556,6 @@ class AuthDemoAnimator {
   }
 }
 
-// ── Kickstarter CTA ──
-
-// The waitlist forms became direct links to the live Kickstarter campaign.
-// Event names and parameters stay identical to the old waitlist funnel
-// (join_click, then the fbq "Lead" / gtag "waitlist_signup" conversions) so
-// ad-platform optimization and GA4 reports stay comparable across the launch;
-// only the `method` value marks the new destination. gtag/fbq are head-script
-// stubs that queue until consent, so these calls are consent-safe no-ops on
-// reject. The link opens in a new tab, so firing synchronously is safe — the
-// page stays alive.
-function setupKickstarterCta() {
-  document.querySelectorAll('a[data-ks-location]').forEach((link) => {
-    link.addEventListener('click', () => {
-      const formLocation = link.dataset.ksLocation;
-      if (typeof window.gtag === 'function') {
-        window.gtag('event', 'join_click', { form_location: formLocation });
-        window.gtag('event', 'waitlist_signup', { method: 'kickstarter', form_location: formLocation });
-      }
-      if (typeof window.fbq === 'function') {
-        window.fbq('track', 'Lead', { content_name: 'Waitlist Signup', content_category: formLocation });
-      }
-    });
-  });
-}
-
 // ── Intersection Observer ──
 
 function setupFadeIn() {
@@ -759,7 +734,6 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   setupMobileNav();
-  setupKickstarterCta();
   setupDiscordTracking();
   setupDownloadTracking();
   setupFadeIn();
@@ -768,6 +742,8 @@ document.addEventListener('DOMContentLoaded', () => {
   setupSpecs3DVisibility();
   setupAuthDemo(prefersReducedMotion);
   setupAdMarquee(prefersReducedMotion);
+  setupGalleryVideo();
+  setupPreorderMenu();
   setupObfuscatedEmail();
 });
 
@@ -807,11 +783,15 @@ function setupAdMarquee() {
   let startX = 0;
   let startScroll = 0;
   let dragged = false;
+  // Pointer capture below retargets the click to the strip itself, so the
+  // video slide's own click listener never fires; remember it here instead.
+  let downOnVideo = null;
 
   strip.addEventListener('pointerdown', (e) => {
     if (e.pointerType === 'mouse' && e.button !== 0) return;
     down = true;
     dragged = false;
+    downOnVideo = e.target.closest('.gallery-video-item');
     startX = e.clientX;
     startScroll = strip.scrollLeft;
     strip.setPointerCapture(e.pointerId);
@@ -837,9 +817,77 @@ function setupAdMarquee() {
   // Click left/right half → previous/next image (ignored if it was a drag).
   strip.addEventListener('click', (e) => {
     if (dragged) { e.preventDefault(); e.stopPropagation(); return; }
+    if (downOnVideo) {
+      downOnVideo.dispatchEvent(new CustomEvent('gallery-video-open'));
+      downOnVideo = null;
+      return;
+    }
     const rect = strip.getBoundingClientRect();
     const dir = e.clientX < rect.left + rect.width / 2 ? -1 : 1;
     strip.scrollBy({ left: dir * step(), behavior: 'smooth' });
+  });
+}
+
+// Gallery video: the first gallery slide is a YouTube thumbnail that opens
+// a lightbox with the video embedded, instead of stepping the filmstrip.
+function setupGalleryVideo() {
+  const trigger = document.querySelector('.gallery-video-item');
+  const modal = document.getElementById('video-modal');
+  if (!trigger || !modal) return;
+  const iframe = document.getElementById('video-modal-iframe');
+  const videoId = trigger.dataset.youtubeId;
+
+  const open = (e) => {
+    // Keyboard activation (Enter/Space) arrives here directly as a click;
+    // stop it so the strip doesn't also step to the next slide.
+    e.stopPropagation();
+    if (modal.classList.contains('is-open')) return;
+    iframe.src = `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`;
+    modal.hidden = false;
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+  };
+
+  const close = () => {
+    modal.classList.remove('is-open');
+    iframe.src = '';
+    setTimeout(() => { if (!modal.classList.contains('is-open')) modal.hidden = true; }, 250);
+  };
+
+  trigger.addEventListener('click', open);
+  trigger.addEventListener('gallery-video-open', open);
+  modal.querySelectorAll('[data-video-close]').forEach((el) => el.addEventListener('click', close));
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
+  });
+}
+
+// Get Yours CTA: the chevron beside the Kickstarter link toggles a small menu
+// holding the Shopify (test only) checkout. The menu item carries
+// data-open-order, so shop.js opens the order drawer as before.
+function setupPreorderMenu() {
+  const toggle = document.querySelector('.preorder-toggle');
+  const menu = document.getElementById('preorder-menu');
+  if (!toggle || !menu) return;
+
+  const setOpen = (open) => {
+    menu.hidden = !open;
+    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(menu.hidden);
+    if (!menu.hidden) menu.querySelector('.preorder-menu-item')?.focus();
+  });
+  // Picking an item hands off to the order drawer; close the menu behind it.
+  menu.addEventListener('click', (e) => {
+    if (e.target.closest('.preorder-menu-item')) setOpen(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (!menu.hidden && !menu.contains(e.target)) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); }
   });
 }
 

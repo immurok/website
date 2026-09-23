@@ -96,10 +96,10 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.06));
 // Two color variants of the anodized aluminum housing
 const aluminumMats = {
   silver: new THREE.MeshPhysicalMaterial({
-    color: 0xe2e3e6,            // bright satin aluminum (close to anodized natural)
+    color: 0xc2c5c9,            // satin silver, matched to the product photos (was near-white 0xe2e3e6)
     metalness: 1.0,
-    roughness: 0.34,
-    envMapIntensity: 1.25,
+    roughness: 0.32,
+    envMapIntensity: 1.2,
     clearcoat: 0.05,
     clearcoatRoughness: 0.5,
   }),

@@ -7,6 +7,7 @@
 
 <title>{{ if .IsHome }}{{ .Site.Title }}{{ else }}{{ .Title }} — {{ .Site.Title }}{{ end }}</title>
 <meta name="description" content="{{ with .Description }}{{ . }}{{ else }}{{ .Site.Params.description }}{{ end }}">
+<link rel="canonical" href="{{ .Permalink }}">
 
 <!-- Open Graph + Twitter Card (X requires twitter:card to render a preview).
      og:image: front-matter `cover` -> first raster image in the page bundle

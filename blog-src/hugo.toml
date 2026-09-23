@@ -18,3 +18,7 @@ theme = "immurok"
 
 [outputs]
   home = ["HTML", "RSS"]
+  # No per-section / per-tag RSS: they only add crawlable index.xml URLs.
+  section = ["HTML"]
+  taxonomy = ["HTML"]
+  term = ["HTML"]

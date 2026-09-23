@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok: prijs, waar te koop en compatibiliteit | Draadloze vingerafdruksleutel voor Mac, Windows en Linux</title>
-  <meta name="description" content="Prijs van immurok (US$59 op Kickstarter, US$69 in de winkel), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
+  <meta name="description" content="Prijs van immurok (US$69), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
   <link rel="canonical" href="https://immurok.com/nl/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok: prijs, waar te koop en compatibiliteit | Draadloze vingerafdruksleutel voor Mac, Windows en Linux">
-  <meta property="og:description" content="Prijs van immurok (US$59 op Kickstarter, US$69 in de winkel), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
+  <meta property="og:description" content="Prijs van immurok (US$69), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/nl/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok: prijs, waar te koop en compatibiliteit | Draadloze vingerafdruksleutel voor Mac, Windows en Linux">
-  <meta name="twitter:description" content="Prijs van immurok (US$59 op Kickstarter, US$69 in de winkel), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
+  <meta name="twitter:description" content="Prijs van immurok (US$69), waar te koop, verzendlanden, ondersteunde systemen, beveiliging, abonnement en resetten.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "Wat is immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Een kleine draadloze vingerafdruksleutel voor desktopcomputers. Hij ligt op je bureau en koppelt via Bluetooth LE. Eén aanraking ontgrendelt je scherm, keurt sudo- en beheerdersvragen goed, ondertekent SSH- en Git-commits en geeft TOTP-codes vrij. Hij bestaat omdat de meeste desktops geen vingerafdruksensor hebben: een Mac mini, een Mac Studio, een iMac, een dichtgeklapte MacBook op een externe monitor, elk extern toetsenbord en vrijwel elke Windows- of Linux-desktop."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Wat kost immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "US$59 op Kickstarter, US$69 in de reguliere verkoop. Je betaalt één keer. Geen abonnement en geen accountkosten. Verzending wordt apart berekend bij het afrekenen en zit niet in die prijzen. De early-bird-tranches op Kickstarter zijn uitverkocht."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Waar kan ik hem kopen en wanneer wordt hij verstuurd?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Op Kickstarter, tot de campagne op 22 september 2026 afloopt. De verwachte levering voor backers is november 2026. De hardware zit in de zesde revisie en een pilotserie van 50 stuks is gebouwd en getest, dus de campagne financiert serieproductie en geen prototype. Na de campagne verkopen we via deze site."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Naar welke landen verzenden jullie?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "De actuele lijst met bestemmingen staat in de Kickstarter-checkout, en die lijst is leidend. Kies daar je land en je ziet of we kunnen verzenden en wat verzending kost. Verzending zit niet in het steunbedrag. Invoerrechten, btw en douanekosten zijn voor de ontvanger, zoals gebruikelijk bij crowdfunded hardware."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "Met welke computers en besturingssystemen werkt hij?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 of nieuwer, Windows 10 en 11, en de meeste Linux-distributies. De Mac-app is één universele build voor Apple Silicon en Intel. Windows heeft native x64- en Arm64-installers en integreert via een Credential Provider, dus hij werkt op het vergrendelscherm. Linux is een daemon in Rust met PAM- en polkit-integratie, getest op Ubuntu, Fedora, Arch en Debian, en hij bouwt op de meeste andere distributies. Omdat de sleutel een los Bluetooth-apparaat is en geen sensor in een laptop, werkt hij hetzelfde op een Mac mini, een Mac Studio, een iMac, een dichtgeklapte MacBook, een extern toetsenbord of een desktop-pc. Eén sleutel kan aan twee computers tegelijk gekoppeld zijn en met een aparte vinger schakel je ertussen."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Werkt het met Windows Hello?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Het is geen Windows Hello-apparaat, en dat hoeft ook niet. Windows Hello is het raamwerk van Microsoft voor sensoren die in een laptop of in een gecertificeerd toetsenbord of webcam zijn ingebouwd. immurok meldt je op een andere manier aan: via een Credential Provider die in het aanmeldscherm van Windows draait. Eén aanraking ontgrendelt het vergrendelscherm dus precies zoals een Hello-sensor, op elke desktop-pc of elk extern toetsenbord waar geen Hello-sensor zit. En het gaat verder dan Hello. Dezelfde aanraking ondertekent SSH- en Git-commits, ontgrendelt 1Password en Bitwarden en geeft TOTP-codes vrij, en dezelfde sleutel werkt ook op macOS en Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ondersteunt het passkeys of FIDO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. immurok is geen FIDO-apparaat. Het registreert zich bij websites niet als passkey of beveiligingssleutel, en het vervangt geen YubiKey. Het werkt een laag lager, op de machine voor je neus: schermontgrendeling, sudo- en beheerdersprompts, SSH- en Git-ondertekening, ontgrendelen van je wachtwoordmanager en TOTP-codes. Houd je passkeys of beveiligingssleutel voor het inloggen op websites; immurok doet de rest, en velen van ons gebruiken beide."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ondersteunt het ChromeOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Nee. ChromeOS geeft software van derden geen enkele manier om mee te doen aan schermontgrendeling of systeemauthenticatie, dus er is niets waar immurok op kan aanhaken. Het werkt met macOS 13 of nieuwer, Windows 10 en 11 en de meeste Linux-distributies."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik één sleutel met meer dan één computer gebruiken?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, met maximaal twee computers, verbonden met één tegelijk. De sleutel bewaart twee onafhankelijke koppelingen, elk met eigen sleutels, zodat beide machines gebonden blijven, maar hij praat altijd met maar één van de twee. Je registreert één vinger als wisselvinger. Raak je die aan, dan gaat de sleutel van de ene computer naar de andere, en de doelcomputer maakt vanzelf opnieuw verbinding. Een computer verwijderen wist alleen die koppeling; de andere computer en je geregistreerde vingerafdrukken blijven onaangeroerd."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Ontgrendelt het 1Password, Bitwarden, LastPass of Proton Pass?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja, alle vier, op macOS, Windows en Linux. Als de manager zijn ontgrendelscherm toont, vult één aanraking een apart wachtwoord in dat op de sleutel staat, los van je aanmeldwachtwoord opgeslagen en apart in te schakelen, en verstuurt het. Alleen apps op een ondertekende toegestane lijst krijgen het ooit te zien."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Kan ik hem via USB aansluiten?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Alleen om op te laden. De USB-C-poort laadt de accu en draagt geen data over. Koppelen, vingerafdrukresultaten en al het andere gaan via Bluetooth LE, dus je computer heeft Bluetooth nodig en de sleutel neemt tijdens het werken geen poort in."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is de accu vervangbaar?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. De sleutel werkt op een oplaadbare lithiumcel van 110 mAh die via USB-C laadt en bij normaal gebruik meer dan een maand per lading meegaat. Het is een standaardmaat uit de winkel, geen maatwerkonderdeel, en je kunt hem zelf vervangen. Ontkoppel de sleutel eerst of zet hem terug naar fabrieksinstellingen: de behuizing van een gekoppelde sleutel openen activeert de sabotageschakelaar en wist hem. Vervang de cel, sluit de behuizing en koppel opnieuw."
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "Kan ik mijn eigen firmware bouwen en flashen?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Ja. De broncode van firmware en hardware is openbaar, en de printplaat heeft een programmeerinterface zodat je je eigen firmware kunt bouwen en flashen. Reset de sleutel voordat je hem opent, want een gekoppelde sleutel openen activeert de sabotageschakelaar. Zodra een exemplaar op zelfgebouwde firmware draait, vervalt de garantie en ontvangt het geen officiële firmware-updates meer."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Wat is het verschil met een YubiKey, een wachtwoordmanager of Touch ID?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "Andere laag, en ze vullen elkaar aan. Een YubiKey en passkeys bewijzen aan een website wie je bent. immurok haalt de wachtwoordwrijving weg op de machine die voor je staat: scherm ontgrendelen, sudo, beheerdersvragen, SSH- en Git-ondertekening. Een wachtwoordmanager bewaart je wachtwoorden; immurok ontgrendelt 1Password en Bitwarden met een aanraking op macOS en houdt TOTP-seeds op het apparaat, zodat je tweefactorgeheimen niet in een desktop-app staan. Touch ID is Apple's eigen sensor, vastgeklonken aan de Secure Enclave, gesloten voor derden, en bestaat gewoonweg niet op een Mac mini of een extern toetsenbord. immurok is een zelfstandig apparaat: sudo en beheerdersvragen lopen via PAM, een echt systeemmechanisme, en schermontgrendeling gebruikt een apart gedocumenteerde route."
+          "text": "Andere laag, en ze vullen elkaar aan. Een YubiKey en passkeys bewijzen aan een website wie je bent. immurok haalt de wachtwoordwrijving weg op de machine die voor je staat: scherm ontgrendelen, sudo, beheerdersvragen, SSH- en Git-ondertekening. Een wachtwoordmanager bewaart je wachtwoorden; immurok ontgrendelt 1Password en Bitwarden met een aanraking op macOS, Windows en Linux en houdt TOTP-seeds op het apparaat, zodat je tweefactorgeheimen niet in een desktop-app staan. Touch ID is Apple's eigen sensor, vastgeklonken aan de Secure Enclave, gesloten voor derden, en bestaat gewoonweg niet op een Mac mini of een extern toetsenbord. immurok is een zelfstandig apparaat: sudo en beheerdersvragen lopen via PAM, een echt systeemmechanisme, en schermontgrendeling gebruikt een apart gedocumenteerde route."
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_nl" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Steun op Kickstarter</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">Nu kopen · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>Wat is immurok?</summary>
-          <p>Een kleine draadloze vingerafdruksleutel voor desktopcomputers. Hij ligt op je bureau en koppelt via Bluetooth LE. Eén aanraking ontgrendelt je scherm, keurt sudo- en beheerdersvragen goed, ondertekent SSH- en Git-commits en geeft TOTP-codes vrij. Hij bestaat omdat de meeste desktops geen vingerafdruksensor hebben: een Mac mini, een Mac Studio, een iMac, een dichtgeklapte MacBook op een externe monitor, elk extern toetsenbord en vrijwel elke Windows- of Linux-desktop.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Wat kost immurok?</summary>
-          <p>US$59 op Kickstarter, US$69 in de reguliere verkoop. Je betaalt één keer. Geen abonnement en geen accountkosten. Verzending wordt apart berekend bij het afrekenen en zit niet in die prijzen. De early-bird-tranches op Kickstarter zijn uitverkocht.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Waar kan ik hem kopen en wanneer wordt hij verstuurd?</summary>
-          <p>Op Kickstarter, tot de campagne op 22 september 2026 afloopt. De verwachte levering voor backers is november 2026. De hardware zit in de zesde revisie en een pilotserie van 50 stuks is gebouwd en getest, dus de campagne financiert serieproductie en geen prototype. Na de campagne verkopen we via deze site.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Naar welke landen verzenden jullie?</summary>
-          <p>De actuele lijst met bestemmingen staat in de Kickstarter-checkout, en die lijst is leidend. Kies daar je land en je ziet of we kunnen verzenden en wat verzending kost. Verzending zit niet in het steunbedrag. Invoerrechten, btw en douanekosten zijn voor de ontvanger, zoals gebruikelijk bij crowdfunded hardware.</p>
-        </details>
-        <details class="faq-item">
           <summary>Met welke computers en besturingssystemen werkt hij?</summary>
           <p>macOS 13.0 of nieuwer, Windows 10 en 11, en de meeste Linux-distributies. De Mac-app is één universele build voor Apple Silicon en Intel. Windows heeft native x64- en Arm64-installers en integreert via een Credential Provider, dus hij werkt op het vergrendelscherm. Linux is een daemon in Rust met PAM- en polkit-integratie, getest op Ubuntu, Fedora, Arch en Debian, en hij bouwt op de meeste andere distributies. Omdat de sleutel een los Bluetooth-apparaat is en geen sensor in een laptop, werkt hij hetzelfde op een Mac mini, een Mac Studio, een iMac, een dichtgeklapte MacBook, een extern toetsenbord of een desktop-pc. Eén sleutel kan aan twee computers tegelijk gekoppeld zijn en met een aparte vinger schakel je ertussen.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Werkt het met Windows Hello?</summary>
+          <p>Het is geen Windows Hello-apparaat, en dat hoeft ook niet. Windows Hello is het raamwerk van Microsoft voor sensoren die in een laptop of in een gecertificeerd toetsenbord of webcam zijn ingebouwd. immurok meldt je op een andere manier aan: via een Credential Provider die in het aanmeldscherm van Windows draait. Eén aanraking ontgrendelt het vergrendelscherm dus precies zoals een Hello-sensor, op elke desktop-pc of elk extern toetsenbord waar geen Hello-sensor zit. En het gaat verder dan Hello. Dezelfde aanraking ondertekent SSH- en Git-commits, ontgrendelt 1Password en Bitwarden en geeft TOTP-codes vrij, en dezelfde sleutel werkt ook op macOS en Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ondersteunt het passkeys of FIDO?</summary>
+          <p>Nee. immurok is geen FIDO-apparaat. Het registreert zich bij websites niet als passkey of beveiligingssleutel, en het vervangt geen YubiKey. Het werkt een laag lager, op de machine voor je neus: schermontgrendeling, sudo- en beheerdersprompts, SSH- en Git-ondertekening, ontgrendelen van je wachtwoordmanager en TOTP-codes. Houd je passkeys of beveiligingssleutel voor het inloggen op websites; immurok doet de rest, en velen van ons gebruiken beide.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ondersteunt het ChromeOS?</summary>
+          <p>Nee. ChromeOS geeft software van derden geen enkele manier om mee te doen aan schermontgrendeling of systeemauthenticatie, dus er is niets waar immurok op kan aanhaken. Het werkt met macOS 13 of nieuwer, Windows 10 en 11 en de meeste Linux-distributies.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kan ik één sleutel met meer dan één computer gebruiken?</summary>
+          <p>Ja, met maximaal twee computers, verbonden met één tegelijk. De sleutel bewaart twee onafhankelijke koppelingen, elk met eigen sleutels, zodat beide machines gebonden blijven, maar hij praat altijd met maar één van de twee. Je registreert één vinger als wisselvinger. Raak je die aan, dan gaat de sleutel van de ene computer naar de andere, en de doelcomputer maakt vanzelf opnieuw verbinding. Een computer verwijderen wist alleen die koppeling; de andere computer en je geregistreerde vingerafdrukken blijven onaangeroerd.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Ontgrendelt het 1Password, Bitwarden, LastPass of Proton Pass?</summary>
+          <p>Ja, alle vier, op macOS, Windows en Linux. Als de manager zijn ontgrendelscherm toont, vult één aanraking een apart wachtwoord in dat op de sleutel staat, los van je aanmeldwachtwoord opgeslagen en apart in te schakelen, en verstuurt het. Alleen apps op een ondertekende toegestane lijst krijgen het ooit te zien.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Kan ik hem via USB aansluiten?</summary>
+          <p>Alleen om op te laden. De USB-C-poort laadt de accu en draagt geen data over. Koppelen, vingerafdrukresultaten en al het andere gaan via Bluetooth LE, dus je computer heeft Bluetooth nodig en de sleutel neemt tijdens het werken geen poort in.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is de accu vervangbaar?</summary>
+          <p>Ja. De sleutel werkt op een oplaadbare lithiumcel van 110 mAh die via USB-C laadt en bij normaal gebruik meer dan een maand per lading meegaat. Het is een standaardmaat uit de winkel, geen maatwerkonderdeel, en je kunt hem zelf vervangen. Ontkoppel de sleutel eerst of zet hem terug naar fabrieksinstellingen: de behuizing van een gekoppelde sleutel openen activeert de sabotageschakelaar en wist hem. Vervang de cel, sluit de behuizing en koppel opnieuw.</p>
         </details>
         <details class="faq-item">
           <summary>Hoe veilig is het? Waar staan mijn vingerafdrukken?</summary>
@@ -206,8 +250,12 @@
           <p>Alle broncode staat publiek op GitHub, onder twee verschillende licenties. De apps voor macOS, Windows en Linux, inclusief de PAM-modules en de Windows Credential Provider, zijn open source onder Apache 2.0. Firmware en hardware zijn source-available onder BSL 1.1 en gaan in 2030 over naar Apache 2.0. Je kunt alles lezen, aanpassen, zelf bouwen en op je eigen apparaat flashen. Het enige recht dat we tot die overgang voorbehouden is het verkopen van concurrerende hardware.</p>
         </details>
         <details class="faq-item">
+          <summary>Kan ik mijn eigen firmware bouwen en flashen?</summary>
+          <p>Ja. De broncode van firmware en hardware is openbaar, en de printplaat heeft een programmeerinterface zodat je je eigen firmware kunt bouwen en flashen. Reset de sleutel voordat je hem opent, want een gekoppelde sleutel openen activeert de sabotageschakelaar. Zodra een exemplaar op zelfgebouwde firmware draait, vervalt de garantie en ontvangt het geen officiële firmware-updates meer.</p>
+        </details>
+        <details class="faq-item">
           <summary>Wat is het verschil met een YubiKey, een wachtwoordmanager of Touch ID?</summary>
-          <p>Andere laag, en ze vullen elkaar aan. Een YubiKey en passkeys bewijzen aan een website wie je bent. immurok haalt de wachtwoordwrijving weg op de machine die voor je staat: scherm ontgrendelen, sudo, beheerdersvragen, SSH- en Git-ondertekening. Een wachtwoordmanager bewaart je wachtwoorden; immurok ontgrendelt 1Password en Bitwarden met een aanraking op macOS en houdt TOTP-seeds op het apparaat, zodat je tweefactorgeheimen niet in een desktop-app staan. Touch ID is Apple&#x27;s eigen sensor, vastgeklonken aan de Secure Enclave, gesloten voor derden, en bestaat gewoonweg niet op een Mac mini of een extern toetsenbord. immurok is een zelfstandig apparaat: sudo en beheerdersvragen lopen via PAM, een echt systeemmechanisme, en schermontgrendeling gebruikt een apart gedocumenteerde route.</p>
+          <p>Andere laag, en ze vullen elkaar aan. Een YubiKey en passkeys bewijzen aan een website wie je bent. immurok haalt de wachtwoordwrijving weg op de machine die voor je staat: scherm ontgrendelen, sudo, beheerdersvragen, SSH- en Git-ondertekening. Een wachtwoordmanager bewaart je wachtwoorden; immurok ontgrendelt 1Password en Bitwarden met een aanraking op macOS, Windows en Linux en houdt TOTP-seeds op het apparaat, zodat je tweefactorgeheimen niet in een desktop-app staan. Touch ID is Apple&#x27;s eigen sensor, vastgeklonken aan de Secure Enclave, gesloten voor derden, en bestaat gewoonweg niet op een Mac mini of een extern toetsenbord. immurok is een zelfstandig apparaat: sudo en beheerdersvragen lopen via PAM, een echt systeemmechanisme, en schermontgrendeling gebruikt een apart gedocumenteerde route.</p>
         </details>
         <details class="faq-item">
           <summary>Bestaat er een losse Touch ID voor de Mac?</summary>

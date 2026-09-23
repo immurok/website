@@ -34,7 +34,9 @@ def norm(fragment):
 
 
 def visible(html):
-    start = html.index('<section class="section section-alt" id="faq">')
+    # The section's class list changes as sections above it come and go
+    # (grey/white alternation), so anchor on the id alone.
+    start = re.search(r'<section class="[^"]*" id="faq">', html).start()
     section = html[start:html.index('</section>', start)]
     pairs = re.findall(r'<summary>(.*?)</summary>\s*<p>(.*?)</p>', section, re.S)
     return [(norm(q), norm(a)) for q, a in pairs]

@@ -8,7 +8,7 @@
   <script src="/js/analytics.js"></script>
 
   <title>immurok: preço, onde comprar e compatibilidade | Chave de impressão digital sem fio para Mac, Windows e Linux</title>
-  <meta name="description" content="Preço do immurok (US$59 no Kickstarter, US$69 no varejo), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
+  <meta name="description" content="Preço do immurok (US$69), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
   <link rel="canonical" href="https://immurok.com/pt/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -25,7 +25,7 @@
   <link rel="alternate" hreflang="zh-Hant" href="https://immurok.com/zh-hant/">
 
   <meta property="og:title" content="immurok: preço, onde comprar e compatibilidade | Chave de impressão digital sem fio para Mac, Windows e Linux">
-  <meta property="og:description" content="Preço do immurok (US$59 no Kickstarter, US$69 no varejo), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
+  <meta property="og:description" content="Preço do immurok (US$69), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/pt/">
   <meta property="og:site_name" content="immurok">
@@ -34,7 +34,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok: preço, onde comprar e compatibilidade | Chave de impressão digital sem fio para Mac, Windows e Linux">
-  <meta name="twitter:description" content="Preço do immurok (US$59 no Kickstarter, US$69 no varejo), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
+  <meta name="twitter:description" content="Preço do immurok (US$69), onde comprar, para quais países enviamos, sistemas compatíveis, segurança, assinatura e como redefinir.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <link rel="icon" href="/favicon.ico" sizes="any">
@@ -57,42 +57,66 @@
     "mainEntity": [
       {
         "@type": "Question",
-        "name": "O que é o immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "É uma pequena chave de impressão digital sem fio para computadores de mesa. Ela fica na sua mesa e pareia por Bluetooth LE. Com um toque você desbloqueia a tela, aprova pedidos de sudo e de administrador, assina commits de SSH e Git e obtém códigos TOTP. Ela existe porque a maioria dos computadores de mesa não tem sensor de digital: um Mac mini, um Mac Studio, um iMac, um MacBook fechado ligado a um monitor externo, qualquer teclado externo e quase todo PC com Windows ou Linux."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Quanto custa o immurok?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "US$59 no Kickstarter e US$69 no varejo. É pagamento único. Não há assinatura nem taxa de conta. O frete é calculado à parte no checkout e não está incluído nesses valores. Os lotes early bird do Kickstarter já se esgotaram."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Onde posso comprar e quando é enviado?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No Kickstarter, até a campanha terminar em 22 de setembro de 2026. A entrega estimada para os apoiadores é novembro de 2026. O hardware está na sexta revisão e um lote piloto de 50 unidades já foi produzido e testado, então a campanha financia a produção em série, não um protótipo. Depois da campanha, passamos a vender por este site."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Para quais países vocês enviam?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "A lista atual de destinos aparece no checkout do Kickstarter, e é ela que vale. Escolha seu país lá e o sistema informa se conseguimos enviar e quanto custa o frete. O frete não está incluído no valor do apoio. Impostos de importação, ICMS e taxas alfandegárias são de responsabilidade de quem recebe, como é comum em hardware financiado por crowdfunding."
-        }
-      },
-      {
-        "@type": "Question",
         "name": "Com quais computadores e sistemas operacionais funciona?",
         "acceptedAnswer": {
           "@type": "Answer",
           "text": "macOS 13.0 ou mais recente, Windows 10 e 11, e a maioria das distribuições Linux. O app do Mac é uma única build universal para Apple Silicon e Intel. O Windows tem instaladores nativos x64 e Arm64 e se integra como Credential Provider, então funciona na tela de bloqueio. O Linux é um daemon em Rust com integração PAM e polkit, testado em Ubuntu, Fedora, Arch e Debian, e compila na maioria das outras distribuições. Como a chave é um dispositivo Bluetooth separado, e não um sensor embutido no notebook, ela funciona igual em um Mac mini, um Mac Studio, um iMac, um MacBook fechado, um teclado externo ou um PC de mesa. Uma mesma chave pode ficar vinculada a dois computadores ao mesmo tempo e alternar entre eles com uma digital dedicada."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Funciona com o Windows Hello?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não é um dispositivo Windows Hello, e não precisa ser. O Windows Hello é a estrutura da Microsoft para sensores embutidos em um notebook ou em um teclado ou webcam certificados. O immurok faz o login por outro caminho: um Credential Provider que roda dentro da tela de login do Windows, então um toque destrava a tela exatamente como um sensor Hello faria, em qualquer PC de mesa ou teclado externo onde não existe sensor Hello. E vai além do Hello. O mesmo toque assina commits de SSH e Git, destrava o 1Password e o Bitwarden e libera códigos TOTP, e a mesma chave também funciona no macOS e no Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "É compatível com passkeys ou FIDO?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. O immurok não é um dispositivo FIDO. Ele não se registra em sites como passkey nem como chave de segurança, e não substitui uma YubiKey. Ele trabalha uma camada abaixo, na máquina à sua frente: desbloqueio de tela, avisos de sudo e de administrador, assinatura de SSH e Git, desbloqueio do gerenciador de senhas e códigos TOTP. Continue usando suas passkeys ou sua chave de segurança para entrar em sites; o immurok cuida do resto, e muitos de nós usamos os dois."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "É compatível com ChromeOS?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Não. O ChromeOS não dá a software de terceiros nenhuma forma de participar do desbloqueio de tela ou da autenticação do sistema, então não há onde o immurok se encaixar. Ele funciona com macOS 13 ou mais recente, Windows 10 e 11 e a maioria das distribuições Linux."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso usar uma chave com mais de um computador?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, com até dois computadores, conectada a um de cada vez. A chave guarda dois pareamentos independentes, cada um com suas próprias chaves, então as duas máquinas continuam vinculadas, mas ela só conversa com uma delas de cada vez. Você cadastra um dedo como dedo de troca. Ao tocá-lo, a chave passa de um computador para o outro, e o computador de destino reconecta sozinho. Remover um computador apaga só aquele pareamento; o outro computador e suas digitais cadastradas ficam intactos."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Destrava 1Password, Bitwarden, LastPass ou Proton Pass?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim, os quatro, no macOS, no Windows e no Linux. Quando o gerenciador mostra a tela de desbloqueio, um toque preenche uma senha dedicada que fica na chave, guardada separadamente da sua senha de login e ativada separadamente, e a envia. Só aplicativos de uma lista de permissões assinada a recebem."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Posso conectar por USB?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Só para carregar. A porta USB-C carrega a bateria e não transporta dados. O pareamento, os resultados de digital e todo o resto vão por Bluetooth LE, então seu computador precisa de Bluetooth e a chave não ocupa nenhuma porta enquanto você trabalha."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "A bateria pode ser trocada?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. A chave funciona com uma célula de lítio recarregável de 110 mAh que carrega por USB-C e dura mais de um mês de uso normal por carga. É um tamanho padrão de mercado, não uma peça sob medida, e você mesmo pode trocá-la. Antes, despareie a chave ou restaure os padrões de fábrica: abrir a carcaça de uma chave pareada aciona a chave antiviolação e apaga tudo. Troque a célula, feche a carcaça e pareie de novo."
         }
       },
       {
@@ -113,10 +137,18 @@
       },
       {
         "@type": "Question",
+        "name": "Posso compilar e gravar meu próprio firmware?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "Sim. O código do firmware e do hardware é público, e a placa expõe uma interface de programação para você compilar seu próprio firmware e gravá-lo. Restaure a chave antes de abri-la, porque abrir uma chave pareada aciona a chave antiviolação. Depois que uma unidade roda firmware compilado por você, ela sai da garantia e deixa de receber atualizações oficiais de firmware."
+        }
+      },
+      {
+        "@type": "Question",
         "name": "Qual a diferença para uma YubiKey, um gerenciador de senhas ou o Touch ID?",
         "acceptedAnswer": {
           "@type": "Answer",
-          "text": "São camadas diferentes e funcionam juntas. Uma YubiKey e as passkeys provam quem você é para um site. O immurok tira o atrito da senha na máquina à sua frente: desbloqueio de tela, sudo, pedidos de administrador, assinatura de SSH e Git. Um gerenciador de senhas guarda suas senhas; o immurok destrava o 1Password e o Bitwarden com um toque no macOS e guarda as sementes TOTP no próprio dispositivo, para que seus códigos de dois fatores não fiquem em um app do desktop. O Touch ID é o sensor da própria Apple, fundido ao Secure Enclave, fechado para terceiros, e simplesmente não existe em um Mac mini ou em um teclado externo. O immurok é um dispositivo independente: sudo e pedidos de administrador passam pelo PAM, um mecanismo real do sistema, e o desbloqueio de tela usa um caminho auxiliar documentado à parte."
+          "text": "São camadas diferentes e funcionam juntas. Uma YubiKey e as passkeys provam quem você é para um site. O immurok tira o atrito da senha na máquina à sua frente: desbloqueio de tela, sudo, pedidos de administrador, assinatura de SSH e Git. Um gerenciador de senhas guarda suas senhas; o immurok destrava o 1Password e o Bitwarden com um toque no macOS, no Windows e no Linux, e guarda as sementes TOTP no próprio dispositivo, para que seus códigos de dois fatores não fiquem em um app do desktop. O Touch ID é o sensor da própria Apple, fundido ao Secure Enclave, fechado para terceiros, e simplesmente não existe em um Mac mini ou em um teclado externo. O immurok é um dispositivo independente: sudo e pedidos de administrador passam pelo PAM, um mecanismo real do sistema, e o desbloqueio de tela usa um caminho auxiliar documentado à parte."
         }
       },
       {
@@ -163,7 +195,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_pt" target="_blank" rel="noopener" class="btn btn-primary btn-sm">Apoiar no Kickstarter</a>
+        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">Comprar agora · US$69</a>
       </div>
     </div>
   </nav>
@@ -178,24 +210,36 @@
 
       <div class="faq-list">
         <details class="faq-item">
-          <summary>O que é o immurok?</summary>
-          <p>É uma pequena chave de impressão digital sem fio para computadores de mesa. Ela fica na sua mesa e pareia por Bluetooth LE. Com um toque você desbloqueia a tela, aprova pedidos de sudo e de administrador, assina commits de SSH e Git e obtém códigos TOTP. Ela existe porque a maioria dos computadores de mesa não tem sensor de digital: um Mac mini, um Mac Studio, um iMac, um MacBook fechado ligado a um monitor externo, qualquer teclado externo e quase todo PC com Windows ou Linux.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Quanto custa o immurok?</summary>
-          <p>US$59 no Kickstarter e US$69 no varejo. É pagamento único. Não há assinatura nem taxa de conta. O frete é calculado à parte no checkout e não está incluído nesses valores. Os lotes early bird do Kickstarter já se esgotaram.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Onde posso comprar e quando é enviado?</summary>
-          <p>No Kickstarter, até a campanha terminar em 22 de setembro de 2026. A entrega estimada para os apoiadores é novembro de 2026. O hardware está na sexta revisão e um lote piloto de 50 unidades já foi produzido e testado, então a campanha financia a produção em série, não um protótipo. Depois da campanha, passamos a vender por este site.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Para quais países vocês enviam?</summary>
-          <p>A lista atual de destinos aparece no checkout do Kickstarter, e é ela que vale. Escolha seu país lá e o sistema informa se conseguimos enviar e quanto custa o frete. O frete não está incluído no valor do apoio. Impostos de importação, ICMS e taxas alfandegárias são de responsabilidade de quem recebe, como é comum em hardware financiado por crowdfunding.</p>
-        </details>
-        <details class="faq-item">
           <summary>Com quais computadores e sistemas operacionais funciona?</summary>
           <p>macOS 13.0 ou mais recente, Windows 10 e 11, e a maioria das distribuições Linux. O app do Mac é uma única build universal para Apple Silicon e Intel. O Windows tem instaladores nativos x64 e Arm64 e se integra como Credential Provider, então funciona na tela de bloqueio. O Linux é um daemon em Rust com integração PAM e polkit, testado em Ubuntu, Fedora, Arch e Debian, e compila na maioria das outras distribuições. Como a chave é um dispositivo Bluetooth separado, e não um sensor embutido no notebook, ela funciona igual em um Mac mini, um Mac Studio, um iMac, um MacBook fechado, um teclado externo ou um PC de mesa. Uma mesma chave pode ficar vinculada a dois computadores ao mesmo tempo e alternar entre eles com uma digital dedicada.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Funciona com o Windows Hello?</summary>
+          <p>Não é um dispositivo Windows Hello, e não precisa ser. O Windows Hello é a estrutura da Microsoft para sensores embutidos em um notebook ou em um teclado ou webcam certificados. O immurok faz o login por outro caminho: um Credential Provider que roda dentro da tela de login do Windows, então um toque destrava a tela exatamente como um sensor Hello faria, em qualquer PC de mesa ou teclado externo onde não existe sensor Hello. E vai além do Hello. O mesmo toque assina commits de SSH e Git, destrava o 1Password e o Bitwarden e libera códigos TOTP, e a mesma chave também funciona no macOS e no Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>É compatível com passkeys ou FIDO?</summary>
+          <p>Não. O immurok não é um dispositivo FIDO. Ele não se registra em sites como passkey nem como chave de segurança, e não substitui uma YubiKey. Ele trabalha uma camada abaixo, na máquina à sua frente: desbloqueio de tela, avisos de sudo e de administrador, assinatura de SSH e Git, desbloqueio do gerenciador de senhas e códigos TOTP. Continue usando suas passkeys ou sua chave de segurança para entrar em sites; o immurok cuida do resto, e muitos de nós usamos os dois.</p>
+        </details>
+        <details class="faq-item">
+          <summary>É compatível com ChromeOS?</summary>
+          <p>Não. O ChromeOS não dá a software de terceiros nenhuma forma de participar do desbloqueio de tela ou da autenticação do sistema, então não há onde o immurok se encaixar. Ele funciona com macOS 13 ou mais recente, Windows 10 e 11 e a maioria das distribuições Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso usar uma chave com mais de um computador?</summary>
+          <p>Sim, com até dois computadores, conectada a um de cada vez. A chave guarda dois pareamentos independentes, cada um com suas próprias chaves, então as duas máquinas continuam vinculadas, mas ela só conversa com uma delas de cada vez. Você cadastra um dedo como dedo de troca. Ao tocá-lo, a chave passa de um computador para o outro, e o computador de destino reconecta sozinho. Remover um computador apaga só aquele pareamento; o outro computador e suas digitais cadastradas ficam intactos.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Destrava 1Password, Bitwarden, LastPass ou Proton Pass?</summary>
+          <p>Sim, os quatro, no macOS, no Windows e no Linux. Quando o gerenciador mostra a tela de desbloqueio, um toque preenche uma senha dedicada que fica na chave, guardada separadamente da sua senha de login e ativada separadamente, e a envia. Só aplicativos de uma lista de permissões assinada a recebem.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Posso conectar por USB?</summary>
+          <p>Só para carregar. A porta USB-C carrega a bateria e não transporta dados. O pareamento, os resultados de digital e todo o resto vão por Bluetooth LE, então seu computador precisa de Bluetooth e a chave não ocupa nenhuma porta enquanto você trabalha.</p>
+        </details>
+        <details class="faq-item">
+          <summary>A bateria pode ser trocada?</summary>
+          <p>Sim. A chave funciona com uma célula de lítio recarregável de 110 mAh que carrega por USB-C e dura mais de um mês de uso normal por carga. É um tamanho padrão de mercado, não uma peça sob medida, e você mesmo pode trocá-la. Antes, despareie a chave ou restaure os padrões de fábrica: abrir a carcaça de uma chave pareada aciona a chave antiviolação e apaga tudo. Troque a célula, feche a carcaça e pareie de novo.</p>
         </details>
         <details class="faq-item">
           <summary>Qual é o nível de segurança? Onde ficam minhas digitais?</summary>
@@ -206,8 +250,12 @@
           <p>Todo o código-fonte é público no GitHub, sob duas licenças diferentes. Os apps de macOS, Windows e Linux, incluindo os módulos PAM e o Credential Provider do Windows, são código aberto sob Apache 2.0. O firmware e o hardware são de código disponível sob BSL 1.1 e passam para Apache 2.0 em 2030. Você pode ler tudo, modificar, compilar e gravar na sua própria unidade. O único direito reservado até a conversão é vender hardware concorrente.</p>
         </details>
         <details class="faq-item">
+          <summary>Posso compilar e gravar meu próprio firmware?</summary>
+          <p>Sim. O código do firmware e do hardware é público, e a placa expõe uma interface de programação para você compilar seu próprio firmware e gravá-lo. Restaure a chave antes de abri-la, porque abrir uma chave pareada aciona a chave antiviolação. Depois que uma unidade roda firmware compilado por você, ela sai da garantia e deixa de receber atualizações oficiais de firmware.</p>
+        </details>
+        <details class="faq-item">
           <summary>Qual a diferença para uma YubiKey, um gerenciador de senhas ou o Touch ID?</summary>
-          <p>São camadas diferentes e funcionam juntas. Uma YubiKey e as passkeys provam quem você é para um site. O immurok tira o atrito da senha na máquina à sua frente: desbloqueio de tela, sudo, pedidos de administrador, assinatura de SSH e Git. Um gerenciador de senhas guarda suas senhas; o immurok destrava o 1Password e o Bitwarden com um toque no macOS e guarda as sementes TOTP no próprio dispositivo, para que seus códigos de dois fatores não fiquem em um app do desktop. O Touch ID é o sensor da própria Apple, fundido ao Secure Enclave, fechado para terceiros, e simplesmente não existe em um Mac mini ou em um teclado externo. O immurok é um dispositivo independente: sudo e pedidos de administrador passam pelo PAM, um mecanismo real do sistema, e o desbloqueio de tela usa um caminho auxiliar documentado à parte.</p>
+          <p>São camadas diferentes e funcionam juntas. Uma YubiKey e as passkeys provam quem você é para um site. O immurok tira o atrito da senha na máquina à sua frente: desbloqueio de tela, sudo, pedidos de administrador, assinatura de SSH e Git. Um gerenciador de senhas guarda suas senhas; o immurok destrava o 1Password e o Bitwarden com um toque no macOS, no Windows e no Linux, e guarda as sementes TOTP no próprio dispositivo, para que seus códigos de dois fatores não fiquem em um app do desktop. O Touch ID é o sensor da própria Apple, fundido ao Secure Enclave, fechado para terceiros, e simplesmente não existe em um Mac mini ou em um teclado externo. O immurok é um dispositivo independente: sudo e pedidos de administrador passam pelo PAM, um mecanismo real do sistema, e o desbloqueio de tela usa um caminho auxiliar documentado à parte.</p>
         </details>
         <details class="faq-item">
           <summary>Existe um Touch ID avulso para o Mac?</summary>

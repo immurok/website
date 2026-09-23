@@ -3,6 +3,14 @@ Allow: /
 Disallow: /3d/
 Disallow: /.wrangler/
 Disallow: /qc
+# JSON API used by the blog like button; not a page.
+Disallow: /api/
+# Cloudflare-injected endpoints (email obfuscation, trace).
+Disallow: /cdn-cgi/
+# Download redirectors (302 to GitHub release assets); the page is /download/.
+Disallow: /download/mac
+Disallow: /download/win-x64
+Disallow: /download/win-arm64
 
 Sitemap: https://immurok.com/sitemap.xml
 Sitemap: https://immurok.com/blog/sitemap.xml

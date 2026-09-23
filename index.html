@@ -7,9 +7,9 @@
   <!-- Analytics + consent (shared with every page; see js/analytics.js). -->
   <script src="/js/analytics.js"></script>
 
-  <title>immurok: Standalone Wireless Fingerprint Key for Mac, Windows & Linux · Live on Kickstarter</title>
-  <meta name="description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one touch unlocks your screen, runs sudo/admin, signs SSH commits. Source-available, no cloud. Live on Kickstarter now.">
-  <meta name="keywords" content="wireless fingerprint, standalone Touch ID, Touch ID alternative, Touch ID for Mac mini, external fingerprint reader for Mac, standalone fingerprint sensor, biometric authenticator, Mac fingerprint, Windows fingerprint, Linux fingerprint, sudo fingerprint, SSH key fingerprint, fingerprint security key, Bluetooth LE security key, PAM module, Mac mini fingerprint, Kickstarter">
+  <title>immurok: Standalone Wireless Fingerprint Key for Mac, Windows & Linux</title>
+  <meta name="description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one touch unlocks your screen, runs sudo/admin, signs SSH commits. Source-available, no cloud.">
+  <meta name="keywords" content="wireless fingerprint, standalone Touch ID, Touch ID alternative, Touch ID for Mac mini, external fingerprint reader for Mac, standalone fingerprint sensor, biometric authenticator, Mac fingerprint, Windows fingerprint, Linux fingerprint, sudo fingerprint, SSH key fingerprint, fingerprint security key, Bluetooth LE security key, PAM module, Mac mini fingerprint">
   <link rel="canonical" href="https://immurok.com/">
   <link rel="alternate" hreflang="en" href="https://immurok.com/">
   <link rel="alternate" hreflang="x-default" href="https://immurok.com/">
@@ -29,7 +29,7 @@
 
   <!-- Open Graph -->
   <meta property="og:title" content="immurok: Standalone Wireless Fingerprint Key for Mac, Windows & Linux">
-  <meta property="og:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now.">
+  <meta property="og:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://immurok.com/">
   <meta property="og:site_name" content="immurok">
@@ -41,7 +41,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@immurok_dev">
   <meta name="twitter:title" content="immurok: Standalone Wireless Fingerprint Key for Mac, Windows &amp; Linux">
-  <meta name="twitter:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account. Live on Kickstarter now.">
+  <meta name="twitter:description" content="A standalone wireless fingerprint key for every Mac, every Windows PC, and every Linux distro. The Touch ID alternative for a Mac mini or any keyboard: one-touch screen unlock, sudo/admin, and SSH signing. Source-available, no cloud, no account.">
   <meta name="twitter:image" content="https://immurok.com/img/og-image.jpg">
 
   <!-- Icons -->
@@ -149,11 +149,11 @@
         "offers": {
           "@type": "Offer",
           "@id": "https://immurok.com/#offer",
-          "url": "https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux",
+          "url": "https://immurok.com/#pricing",
           "availability": "https://schema.org/PreOrder",
           "priceCurrency": "USD",
-          "price": "59",
-          "priceValidUntil": "2026-09-22",
+          "price": "69",
+          "priceValidUntil": "2027-09-14",
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {
             "@id": "https://immurok.com/#org"
@@ -187,42 +187,66 @@
         "mainEntity": [
           {
             "@type": "Question",
-            "name": "What is immurok?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "immurok is a small wireless fingerprint key for desktop computers. It sits on your desk and pairs over Bluetooth LE. One touch unlocks your screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes. It exists because most desktops have no fingerprint sensor: a Mac mini, a Mac Studio, an iMac, a MacBook running closed on an external monitor, any external keyboard, and nearly every Windows or Linux desktop."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does immurok cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "US$59 on Kickstarter, US$69 at retail. You pay once for the device. There is no subscription and no account fee. Shipping is calculated separately at checkout and is not included in those prices. The Kickstarter early-bird tiers have sold out."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Where can I buy it, and when will it ship?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "On Kickstarter, until the campaign ends on 22 September 2026. Estimated delivery for backers is November 2026. The hardware is on its sixth revision and a pilot batch of 50 units has been built and tested, so the campaign funds mass production rather than a prototype. After the campaign, the key will be sold from this site. Back it on Kickstarter ."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Which countries do you ship to?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The Kickstarter checkout shows the current list of destinations, and that list is the authoritative one. Pick your country there and it will tell you whether we can ship to you and what shipping costs. Shipping is not included in the pledge amount. Import duties, VAT and any local customs charges are the recipient's responsibility, as is normal for crowdfunded hardware."
-            }
-          },
-          {
-            "@type": "Question",
             "name": "Which computers and operating systems does it work with?",
             "acceptedAnswer": {
               "@type": "Answer",
               "text": "macOS 13.0 or later, Windows 10 and 11, and most Linux distributions. The Mac app is a single universal build for Apple Silicon and Intel. Windows has native x64 and Arm64 installers and integrates through a Credential Provider, so it works on the lock screen. Linux is a Rust daemon with PAM and polkit integration, tested on Ubuntu, Fedora, Arch and Debian, and it builds on most other distributions. Because the key is a separate Bluetooth device rather than a sensor built into a laptop, it works the same on a Mac mini, a Mac Studio, an iMac, a clamshell MacBook, an external keyboard, or a desktop PC. One device can be bound to two computers at once and switched between them with a dedicated fingerprint."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it work with Windows Hello?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "It is not a Windows Hello device, and it does not need to be. Windows Hello is Microsoft&rsquo;s framework for sensors built into a laptop or a certified keyboard or webcam. immurok signs you in by a different route: a Credential Provider that runs inside the Windows sign-in screen, so a touch unlocks the lock screen exactly as a Hello sensor would, on any desktop PC or external keyboard where no Hello sensor exists. Then it goes further than Hello. The same touch signs SSH and Git commits, unlocks 1Password and Bitwarden and releases TOTP codes, and the same key also works on macOS and Linux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support passkeys or FIDO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. immurok is not a FIDO device. It does not register with websites as a passkey or a security key, and it does not replace a YubiKey. It works one layer down, on the machine in front of you: screen unlock, sudo and admin prompts, SSH and Git signing, password-manager unlock and TOTP codes. Keep your passkeys or security key for signing in to websites; immurok takes care of the rest, and many of us use both."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it support ChromeOS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. ChromeOS gives third-party software no way to take part in screen unlock or system authentication, so there is nothing for immurok to hook into. It works with macOS 13 or later, Windows 10 and 11, and most Linux distributions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I use one key with more than one computer?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, with up to two computers, connected to one at a time. The key keeps two independent pairings, each with its own keys, so both machines stay bound to it, but it talks to only one of them at any moment. You enrol one finger as the switch finger. Touching it hands the key from one computer to the other, and the target computer reconnects on its own. Removing one computer clears only that pairing; the other computer and your enrolled fingerprints are untouched."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Does it unlock 1Password, Bitwarden, LastPass or Proton Pass?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes, all four, on macOS, Windows and Linux. When the manager shows its unlock prompt, a touch fills in a dedicated password that lives on the key, stored separately from your login password and switched on separately, and submits it. Only apps on a signed allowlist ever receive it."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can I connect it over USB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Only to charge it. The USB-C port charges the battery and carries no data. Pairing, fingerprint results and everything else go over Bluetooth LE, so your computer needs Bluetooth and the key needs no free port while you work."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Is the battery replaceable?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The key runs on a rechargeable 110 mAh lithium cell that charges over USB-C and lasts more than a month of normal use per charge. It is a standard off-the-shelf size, not a custom part, and you can swap it yourself. Unpair or factory-reset the key first: opening the case of a paired key trips the tamper switch and wipes it. Swap the cell, close the case and pair again."
             }
           },
           {
@@ -243,10 +267,18 @@
           },
           {
             "@type": "Question",
+            "name": "Can I build and flash my own firmware?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. The firmware and hardware sources are public, and the PCB exposes a programming interface so you can build your own firmware and flash it. Reset the key before you open it, because opening a paired key trips the tamper switch. Once a unit runs firmware you built, it is out of warranty and no longer receives official firmware updates."
+            }
+          },
+          {
+            "@type": "Question",
             "name": "How is this different from a YubiKey, a password manager, or Touch ID?",
             "acceptedAnswer": {
               "@type": "Answer",
-              "text": "Different layer, and they work together. A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too."
+              "text": "Different layer, and they work together. A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, Windows and Linux, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too."
             }
           },
           {
@@ -292,9 +324,7 @@
       </a>
       <div class="nav-links">
         <a href="#features">Features</a>
-        <a href="#comparison">Why Immurok</a>
-        <a href="#specs">Specs</a>
-        <a href="#pricing">Pricing</a>
+        <a href="#pricing">Shop</a>
         <a href="#faq">FAQ</a>
         <a href="/download/">Download</a>
         <a href="/blog/">Blog</a>
@@ -303,14 +333,13 @@
         <span></span><span></span><span></span>
       </button>
       <div class="nav-actions">
-        <a href="https://github.com/immurok" target="_blank" rel="noopener" class="btn btn-outline btn-sm">
-          <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
-          GitHub
+        <a href="https://github.com/immurok" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-icon" aria-label="GitHub" title="GitHub">
+          <svg aria-hidden="true" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
         </a>
-        <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener" class="btn btn-primary btn-sm">
-          <svg aria-hidden="true" width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
-          Discord
+        <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener" class="btn btn-outline btn-sm btn-icon" aria-label="Discord" title="Discord">
+          <svg aria-hidden="true" width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M20.317 4.37a19.79 19.79 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.182 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"/></svg>
         </a>
+        <a href="https://checkout.immurok.com/account" class="btn btn-primary btn-sm">My Order</a>
       </div>
     </div>
   </nav>
@@ -336,11 +365,9 @@
         the finger already on your desk. Built for Mac, Windows, and major Linux distro.
       </p>
       <div class="hero-cta">
-        <a class="btn btn-primary" data-ks-location="hero"
-           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_hero"
-           target="_blank" rel="noopener">Back us on Kickstarter</a>
+        <a class="btn btn-primary" href="#pricing">Pre-order · US$69</a>
         <p class="hero-promise">
-          Live on Kickstarter until 22 September 2026. US$59 there, US$69 at retail.
+          Pre-orders open. Ships December 2026. One-year warranty.
         </p>
       </div>
     </div>
@@ -373,7 +400,7 @@
         <div class="feature-grid">
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/security.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/screen.svg" width="44" height="44" alt=""></div>
               <h3>Screen Unlock</h3>
             </div>
             <p>Lock screen &rarr; touch &rarr; unlocked. Works with Mac mini, clamshell MacBooks, Windows PCs, and Linux.</p>
@@ -394,17 +421,17 @@
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/battery.svg" width="44" height="44" alt=""></div>
-              <h3>A month per charge</h3>
+              <div class="feature-icon"><img src="img/icons/appstore-password.svg" width="44" height="44" alt=""></div>
+              <h3>App Store &amp; Password App</h3>
             </div>
-            <p>~50&micro;A standby current, 1+ month of normal use per USB-C charge. The device sleeps until your finger wakes it.</p>
+            <p>A fingerprint touch signs you into the App Store and unlocks Apple's built-in Passwords app, no need to type your Apple ID or master password.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/author.svg" width="44" height="44" alt=""></div>
-              <h3>ECDH + HMAC-SHA256</h3>
+              <div class="feature-icon"><img src="img/icons/third-party-apps.svg" width="44" height="44" alt=""></div>
+              <h3>3rd Party Apps Unlock</h3>
             </div>
-            <p>Secure pairing with P-256 key exchange. Every auth response is cryptographically signed.</p>
+            <p>Auto-fill and unlock <strong>1Password, Bitwarden, LastPass and more</strong>, plus any app you whitelist yourself, across macOS, Windows &amp; Linux.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
@@ -436,7 +463,13 @@
   <!-- ═══════════════════════════════════ GALLERY MARQUEE ═══════════════════════════════════ -->
   <section class="section section-alt" id="gallery">
     <div class="gallery-strip fade-in" id="photo-gallery" role="group"
-         aria-label="immurok device shown across everyday desk setups, keyboards, and laptops. Drag to browse.">
+         aria-label="Product video and immurok device shown across everyday desk setups, keyboards, and laptops. Drag to browse.">
+      <button type="button" class="gallery-video-item" data-youtube-id="PPceoi1beQA" aria-label="Play product video">
+        <img src="img/gallery/video-poster.jpg" width="2538" height="1269" alt="immurok product video" decoding="async">
+        <span class="gallery-play-badge" aria-hidden="true">
+          <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13,34,0,34,0c0,0-21.79.13-27.1,1.55C3.97,2.33,2.27,4.81,1.48,7.74.06,13.05,0,24,0,24c0,0,.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19C12.21,47.87,34,48,34,48c0,0,21.79-.13,27.1-1.55c2.93-.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24c0,0-.06-10.95-1.48-16.26" fill="#ff0000" fill-opacity=".85"/><path d="M45,24L27,14v20" fill="#fff"/></svg>
+        </span>
+      </button>
       <img src="img/gallery/scene-1.jpg" width="2560" height="1440" alt="" decoding="async">
       <img src="img/gallery/scene-3.jpg" width="2560" height="1440" alt="" decoding="async">
       <img src="img/gallery/scene-4.jpg" width="2560" height="1440" alt="" decoding="async">
@@ -445,6 +478,16 @@
       <img src="img/gallery/scene-7.jpg" width="2560" height="1440" alt="" decoding="async">
     </div>
   </section>
+
+  <div class="video-modal" id="video-modal" hidden>
+    <div class="video-modal-backdrop" data-video-close></div>
+    <div class="video-modal-card">
+      <button type="button" class="video-modal-x" data-video-close aria-label="Close video">&times;</button>
+      <div class="video-modal-frame">
+        <iframe id="video-modal-iframe" src="" title="immurok product video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>
+      </div>
+    </div>
+  </div>
 
   <!-- ═══════════════════════════════════ AI AGENT GATE ═══════════════════════════════════ -->
   <section class="section" id="ai-agent">
@@ -601,7 +644,7 @@
               <th scope="col"><span class="sr-only">Feature</span></th>
               <th scope="col">
                 <img class="compare-logo" src="img/figma/logo-wordmark.png" alt="immurok">
-                <span class="compare-price">Kickstarter: US$59</span>
+                <span class="compare-price">US$69</span>
               </th>
               <th scope="col">
                 <span class="compare-product">Magic Keyboard</span>
@@ -623,7 +666,7 @@
             <tr><td>sudo / PAM</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"><span class="cmp-label">macOS only</span></span></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
             <tr><td>Standalone (no keyboard)</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
             <tr><td>Source-available</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Price</td><td class="cmp-price">US$59</td><td class="cmp-price">$199</td><td class="cmp-price">Various</td></tr>
+            <tr><td>Price</td><td class="cmp-price">US$69</td><td class="cmp-price">$199</td><td class="cmp-price">Various</td></tr>
           </tbody>
         </table>
       </div>
@@ -701,80 +744,89 @@
     </div>
   </section>
 
-  <!-- ═══════════════════════════════════ TECH SPECS (HARDWARE SHOWCASE) ═══════════════════════════════════ -->
-  <section class="section" id="specs">
-    <div class="container-sm">
-      <div class="section-header fade-in">
-        <h2 class="section-title">Tech Specs</h2>
-        <p class="section-subtitle">Built for engineers, by engineers.</p>
-      </div>
-
-      <div class="specs-layout fade-in">
-        <div class="specs-3d">
-          <iframe
-            src="3d/index.html"
-            title="immurok IK-1 interactive 3D model with explode view"
-            allow="fullscreen"></iframe>
-        </div>
-
-        <div class="specs-block">
-          <h3>
-            <img src="img/icons/hardware.svg" width="20" height="20" alt="">
-            Hardware
-          </h3>
-          <table class="specs-table">
-            <tr><td>Processor</td><td>RISC-V @ 60MHz max</td></tr>
-            <tr><td>Connectivity</td><td>Bluetooth LE</td></tr>
-            <tr><td>Fingerprint sensor</td><td>Capacitive</td></tr>
-            <tr><td>Standby current</td><td>~50&micro;A</td></tr>
-            <tr><td>Recognition time</td><td>&lt;500ms</td></tr>
-            <tr><td>Battery</td><td>LiPo 110mAh (USB-C)</td></tr>
-            <tr><td>Battery life</td><td>1+ month typical use</td></tr>
-            <tr><td>Dimensions</td><td>44 &times; 44 &times; 14.2 mm</td></tr>
-            <tr><td>Weight</td><td>~40g</td></tr>
-          </table>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ═══════════════════════════════════ PRICING ═══════════════════════════════════ -->
-  <section class="section section-alt" id="pricing">
+  <!-- ═══════════════════════════════════ SHOP ═══════════════════════════════════ -->
+  <section class="section" id="pricing">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">Simple, honest pricing</h2>
-        <p class="section-subtitle">US$59 on Kickstarter, US$69 at retail. No subscription, no account, no hidden fees.</p>
+        <h2 class="section-title">Get Yours</h2>
       </div>
+      <div class="product fade-in">
+        <div class="product-gallery">
+          <div class="product-stage">
+            <iframe id="product-3d" class="product-3d" title="immurok IK-1 interactive 3D model" allow="fullscreen" loading="lazy" hidden></iframe>
+            <img id="product-main" src="img/device-in-hand-960.webp" srcset="img/device-in-hand-960.webp 960w, img/device-in-hand-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 50vw" width="960" height="960" alt="immurok IK-1 resting in an open palm">
+          </div>
+          <div class="product-thumbs" role="tablist" aria-label="Product photos">
+            <button type="button" role="tab" aria-selected="true" class="product-thumb is-active" data-src="img/device-in-hand-960.webp" data-srcset="img/device-in-hand-960.webp 960w, img/device-in-hand-1920.webp 1920w" data-alt="immurok IK-1 resting in an open palm"><img src="img/device-in-hand-960.webp" width="120" height="120" alt="In hand" loading="lazy"></button>
+            <button type="button" role="tab" aria-selected="false" class="product-thumb" data-src="img/image-08-960.webp" data-srcset="img/image-08-960.webp 960w, img/image-08-1920.webp 1920w" data-alt="Top, side, USB-C port and bottom views of immurok IK-1"><img src="img/image-08-960.webp" width="120" height="120" alt="Four views" loading="lazy"></button>
+            <button type="button" role="tab" aria-selected="false" class="product-thumb product-thumb--3d" data-kind="3d" data-src="3d/index.html" aria-label="Interactive 3D model"><img src="img/icons/explode.svg" width="24" height="24" alt="" loading="lazy"><span>3D</span></button>
+          </div>
+        </div>
 
-      <div class="pricing-grid fade-in">
-        <div class="sku-card">
-          <div class="sku-name">Silver Edition</div>
-          <div class="sku-retail"><s>US$69</s> retail</div>
-          <div class="sku-price">US$59<span class="sku-price-tag">on Kickstarter</span></div>
-          <div class="sku-note">One payment, no subscription. Ships November 2026, one-year warranty</div>
-          <ul class="sku-features">
-            <li><span class="check">✓</span> Fully assembled</li>
-            <li><span class="check">✓</span> CNC aluminum body</li>
-            <li><span class="check">✓</span> Premium anodized finish</li>
-            <li><span class="check">✓</span> macOS, Windows &amp; Linux app included</li>
-            <li><span class="check">✓</span> Free firmware updates</li>
-            <li><span class="check">✓</span> Priority support</li>
+        <div class="product-info">
+          <p class="product-eyebrow">Pre-order · New batch ships <strong>December 2026</strong></p>
+          <h2 class="product-title">immurok IK-1</h2>
+          <p class="product-price">US$69 <span class="product-price-note">Shipping calculated at checkout. Import duties not included.</span></p>
+
+          <fieldset class="product-colors">
+            <legend>Color <span class="product-color-name">Silver</span></legend>
+            <!-- One label per color. To add a color: add a Shopify variant, a set of photos,
+                 then a label here with data-color, data-3d (variant name in 3d/main.js) and data-image. -->
+            <label class="product-swatch is-active" style="--swatch: #c9cbcc">
+              <input type="radio" name="color" value="gid://shopify/ProductVariant/52879802499359" data-color="Silver" data-sku="IK1-SILVER" data-3d="silver" data-image="img/device-in-hand-960.webp" checked>
+              <span class="product-swatch-dot"></span>
+              <span class="product-swatch-label">Silver</span>
+            </label>
+          </fieldset>
+
+          <!-- Main CTA goes to Kickstarter; the Shopify checkout (test only) sits behind the chevron. -->
+          <div class="preorder-split">
+            <a class="btn btn-primary btn-cta product-preorder" href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux" target="_blank" rel="noopener">Preorder on Kickstarter</a>
+            <button type="button" class="btn btn-primary preorder-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="preorder-menu" aria-label="More ways to order">
+              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
+            </button>
+            <div class="preorder-menu" id="preorder-menu" hidden>
+              <button type="button" class="preorder-menu-item" data-open-order data-return-focus=".preorder-toggle">Shopify (test only)</button>
+            </div>
+          </div>
+          <p class="product-note">One payment. No subscription, no account.</p>
+
+          <ul class="product-assurances">
+            <li><svg class="assurance-icon" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3 4.5 5.8v5.4c0 4.6 3.1 8.2 7.5 9.8 4.4-1.6 7.5-5.2 7.5-9.8V5.8L12 3Z"/><path d="m8.8 12.2 2.2 2.2 4.4-4.6"/></svg> One-year warranty</li>
+            <li><svg class="assurance-icon" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 0 1-13.7 5.6"/><path d="M4 12a8 8 0 0 1 13.7-5.6"/><path d="M17.7 2.8v3.6h-3.6"/><path d="M6.3 21.2v-3.6h3.6"/></svg> Free firmware updates</li>
+            <li><svg class="assurance-icon" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.2"/><path d="M8.5 10.5V7.8a3.5 3.5 0 0 1 7 0v2.7"/><path d="M12 14.6v2.4"/></svg> Secure checkout by Shopify</li>
           </ul>
+
+          <p class="product-desc">A standalone fingerprint key for your desk. One touch unlocks your Mac, Windows or Linux machine, approves sudo and admin prompts, signs SSH and Git, and unlocks 1Password or Bitwarden.</p>
+
+          <details class="product-details">
+            <summary>Specifications</summary>
+            <table class="specs-table">
+              <tr><td>Connectivity</td><td>Bluetooth LE, pairs with 2 computers</td></tr>
+              <tr><td>Sensor</td><td>Capacitive fingerprint, &lt;500 ms match</td></tr>
+              <tr><td>Battery</td><td>110 mAh LiPo, USB-C, 1+ month per charge</td></tr>
+              <tr><td>Body</td><td>CNC aluminum, anodized</td></tr>
+              <tr><td>Size</td><td>44 &times; 44 &times; 14.2 mm, ~40 g</td></tr>
+              <tr><td>Works with</td><td>macOS 13+, Windows 10/11, major Linux distros</td></tr>
+            </table>
+          </details>
+          <details class="product-details">
+            <summary>What's in the box</summary>
+            <ul class="product-box">
+              <li>immurok IK-1, Silver</li>
+              <li>User manual</li>
+            </ul>
+          </details>
         </div>
       </div>
 
-      <div class="waitlist-block fade-in">
-        <a class="btn btn-primary" data-ks-location="pricing"
-           href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_pricing"
-           target="_blank" rel="noopener">Back us on Kickstarter</a>
-        <p class="waitlist-note">The campaign ends 22 September 2026. The early-bird tiers have sold out;
-          the current Kickstarter price is US$59.</p>
-      </div>
+      <p class="waitlist-note fade-in">Import duties, VAT and any local customs charges are the recipient's responsibility.
+        Already ordered? <a href="https://checkout.immurok.com/account">Check your order status</a>.</p>
     </div>
   </section>
 
   <!-- ═══════════════════════════════════ DEVELOPERS ═══════════════════════════════════ -->
-  <section class="section" id="developers">
+  <section class="section section-alt" id="developers">
     <div class="container-sm">
       <div class="section-header fade-in">
         <h2 class="section-title">For Developers</h2>
@@ -837,9 +889,9 @@
   <!-- Accordion, but every answer sits in the initial HTML, not behind JS: a
        third of our search impressions are AI assistants reading this page.
        Each answer opens with a one-sentence direct reply in bold, and the same
-       ten answers are mirrored word for word in the FAQPage JSON-LD in <head>
+       fifteen answers are mirrored word for word in the FAQPage JSON-LD in <head>
        (tools/check-faq-sync.py enforces that). -->
-  <section class="section section-alt" id="faq">
+  <section class="section" id="faq">
     <div class="container-sm">
       <div class="section-header fade-in">
         <h2 class="section-title">FAQ</h2>
@@ -847,24 +899,36 @@
 
       <div class="faq-list fade-in">
         <details class="faq-item">
-          <summary>What is immurok?</summary>
-          <p><strong>immurok is a small wireless fingerprint key for desktop computers.</strong> It sits on your desk and pairs over Bluetooth LE. One touch unlocks your screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes. It exists because most desktops have no fingerprint sensor: a Mac mini, a Mac Studio, an iMac, a MacBook running closed on an external monitor, any external keyboard, and nearly every Windows or Linux desktop.</p>
-        </details>
-        <details class="faq-item">
-          <summary>How much does immurok cost?</summary>
-          <p><strong>US$59 on Kickstarter, US$69 at retail.</strong> You pay once for the device. There is no subscription and no account fee. Shipping is calculated separately at checkout and is not included in those prices. The Kickstarter early-bird tiers have sold out.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Where can I buy it, and when will it ship?</summary>
-          <p><strong>On Kickstarter, until the campaign ends on 22 September 2026.</strong> Estimated delivery for backers is November 2026. The hardware is on its sixth revision and a pilot batch of 50 units has been built and tested, so the campaign funds mass production rather than a prototype. After the campaign, the key will be sold from this site. <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux?ref=immurok_site_answers" target="_blank" rel="noopener">Back it on Kickstarter</a>.</p>
-        </details>
-        <details class="faq-item">
-          <summary>Which countries do you ship to?</summary>
-          <p><strong>The Kickstarter checkout shows the current list of destinations, and that list is the authoritative one.</strong> Pick your country there and it will tell you whether we can ship to you and what shipping costs. Shipping is not included in the pledge amount. Import duties, VAT and any local customs charges are the recipient's responsibility, as is normal for crowdfunded hardware.</p>
-        </details>
-        <details class="faq-item">
           <summary>Which computers and operating systems does it work with?</summary>
           <p><strong>macOS 13.0 or later, Windows 10 and 11, and most Linux distributions.</strong> The Mac app is a single universal build for Apple Silicon and Intel. Windows has native x64 and Arm64 installers and integrates through a Credential Provider, so it works on the lock screen. Linux is a Rust daemon with PAM and polkit integration, tested on Ubuntu, Fedora, Arch and Debian, and it builds on most other distributions. Because the key is a separate Bluetooth device rather than a sensor built into a laptop, it works the same on a Mac mini, a Mac Studio, an iMac, a clamshell MacBook, an external keyboard, or a desktop PC. One device can be bound to two computers at once and switched between them with a dedicated fingerprint.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it work with Windows Hello?</summary>
+          <p><strong>It is not a Windows Hello device, and it does not need to be.</strong> Windows Hello is Microsoft&rsquo;s framework for sensors built into a laptop or a certified keyboard or webcam. immurok signs you in by a different route: a Credential Provider that runs inside the Windows sign-in screen, so a touch unlocks the lock screen exactly as a Hello sensor would, on any desktop PC or external keyboard where no Hello sensor exists. Then it goes further than Hello. The same touch signs SSH and Git commits, unlocks 1Password and Bitwarden and releases TOTP codes, and the same key also works on macOS and Linux.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it support passkeys or FIDO?</summary>
+          <p><strong>No. immurok is not a FIDO device.</strong> It does not register with websites as a passkey or a security key, and it does not replace a YubiKey. It works one layer down, on the machine in front of you: screen unlock, sudo and admin prompts, SSH and Git signing, password-manager unlock and TOTP codes. Keep your passkeys or security key for signing in to websites; immurok takes care of the rest, and many of us use both.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it support ChromeOS?</summary>
+          <p><strong>No.</strong> ChromeOS gives third-party software no way to take part in screen unlock or system authentication, so there is nothing for immurok to hook into. It works with macOS 13 or later, Windows 10 and 11, and most Linux distributions.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I use one key with more than one computer?</summary>
+          <p><strong>Yes, with up to two computers, connected to one at a time.</strong> The key keeps two independent pairings, each with its own keys, so both machines stay bound to it, but it talks to only one of them at any moment. You enrol one finger as the switch finger. Touching it hands the key from one computer to the other, and the target computer reconnects on its own. Removing one computer clears only that pairing; the other computer and your enrolled fingerprints are untouched.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Does it unlock 1Password, Bitwarden, LastPass or Proton Pass?</summary>
+          <p><strong>Yes, all four, on macOS, Windows and Linux.</strong> When the manager shows its unlock prompt, a touch fills in a dedicated password that lives on the key, stored separately from your login password and switched on separately, and submits it. Only apps on a signed allowlist ever receive it.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can I connect it over USB?</summary>
+          <p><strong>Only to charge it.</strong> The USB-C port charges the battery and carries no data. Pairing, fingerprint results and everything else go over Bluetooth LE, so your computer needs Bluetooth and the key needs no free port while you work.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is the battery replaceable?</summary>
+          <p><strong>Yes.</strong> The key runs on a rechargeable 110 mAh lithium cell that charges over USB-C and lasts more than a month of normal use per charge. It is a standard off-the-shelf size, not a custom part, and you can swap it yourself. Unpair or factory-reset the key first: opening the case of a paired key trips the tamper switch and wipes it. Swap the cell, close the case and pair again.</p>
         </details>
         <details class="faq-item">
           <summary>How secure is it? Where do my fingerprints live?</summary>
@@ -875,8 +939,12 @@
           <p><strong>All the source code is public on GitHub, under two different licences.</strong> The macOS, Windows and Linux apps, including the PAM modules and the Windows Credential Provider, are open source under Apache 2.0. The firmware and hardware are source-available under BSL 1.1 and convert to Apache 2.0 in 2030. You can read all of it, patch it, and build and flash your own unit. The only right reserved until conversion is selling competing hardware. We would rather state that precisely than stretch the word. Everything is at <a href="https://github.com/immurok" target="_blank" rel="noopener">github.com/immurok</a>.</p>
         </details>
         <details class="faq-item">
+          <summary>Can I build and flash my own firmware?</summary>
+          <p><strong>Yes.</strong> The firmware and hardware sources are public, and the PCB exposes a programming interface so you can build your own firmware and flash it. Reset the key before you open it, because opening a paired key trips the tamper switch. Once a unit runs firmware you built, it is out of warranty and no longer receives official firmware updates.</p>
+        </details>
+        <details class="faq-item">
           <summary>How is this different from a YubiKey, a password manager, or Touch ID?</summary>
-          <p><strong>Different layer, and they work together.</strong> A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too.</p>
+          <p><strong>Different layer, and they work together.</strong> A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, Windows and Linux, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too.</p>
         </details>
         <details class="faq-item">
           <summary>Is there a standalone Touch ID for the Mac?</summary>
@@ -918,17 +986,17 @@
         <img class="footer-logo" src="img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
         <!-- Email is assembled by JS (see setupObfuscatedEmail) so the raw
-             HTML never contains the address, the "@", or a mail link —
-             defeats regex/attribute-scraping harvesters. Parts are reversed. -->
+             HTML never contains the address, the "@", or a mail link,
+             defeating regex/attribute-scraping harvesters. Parts are reversed. -->
         <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-col">
           <h4>Product</h4>
           <a href="#features">Features</a>
-          <a href="#pricing">Pricing</a>
-          <a href="#specs">Specs</a>
-          <a href="/download/">Download</a>
+          <a href="#pricing">Shop</a>
+          <a href="https://checkout.immurok.com/account">Order status</a>
+            <a href="/download/">Download</a>
           <a href="/blog/">Blog</a>
         </div>
         <div class="footer-col">
@@ -960,5 +1028,71 @@
   </footer>
 
   <script src="js/main.js"></script>
+  <script src="js/shipping-data.js"></script>
+  <script src="js/shop.js"></script>
+  <!-- Order panel: opened by [data-open-order]. Holds the .buy-form that shop.js drives. -->
+  <div class="order-backdrop" hidden></div>
+  <aside class="order-drawer" role="dialog" aria-modal="true" aria-labelledby="order-title" aria-hidden="true" hidden>
+    <div class="order-head">
+      <h3 id="order-title">Your order</h3>
+      <button type="button" class="order-close" aria-label="Close">&times;</button>
+    </div>
+    <div class="order-item">
+      <img class="order-item-img" src="img/device-on-desk-960.webp" width="72" height="72" alt="">
+      <div class="order-item-text">
+        <strong>immurok IK-1</strong>
+        <span class="order-item-variant">Silver · Pre-order</span>
+      </div>
+      <span class="order-item-price">US$69</span>
+    </div>
+    <div class="buy-form"
+               data-item-name="immurok IK-1"
+               data-shop-domain="erjmi0-6n.myshopify.com"
+               data-shop-token="ec294bcc4cc8fc98614bdc690e7dcee6"
+               data-checkout-domain="checkout.immurok.com"
+               data-shop-id="gid://shopify/Shop/96194724127"
+               data-form-location="pricing"
+               data-price="69">
+      <div class="order-qty" aria-label="Quantity">
+        <span class="order-qty-label">Quantity</span>
+        <div class="qty-stepper">
+          <button type="button" class="qty-btn qty-minus" aria-label="Decrease quantity">&minus;</button>
+          <output class="qty-value" aria-live="polite">1</output>
+          <button type="button" class="qty-btn qty-plus" aria-label="Increase quantity">+</button>
+        </div>
+      </div>
+      <select name="variant" aria-label="Color" hidden>
+        <option value="gid://shopify/ProductVariant/52879802499359">Silver</option>
+      </select>
+      <select name="qty" aria-label="Quantity" hidden>
+        <option>1</option><option>2</option><option>3</option><option>4</option><option>5</option>
+      </select>
+      <div class="buy-row">
+        <label class="buy-field">
+          <span>Ship to</span>
+          <select name="country" aria-label="Ship to country">
+            <option value="">Select country</option>
+          </select>
+        </label>
+      </div>
+      <div class="buy-taxid" hidden>
+        <label class="buy-field">
+          <span class="buy-taxid-label"></span>
+          <input type="text" name="taxid" autocomplete="off" spellcheck="false" maxlength="40">
+        </label>
+        <p class="buy-taxid-hint"></p>
+        <p class="buy-taxid-error" role="alert" hidden></p>
+      </div>
+      <dl class="order-summary">
+        <div><dt>Subtotal</dt><dd class="order-subtotal">US$69</dd></div>
+        <div><dt>Shipping</dt><dd class="order-shipping">Calculated at checkout</dd></div>
+        <div class="order-total-row"><dt>Total</dt><dd class="order-total">US$69</dd></div>
+      </dl>
+      <div class="buy-shipping" hidden></div>
+      <a class="btn btn-primary btn-cta buy-btn" href="https://checkout.immurok.com/cart/52879802499359:1" rel="noopener">Continue to checkout</a>
+      <p class="buy-note">Pre-order. Ships December 2026.</p>
+    </div>
+  </aside>
+
 </body>
 </html>
