@@ -206,10 +206,14 @@ img {
   text-wrap: pretty;
 }
 
+.article-author,
+.article-updated { color: var(--text-muted); }
+
 .article-meta {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 14px;
+  gap: 8px 14px;
   font-family: var(--font-mono);
   font-size: 12.5px;
   letter-spacing: 0.04em;

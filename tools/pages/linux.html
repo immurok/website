@@ -1,0 +1,88 @@
+<!--meta
+{
+  "path": "/linux/",
+  "title": "Fingerprint Login, sudo and PAM on Linux with a Wireless Key | immurok",
+  "description": "immurok brings fingerprint authentication to Linux desktops through PAM and polkit: login screen and lock screen unlock, sudo, admin prompts, 1Password and Bitwarden, SSH signing. Packages for Debian, Ubuntu, Fedora and Arch. GNOME and KDE.",
+  "crumb": "Linux"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Linux &middot; PAM &middot; polkit &middot; GNOME &middot; KDE</p>
+    <h1>Fingerprint authentication for Linux, done through PAM</h1>
+    <p class="page-lead">immurok is a wireless fingerprint key with a Rust daemon and a PAM module. Touch it to unlock the screen, approve <code>sudo</code> and polkit prompts, unlock your password manager and sign SSH and Git. Packages for Debian, Ubuntu, Fedora and Arch.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/ik-1/">Pre-order &middot; US$69</a>
+      <a class="btn btn-outline" href="https://github.com/immurok/app-linux-rs" target="_blank" rel="noopener">Source on GitHub</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>The state of fingerprints on Linux</h2>
+        <p><code>fprintd</code> has existed for years, but it needs a sensor the kernel already supports, and those mostly live inside laptops. On a desktop, or on a laptop whose sensor has no driver, Linux users have almost no usable fingerprint option. They type their password for the lock screen, for <code>sudo</code>, for every polkit dialog, dozens of times a day.</p>
+        <p>immurok does not need a kernel driver. It is a separate Bluetooth LE device, and its Linux client is a user-space daemon plus a PAM module. Anything that authenticates through PAM can ask the key for a touch.</p>
+
+        <h2>What immurok does on Linux</h2>
+        <ul>
+          <li><strong>sudo.</strong> <code>pam_immurok.so</code> at the front of <code>/etc/pam.d/sudo</code>. The touch is the credential; nothing is typed and no password is stored.</li>
+          <li><strong>polkit prompts.</strong> The same module in <code>/etc/pam.d/polkit-1</code> covers the admin dialogs GNOME and KDE raise for package installs, settings changes and mounts.</li>
+          <li><strong>Login and lock screen.</strong> A hook for GDM (<code>gdm-password</code>) or SDDM lets a touch unlock the session.</li>
+          <li><strong>Password managers.</strong> 1Password, Bitwarden and KeePassXC offer &ldquo;unlock with system authentication&rdquo; on Linux. That goes through polkit, so with the hook installed a touch unlocks the vault. No extra immurok setup.</li>
+          <li><strong>SSH and Git signing.</strong> The daemon exposes an SSH agent backed by the ECDSA P-256 key on the device. Every signature needs a touch; the private key never leaves the hardware.</li>
+          <li><strong>TOTP and API secrets.</strong> Keep two-factor seeds and API keys on the device and fetch them from the CLI after a touch.</li>
+          <li><strong>AI coding agents.</strong> <code>imk run --agent -- sudo ...</code> pops a GTK4 dialog and waits for your finger before the command runs. <a href="/ai-agents/">The agent gate</a>.</li>
+        </ul>
+
+        <h2>Distributions and desktops</h2>
+        <table>
+          <tr><th>Distribution</th><th>Package</th><th>Notes</th></tr>
+          <tr><td>Debian 12+ / Ubuntu 24.04+</td><td>.deb, amd64 and arm64</td><td>Ubuntu 22.04 builds from source</td></tr>
+          <tr><td>Fedora 43+</td><td>.rpm, x86_64 and aarch64</td><td></td></tr>
+          <tr><td>Arch / Manjaro / EndeavourOS</td><td>.pkg.tar.zst</td><td></td></tr>
+          <tr><td>Other distributions</td><td>Build from source</td><td>Rust toolchain; glibc only, no musl (Alpine, Void musl)</td></tr>
+        </table>
+        <p>Requirements: kernel 5.10 or later, a Bluetooth 4.2+ adapter, systemd user services, PAM 1.4+, polkit 0.120+, and a GNOME, KDE or other GTK4-capable desktop. The client ships a GTK4 settings app, a terminal dashboard and a CLI, so a headless or minimal desktop still gets the full feature set.</p>
+
+        <h2>Install in four commands</h2>
+        <pre><code># Debian / Ubuntu
+sudo apt install ./immurok_&lt;version&gt;-1_amd64.deb
+# Fedora
+sudo dnf install ./immurok-&lt;version&gt;-1.x86_64.rpm
+# Arch
+sudo pacman -U immurok-&lt;version&gt;-1-x86_64.pkg.tar.zst
+
+immurok-cli pair                  # or open the immurok app
+immurok-cli pam install sudo      # the package never edits /etc/pam.d on its own</code></pre>
+        <p>The package starts the daemon and the session agent for every user. Pairing and enabling the PAM hooks are deliberately left to you, and the settings app has Install, Remove and Repair buttons for each hook. Packages are attached to every <a href="https://github.com/immurok/app-linux-rs/releases" target="_blank" rel="noopener">GitHub release</a>.</p>
+
+        <h2>Security, in Linux terms</h2>
+        <p>The PAM module does not see a password because there is none. It opens a local socket to the daemon, the daemon asks the key for a touch, and the key answers with an HMAC-signed &ldquo;match succeeded&rdquo; that the daemon verifies against the pairing keys in <code>/var/lib/immurok</code>. The fingerprint template never leaves the key. The daemon, the PAM module and the polkit policy are open source under Apache 2.0, and the local channel between them is authenticated too, which we <a href="/blog/making-the-local-channel-as-trustworthy-as-the-device/">wrote about here</a>.</p>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Does it work with GNOME and KDE?</summary>
+            <p><strong>Yes, both.</strong> sudo and polkit go through PAM regardless of desktop. For the login screen, the GDM hook is installed by the package where GDM is present, and SDDM users add it with one command: <code>sudo immurok-pam-helper add sddm</code>.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is it a fprintd or libfprint device?</summary>
+            <p><strong>No.</strong> immurok does not register with fprintd and needs no kernel driver. It has its own PAM module and daemon, which is why it works on machines whose built-in sensor has no Linux support, and on desktops that have no sensor at all.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if the key is out of range or the battery is flat?</summary>
+            <p><strong>Your password still works.</strong> The PAM module is added in front of the normal password module, not instead of it. If the key does not answer, the prompt falls through to the password as before.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I use the same key on a Linux box and a Mac?</summary>
+            <p><strong>Yes.</strong> The key holds two independent pairings. Bind it to the Linux machine and to a Mac or Windows PC, enrol one finger as the switch finger, and a touch of that finger moves the key between them.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>Ships December 2026. Apps and firmware updates are free.</p>
+        </div>
+      </div>
+    </div>
+  </section>

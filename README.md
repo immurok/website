@@ -132,22 +132,45 @@ hugo -d ../blog
 
 ## Generated Files
 
-Two small generators keep parts of the site from drifting. Run both before
-deploying if you touched their inputs.
+Four small generators keep parts of the site from drifting. Run them in this
+order before deploying if you touched their inputs; every one has a `--check`
+mode that exits 1 when its output is stale.
 
 ```bash
-# Per-language FAQ pages (ja, es, pt, de, ko, ru, nl, pl, id, zh-hans, zh-hant).
-# Translations live inside the script; edit there, then regenerate.
-# --check also fails if Simplified and Traditional Chinese have swapped
-# vocabulary (软件/軟體, 固件/韌體, ...), which is easy to do by hand.
-python3 tools/build-lang-pages.py
-python3 tools/build-lang-pages.py --check   # CI-friendly staleness check
+# English landing pages: /ik-1/ (product), /mac-mini/, /linux/, /windows/,
+# /ai-agents/, /vs/touch-id/, /vs/yubikey/, /about/, /contact/, /changelog/.
+# Each page is a fragment in tools/pages/<name>.html (JSON meta comment +
+# <main> contents); the script adds the shared head/nav/footer, derives the
+# FAQPage JSON-LD from the visible <details> blocks, and on /ik-1/ builds the
+# Product node with per-country shipping from js/shipping-data.js.
+# The footer columns and font list every page uses live in this script.
+python3 tools/build-pages.py
+python3 tools/build-pages.py --check
 
-# sitemap.xml, discovered from the files actually on disk.
-# Run it after `hugo -d ../blog` and after build-lang-pages.py.
+# Per-language FAQ + product pages (ja, es, pt, de, ko, ru, nl, pl, id,
+# zh-hans, zh-hant). Translations live inside the script; edit there, then
+# regenerate. --check also fails if Simplified and Traditional Chinese have
+# swapped vocabulary (软件/軟體, 固件/韌體, ...), which is easy to do by hand.
+python3 tools/build-lang-pages.py
+python3 tools/build-lang-pages.py --check
+
+# sitemap.xml, discovered from the files actually on disk, with <lastmod>
+# from git (blog posts reuse Hugo's git-derived lastmod).
+# Run it after `hugo -d ../blog`, build-pages.py and build-lang-pages.py.
 python3 tools/build-sitemap.py
 python3 tools/build-sitemap.py --check
+
+# /llms.txt and /llms-full.txt for AI crawlers: product facts, the fifteen
+# FAQ answers (read from index.html) and the blog index. Edit FACTS / SPECS
+# in the script when the homepage numbers change.
+python3 tools/build-llms.py
+python3 tools/build-llms.py --check
 ```
+
+The blog is built with `hugo --cleanDestinationDir -d ../blog` so removed
+pages (tag and category lists are disabled in hugo.toml) do not linger in
+`blog/`. `enableGitInfo` gives each post a `dateModified` from its last commit,
+used in the BlogPosting JSON-LD and the sitemap.
 
 Analytics and the cookie-consent banner live in one place, `js/analytics.js`,
 loaded by every page with `<script src="/js/analytics.js"></script>`. Do not
@@ -155,7 +178,7 @@ inline a second copy: `/download/` once shipped without one and disappeared
 from GA4 entirely. To check that no page is missing it:
 
 ```bash
-for f in $(find . -name "*.html" -not -path "./blog-src/*" -not -path "./.wrangler/*" -not -path "./3d/*" -not -name "qc.html"); do
+for f in $(find . -name "*.html" -not -path "./blog-src/*" -not -path "./.wrangler/*" -not -path "./3d/*" -not -path "./tools/*" -not -name "qc.html"); do
   [ "$(grep -c 'js/analytics.js' "$f")" = "0" ] && echo "missing analytics: $f"
 done
 ```
@@ -183,16 +206,30 @@ analytics, and `scripts/sync-github.sh` excludes it from the public repo.
 ```bash
 # 1. Build the blog
 cd website/blog-src
-hugo -d ../blog
+hugo --cleanDestinationDir -d ../blog
 
-# 2. Regenerate the language pages and the sitemap
+# 2. Regenerate the landing pages, language pages, sitemap and llms.txt
 cd ..
+python3 tools/build-pages.py
 python3 tools/build-lang-pages.py
 python3 tools/build-sitemap.py
+python3 tools/build-llms.py
 
 # 3. Deploy to Cloudflare Pages
 npx wrangler pages deploy . --project-name=immurok
+
+# 4. Tell Bing (ChatGPT / Copilot search through it) what changed.
+#    Submits every sitemap URL; pass paths to submit only those.
+python3 tools/indexnow.py
 ```
+
+The IndexNow key file (`<key>.txt` at the site root) must stay deployed; the
+key is also hard-coded in `tools/indexnow.py`. Bing Webmaster Tools shows
+submissions under IndexNow once the site is verified there.
+
+Images: the hero and gallery photos are WebP with `srcset` (the original
+4.5 MB hero PNG is gone). Convert new photos with `cwebp -q 80 -resize <w> 0`
+at 960/1440/2048 (hero) or 1280/2560 (gallery) widths.
 
 ## Markdown Features
 

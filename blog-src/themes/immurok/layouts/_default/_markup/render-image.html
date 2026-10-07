@@ -1,0 +1,11 @@
+{{- /* Images in posts: emit width/height for page-bundle images so the browser
+     reserves the box (no layout shift), and lazy-load everything below the
+     fold. Absolute /img/... paths live outside the Hugo tree, so they only get
+     lazy loading. SVGs have no pixel size to report. */ -}}
+{{- $dest := .Destination -}}
+{{- $res := .Page.Resources.GetMatch $dest -}}
+{{- if and $res (ne $res.MediaType.SubType "svg") -}}
+<img src="{{ $dest | safeURL }}" alt="{{ .Text }}" width="{{ $res.Width }}" height="{{ $res.Height }}" loading="lazy" decoding="async"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- else -}}
+<img src="{{ $dest | safeURL }}" alt="{{ .Text }}" loading="lazy" decoding="async"{{ with .Title }} title="{{ . }}"{{ end }}>
+{{- end -}}

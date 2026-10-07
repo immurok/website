@@ -2,6 +2,11 @@ baseURL = "https://immurok.com/blog/"
 languageCode = "en"
 title = "immurok Blog"
 theme = "immurok"
+# Lastmod from the git commit that last touched each post (sitemap, JSON-LD).
+enableGitInfo = true
+# No tag / category / section list pages: they are thin duplicates of /blog/
+# and were being indexed alongside it. Tags still render as labels on posts.
+disableKinds = ["taxonomy", "term", "section"]
 
 [params]
   description = "Engineering notes, product updates, and security deep-dives from the immurok team."

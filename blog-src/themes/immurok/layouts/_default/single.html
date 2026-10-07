@@ -8,7 +8,11 @@
       <p class="article-desc">{{ . }}</p>
       {{ end }}
       <div class="article-meta">
+        <span class="article-author">By the immurok team</span>
         <time datetime="{{ .Date.Format "2006-01-02" }}">{{ .Date.Format "January 2, 2006" }}</time>
+        {{ if gt (.Lastmod.Format "2006-01-02") (.Date.Format "2006-01-02") }}
+        <span class="article-updated">Updated <time datetime="{{ .Lastmod.Format "2006-01-02" }}">{{ .Lastmod.Format "January 2, 2006" }}</time></span>
+        {{ end }}
         {{ with .Params.tags }}
         <div class="post-tags">
           {{ range . }}<span class="tag">{{ . }}</span>{{ end }}

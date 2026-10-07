@@ -1,0 +1,71 @@
+<!--meta
+{
+  "path": "/vs/yubikey/",
+  "title": "immurok vs YubiKey: Fingerprint Key for Your Computer vs Security Key for Websites",
+  "description": "immurok and a YubiKey solve different problems. A YubiKey proves who you are to websites with FIDO2 and passkeys. immurok removes password friction on the machine in front of you: screen unlock, sudo, SSH signing, password managers, on Mac, Windows and Linux, with a fingerprint and no USB port.",
+  "crumbs": [["Compare", "/vs/touch-id/"]],
+  "crumb": "vs YubiKey"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Comparison</p>
+    <h1>immurok vs YubiKey</h1>
+    <p class="page-lead">They are not competitors, and many of us carry both. A YubiKey proves who you are to a website. immurok proves it to the computer on your desk, with a fingerprint, over Bluetooth.</p>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>Different layers</h2>
+        <p>A YubiKey is a FIDO2, WebAuthn and OTP device. You plug it in or tap it, touch the gold contact, and a website or an identity provider gets a cryptographic proof that the registered key is present. That is the right tool for signing in to GitHub, Google, your bank and your company's SSO, and immurok does not do it.</p>
+        <p>immurok works one layer down. It talks to the operating system, not to websites: the lock screen, <code>sudo</code> and admin prompts, the SSH agent, your password manager's unlock dialog, and the command an AI agent is about to run. The credential is a fingerprint, the link is Bluetooth LE, and nothing needs a USB port.</p>
+
+        <h2>Side by side</h2>
+        <table>
+          <tr><th></th><th>immurok IK-1</th><th>YubiKey 5 series</th></tr>
+          <tr><td>Sign in to websites, passkeys, FIDO2, WebAuthn</td><td class="no">No</td><td class="yes">Yes</td></tr>
+          <tr><td>Screen unlock</td><td class="yes">macOS, Windows, Linux</td><td class="part">Linux and macOS with pam_u2f; Windows via Hello for Business setup</td></tr>
+          <tr><td>sudo and admin prompts</td><td class="yes">Fingerprint, via PAM</td><td class="part">Touch, via pam_u2f</td></tr>
+          <tr><td>SSH and Git signing</td><td class="yes">On-device ECDSA key, fingerprint per signature</td><td class="yes">FIDO2 or PIV keys, touch per signature</td></tr>
+          <tr><td>Password manager unlock</td><td class="yes">Fills the vault password after a touch</td><td class="part">Second factor for the vault login</td></tr>
+          <tr><td>TOTP codes</td><td class="yes">Seeds on the key, read from the app or CLI</td><td class="yes">Yubico Authenticator</td></tr>
+          <tr><td>Fingerprint</td><td class="yes">Yes, on every model</td><td class="part">YubiKey Bio only</td></tr>
+          <tr><td>Connection</td><td>Bluetooth LE, USB-C for charging only</td><td>USB-A, USB-C, Lightning, NFC</td></tr>
+          <tr><td>Battery</td><td>Rechargeable, 1+ month per charge</td><td>None needed</td></tr>
+          <tr><td>Gate for AI coding agents</td><td class="yes"><code>imk run --agent</code></td><td class="no">No</td></tr>
+          <tr><td>Two computers</td><td class="yes">Two pairings, switch finger</td><td class="yes">Plug it into any machine</td></tr>
+          <tr><td>Source available</td><td class="yes">Apps Apache 2.0, firmware BSL 1.1</td><td class="no">Closed firmware</td></tr>
+        </table>
+
+        <h2>What a YubiKey does better</h2>
+        <p>Everything on the web. Passkeys, FIDO2 second factors, SSO and hardware-backed OTP are what YubiKeys are built for, and they need no battery, no pairing and no app. If your threat model is phishing and account takeover, buy a YubiKey first. If your work computer requires a FIDO key for SSO, immurok does not replace it.</p>
+
+        <h2>What immurok does better</h2>
+        <p>The dozens of local password prompts a day that a YubiKey does not touch. A YubiKey can be wired into <code>sudo</code> on Linux with <code>pam_u2f</code>, and it can hold SSH keys, but that is a touch on a USB device, per machine, with setup. immurok does it with a fingerprint, over Bluetooth, on macOS, Windows and Linux, and it also unlocks the screen, fills your password manager, and makes an AI agent wait for your finger before it runs <code>git push</code>.</p>
+
+        <h2>Using both</h2>
+        <p>The clean split: the YubiKey lives on your keyring for websites and SSO; immurok lives on the desk for the machine. GitHub sign-in is the YubiKey; the <code>git push</code> that follows is signed by immurok. Your password manager's account login is the YubiKey as second factor; the unlock prompt it shows ten times a day is immurok. Neither knows the other exists, and they do not need to.</p>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Can immurok be a passkey or a FIDO security key?</summary>
+            <p><strong>No.</strong> immurok does not implement FIDO2 or WebAuthn and cannot be registered with a website. Keep your YubiKey or platform passkeys for that. immurok covers the machine in front of you.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can a YubiKey unlock my Mac mini's screen with a fingerprint?</summary>
+            <p><strong>Not with a fingerprint.</strong> A YubiKey Bio has a sensor, but it is used for FIDO2 to websites, not for the macOS lock screen. A standard YubiKey can gate <code>sudo</code> through pam_u2f with a touch. immurok unlocks the screen and <code>sudo</code> with a fingerprint on macOS, Windows and Linux.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Which is more secure?</summary>
+            <p><strong>They protect different things.</strong> A YubiKey is a phishing-resistant proof of possession for online accounts. immurok is a local proof that a real, enrolled finger touched a paired device: fingerprint on the key, ECDH pairing, HMAC-signed events, signed firmware. Use a YubiKey for the web and immurok for the desktop, and each does the job it was designed for.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>Ships December 2026. One-year warranty. No subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>

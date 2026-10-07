@@ -33,7 +33,7 @@
 })(typeof window !== 'undefined' ? window : null, function () {
   'use strict';
 
-  var API_VERSION = '2025-07';
+  var API_VERSION = '2026-07';
   // Safety clamp for hand-typed permalinks (/cart/<variant>:<qty>). The
   // visible quantity select offers 1-5 on purpose; this is only the ceiling.
   var MAX_QTY = 10;
@@ -192,14 +192,27 @@
   function money(x) { return 'US$' + (Math.round(x * 100) / 100).toFixed(2).replace(/\.00$/, ''); }
 
   // ── Analytics ──────────────────────────────────────────────────────────
-  // The funnel uses GA4's standard ecommerce names (view_item → add_to_cart →
-  // begin_checkout) so the built-in reports and Google Ads imports work
-  // without mapping. purchase is not fired here: it happens on the Shopify
-  // checkout domain and reaches GA4 / Meta through Shopify's channel apps.
+  // view_item and add_to_cart use GA4's standard ecommerce names so the
+  // built-in reports work without mapping. The checkout click is a custom
+  // checkout_click, not begin_checkout: Shopify's Google channel already
+  // fires begin_checkout when the checkout page loads, and a second one from
+  // here would double every checkout in GA4's checkout-journey report.
+  // add_payment_info and purchase happen on the Shopify checkout domain and
+  // reach GA4 through that same channel app.
+  //
+  // Same reasoning on the Meta side: the Shopify Facebook & Instagram channel
+  // fires InitiateCheckout when the checkout page loads, so the click here
+  // goes out as the custom event CheckoutClick instead.
 
-  var META_EVENTS = { view_item: 'ViewContent', add_to_cart: 'AddToCart', begin_checkout: 'InitiateCheckout' };
+  var META_EVENTS = { view_item: 'ViewContent', add_to_cart: 'AddToCart' };
+  var META_CUSTOM_EVENTS = { checkout_click: 'CheckoutClick' };
 
-  function metaEventFor(name) { return META_EVENTS[name] || null; }
+  // Returns [fbq method, event name], or null when the event has no Meta twin.
+  function metaEventFor(name) {
+    if (META_EVENTS[name]) return ['track', META_EVENTS[name]];
+    if (META_CUSTOM_EVENTS[name]) return ['trackCustom', META_CUSTOM_EVENTS[name]];
+    return null;
+  }
 
   // sel: { sku, name, color, variant (gid), qty, price, country }
   function ecommerceParams(sel) {
@@ -217,7 +230,7 @@
       var meta = metaEventFor(name);
       if (meta && typeof window.fbq === 'function') {
         var item = (params.items && params.items[0]) || {};
-        window.fbq('track', meta, { content_type: 'product', content_ids: [item.item_id], content_name: item.item_name,
+        window.fbq(meta[0], meta[1], { content_type: 'product', content_ids: [item.item_id], content_name: item.item_name,
                                     num_items: item.quantity, value: params.value, currency: params.currency });
       }
     } catch (e) {}
@@ -276,6 +289,33 @@
     if (!y) { y = uuid(); writeCookie(doc, '_shopify_y', y, host, 31536000); }
     if (!s) { s = uuid(); writeCookie(doc, '_shopify_s', s, host, 1800); }
     return { y: y, s: s };
+  }
+
+  // GA4 ids for the server-side purchase backfill. They ride along as hidden
+  // cart attributes (leading underscore: kept on the order, not shown to the
+  // buyer) so an orders/create webhook can resend purchase through the
+  // Measurement Protocol when the checkout tag never fires. The cookies only
+  // exist once gtag.js has loaded, i.e. after consent.
+  var GA_MEASUREMENT_ID = 'G-N8YY5HG63Y';
+
+  function gaIdsFromCookies(cookie, measurementId) {
+    function get(name) {
+      var m = ('; ' + (cookie || '')).match('; ' + name + '=([^;]*)');
+      return m ? m[1] : '';
+    }
+    // _ga = GA1.<n>.<random>.<timestamp>; client_id is the last two parts.
+    var ga = /^GA\d\.\d+\.(\d+\.\d+)$/.exec(get('_ga'));
+    // _ga_<stream> = GS1.1.<session_id>.… or GS2.1.s<session_id>$o…
+    var gs = get('_ga_' + String(measurementId || '').replace(/^G-/, ''));
+    var sm = /^GS1\.\d+\.(\d+)\./.exec(gs) || /^GS2\.\d+\.s(\d+)/.exec(gs);
+    return { clientId: ga ? ga[1] : '', sessionId: sm ? sm[1] : '' };
+  }
+
+  function gaAttributes(ids) {
+    var a = {};
+    if (ids.clientId) a._ga_client_id = ids.clientId;
+    if (ids.sessionId) a._ga_session_id = ids.sessionId;
+    return a;
   }
 
   function pageViewPayload(cfg, cookies, doc, nav, url) {
@@ -430,6 +470,8 @@
           a['Tax ID'] = c.taxId;
           a['Tax ID type'] = country.duties.tax_id.label;
         }
+        var ga = gaAttributes(gaIdsFromCookies(doc.cookie, GA_MEASUREMENT_ID));
+        Object.keys(ga).forEach(function (k) { a[k] = ga[k]; });
         return a;
       }
       function syncHref() {
@@ -533,7 +575,7 @@
           sel.variant = c.variant; sel.qty = c.qty; sel.country = c.country; sel.price = price;
           var params = ecommerceParams(sel);
           params.form_location = location;
-          track('begin_checkout', params);
+          track('checkout_click', params);
           btn.classList.add('is-busy');
           btn.setAttribute('aria-busy', 'true');
           if (typeof window.fetch !== 'function') throw new Error('no fetch');
@@ -671,5 +713,7 @@
     guessCountry: guessCountry,
     shopifyCookies: shopifyCookies,
     pageViewPayload: pageViewPayload,
+    gaIdsFromCookies: gaIdsFromCookies,
+    gaAttributes: gaAttributes,
   };
 });

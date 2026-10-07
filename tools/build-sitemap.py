@@ -14,6 +14,8 @@ Usage:
 
 import argparse
 import os
+import re
+import subprocess
 import sys
 
 SITE = "https://immurok.com"
@@ -23,7 +25,10 @@ ROOT = os.path.dirname(HERE)
 # Directories that hold pages but are not pages themselves, or that must never
 # be indexed. 3d/ is an iframe widget; blog-src/ is Hugo input.
 SKIP_DIRS = {'.wrangler', '.git', '3d', 'blog-src', 'tools', 'css', 'js', 'img',
-             'fw', 'manual', 'doc', 'functions'}
+             'fw', 'manual', 'doc', 'functions',
+             # Kickstarter shipping top-up: reached by the link we send backers
+             # only (noindex meta + X-Robots-Tag + robots.txt disallow).
+             'ks-shipping'}
 
 # The translated FAQ pages form one hreflang cluster with the homepage.
 # Directory name -> hreflang value; Chinese needs a script subtag that a
@@ -36,8 +41,10 @@ LANG_DIRS = {
 
 PRIORITY = {
     '/': ('1.0', 'weekly'),
+    '/ik-1/': ('0.9', 'weekly'),
     '/download/': ('0.8', 'weekly'),
     '/blog/': ('0.9', 'weekly'),
+    '/changelog/': ('0.6', 'monthly'),
 }
 
 
@@ -56,7 +63,37 @@ def discover():
     return sorted(set(urls), key=lambda p: (p.count('/'), p))
 
 
+def blog_lastmods():
+    """Hugo writes a lastmod per post from git (enableGitInfo); reuse it rather
+    than dating the rebuilt HTML, which changes on every hugo run."""
+    out = {}
+    path = os.path.join(ROOT, 'blog', 'sitemap.xml')
+    if not os.path.exists(path):
+        return out
+    xml = open(path, encoding='utf-8').read()
+    for loc, mod in re.findall(r'<loc>([^<]+)</loc>\s*<lastmod>([^<]+)</lastmod>', xml):
+        out[loc.replace(SITE, '', 1)] = mod[:10]
+    return out
+
+
+def git_lastmod(path):
+    """Date of the last commit that touched the page. The lang pages and
+    everything else are generated straight into git, so this is accurate.
+    Falls back to the file mtime for an uncommitted page."""
+    file = os.path.join(ROOT, path.strip('/'), 'index.html')
+    try:
+        out = subprocess.run(['git', 'log', '-1', '--format=%cs', '--', file],
+                             capture_output=True, text=True, cwd=ROOT, check=True).stdout.strip()
+        if out:
+            return out
+    except (subprocess.CalledProcessError, FileNotFoundError):
+        pass
+    import datetime
+    return datetime.date.fromtimestamp(os.path.getmtime(file)).isoformat()
+
+
 def build():
+    blog = blog_lastmods()
     lines = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
              '        xmlns:xhtml="http://www.w3.org/1999/xhtml">']
@@ -72,6 +109,7 @@ def build():
             for d, code in LANG_DIRS.items():
                 lines.append('    <xhtml:link rel="alternate" hreflang="%s" href="%s/%s/"/>' % (code, SITE, d))
             lines.append('    <xhtml:link rel="alternate" hreflang="x-default" href="%s/"/>' % SITE)
+        lines.append('    <lastmod>%s</lastmod>' % (blog.get(path) or git_lastmod(path)))
         lines.append('    <changefreq>%s</changefreq>' % freq)
         lines.append('    <priority>%s</priority>' % prio)
         lines.append('  </url>')

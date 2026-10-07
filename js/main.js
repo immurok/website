@@ -620,10 +620,28 @@ function setupSmoothScroll() {
       const target = document.querySelector(link.getAttribute('href'));
       if (target) {
         e.preventDefault();
+        if (target.tagName === 'DETAILS') target.open = true;
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
       }
     });
   });
+}
+
+// A hash that points at a collapsed <details> (e.g. the /#specs ad sitelink)
+// opens it and scrolls to it; the browser's own jump only scrolls.
+function setupHashDetails() {
+  const openFromHash = () => {
+    const id = decodeURIComponent(location.hash.slice(1));
+    const target = id && document.getElementById(id);
+    if (!target || target.tagName !== 'DETAILS') return;
+    target.open = true;
+    // 'instant': html has scroll-behavior: smooth, and layout still shifts while
+    // images load, so a smooth scroll started now lands short. Re-run on load.
+    target.scrollIntoView({ block: 'start', behavior: 'instant' });
+  };
+  window.addEventListener('hashchange', openFromHash);
+  openFromHash();
+  if (document.readyState !== 'complete') window.addEventListener('load', openFromHash, { once: true });
 }
 
 // ── Mobile nav ──
@@ -739,11 +757,11 @@ document.addEventListener('DOMContentLoaded', () => {
   setupFadeIn();
   setupNavScroll();
   setupSmoothScroll();
+  setupHashDetails();
   setupSpecs3DVisibility();
   setupAuthDemo(prefersReducedMotion);
   setupAdMarquee(prefersReducedMotion);
   setupGalleryVideo();
-  setupPreorderMenu();
   setupObfuscatedEmail();
 });
 
@@ -858,36 +876,6 @@ function setupGalleryVideo() {
   modal.querySelectorAll('[data-video-close]').forEach((el) => el.addEventListener('click', close));
   document.addEventListener('keydown', (e) => {
     if (e.key === 'Escape' && modal.classList.contains('is-open')) close();
-  });
-}
-
-// Get Yours CTA: the chevron beside the Kickstarter link toggles a small menu
-// holding the Shopify (test only) checkout. The menu item carries
-// data-open-order, so shop.js opens the order drawer as before.
-function setupPreorderMenu() {
-  const toggle = document.querySelector('.preorder-toggle');
-  const menu = document.getElementById('preorder-menu');
-  if (!toggle || !menu) return;
-
-  const setOpen = (open) => {
-    menu.hidden = !open;
-    toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-  };
-
-  toggle.addEventListener('click', (e) => {
-    e.stopPropagation();
-    setOpen(menu.hidden);
-    if (!menu.hidden) menu.querySelector('.preorder-menu-item')?.focus();
-  });
-  // Picking an item hands off to the order drawer; close the menu behind it.
-  menu.addEventListener('click', (e) => {
-    if (e.target.closest('.preorder-menu-item')) setOpen(false);
-  });
-  document.addEventListener('click', (e) => {
-    if (!menu.hidden && !menu.contains(e.target)) setOpen(false);
-  });
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && !menu.hidden) { setOpen(false); toggle.focus(); }
   });
 }
 

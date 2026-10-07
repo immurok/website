@@ -1,0 +1,57 @@
+<!--meta
+{
+  "path": "/ks-shipping/",
+  "title": "Kickstarter shipping fee top-up | immurok",
+  "description": "Kickstarter backers: pay the shipping fee difference we quoted for your pledge. US$1 per unit, enter your backer number and the amount, then check out.",
+  "crumb": "Shipping top-up",
+  "noindex": true,
+  "scripts": ["/js/ks-shipping.js"]
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Kickstarter backers</p>
+    <h1>Shipping fee top-up</h1>
+    <p class="page-lead">If we asked you to cover a shipping difference for your pledge, pay it here. One unit is US$1; set the amount to what we quoted you. Nothing ships from this order: the address you enter at checkout is only used to match the payment to your pledge.</p>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <!-- Without JS the GET submit lands on the cart permalink in `action`
+           (amount 1) with the inputs as its query: the field names are the
+           parameters Shopify reads from a permalink, so the backer number and
+           email still reach the order. js/ks-shipping.js does the real work. -->
+      <form class="buy-form ks-form" id="ks-form" method="get" action="https://checkout.immurok.com/cart/52991571624223:1" novalidate
+            data-shop-domain="erjmi0-6n.myshopify.com"
+            data-shop-token="ec294bcc4cc8fc98614bdc690e7dcee6"
+            data-checkout-domain="checkout.immurok.com"
+            data-variant="gid://shopify/ProductVariant/52991571624223"
+            data-price="1">
+        <label class="buy-field">
+          <span>Backer number</span>
+          <input type="text" name="attributes[Backer Number]" inputmode="numeric" autocomplete="off" spellcheck="false" maxlength="12" placeholder="e.g. 1234" required aria-describedby="ks-backer-hint">
+          <p class="buy-taxid-hint" id="ks-backer-hint">Digits only. It is in your Kickstarter pledge email and on the project page under &ldquo;Your pledge&rdquo; (Backer #1234).</p>
+          <p class="buy-taxid-error ks-error-backer" role="alert" hidden>Enter your backer number as a whole number, for example 1234.</p>
+        </label>
+        <label class="buy-field">
+          <span>Email</span>
+          <input type="email" name="checkout[email]" autocomplete="email" spellcheck="false" maxlength="254" placeholder="you@example.com" required aria-describedby="ks-email-hint">
+          <p class="buy-taxid-hint" id="ks-email-hint">Use the email on your Kickstarter account so we can match the payment.</p>
+          <p class="buy-taxid-error ks-error-email" role="alert" hidden>Enter a valid email address.</p>
+        </label>
+        <div class="order-qty" aria-label="Amount">
+          <span class="order-qty-label">Amount to pay (US$1 per unit)</span>
+          <div class="qty-stepper">
+            <button type="button" class="qty-btn qty-minus" aria-label="Decrease amount">&minus;</button>
+            <input class="qty-value ks-amount" name="amount" type="number" inputmode="numeric" min="1" max="500" step="1" value="1" aria-label="Amount in US dollars">
+            <button type="button" class="qty-btn qty-plus" aria-label="Increase amount">+</button>
+          </div>
+        </div>
+        <dl class="order-summary">
+          <div><dt>Shipping</dt><dd>Free (nothing ships)</dd></div>
+          <div class="order-total-row"><dt>Total</dt><dd class="order-total">US$1</dd></div>
+        </dl>
+        <button type="submit" class="btn btn-primary btn-cta buy-btn">Continue to checkout</button>
+        <p class="buy-note">You will enter your shipping address at checkout. Pay only the amount we quoted you; email <a href="mailto:hello@immurok.com">hello@immurok.com</a> if you are not sure.</p>
+      </form>
+    </div>
+  </section>

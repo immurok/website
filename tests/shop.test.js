@@ -22,7 +22,7 @@ test('permalinkUrl clamps quantity to 1..10 integers', () => {
 
 test('cartCreateRequest targets the Storefront API with the public token', () => {
   const { url, init } = shop.cartCreateRequest('immurok.myshopify.com', 'tok', GID, 3);
-  assert.equal(url, 'https://immurok.myshopify.com/api/2025-07/graphql.json');
+  assert.equal(url, 'https://immurok.myshopify.com/api/2026-07/graphql.json');
   assert.equal(init.method, 'POST');
   assert.equal(init.headers['X-Shopify-Storefront-Access-Token'], 'tok');
   const body = JSON.parse(init.body);
@@ -245,10 +245,11 @@ test('ecommerceParams falls back to the variant id when there is no sku, and omi
   assert.equal('shipping_country' in p, false);
 });
 
-test('metaEventFor maps GA4 ecommerce names to Meta standard events', () => {
-  assert.equal(shop.metaEventFor('view_item'), 'ViewContent');
-  assert.equal(shop.metaEventFor('add_to_cart'), 'AddToCart');
-  assert.equal(shop.metaEventFor('begin_checkout'), 'InitiateCheckout');
+test('metaEventFor maps GA4 ecommerce names to Meta events', () => {
+  assert.deepEqual(shop.metaEventFor('view_item'), ['track', 'ViewContent']);
+  assert.deepEqual(shop.metaEventFor('add_to_cart'), ['track', 'AddToCart']);
+  // Shopify's channel owns InitiateCheckout; the click must not duplicate it.
+  assert.deepEqual(shop.metaEventFor('checkout_click'), ['trackCustom', 'CheckoutClick']);
   assert.equal(shop.metaEventFor('shipping_country_select'), null);
 });
 
@@ -273,4 +274,24 @@ test('linkerDecorate returns the href after the gtag linker had a chance to deco
 test('linkerDecorate hands back the original url when nothing decorates it', () => {
   assert.equal(shop.linkerDecorate(linkerDoc(false), 'https://checkout.immurok.com/c/abc'), 'https://checkout.immurok.com/c/abc');
   assert.equal(shop.linkerDecorate(null, 'https://x.test/'), 'https://x.test/');
+});
+
+test('gaIdsFromCookies reads client_id and session_id (GS1 and GS2 formats)', () => {
+  assert.deepEqual(shop.gaIdsFromCookies('_ga=GA1.1.1234567890.1727000000; _ga_N8YY5HG63Y=GS1.1.1727500000.3.1.1727500100.0.0.0', 'G-N8YY5HG63Y'),
+    { clientId: '1234567890.1727000000', sessionId: '1727500000' });
+  assert.deepEqual(shop.gaIdsFromCookies('_ga_E0JVRGN12R=GS2.1.s999$o1; _ga=GA1.2.55.66; _ga_N8YY5HG63Y=GS2.1.s1727500000$o5$g1$t1727500100$j60$l0$h0', 'G-N8YY5HG63Y'),
+    { clientId: '55.66', sessionId: '1727500000' });
+  assert.deepEqual(shop.gaIdsFromCookies('', 'G-N8YY5HG63Y'), { clientId: '', sessionId: '' });
+  assert.deepEqual(shop.gaIdsFromCookies('_ga=garbage', 'G-N8YY5HG63Y'), { clientId: '', sessionId: '' });
+});
+
+test('gaAttributes returns hidden cart attributes only for ids that exist', () => {
+  assert.deepEqual(shop.gaAttributes({ clientId: '1.2', sessionId: '3' }), { _ga_client_id: '1.2', _ga_session_id: '3' });
+  assert.deepEqual(shop.gaAttributes({ clientId: '1.2', sessionId: '' }), { _ga_client_id: '1.2' });
+  assert.deepEqual(shop.gaAttributes({ clientId: '', sessionId: '' }), {});
+});
+
+test('permalinkUrl carries the GA attributes', () => {
+  assert.equal(shop.permalinkUrl('checkout.immurok.com', GID, 1, { _ga_client_id: '1.2' }),
+    'https://checkout.immurok.com/cart/45678901234:1?attributes%5B_ga_client_id%5D=1.2');
 });

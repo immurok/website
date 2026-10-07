@@ -1,0 +1,203 @@
+# immurok
+
+> immurok IK-1 is a standalone wireless fingerprint key for Mac, Windows and Linux. One touch unlocks the screen, approves sudo and admin prompts, signs SSH and Git commits, unlocks password managers and gates AI coding agents. US$69, no subscription, no cloud. Pre-order, ships December 2026.
+
+## Key facts
+
+- Product: immurok IK-1, a standalone wireless fingerprint key (Bluetooth LE) for desktop authentication
+- What it does: Screen unlock, sudo and admin prompts, SSH and Git commit signing, 1Password / Bitwarden / LastPass / Proton Pass unlock, TOTP codes, and a fingerprint gate for AI coding agents (Claude Code, Cursor, Codex, Copilot)
+- Platforms: macOS 13.0 or later (Apple Silicon and Intel), Windows 10 and 11 (x64 and Arm64), Linux (Ubuntu, Fedora, Arch, Debian and most other distributions). Not ChromeOS. Not a FIDO / passkey device
+- Price: US$69 one-time. No subscription, no account, no cloud. Apps and firmware updates are free
+- Availability: Pre-order at https://immurok.com/ik-1/ ; ships December 2026. Cancel for a full refund any time before it ships
+- Shipping: Ships from China, tracked, to 49 countries. Rates shown per country before checkout. Import duties are the recipient's responsibility (DDU) except where marked as included
+- Warranty and returns: One-year limited warranty. Returns accepted for damaged or faulty devices within 7 days of delivery
+- Security: Fingerprint templates stored and matched on the device only. ECDH P-256 pairing, HMAC-signed events, ECDSA-signed firmware with anti-rollback, tamper switch wipes the key if the case is opened
+- Licences: macOS, Windows and Linux apps: Apache 2.0. Firmware and hardware: BSL 1.1, converting to Apache 2.0 in 2030. Source at https://github.com/immurok
+- Company: immurok is a trading name of Nervina Next Pte. Ltd., Singapore (UEN 202128549C), 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970. Email hello@immurok.com
+- Funding: Kickstarter campaign closed 22 September 2026 with 4,634 backers and S$480,299 pledged
+
+## Specifications
+
+- Connectivity: Bluetooth LE; pairs with up to 2 computers (dual-host), one connected at a time
+- Sensor: Capacitive fingerprint sensor, under 500 ms match, up to 5 enrolled fingerprints
+- Battery: 110 mAh LiPo, USB-C charging (charge only, no data), 1+ month per charge
+- Body: CNC anodized aluminium
+- Size and weight: 44 x 44 x 14.2 mm, about 40 g
+- GTIN: 00884400414250
+
+## Pages
+
+- [/](https://immurok.com/): Homepage: features, compatibility, comparison with Touch ID and USB dongles, pricing, FAQ
+- [/ik-1/](https://immurok.com/ik-1/): Product page: immurok IK-1 specifications, price, shipping, pre-order
+- [/mac-mini/](https://immurok.com/mac-mini/): Touch ID alternative for Mac mini, Mac Studio, iMac and clamshell MacBooks
+- [/linux/](https://immurok.com/linux/): Fingerprint login, sudo and PAM on Linux
+- [/windows/](https://immurok.com/windows/): Fingerprint sign-in on Windows desktops without Windows Hello hardware
+- [/ai-agents/](https://immurok.com/ai-agents/): A fingerprint gate for AI coding agents (imk run --agent)
+- [/vs/touch-id/](https://immurok.com/vs/touch-id/): immurok compared with Touch ID and the Magic Keyboard with Touch ID
+- [/vs/yubikey/](https://immurok.com/vs/yubikey/): immurok compared with YubiKey and FIDO security keys
+- [/download/](https://immurok.com/download/): Desktop apps for macOS, Windows and Linux, plus the user manual
+- [/about/](https://immurok.com/about/): Who makes immurok
+- [/contact/](https://immurok.com/contact/): How to reach us
+- [/blog/](https://immurok.com/blog/): Engineering notes and security deep-dives
+
+## FAQ pages in other languages
+
+Same fifteen answers as the English FAQ, translated: [日本語](https://immurok.com/ja/), [Español](https://immurok.com/es/), [Português](https://immurok.com/pt/), [Deutsch](https://immurok.com/de/), [한국어](https://immurok.com/ko/), [Русский](https://immurok.com/ru/), [Nederlands](https://immurok.com/nl/), [Polski](https://immurok.com/pl/), [Bahasa Indonesia](https://immurok.com/id/), [简体中文](https://immurok.com/zh-hans/), [繁體中文](https://immurok.com/zh-hant/).
+
+## Policies
+
+- [Shipping policy](https://checkout.immurok.com/policies/shipping-policy)
+- [Refund policy](https://checkout.immurok.com/policies/refund-policy)
+- [Privacy policy](https://checkout.immurok.com/policies/privacy-policy)
+- [Terms of service](https://checkout.immurok.com/policies/terms-of-service)
+
+## Blog
+
+- [Thank you, 4,634 backers](https://immurok.com/blog/kickstarter-thank-you/) (2026-09-23)
+- [Making the local channel as trustworthy as the device](https://immurok.com/blog/making-the-local-channel-as-trustworthy-as-the-device/) (2026-09-06)
+- [A close call before mass production](https://immurok.com/blog/a-close-call-before-mass-production/) (2026-08-30)
+- [One fingerprint key, two computers](https://immurok.com/blog/dual-host-fingerprint-key/) (2026-08-05)
+- [One touch, three paths: how immurok authenticates on macOS](https://immurok.com/blog/macos-authentication-modes/) (2026-07-08)
+- [How immurok verifies its own firmware: encryption, signatures, and OTA over BLE](https://immurok.com/blog/how-immurok-verifies-its-own-firmware/) (2026-07-04)
+- [Eight PCB revisions for a tiny wireless fingerprint key](https://immurok.com/blog/hardware-story-behind-a-tiny-wireless-fingerprint-key/) (2026-06-09)
+- [Why desktop fingerprint authentication is still awkward on Mac and Linux](https://immurok.com/blog/desktop-fingerprint-auth-on-mac-and-linux/) (2026-06-06)
+- [The immurok security model](https://immurok.com/blog/the-immurok-security-model/) (2026-05-28)
+- [A fingerprint gate for your AI coding agent](https://immurok.com/blog/fingerprint-gate-for-ai-agents/) (2026-05-08)
+- [Why we're building immurok](https://immurok.com/blog/why-we-are-building-immurok/) (2026-03-06)
+
+## Frequently asked questions
+
+### Which computers and operating systems does it work with?
+
+macOS 13.0 or later, Windows 10 and 11, and most Linux distributions. The Mac app is a single universal build for Apple Silicon and Intel. Windows has native x64 and Arm64 installers and integrates through a Credential Provider, so it works on the lock screen. Linux is a Rust daemon with PAM and polkit integration, tested on Ubuntu, Fedora, Arch and Debian, and it builds on most other distributions. Because the key is a separate Bluetooth device rather than a sensor built into a laptop, it works the same on a Mac mini, a Mac Studio, an iMac, a clamshell MacBook, an external keyboard, or a desktop PC. One device can be bound to two computers at once and switched between them with a dedicated fingerprint.
+
+### Does it work with Windows Hello?
+
+It is not a Windows Hello device, and it does not need to be. Windows Hello is Microsoft&rsquo;s framework for sensors built into a laptop or a certified keyboard or webcam. immurok signs you in by a different route: a Credential Provider that runs inside the Windows sign-in screen, so a touch unlocks the lock screen exactly as a Hello sensor would, on any desktop PC or external keyboard where no Hello sensor exists. Then it goes further than Hello. The same touch signs SSH and Git commits, unlocks 1Password and Bitwarden and releases TOTP codes, and the same key also works on macOS and Linux.
+
+### Does it support passkeys or FIDO?
+
+No. immurok is not a FIDO device. It does not register with websites as a passkey or a security key, and it does not replace a YubiKey. It works one layer down, on the machine in front of you: screen unlock, sudo and admin prompts, SSH and Git signing, password-manager unlock and TOTP codes. Keep your passkeys or security key for signing in to websites; immurok takes care of the rest, and many of us use both.
+
+### Does it support ChromeOS?
+
+No. ChromeOS gives third-party software no way to take part in screen unlock or system authentication, so there is nothing for immurok to hook into. It works with macOS 13 or later, Windows 10 and 11, and most Linux distributions.
+
+### Can I use one key with more than one computer?
+
+Yes, with up to two computers, connected to one at a time. The key keeps two independent pairings, each with its own keys, so both machines stay bound to it, but it talks to only one of them at any moment. You enrol one finger as the switch finger. Touching it hands the key from one computer to the other, and the target computer reconnects on its own. Removing one computer clears only that pairing; the other computer and your enrolled fingerprints are untouched.
+
+### Does it unlock 1Password, Bitwarden, LastPass or Proton Pass?
+
+Yes, all four, on macOS, Windows and Linux. When the manager shows its unlock prompt, a touch fills in a dedicated password that lives on the key, stored separately from your login password and switched on separately, and submits it. Only apps on a signed allowlist ever receive it.
+
+### Can I connect it over USB?
+
+Only to charge it. The USB-C port charges the battery and carries no data. Pairing, fingerprint results and everything else go over Bluetooth LE, so your computer needs Bluetooth and the key needs no free port while you work.
+
+### Is the battery replaceable?
+
+Yes. The key runs on a rechargeable 110 mAh lithium cell that charges over USB-C and lasts more than a month of normal use per charge. It is a standard off-the-shelf size, not a custom part, and you can swap it yourself. Unpair or factory-reset the key first: opening the case of a paired key trips the tamper switch and wipes it. Swap the cell, close the case and pair again.
+
+### How secure is it? Where do my fingerprints live?
+
+On the device, and nowhere else. Fingerprint templates are stored and matched on the key itself. They never reach your computer's disk, the network, or any cloud service. What crosses Bluetooth is an HMAC-signed "match succeeded" notification, never the fingerprint. Pairing is a direct ECDH exchange between the device and your machine. Firmware updates are signed and verified before they are installed. There is no account, no server and no telemetry, so everything works offline and keeps working if we disappear.
+
+### Is it open source?
+
+All the source code is public on GitHub, under two different licences. The macOS, Windows and Linux apps, including the PAM modules and the Windows Credential Provider, are open source under Apache 2.0. The firmware and hardware are source-available under BSL 1.1 and convert to Apache 2.0 in 2030. You can read all of it, patch it, and build and flash your own unit. The only right reserved until conversion is selling competing hardware. We would rather state that precisely than stretch the word. Everything is at github.com/immurok .
+
+### Can I build and flash my own firmware?
+
+Yes. The firmware and hardware sources are public, and the PCB exposes a programming interface so you can build your own firmware and flash it. Reset the key before you open it, because opening a paired key trips the tamper switch. Once a unit runs firmware you built, it is out of warranty and no longer receives official firmware updates.
+
+### How is this different from a YubiKey, a password manager, or Touch ID?
+
+Different layer, and they work together. A YubiKey and passkeys prove who you are to a website. immurok removes password friction on the machine in front of you: screen unlock, sudo, admin prompts, SSH and Git signing. A password manager stores your passwords; immurok unlocks 1Password and Bitwarden with a touch on macOS, Windows and Linux, and holds TOTP secrets on the device so your 2FA seeds are not sitting in a desktop app. Touch ID is Apple's own sensor, fused to the Secure Enclave and closed to third parties, and it simply does not exist on a Mac mini or an external keyboard. immurok is an independent device: sudo and admin prompts go through PAM, a real system mechanism, and screen unlock uses a separately documented helper path. Most of us use a YubiKey and a password manager too.
+
+### Is there a standalone Touch ID for the Mac?
+
+Not from Apple. Touch ID only ships built into MacBooks and the Magic Keyboard with Touch ID, which costs US$149 to US$199, needs an Apple Silicon Mac, and ties the sensor to a keyboard you may not want. There is no standalone Touch ID sensor, and because Touch ID is fused to the Secure Enclave, a third party cannot make one. immurok is the closest thing: a standalone wireless fingerprint key that sits on your desk next to whatever keyboard you already use. On a Mac mini, Mac Studio, iMac or clamshell MacBook it unlocks the screen, approves sudo and admin prompts, unlocks 1Password and Bitwarden, and signs SSH and Git commits. It is not Touch ID and does not pretend to be: it is a separate device with its own sensor and its own security model, and it works on Windows and Linux too.
+
+### Is there a subscription?
+
+No. No subscription, no account, no cloud service. You pay once for the device. The macOS, Windows and Linux apps are free, and so are firmware updates. Nothing stops working if you never connect the device to the internet, because it never needs to.
+
+### How do I reset it, and what if I lose it?
+
+Hold the button for about ten seconds to factory reset. The device erases everything, pairing keys, every enrolled fingerprint and any stored credentials, then restarts ready to pair again. That cannot be undone. To move the key to another computer without a full reset, choose Unpair in the app. If you lose the device, your fingerprints cannot be extracted from it: templates never leave the hardware, and forcing the case open trips a tamper switch that wipes everything and leaves the light steady red. Every unit includes a one-year warranty. For help, use the support address printed in the user manual and shown in the app, or email support .
+
+## Blog post summaries
+
+### Thank you, 4,634 backers
+
+2026-09-23. Our Kickstarter campaign closed with S$480,299 from 4,634 backers. Thank you for trusting us. Here is what happens next, and how you can help build immurok.
+
+https://immurok.com/blog/kickstarter-thank-you/
+
+### Making the local channel as trustworthy as the device
+
+2026-09-06. The device signs every touch. The last hop, from the app to sudo, used to trust a plain local socket. This September update closes that gap on macOS, Linux and Windows, and each platform needed a different approach.
+
+https://immurok.com/blog/making-the-local-channel-as-trustworthy-as-the-device/
+
+### A close call before mass production
+
+2026-08-30. 30% of our pilot run failed the same way. We blamed solder, then a counterfeit crystal, and finally found two capacitors that should not have been there.
+
+https://immurok.com/blog/a-close-call-before-mass-production/
+
+### One fingerprint key, two computers
+
+2026-08-05. Most people who want a wireless fingerprint key have two computers. Bluetooth pairing is 1-to-1, so making one key serve both cleanly took some design. Here's how dual-host works, and why we built it this way.
+
+https://immurok.com/blog/dual-host-fingerprint-key/
+
+### One touch, three paths: how immurok authenticates on macOS
+
+2026-07-08. macOS has no single API you can plug a fingerprint into. immurok meets each authentication surface with the right mechanism — PAM, credential injection, or a GUI bridge — and keeps a hard security boundary around each. Here's the map, and an honest risk analysis.
+
+https://immurok.com/blog/macos-authentication-modes/
+
+### How immurok verifies its own firmware: encryption, signatures, and OTA over BLE
+
+2026-07-04. A fingerprint key that accepts forged firmware is worthless, so the OTA pipeline is where immurok's security model either holds or collapses. This is how ours works: the .imfw package format, AES-CTR encryption, on-device verification, the migration from HMAC to ECDSA P-256 signatures, anti-rollback — and what it takes to run P-256 on a chip with 26KB of RAM and a 512-byte stack.
+
+https://immurok.com/blog/how-immurok-verifies-its-own-firmware/
+
+### Eight PCB revisions for a tiny wireless fingerprint key
+
+2026-06-09. Notes from building immurok: a wrong MCU choice, a sensor swap, a tamper switch that only worked while powered, and a long fight to get standby current down to 50 uA.
+
+https://immurok.com/blog/hardware-story-behind-a-tiny-wireless-fingerprint-key/
+
+### Why desktop fingerprint authentication is still awkward on Mac and Linux
+
+2026-06-06. Touch ID is excellent when it's built into the machine or keyboard. Everywhere else — Mac mini, Mac Studio, clamshell MacBooks, external keyboards, Linux desktops — desktop biometrics are still awkward. immurok is a small wireless fingerprint key for those setups, and on Linux it goes through PAM, not a stored password.
+
+https://immurok.com/blog/desktop-fingerprint-auth-on-mac-and-linux/
+
+### The immurok security model
+
+2026-05-28. A fingerprint key is only as good as the trust it can prove. Here's how immurok keeps your biometrics on the device, authenticates every touch, and refuses to phone home — ECDH pairing, HMAC-signed events, and signed firmware, end to end.
+
+https://immurok.com/blog/the-immurok-security-model/
+
+### A fingerprint gate for your AI coding agent
+
+2026-05-08. Claude Code, Cursor, Codex, Aider — they all want to run sudo, push to git, or read API keys on your behalf. Here's how immurok turns one fingerprint touch into the human in the loop.
+
+https://immurok.com/blog/fingerprint-gate-for-ai-agents/
+
+### Why we're building immurok
+
+2026-03-06. Millions of developers use desktop Macs and Linux machines without any biometric auth. We're building a tiny wireless fingerprint key to fix that.
+
+https://immurok.com/blog/why-we-are-building-immurok/
+
+## Links
+
+- Source code: https://github.com/immurok
+- User manual (PDF): https://immurok.com/manual/IK-1_User_Manual_EN.pdf
+- Discord: https://discord.gg/beavzPCanZ
+- X: https://x.com/immurok_dev

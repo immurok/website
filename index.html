@@ -53,7 +53,7 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
   <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
@@ -70,14 +70,36 @@
         "@id": "https://immurok.com/#org",
         "name": "immurok",
         "url": "https://immurok.com/",
-        "logo": "https://immurok.com/favicon-512.png",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://immurok.com/favicon-512.png",
+          "width": 512,
+          "height": 512
+        },
         "sameAs": [
           "https://github.com/immurok",
+          "https://x.com/immurok_dev",
+          "https://discord.gg/beavzPCanZ",
           "https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux"
         ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "contactType": "customer support",
+          "email": "hello@immurok.com",
+          "url": "https://immurok.com/contact/",
+          "availableLanguage": [
+            "en"
+          ]
+        },
         "parentOrganization": {
           "@type": "Organization",
           "name": "Nervina Next Pte. Ltd.",
+          "foundingDate": "2021",
+          "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "UEN",
+            "value": "202128549C"
+          },
           "address": {
             "@type": "PostalAddress",
             "streetAddress": "24 Sin Ming Lane, #06-97, Midview City",
@@ -85,7 +107,8 @@
             "postalCode": "573970",
             "addressCountry": "SG"
           }
-        }
+        },
+        "email": "hello@immurok.com"
       },
       {
         "@type": "WebSite",
@@ -100,7 +123,7 @@
       },
       {
         "@type": "Product",
-        "@id": "https://immurok.com/#product",
+        "@id": "https://immurok.com/ik-1/#product",
         "name": "immurok IK-1",
         "description": "A wireless fingerprint key for desktop computers. One touch unlocks the screen, approves sudo and admin prompts, signs SSH and Git commits, and releases TOTP codes on macOS, Windows and Linux. Fingerprints are stored and matched on the device; no cloud and no account.",
         "brand": {
@@ -109,10 +132,13 @@
         "manufacturer": {
           "@id": "https://immurok.com/#org"
         },
-        "image": "https://immurok.com/img/og-image.jpg",
-        "url": "https://immurok.com/",
+        "image": [
+          "https://immurok.com/img/device-in-hand-1920.webp",
+          "https://immurok.com/img/leather-case-1920.webp"
+        ],
+        "url": "https://immurok.com/ik-1/",
         "category": "Security key / biometric authenticator",
-        "sku": "IK-1",
+        "sku": "IK1-SILVER",
         "gtin14": "00884400414250",
         "additionalProperty": [
           {
@@ -148,8 +174,8 @@
         ],
         "offers": {
           "@type": "Offer",
-          "@id": "https://immurok.com/#offer",
-          "url": "https://immurok.com/#pricing",
+          "@id": "https://immurok.com/ik-1/#offer",
+          "url": "https://immurok.com/ik-1/",
           "availability": "https://schema.org/PreOrder",
           "priceCurrency": "USD",
           "price": "69",
@@ -157,11 +183,22 @@
           "itemCondition": "https://schema.org/NewCondition",
           "seller": {
             "@id": "https://immurok.com/#org"
+          },
+          "hasMerchantReturnPolicy": {
+            "@type": "MerchantReturnPolicy",
+            "returnPolicyCategory": "https://schema.org/MerchantReturnFiniteReturnWindow",
+            "merchantReturnDays": 7,
+            "returnMethod": "https://schema.org/ReturnByMail",
+            "returnFees": "https://schema.org/FreeReturn",
+            "refundType": "https://schema.org/FullRefund",
+            "merchantReturnLink": "https://checkout.immurok.com/policies/refund-policy"
           }
         },
         "isRelatedTo": {
           "@id": "https://immurok.com/#app"
-        }
+        },
+        "mpn": "IK-1",
+        "color": "Silver"
       },
       {
         "@type": "SoftwareApplication",
@@ -318,7 +355,7 @@
   <!-- ═══════════════════════════════════ NAV ═══════════════════════════════════ -->
   <nav class="nav" id="nav">
     <div class="nav-inner">
-      <a href="#" class="nav-logo">
+      <a href="/" class="nav-logo">
         <img class="nav-logo-wordmark" src="img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <img class="nav-logo-mark" src="img/figma/logo-mark.png" width="33" height="28" alt="immurok">
       </a>
@@ -350,7 +387,9 @@
   <section class="hero">
     <div class="hero-bg">
       <img
-        src="img/figma/hero-bg.png"
+        src="img/figma/hero-bg-1440.webp"
+        srcset="img/figma/hero-bg-960.webp 960w, img/figma/hero-bg-1440.webp 1440w, img/figma/hero-bg-2048.webp 2048w"
+        sizes="100vw"
         width="2048" height="2048"
         alt="A hand cradling the immurok wireless fingerprint key"
         decoding="async"
@@ -358,7 +397,7 @@
     </div>
     <div class="hero-content">
       <h1 class="hero-title">
-        <span class="hero-title-light">One touch. Unlocked.</span><br/><span class="hero-title-bold">The premium wireless fingerprint key for all.</span>
+        <span class="hero-title-light">One touch. Unlocked.</span><br/><span class="hero-title-bold">The wireless fingerprint key for Mac, Windows &amp; Linux.</span>
       </h1>
       <p class="hero-subtitle">
         Screen unlock, sudo, admin prompts, and SSH signing, approved by
@@ -377,7 +416,7 @@
   <section class="section section-alt" id="problem">
     <div class="container-sm">
       <div class="problem-content fade-in">
-        <h2 class="problem-heading">Problem</h2>
+        <h2 class="problem-heading">Desktops have no fingerprint reader</h2>
         <hr class="problem-divider">
         <p class="problem-subtitle">Biometrics on modern computers are fragmented, hardware-locked, or missing.</p>
         <div class="problem-body">
@@ -392,7 +431,7 @@
   <section class="section" id="features">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">Everything You Need</h2>
+        <h2 class="section-title">Screen unlock, sudo, SSH signing and more</h2>
         <p class="section-subtitle">Built for Security, Performance and Simplicity.</p>
       </div>
 
@@ -400,42 +439,42 @@
         <div class="feature-grid">
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/screen.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/screen.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>Screen Unlock</h3>
             </div>
             <p>Lock screen &rarr; touch &rarr; unlocked. Works with Mac mini, clamshell MacBooks, Windows PCs, and Linux.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/key.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/key.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>SSH &amp; Git signing</h3>
             </div>
             <p>Push commits signed with your fingerprint. On-device ECDSA private keys.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/program.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/program.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>sudo &amp; PAM</h3>
             </div>
             <p>Replace sudo and admin passwords with a fingerprint touch. PAM integration on macOS and Linux, Credential Provider integration on Windows.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/appstore-password.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/appstore-password.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>App Store &amp; Password App</h3>
             </div>
             <p>A fingerprint touch signs you into the App Store and unlocks Apple's built-in Passwords app, no need to type your Apple ID or master password.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/third-party-apps.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/third-party-apps.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>3rd Party Apps Unlock</h3>
             </div>
             <p>Auto-fill and unlock <strong>1Password, Bitwarden, LastPass and more</strong>, plus any app you whitelist yourself, across macOS, Windows &amp; Linux.</p>
           </div>
           <div class="feature-card fade-in">
             <div class="feature-head">
-              <div class="feature-icon"><img src="img/icons/opensource.svg" width="44" height="44" alt=""></div>
+              <div class="feature-icon"><img src="img/icons/opensource.svg" width="44" height="44" alt="" loading="lazy"></div>
               <h3>Open-source app</h3>
             </div>
             <p>macOS, Windows &amp; Linux apps are open source on GitHub (Apache 2.0). Audit it yourself.</p>
@@ -465,17 +504,17 @@
     <div class="gallery-strip fade-in" id="photo-gallery" role="group"
          aria-label="Product video and immurok device shown across everyday desk setups, keyboards, and laptops. Drag to browse.">
       <button type="button" class="gallery-video-item" data-youtube-id="PPceoi1beQA" aria-label="Play product video">
-        <img src="img/gallery/video-poster.jpg" width="2538" height="1269" alt="immurok product video" decoding="async">
+        <img src="img/gallery/video-poster-1280.webp" srcset="img/gallery/video-poster-1280.webp 1280w, img/gallery/video-poster-2538.webp 2538w" sizes="min(80vw, 1200px)" width="2538" height="1269" alt="immurok product video" loading="lazy" decoding="async">
         <span class="gallery-play-badge" aria-hidden="true">
           <svg viewBox="0 0 68 48" width="68" height="48"><path d="M66.52,7.74c-.78-2.93-2.49-5.41-5.42-6.19C55.79.13,34,0,34,0c0,0-21.79.13-27.1,1.55C3.97,2.33,2.27,4.81,1.48,7.74.06,13.05,0,24,0,24c0,0,.06,10.95,1.48,16.26c.78,2.93,2.49,5.41,5.42,6.19C12.21,47.87,34,48,34,48c0,0,21.79-.13,27.1-1.55c2.93-.78,4.64-3.26,5.42-6.19C67.94,34.95,68,24,68,24c0,0-.06-10.95-1.48-16.26" fill="#ff0000" fill-opacity=".85"/><path d="M45,24L27,14v20" fill="#fff"/></svg>
         </span>
       </button>
-      <img src="img/gallery/scene-1.jpg" width="2560" height="1440" alt="" decoding="async">
-      <img src="img/gallery/scene-3.jpg" width="2560" height="1440" alt="" decoding="async">
-      <img src="img/gallery/scene-4.jpg" width="2560" height="1440" alt="" decoding="async">
-      <img src="img/gallery/scene-5.jpg" width="2560" height="1440" alt="" decoding="async">
-      <img src="img/gallery/scene-6.jpg" width="2560" height="1440" alt="" decoding="async">
-      <img src="img/gallery/scene-7.jpg" width="2560" height="1440" alt="" decoding="async">
+      <img src="img/gallery/scene-1-1280.webp" srcset="img/gallery/scene-1-1280.webp 1280w, img/gallery/scene-1-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="immurok fingerprint key on a white desk next to a wireless game controller, a mouse and a volume knob" loading="lazy" decoding="async">
+      <img src="img/gallery/scene-3-1280.webp" srcset="img/gallery/scene-3-1280.webp 1280w, img/gallery/scene-3-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="Size comparison: immurok IK-1 next to a credit card, a USB flash drive and a set of house keys" loading="lazy" decoding="async">
+      <img src="img/gallery/scene-4-1280.webp" srcset="img/gallery/scene-4-1280.webp 1280w, img/gallery/scene-4-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="immurok IK-1 in silver anodized aluminum beside a mechanical keyboard" loading="lazy" decoding="async">
+      <img src="img/gallery/scene-5-1280.webp" srcset="img/gallery/scene-5-1280.webp 1280w, img/gallery/scene-5-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="immurok IK-1 resting on a ThinkPad keyboard with a terminal open on screen" loading="lazy" decoding="async">
+      <img src="img/gallery/scene-6-1280.webp" srcset="img/gallery/scene-6-1280.webp 1280w, img/gallery/scene-6-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="immurok IK-1 on a wooden desk in front of a Mac Studio, a display and a mechanical keyboard" loading="lazy" decoding="async">
+      <img src="img/gallery/scene-7-1280.webp" srcset="img/gallery/scene-7-1280.webp 1280w, img/gallery/scene-7-2560.webp 2560w" sizes="min(80vw, 1200px)" width="2560" height="1440" alt="immurok IK-1 on a leather desk mat next to an e-reader" loading="lazy" decoding="async">
     </div>
   </section>
 
@@ -541,25 +580,25 @@
         <div class="compat-row compat-row--mac">
           <div class="compat-card">
             <div class="compat-logo">
-              <img src="img/icons/mac.svg" width="130" height="65" alt="">
+              <img src="img/icons/mac.svg" width="130" height="65" alt="" loading="lazy">
             </div>
             <div class="compat-name">Desktop Macs</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo">
-              <img src="img/icons/macbook.svg" width="152" height="94" alt="">
+              <img src="img/icons/macbook.svg" width="152" height="94" alt="" loading="lazy">
             </div>
             <div class="compat-name">MacBook Series</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo">
-              <img src="img/icons/osx.svg" width="137" height="51" alt="">
+              <img src="img/icons/osx.svg" width="137" height="51" alt="" loading="lazy">
             </div>
             <div class="compat-name">macOS 13.0+</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo">
-              <img src="img/icons/universal.svg" width="91" height="91" alt="">
+              <img src="img/icons/universal.svg" width="91" height="91" alt="" loading="lazy">
             </div>
             <div class="compat-name">Universal</div>
           </div>
@@ -570,19 +609,19 @@
         <div class="compat-row">
           <div class="compat-card">
             <div class="compat-logo compat-logo--sm">
-              <img src="img/icons/win10.png" width="96" height="96" alt="">
+              <img src="img/icons/win10.png" width="96" height="96" alt="" loading="lazy">
             </div>
             <div class="compat-name">Windows 10</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo compat-logo--sm">
-              <img src="img/icons/win11.png" width="96" height="96" alt="">
+              <img src="img/icons/win11.png" width="96" height="96" alt="" loading="lazy">
             </div>
             <div class="compat-name">Windows 11</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo compat-logo--sm">
-              <img src="img/icons/win-x64.png" width="96" height="96" alt="">
+              <img src="img/icons/win-x64.png" width="96" height="96" alt="" loading="lazy">
             </div>
             <div class="compat-name">x64 &amp; Arm64 native</div>
           </div>
@@ -593,25 +632,25 @@
         <div class="compat-row compat-row--four">
           <div class="compat-card">
             <div class="compat-logo compat-logo--lg">
-              <img src="img/icons/ubuntu.svg" width="123" height="123" alt="">
+              <img src="img/icons/ubuntu.svg" width="123" height="123" alt="" loading="lazy">
             </div>
             <div class="compat-name">Ubuntu</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo compat-logo--lg">
-              <img src="img/icons/fedora.svg" width="119" height="120" alt="">
+              <img src="img/icons/fedora.svg" width="119" height="120" alt="" loading="lazy">
             </div>
             <div class="compat-name">Fedora</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo compat-logo--lg">
-              <img src="img/icons/arch-linux.svg" width="111" height="109" alt="">
+              <img src="img/icons/arch-linux.svg" width="111" height="109" alt="" loading="lazy">
             </div>
             <div class="compat-name">Arch Linux</div>
           </div>
           <div class="compat-card">
             <div class="compat-logo compat-logo--lg">
-              <img src="img/icons/debian.svg" width="95" height="120" alt="">
+              <img src="img/icons/debian.svg" width="95" height="120" alt="" loading="lazy">
             </div>
             <div class="compat-name">Debian</div>
           </div>
@@ -627,7 +666,7 @@
   <section class="section" id="comparison">
     <div class="container-sm">
       <div class="section-header fade-in">
-        <h2 class="section-title">Why Immurok</h2>
+        <h2 class="section-title">immurok vs Touch ID and USB fingerprint readers</h2>
         <p class="section-subtitle">The only standalone wireless fingerprint authenticator for Mac, Windows, and Linux. A standalone alternative to Touch ID that works with any keyboard, on any OS.</p>
       </div>
 
@@ -643,7 +682,7 @@
             <tr>
               <th scope="col"><span class="sr-only">Feature</span></th>
               <th scope="col">
-                <img class="compare-logo" src="img/figma/logo-wordmark.png" alt="immurok">
+                <img class="compare-logo" src="img/figma/logo-wordmark.png" alt="immurok" loading="lazy">
                 <span class="compare-price">US$69</span>
               </th>
               <th scope="col">
@@ -657,15 +696,15 @@
             </tr>
           </thead>
           <tbody>
-            <tr><td>Mac mini / Mac Studio</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Clamshell mode</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Linux support</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Windows support</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td></tr>
-            <tr><td>Wireless</td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></span></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>SSH Agent</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>sudo / PAM</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"><span class="cmp-label">macOS only</span></span></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Standalone (no keyboard)</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
-            <tr><td>Source-available</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No"></td></tr>
+            <tr><td>Mac mini / Mac Studio</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>Clamshell mode</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>Linux support</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>Windows support</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td></tr>
+            <tr><td>Wireless</td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></span></td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>SSH Agent</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>sudo / PAM</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><span class="cmp-cell"><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"><span class="cmp-label">macOS only</span></span></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>Standalone (no keyboard)</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
+            <tr><td>Source-available</td><td><img class="cmp-icon" src="img/icons/yes.svg" alt="Yes" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td><td><img class="cmp-icon" src="img/icons/no.svg" alt="No" loading="lazy"></td></tr>
             <tr><td>Price</td><td class="cmp-price">US$69</td><td class="cmp-price">$199</td><td class="cmp-price">Various</td></tr>
           </tbody>
         </table>
@@ -748,13 +787,13 @@
   <section class="section" id="pricing">
     <div class="container">
       <div class="section-header fade-in">
-        <h2 class="section-title">Get Yours</h2>
+        <h2 class="section-title">Buy immurok IK-1</h2>
       </div>
       <div class="product fade-in">
         <div class="product-gallery">
           <div class="product-stage">
             <iframe id="product-3d" class="product-3d" title="immurok IK-1 interactive 3D model" allow="fullscreen" loading="lazy" hidden></iframe>
-            <img id="product-main" src="img/device-in-hand-960.webp" srcset="img/device-in-hand-960.webp 960w, img/device-in-hand-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 50vw" width="960" height="960" alt="immurok IK-1 resting in an open palm">
+            <img id="product-main" src="img/device-in-hand-960.webp" srcset="img/device-in-hand-960.webp 960w, img/device-in-hand-1920.webp 1920w" sizes="(max-width: 900px) 100vw, 50vw" width="960" height="960" alt="immurok IK-1 resting in an open palm" loading="lazy">
           </div>
           <div class="product-thumbs" role="tablist" aria-label="Product photos">
             <button type="button" role="tab" aria-selected="true" class="product-thumb is-active" data-src="img/device-in-hand-960.webp" data-srcset="img/device-in-hand-960.webp 960w, img/device-in-hand-1920.webp 1920w" data-alt="immurok IK-1 resting in an open palm"><img src="img/device-in-hand-960.webp" width="120" height="120" alt="In hand" loading="lazy"></button>
@@ -779,16 +818,8 @@
             </label>
           </fieldset>
 
-          <!-- Main CTA goes to Kickstarter; the Shopify checkout (test only) sits behind the chevron. -->
-          <div class="preorder-split">
-            <a class="btn btn-primary btn-cta product-preorder" href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux" target="_blank" rel="noopener">Preorder on Kickstarter</a>
-            <button type="button" class="btn btn-primary preorder-toggle" aria-haspopup="true" aria-expanded="false" aria-controls="preorder-menu" aria-label="More ways to order">
-              <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg>
-            </button>
-            <div class="preorder-menu" id="preorder-menu" hidden>
-              <button type="button" class="preorder-menu-item" data-open-order data-return-focus=".preorder-toggle">Shopify (test only)</button>
-            </div>
-          </div>
+          <!-- Main CTA opens the Shopify order drawer. -->
+          <button type="button" class="btn btn-primary btn-cta product-preorder" data-open-order>Pre-order with Shopify</button>
           <p class="product-note">One payment. No subscription, no account.</p>
 
           <ul class="product-assurances">
@@ -797,9 +828,9 @@
             <li><svg class="assurance-icon" viewBox="0 0 24 24" width="40" height="40" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="5" y="10.5" width="14" height="10" rx="2.2"/><path d="M8.5 10.5V7.8a3.5 3.5 0 0 1 7 0v2.7"/><path d="M12 14.6v2.4"/></svg> Secure checkout by Shopify</li>
           </ul>
 
-          <p class="product-desc">A standalone fingerprint key for your desk. One touch unlocks your Mac, Windows or Linux machine, approves sudo and admin prompts, signs SSH and Git, and unlocks 1Password or Bitwarden.</p>
+          <p class="product-desc">A standalone fingerprint key for your desk. One touch unlocks your Mac, Windows or Linux machine, approves sudo and admin prompts, signs SSH and Git, and unlocks 1Password or Bitwarden. <a href="/ik-1/">Full product page: specs, shipping and returns &rarr;</a></p>
 
-          <details class="product-details">
+          <details class="product-details" id="specs">
             <summary>Specifications</summary>
             <table class="specs-table">
               <tr><td>Connectivity</td><td>Bluetooth LE, pairs with 2 computers</td></tr>
@@ -836,7 +867,7 @@
       <div class="dev-cards fade-in">
         <div class="dev-card">
           <div class="dev-card-logo">
-            <img src="img/figma/dev-swift.jpg" width="129" height="129" alt="Swift">
+            <img src="img/figma/dev-swift.jpg" width="129" height="129" alt="Swift" loading="lazy">
           </div>
           <div class="dev-card-label">macOS App</div>
           <div class="dev-card-value">Swift</div>
@@ -852,7 +883,7 @@
         </div>
         <div class="dev-card">
           <div class="dev-card-logo">
-            <img src="img/figma/dev-rust.svg" width="129" height="129" alt="Rust">
+            <img src="img/figma/dev-rust.svg" width="129" height="129" alt="Rust" loading="lazy">
           </div>
           <div class="dev-card-label">Linux App</div>
           <div class="dev-card-value">Rust</div>
@@ -860,7 +891,7 @@
         </div>
         <div class="dev-card">
           <div class="dev-card-logo">
-            <img src="img/figma/dev-c.png" width="113" height="127" alt="C language">
+            <img src="img/figma/dev-c.png" width="113" height="127" alt="C language" loading="lazy">
           </div>
           <div class="dev-card-label">PAM Module</div>
           <div class="dev-card-value">C</div>
@@ -868,7 +899,7 @@
         </div>
         <div class="dev-card">
           <div class="dev-card-logo">
-            <img src="img/figma/dev-api.png" width="129" height="129" alt="Device API">
+            <img src="img/figma/dev-api.png" width="129" height="129" alt="Device API" loading="lazy">
           </div>
           <div class="dev-card-label">Device API</div>
           <div class="dev-card-value">BLE GATT</div>
@@ -894,7 +925,7 @@
   <section class="section" id="faq">
     <div class="container-sm">
       <div class="section-header fade-in">
-        <h2 class="section-title">FAQ</h2>
+        <h2 class="section-title">immurok FAQ</h2>
       </div>
 
       <div class="faq-list fade-in">
@@ -983,7 +1014,7 @@
   <footer class="footer">
     <div class="footer-inner">
       <div class="footer-brand">
-        <img class="footer-logo" src="img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
+        <img class="footer-logo" src="img/figma/logo-wordmark.png" width="187" height="34" alt="immurok" loading="lazy">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
         <!-- Email is assembled by JS (see setupObfuscatedEmail) so the raw
              HTML never contains the address, the "@", or a mail link,
@@ -993,11 +1024,21 @@
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-col">
           <h4>Product</h4>
-          <a href="#features">Features</a>
-          <a href="#pricing">Shop</a>
-          <a href="https://checkout.immurok.com/account">Order status</a>
-            <a href="/download/">Download</a>
+          <a href="/#features">Features</a>
+          <a href="/ik-1/">Buy IK-1</a>
+          <a href="/ik-1/#specs">Specs</a>
+          <a href="/download/">Download</a>
+          <a href="/changelog/">Changelog</a>
           <a href="/blog/">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4>Use cases</h4>
+          <a href="/mac-mini/">Mac mini &amp; desktop Macs</a>
+          <a href="/windows/">Windows</a>
+          <a href="/linux/">Linux</a>
+          <a href="/ai-agents/">AI coding agents</a>
+          <a href="/vs/touch-id/">vs Touch ID</a>
+          <a href="/vs/yubikey/">vs YubiKey</a>
         </div>
         <div class="footer-col">
           <h4>Languages</h4>
@@ -1014,15 +1055,25 @@
           <a href="/zh-hant/" hreflang="zh-Hant" lang="zh-Hant">&#32321;&#39636;&#20013;&#25991;</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
           <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
           <a href="https://mariadb.com/bsl11/" target="_blank" rel="noopener">License</a>
         </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="https://checkout.immurok.com/account">Order status</a>
+          <a href="https://checkout.immurok.com/policies/shipping-policy">Shipping policy</a>
+          <a href="https://checkout.immurok.com/policies/refund-policy">Refund policy</a>
+          <a href="https://checkout.immurok.com/policies/privacy-policy">Privacy policy</a>
+          <a href="https://checkout.immurok.com/policies/terms-of-service">Terms of service</a>
+        </div>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 immurok</span>
+      <span>&copy; 2026 immurok &middot; Nervina Next Pte. Ltd. (UEN 202128549C) &middot; 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</span>
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>
@@ -1038,7 +1089,7 @@
       <button type="button" class="order-close" aria-label="Close">&times;</button>
     </div>
     <div class="order-item">
-      <img class="order-item-img" src="img/device-on-desk-960.webp" width="72" height="72" alt="">
+      <img class="order-item-img" src="img/device-thumb-144.webp" width="72" height="72" alt="" loading="lazy">
       <div class="order-item-text">
         <strong>immurok IK-1</strong>
         <span class="order-item-variant">Silver · Pre-order</span>
@@ -1070,11 +1121,12 @@
       <div class="buy-row">
         <label class="buy-field">
           <span>Ship to</span>
-          <select name="country" aria-label="Ship to country">
+          <select name="country" aria-label="Ship to country" aria-describedby="buy-country-hint">
             <option value="">Select country</option>
           </select>
         </label>
       </div>
+      <p class="buy-country-hint" id="buy-country-hint">Choose the country your order will ship to, and use the same country for your shipping address at checkout. Shipping, taxes and customs details depend on it.</p>
       <div class="buy-taxid" hidden>
         <label class="buy-field">
           <span class="buy-taxid-label"></span>

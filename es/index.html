@@ -44,136 +44,187 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://immurok.com/es/#faq",
-    "inLanguage": "es",
-    "url": "https://immurok.com/es/",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "¿Con qué ordenadores y sistemas operativos funciona?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "macOS 13.0 o posterior, Windows 10 y 11, y la mayoría de distribuciones de Linux. La app de Mac es una única compilación universal para Apple Silicon e Intel. Windows tiene instaladores nativos x64 y Arm64 y se integra como Credential Provider, así que funciona en la pantalla de bloqueo. Linux es un demonio en Rust con integración PAM y polkit, probado en Ubuntu, Fedora, Arch y Debian, y compila en casi cualquier otra distribución. Como la llave es un dispositivo Bluetooth independiente y no un sensor incrustado en un portátil, funciona igual en un Mac mini, un Mac Studio, un iMac, un MacBook cerrado, un teclado externo o un PC de sobremesa. Una misma llave puede quedar vinculada a dos ordenadores a la vez y cambiar entre ellos con una huella dedicada."
+        "@type": "WebPage",
+        "@id": "https://immurok.com/es/#webpage",
+        "url": "https://immurok.com/es/",
+        "name": "immurok: precio, dónde comprarlo y compatibilidad | Llave de huella inalámbrica para Mac, Windows y Linux",
+        "description": "Precio de immurok (US$69), dónde comprarlo, a qué países enviamos, sistemas compatibles, seguridad, suscripción y cómo restablecerlo.",
+        "inLanguage": "es",
+        "isPartOf": {
+          "@id": "https://immurok.com/#site"
+        },
+        "about": {
+          "@id": "https://immurok.com/ik-1/#product"
         }
       },
       {
-        "@type": "Question",
-        "name": "¿Funciona con Windows Hello?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No es un dispositivo Windows Hello, y no necesita serlo. Windows Hello es el marco de Microsoft para sensores integrados en un portátil o en un teclado o cámara certificados. immurok inicia sesión por otra vía: un Credential Provider que corre dentro de la pantalla de inicio de sesión de Windows, así que un toque desbloquea la pantalla exactamente como lo haría un sensor Hello, en cualquier PC de sobremesa o teclado externo donde no hay sensor Hello. Y va más allá de Hello. El mismo toque firma commits de SSH y Git, desbloquea 1Password y Bitwarden y entrega códigos TOTP, y la misma llave funciona también en macOS y Linux."
+        "@type": "Product",
+        "@id": "https://immurok.com/ik-1/#product",
+        "name": "immurok IK-1",
+        "description": "immurok IK-1 es una llave de huella dactilar inalámbrica independiente (Bluetooth LE) para Mac, Windows y Linux. Un toque desbloquea la pantalla, aprueba sudo y los avisos de administrador, firma commits de SSH y Git y desbloquea 1Password o Bitwarden. Las huellas se guardan en la llave; sin nube, sin cuenta y sin suscripción.",
+        "inLanguage": "es",
+        "brand": {
+          "@type": "Organization",
+          "@id": "https://immurok.com/#org",
+          "name": "immurok"
+        },
+        "image": [
+          "https://immurok.com/img/device-in-hand-1920.webp",
+          "https://immurok.com/img/leather-case-1920.webp"
+        ],
+        "url": "https://immurok.com/ik-1/",
+        "sku": "IK1-SILVER",
+        "gtin14": "00884400414250",
+        "offers": {
+          "@type": "Offer",
+          "@id": "https://immurok.com/ik-1/#offer",
+          "url": "https://immurok.com/ik-1/",
+          "availability": "https://schema.org/PreOrder",
+          "availabilityStarts": "2026-12-01",
+          "priceCurrency": "USD",
+          "price": "69",
+          "priceValidUntil": "2027-09-14",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@id": "https://immurok.com/#org"
+          }
         }
       },
       {
-        "@type": "Question",
-        "name": "¿Es compatible con passkeys o FIDO?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. immurok no es un dispositivo FIDO. No se registra en sitios web como passkey ni como llave de seguridad, y no sustituye a una YubiKey. Trabaja una capa más abajo, en la máquina que tienes delante: desbloqueo de pantalla, avisos de sudo y de administrador, firma de SSH y Git, desbloqueo del gestor de contraseñas y códigos TOTP. Sigue usando tus passkeys o tu llave de seguridad para entrar en sitios web; immurok se ocupa del resto, y muchos de nosotros usamos ambas cosas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Es compatible con ChromeOS?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. ChromeOS no da al software de terceros ninguna forma de participar en el desbloqueo de pantalla ni en la autenticación del sistema, así que immurok no tiene dónde engancharse. Funciona con macOS 13 o posterior, Windows 10 y 11 y la mayoría de distribuciones Linux."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo usar una llave con más de un ordenador?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, con hasta dos ordenadores, conectada a uno cada vez. La llave guarda dos emparejamientos independientes, cada uno con sus propias claves, así que las dos máquinas siguen vinculadas, pero solo habla con una de ellas en cada momento. Registras un dedo como dedo de cambio. Al tocarlo, la llave pasa de un ordenador al otro, y el ordenador de destino se reconecta solo. Quitar un ordenador borra solo ese emparejamiento; el otro ordenador y tus huellas registradas quedan intactos."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Desbloquea 1Password, Bitwarden, LastPass o Proton Pass?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí, los cuatro, en macOS, Windows y Linux. Cuando el gestor muestra su pantalla de desbloqueo, un toque rellena una contraseña dedicada que vive en la llave, guardada aparte de tu contraseña de inicio de sesión y activada por separado, y la envía. Solo la reciben las aplicaciones de una lista blanca firmada."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo conectarla por USB?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Solo para cargarla. El puerto USB-C carga la batería y no transporta datos. El emparejamiento, los resultados de huella y todo lo demás van por Bluetooth LE, así que tu ordenador necesita Bluetooth y la llave no ocupa ningún puerto mientras trabajas."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Se puede cambiar la batería?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. La llave funciona con una celda de litio recargable de 110 mAh que se carga por USB-C y dura más de un mes de uso normal por carga. Es un tamaño estándar, no una pieza a medida, y puedes cambiarla tú mismo. Antes, desempareja la llave o restáurala de fábrica: abrir la carcasa de una llave emparejada activa el interruptor antimanipulación y la borra. Cambia la celda, cierra la carcasa y vuelve a emparejar."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Qué nivel de seguridad tiene? ¿Dónde se guardan mis huellas?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "En el dispositivo, y en ningún otro sitio. Las plantillas de huella se guardan y se comparan dentro de la propia llave. Nunca llegan al disco de tu ordenador, ni a la red, ni a ningún servicio en la nube. Por Bluetooth solo viaja una notificación firmada con HMAC que dice que la huella coincide, nunca la huella. El emparejamiento es un intercambio ECDH directo entre el dispositivo y tu máquina. Las actualizaciones de firmware van firmadas y se verifican antes de instalarse. No hay cuenta, ni servidor, ni telemetría: todo funciona sin conexión y seguiría funcionando si nosotros desapareciéramos."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Es de código abierto?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Todo el código fuente es público en GitHub, con dos licencias distintas. Las apps de macOS, Windows y Linux, incluidos los módulos PAM y el Credential Provider de Windows, son código abierto bajo Apache 2.0. El firmware y el hardware son de código disponible bajo BSL 1.1 y pasan a Apache 2.0 en 2030. Puedes leerlo todo, modificarlo, compilarlo y grabarlo en tu propia unidad. El único derecho que nos reservamos hasta la conversión es vender hardware competidor."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Puedo compilar y grabar mi propio firmware?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Sí. El código del firmware y del hardware es público, y la placa expone una interfaz de programación para que compiles tu propio firmware y lo grabes. Restaura la llave antes de abrirla, porque abrir una llave emparejada activa el interruptor antimanipulación. Una vez que una unidad ejecuta firmware compilado por ti, queda fuera de garantía y deja de recibir actualizaciones oficiales de firmware."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿En qué se diferencia de una YubiKey, un gestor de contraseñas o Touch ID?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Son capas distintas y se complementan. Una YubiKey y las passkeys demuestran quién eres ante una web. immurok elimina la fricción de la contraseña en la máquina que tienes delante: desbloqueo de pantalla, sudo, peticiones de administrador, firma de SSH y Git. Un gestor de contraseñas guarda tus contraseñas; immurok desbloquea 1Password y Bitwarden con un toque en macOS, Windows y Linux, y guarda las semillas TOTP en el propio dispositivo, para que tus códigos de doble factor no vivan en una app del escritorio. Touch ID es el sensor propio de Apple, fundido con el Secure Enclave, cerrado a terceros, y sencillamente no existe en un Mac mini ni en un teclado externo. immurok es un dispositivo independiente: sudo y las peticiones de administrador pasan por PAM, un mecanismo real del sistema, y el desbloqueo de pantalla usa una ruta auxiliar documentada aparte."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Existe un Touch ID independiente para el Mac?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "De Apple, no. Touch ID solo viene integrado en los MacBook y en el Magic Keyboard con Touch ID, que cuesta entre US$149 y US$199, exige un Mac con Apple Silicon y ata el sensor a un teclado que quizá no quieras. No existe un sensor Touch ID suelto, y como Touch ID está fundido con el Secure Enclave, un tercero tampoco puede fabricarlo. immurok es lo más parecido: una llave de huella inalámbrica independiente que se queda en tu escritorio junto al teclado que ya usas. En un Mac mini, Mac Studio, iMac o MacBook cerrado desbloquea la pantalla, aprueba sudo y las peticiones de administrador, desbloquea 1Password y Bitwarden y firma commits de SSH y Git. No es Touch ID ni pretende serlo: es un dispositivo aparte, con su propio sensor y su propio modelo de seguridad, y además funciona en Windows y Linux."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Hace falta una suscripción?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "No. Ni suscripción, ni cuenta, ni servicio en la nube. Pagas una vez por el dispositivo. Las apps de macOS, Windows y Linux son gratuitas, y las actualizaciones de firmware también. Nada deja de funcionar aunque no conectes nunca el dispositivo a internet, porque no lo necesita."
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "¿Cómo se restablece? ¿Y si lo pierdo?",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Mantén pulsado el botón unos diez segundos para restablecerlo de fábrica. El dispositivo borra todo: claves de emparejamiento, todas las huellas registradas y las credenciales guardadas, y se reinicia listo para emparejarse otra vez. No se puede deshacer. Para pasar la llave a otro ordenador sin un borrado completo, usa Desemparejar en la app. Si la pierdes, nadie puede extraer tus huellas: las plantillas nunca salen del hardware y forzar la carcasa activa un interruptor antimanipulación que lo borra todo y deja la luz en rojo fijo. Cada unidad incluye un año de garantía. La dirección de soporte viene en el manual de usuario y aparece en la app."
-        }
+        "@type": "FAQPage",
+        "@id": "https://immurok.com/es/#faq",
+        "inLanguage": "es",
+        "url": "https://immurok.com/es/",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "¿Con qué ordenadores y sistemas operativos funciona?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13.0 o posterior, Windows 10 y 11, y la mayoría de distribuciones de Linux. La app de Mac es una única compilación universal para Apple Silicon e Intel. Windows tiene instaladores nativos x64 y Arm64 y se integra como Credential Provider, así que funciona en la pantalla de bloqueo. Linux es un demonio en Rust con integración PAM y polkit, probado en Ubuntu, Fedora, Arch y Debian, y compila en casi cualquier otra distribución. Como la llave es un dispositivo Bluetooth independiente y no un sensor incrustado en un portátil, funciona igual en un Mac mini, un Mac Studio, un iMac, un MacBook cerrado, un teclado externo o un PC de sobremesa. Una misma llave puede quedar vinculada a dos ordenadores a la vez y cambiar entre ellos con una huella dedicada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Funciona con Windows Hello?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No es un dispositivo Windows Hello, y no necesita serlo. Windows Hello es el marco de Microsoft para sensores integrados en un portátil o en un teclado o cámara certificados. immurok inicia sesión por otra vía: un Credential Provider que corre dentro de la pantalla de inicio de sesión de Windows, así que un toque desbloquea la pantalla exactamente como lo haría un sensor Hello, en cualquier PC de sobremesa o teclado externo donde no hay sensor Hello. Y va más allá de Hello. El mismo toque firma commits de SSH y Git, desbloquea 1Password y Bitwarden y entrega códigos TOTP, y la misma llave funciona también en macOS y Linux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Es compatible con passkeys o FIDO?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. immurok no es un dispositivo FIDO. No se registra en sitios web como passkey ni como llave de seguridad, y no sustituye a una YubiKey. Trabaja una capa más abajo, en la máquina que tienes delante: desbloqueo de pantalla, avisos de sudo y de administrador, firma de SSH y Git, desbloqueo del gestor de contraseñas y códigos TOTP. Sigue usando tus passkeys o tu llave de seguridad para entrar en sitios web; immurok se ocupa del resto, y muchos de nosotros usamos ambas cosas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Es compatible con ChromeOS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. ChromeOS no da al software de terceros ninguna forma de participar en el desbloqueo de pantalla ni en la autenticación del sistema, así que immurok no tiene dónde engancharse. Funciona con macOS 13 o posterior, Windows 10 y 11 y la mayoría de distribuciones Linux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo usar una llave con más de un ordenador?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, con hasta dos ordenadores, conectada a uno cada vez. La llave guarda dos emparejamientos independientes, cada uno con sus propias claves, así que las dos máquinas siguen vinculadas, pero solo habla con una de ellas en cada momento. Registras un dedo como dedo de cambio. Al tocarlo, la llave pasa de un ordenador al otro, y el ordenador de destino se reconecta solo. Quitar un ordenador borra solo ese emparejamiento; el otro ordenador y tus huellas registradas quedan intactos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Desbloquea 1Password, Bitwarden, LastPass o Proton Pass?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí, los cuatro, en macOS, Windows y Linux. Cuando el gestor muestra su pantalla de desbloqueo, un toque rellena una contraseña dedicada que vive en la llave, guardada aparte de tu contraseña de inicio de sesión y activada por separado, y la envía. Solo la reciben las aplicaciones de una lista blanca firmada."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo conectarla por USB?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Solo para cargarla. El puerto USB-C carga la batería y no transporta datos. El emparejamiento, los resultados de huella y todo lo demás van por Bluetooth LE, así que tu ordenador necesita Bluetooth y la llave no ocupa ningún puerto mientras trabajas."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Se puede cambiar la batería?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. La llave funciona con una celda de litio recargable de 110 mAh que se carga por USB-C y dura más de un mes de uso normal por carga. Es un tamaño estándar, no una pieza a medida, y puedes cambiarla tú mismo. Antes, desempareja la llave o restáurala de fábrica: abrir la carcasa de una llave emparejada activa el interruptor antimanipulación y la borra. Cambia la celda, cierra la carcasa y vuelve a emparejar."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Qué nivel de seguridad tiene? ¿Dónde se guardan mis huellas?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "En el dispositivo, y en ningún otro sitio. Las plantillas de huella se guardan y se comparan dentro de la propia llave. Nunca llegan al disco de tu ordenador, ni a la red, ni a ningún servicio en la nube. Por Bluetooth solo viaja una notificación firmada con HMAC que dice que la huella coincide, nunca la huella. El emparejamiento es un intercambio ECDH directo entre el dispositivo y tu máquina. Las actualizaciones de firmware van firmadas y se verifican antes de instalarse. No hay cuenta, ni servidor, ni telemetría: todo funciona sin conexión y seguiría funcionando si nosotros desapareciéramos."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Es de código abierto?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Todo el código fuente es público en GitHub, con dos licencias distintas. Las apps de macOS, Windows y Linux, incluidos los módulos PAM y el Credential Provider de Windows, son código abierto bajo Apache 2.0. El firmware y el hardware son de código disponible bajo BSL 1.1 y pasan a Apache 2.0 en 2030. Puedes leerlo todo, modificarlo, compilarlo y grabarlo en tu propia unidad. El único derecho que nos reservamos hasta la conversión es vender hardware competidor."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Puedo compilar y grabar mi propio firmware?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Sí. El código del firmware y del hardware es público, y la placa expone una interfaz de programación para que compiles tu propio firmware y lo grabes. Restaura la llave antes de abrirla, porque abrir una llave emparejada activa el interruptor antimanipulación. Una vez que una unidad ejecuta firmware compilado por ti, queda fuera de garantía y deja de recibir actualizaciones oficiales de firmware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿En qué se diferencia de una YubiKey, un gestor de contraseñas o Touch ID?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Son capas distintas y se complementan. Una YubiKey y las passkeys demuestran quién eres ante una web. immurok elimina la fricción de la contraseña en la máquina que tienes delante: desbloqueo de pantalla, sudo, peticiones de administrador, firma de SSH y Git. Un gestor de contraseñas guarda tus contraseñas; immurok desbloquea 1Password y Bitwarden con un toque en macOS, Windows y Linux, y guarda las semillas TOTP en el propio dispositivo, para que tus códigos de doble factor no vivan en una app del escritorio. Touch ID es el sensor propio de Apple, fundido con el Secure Enclave, cerrado a terceros, y sencillamente no existe en un Mac mini ni en un teclado externo. immurok es un dispositivo independiente: sudo y las peticiones de administrador pasan por PAM, un mecanismo real del sistema, y el desbloqueo de pantalla usa una ruta auxiliar documentada aparte."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Existe un Touch ID independiente para el Mac?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "De Apple, no. Touch ID solo viene integrado en los MacBook y en el Magic Keyboard con Touch ID, que cuesta entre US$149 y US$199, exige un Mac con Apple Silicon y ata el sensor a un teclado que quizá no quieras. No existe un sensor Touch ID suelto, y como Touch ID está fundido con el Secure Enclave, un tercero tampoco puede fabricarlo. immurok es lo más parecido: una llave de huella inalámbrica independiente que se queda en tu escritorio junto al teclado que ya usas. En un Mac mini, Mac Studio, iMac o MacBook cerrado desbloquea la pantalla, aprueba sudo y las peticiones de administrador, desbloquea 1Password y Bitwarden y firma commits de SSH y Git. No es Touch ID ni pretende serlo: es un dispositivo aparte, con su propio sensor y su propio modelo de seguridad, y además funciona en Windows y Linux."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Hace falta una suscripción?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "No. Ni suscripción, ni cuenta, ni servicio en la nube. Pagas una vez por el dispositivo. Las apps de macOS, Windows y Linux son gratuitas, y las actualizaciones de firmware también. Nada deja de funcionar aunque no conectes nunca el dispositivo a internet, porque no lo necesita."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "¿Cómo se restablece? ¿Y si lo pierdo?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Mantén pulsado el botón unos diez segundos para restablecerlo de fábrica. El dispositivo borra todo: claves de emparejamiento, todas las huellas registradas y las credenciales guardadas, y se reinicia listo para emparejarse otra vez. No se puede deshacer. Para pasar la llave a otro ordenador sin un borrado completo, usa Desemparejar en la app. Si la pierdes, nadie puede extraer tus huellas: las plantillas nunca salen del hardware y forzar la carcasa activa un interruptor antimanipulación que lo borra todo y deja la luz en rojo fijo. Cada unidad incluye un año de garantía. La dirección de soporte viene en el manual de usuario y aparece en la app."
+            }
+          }
+        ]
       }
     ]
   }
@@ -195,7 +246,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">Comprar ahora · US$69</a>
+        <a href="https://immurok.com/ik-1/" class="btn btn-primary btn-sm">Comprar ahora · US$69</a>
       </div>
     </div>
   </nav>
@@ -204,9 +255,25 @@
   <section class="section">
     <div class="container-sm">
       <div class="section-header">
-        <h1 class="section-title">immurok</h1>
+        <h1 class="section-title">immurok: llave de huella dactilar inalámbrica para Mac, Windows y Linux</h1>
         <p class="section-subtitle">Las preguntas que más nos hacen sobre immurok, respondidas. Es el mismo contenido que la web en inglés.</p>
       </div>
+
+      <div class="prose">
+        <h2>immurok IK-1 de un vistazo</h2>
+        <p>immurok IK-1 es una llave de huella dactilar inalámbrica independiente (Bluetooth LE) para Mac, Windows y Linux. Un toque desbloquea la pantalla, aprueba sudo y los avisos de administrador, firma commits de SSH y Git y desbloquea 1Password o Bitwarden. Las huellas se guardan en la llave; sin nube, sin cuenta y sin suscripción.</p>
+        <table class="specs-table">
+          <tr><td>Conectividad</td><td>Bluetooth LE, hasta 2 ordenadores</td></tr>
+          <tr><td>Sensor</td><td>Capacitivo, &lt;500 ms</td></tr>
+          <tr><td>Batería</td><td>110 mAh, USB-C, más de 1 mes por carga</td></tr>
+          <tr><td>Cuerpo</td><td>Aluminio anodizado</td></tr>
+          <tr><td>Tamaño</td><td>44 × 44 × 14,2 mm, ~40 g</td></tr>
+          <tr><td>Compatible con</td><td>macOS 13+, Windows 10/11, Linux</td></tr>
+        </table>
+        <p><strong>Precio: US$69, pago único. En reserva, se envía en diciembre de 2026.</strong></p>
+        <p><a class="btn btn-primary" href="https://immurok.com/ik-1/">Comprar ahora · US$69</a></p>
+      </div>
+
 
       <div class="faq-list">
         <details class="faq-item">
@@ -293,23 +360,49 @@
       <div class="footer-brand">
         <img class="footer-logo" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
+        <!-- Email is assembled by main.js (setupObfuscatedEmail); the raw
+             HTML never contains the address. Parts are reversed. -->
+        <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-col">
           <h4>Product</h4>
-          <a href="/">English site</a>
+          <a href="/#features">Features</a>
+          <a href="/ik-1/">Buy IK-1</a>
+          <a href="/ik-1/#specs">Specs</a>
           <a href="/download/">Download</a>
+          <a href="/changelog/">Changelog</a>
           <a href="/blog/">Blog</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
+          <h4>Use cases</h4>
+          <a href="/mac-mini/">Mac mini &amp; desktop Macs</a>
+          <a href="/windows/">Windows</a>
+          <a href="/linux/">Linux</a>
+          <a href="/ai-agents/">AI coding agents</a>
+          <a href="/vs/touch-id/">vs Touch ID</a>
+          <a href="/vs/yubikey/">vs YubiKey</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
           <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://mariadb.com/bsl11/" target="_blank" rel="noopener">License</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="https://checkout.immurok.com/account">Order status</a>
+          <a href="https://checkout.immurok.com/policies/shipping-policy">Shipping policy</a>
+          <a href="https://checkout.immurok.com/policies/refund-policy">Refund policy</a>
+          <a href="https://checkout.immurok.com/policies/privacy-policy">Privacy policy</a>
+          <a href="https://checkout.immurok.com/policies/terms-of-service">Terms of service</a>
         </div>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 immurok</span>
+      <span>&copy; 2026 immurok &middot; Nervina Next Pte. Ltd. (UEN 202128549C) &middot; 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</span>
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>

@@ -1,0 +1,49 @@
+<!--meta
+{
+  "path": "/changelog/",
+  "title": "immurok Changelog: Firmware and App Releases",
+  "description": "Release notes for the immurok IK-1 firmware and the macOS, Windows and Linux apps. Firmware updates are free, signed, and installed over Bluetooth from the app.",
+  "crumb": "Changelog"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Changelog</p>
+    <h1>Firmware and app releases</h1>
+    <p class="page-lead">Firmware updates are free and go over Bluetooth from the companion app. Each package is signed and the key refuses downgrades. App releases are on GitHub.</p>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>IK-1 firmware</h2>
+        <p>The app checks <code>immurok.com/fw/manifest.json</code> and offers the latest build. Devices on 1.6.0 or later update directly; older devices go through the 1.6.0 bridge build first, which the app handles on its own. How the pipeline verifies a package is described in <a href="/blog/how-immurok-verifies-its-own-firmware/">How immurok verifies its own firmware</a>.</p>
+
+        <div class="changelog-entry">
+          <h3>1.7.10 <span class="changelog-date">5 September 2026</span></h3>
+          <ul>
+            <li>Fixes a bug where a full pairing store could erase the pairing of the host still in use.</li>
+            <li>Unpairing now disconnects cleanly before the device resets.</li>
+            <li>Fixes the fingerprint sensor stopping after back-to-back authorization requests.</li>
+            <li>Connection parameter requests now stop when the host rejects them.</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
+          <h3>1.7.0 <span class="changelog-date">9 August 2026</span></h3>
+          <ul>
+            <li>Dual-host: the key keeps two independent pairings and a dedicated switch finger moves it between two computers. <a href="/blog/dual-host-fingerprint-key/">How dual-host works</a>.</li>
+            <li>BLE pairing and fingerprint reliability fixes.</li>
+          </ul>
+        </div>
+
+        <h2>Apps</h2>
+        <p>Each app publishes its release notes with its installers on GitHub.</p>
+        <ul>
+          <li><a href="https://github.com/immurok/app-macos/releases" target="_blank" rel="noopener">macOS app releases</a></li>
+          <li><a href="https://github.com/immurok/app-win/releases" target="_blank" rel="noopener">Windows app releases</a></li>
+          <li><a href="https://github.com/immurok/app-linux-rs/releases" target="_blank" rel="noopener">Linux app releases</a></li>
+        </ul>
+        <p>Current installers are always on the <a href="/download/">download page</a>.</p>
+      </div>
+    </div>
+  </section>

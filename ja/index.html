@@ -44,136 +44,187 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://immurok.com/ja/#faq",
-    "inLanguage": "ja",
-    "url": "https://immurok.com/ja/",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "どのパソコンと OS に対応していますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "macOS 13.0 以降、Windows 10 と 11、そして主要な Linux ディストリビューションに対応しています。Mac 版は Apple Silicon と Intel 共通のユニバーサルビルドです。Windows 版は x64 と Arm64 のネイティブインストーラーがあり、Credential Provider として統合されるのでロック画面でも使えます。Linux 版は Rust 製のデーモンで、PAM と polkit に統合されます。Ubuntu、Fedora、Arch、Debian でテストしており、他の多くのディストリビューションでもビルドできます。本体がパソコンとは別の Bluetooth 機器なので、Mac mini でも Mac Studio でも iMac でも、閉じた MacBook でも外付けキーボードでも Windows デスクトップでも、同じように使えます。1 台のキーを 2 台のパソコンに登録し、専用の指で切り替えることもできます。"
+        "@type": "WebPage",
+        "@id": "https://immurok.com/ja/#webpage",
+        "url": "https://immurok.com/ja/",
+        "name": "immurok の価格・購入方法・対応OS｜Mac / Windows / Linux 用ワイヤレス指紋キー",
+        "description": "immurok の価格（US$69）、購入方法、発送国、対応OS、セキュリティ、サブスクの有無、リセット方法をまとめました。",
+        "inLanguage": "ja",
+        "isPartOf": {
+          "@id": "https://immurok.com/#site"
+        },
+        "about": {
+          "@id": "https://immurok.com/ik-1/#product"
         }
       },
       {
-        "@type": "Question",
-        "name": "Windows Hello に対応していますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Windows Hello 対応デバイスではありませんが、その必要もありません。Windows Hello はノートパソコン内蔵のセンサーや認定済みのキーボード・ウェブカメラのための Microsoft の仕組みです。immurok は別の経路でサインインします。Windows のサインイン画面の中で動く Credential Provider を使うので、指を触れるだけで Hello のセンサーと同じようにロック画面を解除でき、Hello センサーのないデスクトップ PC や外付けキーボードでも使えます。しかも Hello より先まで行きます。同じ一回のタッチで SSH と Git のコミットに署名し、1Password と Bitwarden を解除し、TOTP コードを取り出せます。同じキーが macOS と Linux でも使えます。"
+        "@type": "Product",
+        "@id": "https://immurok.com/ik-1/#product",
+        "name": "immurok IK-1",
+        "description": "immurok IK-1 は Mac / Windows / Linux 用の単体ワイヤレス指紋キー（Bluetooth LE）です。指を一度触れるだけで画面ロックの解除、sudo と管理者承認、SSH と Git のコミット署名、1Password や Bitwarden の解除ができます。指紋はキーの中にだけ保存され、クラウドもアカウントもサブスクリプションもありません。",
+        "inLanguage": "ja",
+        "brand": {
+          "@type": "Organization",
+          "@id": "https://immurok.com/#org",
+          "name": "immurok"
+        },
+        "image": [
+          "https://immurok.com/img/device-in-hand-1920.webp",
+          "https://immurok.com/img/leather-case-1920.webp"
+        ],
+        "url": "https://immurok.com/ik-1/",
+        "sku": "IK1-SILVER",
+        "gtin14": "00884400414250",
+        "offers": {
+          "@type": "Offer",
+          "@id": "https://immurok.com/ik-1/#offer",
+          "url": "https://immurok.com/ik-1/",
+          "availability": "https://schema.org/PreOrder",
+          "availabilityStarts": "2026-12-01",
+          "priceCurrency": "USD",
+          "price": "69",
+          "priceValidUntil": "2027-09-14",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@id": "https://immurok.com/#org"
+          }
         }
       },
       {
-        "@type": "Question",
-        "name": "パスキーや FIDO に対応していますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "いいえ。immurok は FIDO デバイスではありません。ウェブサイトにパスキーやセキュリティキーとして登録することはできず、YubiKey の代わりにもなりません。immurok が担うのはその一段下、目の前のパソコンの層です。画面ロックの解除、sudo や管理者パスワードの承認、SSH と Git の署名、パスワードマネージャーの解除、TOTP コードの取り出し。ウェブサイトへのサインインにはパスキーやセキュリティキーをそのまま使ってください。残りは immurok が受け持ちます。私たちの多くも両方を使っています。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "ChromeOS に対応していますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "いいえ。ChromeOS はサードパーティのソフトウェアが画面ロック解除やシステム認証に関わる手段を用意していないため、immurok が入り込む場所がありません。対応しているのは macOS 13 以降、Windows 10 と 11、主要な Linux ディストリビューションです。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "1 つのキーを複数のパソコンで使えますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい、最大 2 台まで、ただし接続できるのは同時に 1 台です。キーは独立したペアリングを 2 つ持ち、それぞれに固有の鍵があるので、2 台とも結び付いたままですが、通信するのは常にどちらか 1 台だけです。指を 1 本「切り替え用」として登録しておき、その指を触れるとキーが一方のパソコンからもう一方へ移り、移った先のパソコンが自動で再接続します。片方のパソコンを解除しても、消えるのはそのペアリングだけで、もう一方のパソコンと登録済みの指紋はそのまま残ります。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "1Password、Bitwarden、LastPass、Proton Pass を解除できますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい、4 つとも macOS、Windows、Linux で対応しています。パスワードマネージャーが解除画面を出したとき、指を触れるとキーに保存された専用のパスワードが入力され、送信されます。このパスワードはログインパスワードとは別に保存され、有効・無効も別々に切り替えられます。受け取れるのは署名済みの許可リストに載ったアプリだけです。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "USB で接続できますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "充電にだけ使えます。USB-C ポートはバッテリーを充電するためのもので、データは流れません。ペアリング、指紋の判定結果、その他すべて Bluetooth LE で通信するので、パソコン側に Bluetooth が必要で、使用中にポートを空けておく必要はありません。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "バッテリーは交換できますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。キーは充電式の 110 mAh リチウム電池で動き、USB-C で充電して、通常の使い方なら 1 回の充電で 1 か月以上持ちます。特注品ではなく標準規格のサイズなので、自分で交換できます。先にペアリングを解除するか工場出荷状態にリセットしてください。ペアリング済みのキーのケースを開けると、防タンパースイッチが作動してデータが消去されます。電池を入れ替え、ケースを閉じて、もう一度ペアリングしてください。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "セキュリティはどうなっていますか。指紋データはどこに保存されますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "指紋データは本体の中にだけ保存され、照合も本体の中で行われます。パソコンのディスク、ネットワーク、クラウドには一切届きません。Bluetooth を通るのは HMAC で署名された「照合に成功した」という通知だけで、指紋そのものは流れません。ペアリングは本体とパソコンの間の ECDH 鍵交換です。ファームウェアの更新は署名を検証してから適用されます。アカウントもサーバーもテレメトリもないので、オフラインで完結し、私たちがいなくなっても動き続けます。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "オープンソースですか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ソースコードはすべて GitHub で公開しています。ライセンスは二つに分かれます。macOS / Windows / Linux のアプリは、PAM モジュールと Windows の Credential Provider を含めて Apache 2.0 のオープンソースです。ファームウェアとハードウェアは BSL 1.1 のソース公開ライセンスで、2030 年に Apache 2.0 に切り替わります。中身をすべて読み、修正し、自分でビルドして書き込むことができます。切り替えまで留保しているのは、競合するハードウェアを販売する権利だけです。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "自分でファームウェアをビルドして書き込めますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "はい。ファームウェアとハードウェアのソースは公開されており、基板には書き込み用のインターフェースがあるので、自分でファームウェアをビルドして書き込めます。開ける前にキーをリセットしてください。ペアリング済みのキーを開けると防タンパースイッチが作動します。自分でビルドしたファームウェアを書き込んだ個体は保証の対象外となり、公式のファームウェア更新も受けられなくなります。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "YubiKey やパスワードマネージャー、Touch ID とは何が違いますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "レイヤーが違うので、併用できます。YubiKey やパスキーは「Web サイトに対して本人であることを証明する」ものです。immurok は「目の前のパソコンでパスワードを打つ手間をなくす」ものです。画面ロックの解除、sudo、管理者承認、SSH と Git の署名がそれにあたります。パスワードマネージャーはパスワードを保管するものですが、immurok は macOS・Windows・Linux で 1Password や Bitwarden のロックを指一本で解除でき、TOTP のシードを本体に保存できるので、二要素認証の種をパソコン上のアプリに置かずに済みます。Touch ID は Apple 自身のセンサーで、Secure Enclave と一体化していて他社は利用できず、そもそも Mac mini や外付けキーボードには存在しません。immurok は独立した機器で、sudo と管理者承認は PAM という OS 本来の仕組みを通り、画面ロック解除は別途文書化された経路を使います。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "Mac 用の単体の Touch ID はありますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "Apple からは出ていません。Touch ID は MacBook に内蔵されているものと、Touch ID 搭載 Magic Keyboard（US$149〜199、Apple Silicon の Mac が必要）だけで、センサーはキーボードと一体です。単体の Touch ID センサーは存在せず、Touch ID は Secure Enclave と一体化しているため、他社が作ることもできません。immurok はそれに最も近い製品です。机の上に置く単体のワイヤレス指紋キーで、今使っているキーボードの横に置くだけで使えます。Mac mini、Mac Studio、iMac、閉じたままの MacBook で、画面ロックの解除、sudo と管理者承認、1Password と Bitwarden のロック解除、SSH と Git のコミット署名ができます。Touch ID ではありませんし、そう名乗るつもりもありません。独自のセンサーと独自のセキュリティモデルを持つ別の機器で、Windows と Linux でも使えます。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "サブスクリプションは必要ですか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "必要ありません。サブスクリプションもアカウントもクラウドサービスもありません。本体を一度買うだけです。macOS / Windows / Linux のアプリもファームウェア更新も無料です。インターネットに一度もつながなくても、何ひとつ止まりません。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "リセットの方法は。紛失したらどうなりますか",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "ボタンを約 10 秒間押し続けると工場出荷状態に戻ります。ペアリング鍵、登録済みの指紋、保存された認証情報がすべて消去され、再ペアリングできる状態で再起動します。この操作は取り消せません。完全な初期化をせずに別のパソコンへ移したい場合は、アプリの「ペアリング解除（Unpair）」を使ってください。紛失しても指紋を取り出されることはありません。テンプレートは本体から外に出ず、ケースをこじ開けると改ざん検知スイッチが働いてすべてのデータを消去し、ランプが赤の点灯のまま停止します。製品には 1 年間の保証が付きます。サポート窓口の連絡先は取扱説明書とアプリに記載しています。"
-        }
+        "@type": "FAQPage",
+        "@id": "https://immurok.com/ja/#faq",
+        "inLanguage": "ja",
+        "url": "https://immurok.com/ja/",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "どのパソコンと OS に対応していますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13.0 以降、Windows 10 と 11、そして主要な Linux ディストリビューションに対応しています。Mac 版は Apple Silicon と Intel 共通のユニバーサルビルドです。Windows 版は x64 と Arm64 のネイティブインストーラーがあり、Credential Provider として統合されるのでロック画面でも使えます。Linux 版は Rust 製のデーモンで、PAM と polkit に統合されます。Ubuntu、Fedora、Arch、Debian でテストしており、他の多くのディストリビューションでもビルドできます。本体がパソコンとは別の Bluetooth 機器なので、Mac mini でも Mac Studio でも iMac でも、閉じた MacBook でも外付けキーボードでも Windows デスクトップでも、同じように使えます。1 台のキーを 2 台のパソコンに登録し、専用の指で切り替えることもできます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Windows Hello に対応していますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Windows Hello 対応デバイスではありませんが、その必要もありません。Windows Hello はノートパソコン内蔵のセンサーや認定済みのキーボード・ウェブカメラのための Microsoft の仕組みです。immurok は別の経路でサインインします。Windows のサインイン画面の中で動く Credential Provider を使うので、指を触れるだけで Hello のセンサーと同じようにロック画面を解除でき、Hello センサーのないデスクトップ PC や外付けキーボードでも使えます。しかも Hello より先まで行きます。同じ一回のタッチで SSH と Git のコミットに署名し、1Password と Bitwarden を解除し、TOTP コードを取り出せます。同じキーが macOS と Linux でも使えます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "パスキーや FIDO に対応していますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ。immurok は FIDO デバイスではありません。ウェブサイトにパスキーやセキュリティキーとして登録することはできず、YubiKey の代わりにもなりません。immurok が担うのはその一段下、目の前のパソコンの層です。画面ロックの解除、sudo や管理者パスワードの承認、SSH と Git の署名、パスワードマネージャーの解除、TOTP コードの取り出し。ウェブサイトへのサインインにはパスキーやセキュリティキーをそのまま使ってください。残りは immurok が受け持ちます。私たちの多くも両方を使っています。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "ChromeOS に対応していますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "いいえ。ChromeOS はサードパーティのソフトウェアが画面ロック解除やシステム認証に関わる手段を用意していないため、immurok が入り込む場所がありません。対応しているのは macOS 13 以降、Windows 10 と 11、主要な Linux ディストリビューションです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "1 つのキーを複数のパソコンで使えますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい、最大 2 台まで、ただし接続できるのは同時に 1 台です。キーは独立したペアリングを 2 つ持ち、それぞれに固有の鍵があるので、2 台とも結び付いたままですが、通信するのは常にどちらか 1 台だけです。指を 1 本「切り替え用」として登録しておき、その指を触れるとキーが一方のパソコンからもう一方へ移り、移った先のパソコンが自動で再接続します。片方のパソコンを解除しても、消えるのはそのペアリングだけで、もう一方のパソコンと登録済みの指紋はそのまま残ります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "1Password、Bitwarden、LastPass、Proton Pass を解除できますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい、4 つとも macOS、Windows、Linux で対応しています。パスワードマネージャーが解除画面を出したとき、指を触れるとキーに保存された専用のパスワードが入力され、送信されます。このパスワードはログインパスワードとは別に保存され、有効・無効も別々に切り替えられます。受け取れるのは署名済みの許可リストに載ったアプリだけです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "USB で接続できますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "充電にだけ使えます。USB-C ポートはバッテリーを充電するためのもので、データは流れません。ペアリング、指紋の判定結果、その他すべて Bluetooth LE で通信するので、パソコン側に Bluetooth が必要で、使用中にポートを空けておく必要はありません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "バッテリーは交換できますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。キーは充電式の 110 mAh リチウム電池で動き、USB-C で充電して、通常の使い方なら 1 回の充電で 1 か月以上持ちます。特注品ではなく標準規格のサイズなので、自分で交換できます。先にペアリングを解除するか工場出荷状態にリセットしてください。ペアリング済みのキーのケースを開けると、防タンパースイッチが作動してデータが消去されます。電池を入れ替え、ケースを閉じて、もう一度ペアリングしてください。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "セキュリティはどうなっていますか。指紋データはどこに保存されますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "指紋データは本体の中にだけ保存され、照合も本体の中で行われます。パソコンのディスク、ネットワーク、クラウドには一切届きません。Bluetooth を通るのは HMAC で署名された「照合に成功した」という通知だけで、指紋そのものは流れません。ペアリングは本体とパソコンの間の ECDH 鍵交換です。ファームウェアの更新は署名を検証してから適用されます。アカウントもサーバーもテレメトリもないので、オフラインで完結し、私たちがいなくなっても動き続けます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "オープンソースですか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ソースコードはすべて GitHub で公開しています。ライセンスは二つに分かれます。macOS / Windows / Linux のアプリは、PAM モジュールと Windows の Credential Provider を含めて Apache 2.0 のオープンソースです。ファームウェアとハードウェアは BSL 1.1 のソース公開ライセンスで、2030 年に Apache 2.0 に切り替わります。中身をすべて読み、修正し、自分でビルドして書き込むことができます。切り替えまで留保しているのは、競合するハードウェアを販売する権利だけです。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "自分でファームウェアをビルドして書き込めますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "はい。ファームウェアとハードウェアのソースは公開されており、基板には書き込み用のインターフェースがあるので、自分でファームウェアをビルドして書き込めます。開ける前にキーをリセットしてください。ペアリング済みのキーを開けると防タンパースイッチが作動します。自分でビルドしたファームウェアを書き込んだ個体は保証の対象外となり、公式のファームウェア更新も受けられなくなります。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "YubiKey やパスワードマネージャー、Touch ID とは何が違いますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "レイヤーが違うので、併用できます。YubiKey やパスキーは「Web サイトに対して本人であることを証明する」ものです。immurok は「目の前のパソコンでパスワードを打つ手間をなくす」ものです。画面ロックの解除、sudo、管理者承認、SSH と Git の署名がそれにあたります。パスワードマネージャーはパスワードを保管するものですが、immurok は macOS・Windows・Linux で 1Password や Bitwarden のロックを指一本で解除でき、TOTP のシードを本体に保存できるので、二要素認証の種をパソコン上のアプリに置かずに済みます。Touch ID は Apple 自身のセンサーで、Secure Enclave と一体化していて他社は利用できず、そもそも Mac mini や外付けキーボードには存在しません。immurok は独立した機器で、sudo と管理者承認は PAM という OS 本来の仕組みを通り、画面ロック解除は別途文書化された経路を使います。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Mac 用の単体の Touch ID はありますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Apple からは出ていません。Touch ID は MacBook に内蔵されているものと、Touch ID 搭載 Magic Keyboard（US$149〜199、Apple Silicon の Mac が必要）だけで、センサーはキーボードと一体です。単体の Touch ID センサーは存在せず、Touch ID は Secure Enclave と一体化しているため、他社が作ることもできません。immurok はそれに最も近い製品です。机の上に置く単体のワイヤレス指紋キーで、今使っているキーボードの横に置くだけで使えます。Mac mini、Mac Studio、iMac、閉じたままの MacBook で、画面ロックの解除、sudo と管理者承認、1Password と Bitwarden のロック解除、SSH と Git のコミット署名ができます。Touch ID ではありませんし、そう名乗るつもりもありません。独自のセンサーと独自のセキュリティモデルを持つ別の機器で、Windows と Linux でも使えます。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "サブスクリプションは必要ですか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "必要ありません。サブスクリプションもアカウントもクラウドサービスもありません。本体を一度買うだけです。macOS / Windows / Linux のアプリもファームウェア更新も無料です。インターネットに一度もつながなくても、何ひとつ止まりません。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "リセットの方法は。紛失したらどうなりますか",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "ボタンを約 10 秒間押し続けると工場出荷状態に戻ります。ペアリング鍵、登録済みの指紋、保存された認証情報がすべて消去され、再ペアリングできる状態で再起動します。この操作は取り消せません。完全な初期化をせずに別のパソコンへ移したい場合は、アプリの「ペアリング解除（Unpair）」を使ってください。紛失しても指紋を取り出されることはありません。テンプレートは本体から外に出ず、ケースをこじ開けると改ざん検知スイッチが働いてすべてのデータを消去し、ランプが赤の点灯のまま停止します。製品には 1 年間の保証が付きます。サポート窓口の連絡先は取扱説明書とアプリに記載しています。"
+            }
+          }
+        ]
       }
     ]
   }
@@ -195,7 +246,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">今すぐ購入 · US$69</a>
+        <a href="https://immurok.com/ik-1/" class="btn btn-primary btn-sm">今すぐ購入 · US$69</a>
       </div>
     </div>
   </nav>
@@ -204,9 +255,25 @@
   <section class="section">
     <div class="container-sm">
       <div class="section-header">
-        <h1 class="section-title">immurok</h1>
+        <h1 class="section-title">immurok：Mac / Windows / Linux 用ワイヤレス指紋キー</h1>
         <p class="section-subtitle">immurok についてよく聞かれる質問と、その答えです。英語版のサイトと同じ内容を日本語で書いています。</p>
       </div>
+
+      <div class="prose">
+        <h2>immurok IK-1 の概要</h2>
+        <p>immurok IK-1 は Mac / Windows / Linux 用の単体ワイヤレス指紋キー（Bluetooth LE）です。指を一度触れるだけで画面ロックの解除、sudo と管理者承認、SSH と Git のコミット署名、1Password や Bitwarden の解除ができます。指紋はキーの中にだけ保存され、クラウドもアカウントもサブスクリプションもありません。</p>
+        <table class="specs-table">
+          <tr><td>接続</td><td>Bluetooth LE、2 台まで登録</td></tr>
+          <tr><td>センサー</td><td>静電容量式、照合 0.5 秒未満</td></tr>
+          <tr><td>バッテリー</td><td>110 mAh、USB-C、1 回の充電で 1 か月以上</td></tr>
+          <tr><td>本体</td><td>アルマイト処理アルミニウム</td></tr>
+          <tr><td>サイズ</td><td>44 × 44 × 14.2 mm、約 40 g</td></tr>
+          <tr><td>対応 OS</td><td>macOS 13 以降、Windows 10/11、Linux</td></tr>
+        </table>
+        <p><strong>価格：US$69（買い切り）。予約受付中、2026 年 12 月発送予定。</strong></p>
+        <p><a class="btn btn-primary" href="https://immurok.com/ik-1/">今すぐ購入 · US$69</a></p>
+      </div>
+
 
       <div class="faq-list">
         <details class="faq-item">
@@ -293,23 +360,49 @@
       <div class="footer-brand">
         <img class="footer-logo" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
+        <!-- Email is assembled by main.js (setupObfuscatedEmail); the raw
+             HTML never contains the address. Parts are reversed. -->
+        <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-col">
           <h4>Product</h4>
-          <a href="/">English site</a>
+          <a href="/#features">Features</a>
+          <a href="/ik-1/">Buy IK-1</a>
+          <a href="/ik-1/#specs">Specs</a>
           <a href="/download/">Download</a>
+          <a href="/changelog/">Changelog</a>
           <a href="/blog/">Blog</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
+          <h4>Use cases</h4>
+          <a href="/mac-mini/">Mac mini &amp; desktop Macs</a>
+          <a href="/windows/">Windows</a>
+          <a href="/linux/">Linux</a>
+          <a href="/ai-agents/">AI coding agents</a>
+          <a href="/vs/touch-id/">vs Touch ID</a>
+          <a href="/vs/yubikey/">vs YubiKey</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
           <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://mariadb.com/bsl11/" target="_blank" rel="noopener">License</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="https://checkout.immurok.com/account">Order status</a>
+          <a href="https://checkout.immurok.com/policies/shipping-policy">Shipping policy</a>
+          <a href="https://checkout.immurok.com/policies/refund-policy">Refund policy</a>
+          <a href="https://checkout.immurok.com/policies/privacy-policy">Privacy policy</a>
+          <a href="https://checkout.immurok.com/policies/terms-of-service">Terms of service</a>
         </div>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 immurok</span>
+      <span>&copy; 2026 immurok &middot; Nervina Next Pte. Ltd. (UEN 202128549C) &middot; 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</span>
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>

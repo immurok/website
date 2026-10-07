@@ -93,7 +93,7 @@ body {
 }
 
 /* Offset in-page anchor jumps so headings clear the fixed nav */
-section[id], [id].section { scroll-margin-top: 92px; }
+section[id], [id].section, details[id] { scroll-margin-top: 92px; }
 
 html { overflow-x: clip; }
 
@@ -1683,55 +1683,6 @@ img.nav-logo-mark { display: none; }
 
 .product-preorder { width: 100%; text-align: center; }
 
-/* Split CTA: Kickstarter link + chevron that reveals the Shopify (test) checkout */
-.preorder-split { position: relative; display: flex; gap: 2px; }
-.preorder-split .product-preorder {
-  flex: 1;
-  min-width: 0;
-  border-radius: var(--radius-pill) 0 0 var(--radius-pill);
-}
-.preorder-toggle {
-  flex: none;
-  min-width: 0;
-  width: 68px;
-  height: 68px;
-  padding: 0;
-  border-radius: 0 var(--radius-pill) var(--radius-pill) 0;
-}
-.preorder-toggle svg { transition: transform 0.2s var(--ease); }
-.preorder-toggle[aria-expanded="true"] svg { transform: rotate(180deg); }
-/* Two halves of one pill: don't let them lift independently on hover */
-.preorder-split .btn:hover { transform: none; }
-
-.preorder-menu {
-  position: absolute;
-  top: calc(100% + 8px);
-  right: 0;
-  z-index: 20;
-  min-width: 220px;
-  padding: 6px;
-  background: var(--bg-card);
-  border: 1px solid var(--border);
-  border-radius: var(--radius-sm);
-  box-shadow: var(--shadow-md);
-}
-.preorder-menu[hidden] { display: none; }
-.preorder-menu-item {
-  display: block;
-  width: 100%;
-  padding: 12px 14px;
-  font: inherit;
-  font-size: 0.95rem;
-  font-weight: 500;
-  color: var(--text);
-  text-align: left;
-  background: transparent;
-  border: none;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.preorder-menu-item:hover,
-.preorder-menu-item:focus-visible { background: var(--bg-alt); outline: none; }
 .product-note { margin: 10px 0 24px; font-size: 0.8rem; color: var(--text-muted); text-align: center; }
 .product-assurances {
   list-style: none; padding: 0; margin: 0 0 24px;
@@ -1787,7 +1738,7 @@ img.nav-logo-mark { display: none; }
   display: flex; align-items: center; gap: 14px;
   padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
 }
-.order-item-img { width: 72px; height: 72px; border-radius: var(--radius-sm); object-fit: cover; background: var(--bg-alt); }
+.order-item-img { width: 72px; height: 72px; border-radius: var(--radius-sm); object-fit: cover; background: #f2f3f4; }
 .order-item-text { flex: 1; display: flex; flex-direction: column; gap: 2px; font-size: 0.95rem; }
 .order-item-variant { font-size: 0.8rem; color: var(--text-muted); }
 .order-item-price { font-weight: 600; }
@@ -1973,8 +1924,34 @@ body.order-open { overflow: hidden; }
 .buy-taxid { display: flex; flex-direction: column; gap: 0.25rem; }
 .buy-taxid[hidden] { display: none; }
 .buy-taxid-hint, .buy-taxid-error { margin: 0; font-size: 0.78rem; color: var(--text-muted); }
+.buy-country-hint { margin: 0; font-size: 0.78rem; line-height: 1.45; color: var(--text-muted); }
 .buy-taxid-error { color: #b42318; }
 .buy-btn.is-disabled { opacity: 0.5; cursor: not-allowed; }
+
+/* Kickstarter shipping top-up (/ks-shipping/): the amount is a typed number
+   inside the shared qty stepper, so it needs input chrome the <output> lacks. */
+.ks-form { margin-top: 0; max-width: 480px; margin-left: auto; margin-right: auto; }
+.ks-form .buy-field { font-size: 0.85rem; }
+.ks-form .buy-field input:invalid { box-shadow: none; }
+.ks-form .buy-taxid-error { color: #b42318; }
+.ks-form .order-qty { gap: 12px; flex-wrap: wrap; }
+.ks-form .qty-value.ks-amount {
+  width: 5rem;
+  min-width: 0;
+  padding: 0.35rem 0.25rem;
+  border: 1px solid var(--border-strong);
+  border-radius: var(--radius-sm);
+  background: var(--bg);
+  color: inherit;
+  font: inherit;
+  font-weight: 500;
+  text-align: center;
+  -moz-appearance: textfield;
+}
+.ks-form .qty-value.ks-amount::-webkit-outer-spin-button,
+.ks-form .qty-value.ks-amount::-webkit-inner-spin-button { -webkit-appearance: none; margin: 0; }
+.ks-form .qty-value.ks-amount:focus-visible { outline: 2px solid var(--green); outline-offset: 2px; }
+.ks-form .buy-btn:disabled { opacity: 0.7; cursor: default; }
 .buy-shipping {
   font-size: 0.85rem;
   color: var(--text);
@@ -2291,7 +2268,8 @@ body.order-open { overflow: hidden; }
 
 .footer-links {
   display: flex;
-  gap: 72px;
+  flex-wrap: wrap;
+  gap: 32px 72px;
 }
 
 .footer-col h4 {
@@ -2461,7 +2439,14 @@ body.order-open { overflow: hidden; }
   .step h3 { font-size: 19px; }
   .feature-card { padding: 10px 0; }
   .footer-inner { flex-direction: column; gap: 32px; }
-  .footer-links { gap: 48px; }
+  /* Four columns (Product / Languages / Community / Support) don't fit a
+     phone row; lay them out two-up instead of overflowing sideways. */
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 32px 24px;
+    width: 100%;
+  }
   .footer-bottom { margin-top: 36px; }
 
   /* Compatibility — keep both Mac and Linux rows two-up and tighten the
@@ -2916,4 +2901,131 @@ body.order-open { overflow: hidden; }
 
 @media (max-width: 900px) {
   .guide-grid { grid-template-columns: 1fr; max-width: 480px; margin: 0 auto; }
+}
+
+/* ═══════════════════════════════════ LANDING PAGES ═══════════════════════════════════
+   Pages generated by tools/build-pages.py (product page, use cases, about,
+   contact, changelog). Long-form prose on the main-site design system. */
+.page-hero {
+  padding: 160px 32px 24px;
+  text-align: center;
+}
+.page-eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+}
+.page-hero h1 {
+  font-size: clamp(36px, 5vw, 60px);
+  letter-spacing: -0.03em;
+  line-height: 1.06;
+  max-width: 900px;
+  margin: 0 auto 18px;
+  text-wrap: balance;
+}
+.page-lead {
+  font-size: 20px;
+  line-height: 1.55;
+  color: var(--text-secondary);
+  max-width: 720px;
+  margin: 0 auto 28px;
+  text-wrap: pretty;
+}
+.page-hero .hero-cta { justify-content: center; }
+.page-hero + .section { padding-top: 40px; }
+
+.prose {
+  max-width: 760px;
+  margin: 0 auto;
+  font-size: 17.5px;
+  line-height: 1.65;
+  color: var(--text-secondary);
+}
+.prose h2 {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 3vw, 34px);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+  color: var(--text);
+  margin: 56px 0 16px;
+}
+.prose h2:first-child { margin-top: 0; }
+.prose h3 {
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--text);
+  margin: 32px 0 10px;
+}
+.prose p, .prose ul, .prose ol, .prose pre, .prose table, .prose blockquote { margin: 0 0 18px; }
+.prose ul, .prose ol { padding-left: 24px; }
+.prose li { margin: 6px 0; }
+.prose li::marker { color: var(--text-muted); }
+.prose a {
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-color: var(--border-strong);
+  text-underline-offset: 3px;
+}
+.prose a:hover { text-decoration-color: var(--text); }
+.prose strong { color: var(--text); font-weight: 600; }
+.prose code {
+  font-family: var(--font-mono);
+  font-size: 0.88em;
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  padding: 1px 6px;
+  color: var(--text);
+}
+.prose pre {
+  background: #0f140e;
+  color: #e6e8e2;
+  border-radius: 12px;
+  padding: 18px 20px;
+  overflow-x: auto;
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.6;
+}
+.prose pre code { background: none; border: 0; padding: 0; color: inherit; font-size: inherit; }
+.prose table { width: 100%; border-collapse: collapse; font-size: 15px; }
+.prose th, .prose td {
+  padding: 12px 10px;
+  border-bottom: 1px solid var(--border);
+  text-align: left;
+  vertical-align: top;
+}
+.prose th {
+  color: var(--text);
+  font-weight: 600;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.prose td:first-child { color: var(--text); font-weight: 500; }
+.prose .yes { color: #0f5d10; font-weight: 600; }
+.prose .no { color: var(--text-muted); }
+.prose .part { color: var(--text-secondary); }
+.prose blockquote {
+  border-left: 3px solid var(--green);
+  padding-left: 18px;
+  color: var(--text-muted);
+}
+.prose .faq-list { margin-top: 8px; }
+.prose .specs-table { margin-bottom: 24px; }
+.page-cta { text-align: center; margin-top: 48px; }
+.page-cta .btn { margin: 6px; }
+.page-cta p { color: var(--text-muted); font-size: 14px; margin-top: 12px; }
+.changelog-entry { margin-bottom: 40px; }
+.changelog-entry h3 { margin-top: 0; }
+.changelog-date { font-family: var(--font-mono); font-size: 13px; color: var(--text-muted); margin-left: 10px; }
+@media (max-width: 720px) {
+  .page-hero { padding: 120px 16px 16px; }
+  .prose { font-size: 16.5px; }
+  .prose table { display: block; overflow-x: auto; }
 }

@@ -1,0 +1,78 @@
+<!--meta
+{
+  "path": "/vs/touch-id/",
+  "title": "immurok vs Touch ID and the Magic Keyboard with Touch ID | Standalone Fingerprint for Mac",
+  "description": "Is there a standalone Touch ID for the Mac? Not from Apple. Compare immurok, a US$69 wireless fingerprint key, with built-in Touch ID and the US$149 to US$199 Magic Keyboard with Touch ID: desktop Macs, clamshell mode, any keyboard, sudo, SSH, Windows and Linux.",
+  "crumbs": [["Compare", "/vs/touch-id/"]],
+  "crumb": "vs Touch ID"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Comparison</p>
+    <h1>immurok vs Touch ID</h1>
+    <p class="page-lead">Touch ID is excellent when it is built into the Mac you are using. Everywhere else, it is either a US$149 to US$199 keyboard or nothing. Here is where immurok fits, and where it does not.</p>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>Side by side</h2>
+        <table>
+          <tr><th></th><th>immurok IK-1</th><th>Magic Keyboard with Touch ID</th><th>Built-in Touch ID</th></tr>
+          <tr><td>Price</td><td>US$69</td><td>US$149 to US$199</td><td>Included with MacBooks</td></tr>
+          <tr><td>Mac mini, Mac Studio, iMac, Mac Pro</td><td class="yes">Yes</td><td class="yes">Yes, Apple Silicon only</td><td class="no">No</td></tr>
+          <tr><td>MacBook in clamshell mode</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="no">Lid is closed</td></tr>
+          <tr><td>Intel Macs</td><td class="yes">Yes, macOS 13+</td><td class="no">No</td><td class="part">Some models</td></tr>
+          <tr><td>Use your own keyboard</td><td class="yes">Yes, any</td><td class="no">It is the keyboard</td><td class="no">It is the keyboard</td></tr>
+          <tr><td>Screen unlock</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>sudo in the terminal</td><td class="yes">Yes, via PAM</td><td class="yes">Yes, with a PAM setting</td><td class="yes">Yes, with a PAM setting</td></tr>
+          <tr><td>SSH and Git signing</td><td class="yes">On-device ECDSA key</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>1Password, Bitwarden unlock</td><td class="yes">Yes</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Apple Pay on the Mac</td><td class="no">No</td><td class="yes">Yes</td><td class="yes">Yes</td></tr>
+          <tr><td>Windows and Linux</td><td class="yes">Yes</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Two computers, one sensor</td><td class="yes">Yes, switch finger</td><td class="no">No</td><td class="no">No</td></tr>
+          <tr><td>Wireless</td><td class="yes">Bluetooth LE</td><td class="yes">Bluetooth</td><td class="part">Built in</td></tr>
+          <tr><td>Where the fingerprint lives</td><td>On the key</td><td>Secure Enclave</td><td>Secure Enclave</td></tr>
+          <tr><td>Source available</td><td class="yes">Apps Apache 2.0, firmware BSL 1.1</td><td class="no">No</td><td class="no">No</td></tr>
+        </table>
+
+        <h2>Is there a standalone Touch ID for the Mac?</h2>
+        <p>Not from Apple, and not from anyone else. Touch ID is fused to the Secure Enclave in the Mac, so the sensor has to be part of the machine or of a keyboard Apple pairs to it. Apple's only add-on is the Magic Keyboard with Touch ID, which needs an Apple Silicon Mac and replaces whatever keyboard you have. If you use a Mac mini with a mechanical keyboard, an Intel iMac, or a MacBook with the lid closed, there is no Touch ID for you.</p>
+        <p>immurok is the closest thing: a separate device with its own sensor that sits on the desk next to any keyboard. It is not Touch ID, and macOS does not see it as a biometric. It has its own security model and it works with Windows and Linux too.</p>
+
+        <h2>What Touch ID does that immurok cannot</h2>
+        <p>Anything that calls Apple's own biometric prompt and accepts nothing else. Apple Pay confirmations on the Mac are the everyday example: they need Touch ID or your iPhone. Apps that use Apple's LocalAuthentication framework will still show the Touch ID prompt or ask for your password. immurok covers the password prompts around that: the lock screen, <code>sudo</code>, admin dialogs, the App Store, the Passwords app, third-party password managers, and it adds SSH and Git signing, which Touch ID does not do at all.</p>
+
+        <h2>Where the fingerprint goes</h2>
+        <p>Touch ID keeps your template in the Secure Enclave and never lets it out. immurok keeps yours on the key and never lets it out either. What crosses Bluetooth is an HMAC-signed &ldquo;match succeeded&rdquo;, and the key pairs with your Mac through a direct ECDH P-256 exchange. The two are different chips with different threat models; the <a href="/blog/the-immurok-security-model/">security model</a> post has the honest version.</p>
+
+        <h2>Which one should you get?</h2>
+        <ul>
+          <li><strong>A MacBook you use open</strong>: you already have Touch ID. immurok adds SSH and Git signing and a second computer, but that is a nice-to-have.</li>
+          <li><strong>A desktop Mac or a clamshell MacBook, and you like your keyboard</strong>: immurok, at less than half the price of the Magic Keyboard with Touch ID, and it comes along to your Windows or Linux machine.</li>
+          <li><strong>A desktop Apple Silicon Mac, and you want Apple Pay on the Mac</strong>: the Magic Keyboard with Touch ID is the only way to get that. immurok can sit next to it for SSH, Linux and Windows.</li>
+        </ul>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Can immurok replace the Magic Keyboard with Touch ID?</summary>
+            <p><strong>For unlock, sudo, admin prompts and password managers, yes; for Apple Pay, no.</strong> immurok does everything the keyboard's sensor does for everyday authentication, adds SSH and Git signing, and works with any keyboard and any OS. Apple Pay on the Mac still needs Touch ID or an iPhone.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does immurok use the Secure Enclave?</summary>
+            <p><strong>No.</strong> The Secure Enclave is Apple's chip and only Apple's sensors talk to it. immurok has its own secure storage on the key, its own ECDH pairing and its own signed firmware. The fingerprint never leaves the key, and macOS only ever receives a signed proof that a match happened.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it work on an Intel Mac?</summary>
+            <p><strong>Yes.</strong> The Mac app is one universal build for Apple Silicon and Intel, macOS 13.0 or later. The Magic Keyboard with Touch ID does not pair its sensor with Intel Macs.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>Ships December 2026. One-year warranty. No subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>

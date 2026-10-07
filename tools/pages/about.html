@@ -1,0 +1,54 @@
+<!--meta
+{
+  "path": "/about/",
+  "title": "About immurok: Who Makes the Wireless Fingerprint Key",
+  "description": "immurok is a small team in Singapore building a wireless fingerprint key for Mac, Windows and Linux. Designed in Singapore, made in China, funded by 4,634 Kickstarter backers, with open-source apps and published firmware. Company details and how to reach us.",
+  "type": "AboutPage",
+  "crumb": "About"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">About</p>
+    <h1>A small team, one device, no cloud</h1>
+    <p class="page-lead">immurok is a wireless fingerprint key for the computers that do not have one: desktop Macs, Windows PCs and Linux machines. We design it in Singapore, build it in China, and publish the source.</p>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>Why we started</h2>
+        <p>Millions of developers work on a Mac mini, a Mac Studio, a closed MacBook with an external keyboard, a Windows desktop or a Linux box, and none of those machines has a fingerprint reader. So they type a password for the lock screen, for <code>sudo</code>, for every admin dialog and every Git push, dozens of times a day. Apple's only answer is a US$149 to US$199 keyboard that needs an Apple Silicon Mac. Windows needs certified Hello hardware. Linux has <code>fprintd</code> and almost nothing to plug into it.</p>
+        <p>We wanted a small device that fixes all of that at once, without a cloud account, without a subscription, and without asking anyone to trust code they cannot read. That became immurok IK-1: a capacitive fingerprint sensor in a 44 mm aluminium body, Bluetooth LE, a month of battery, and companion apps for macOS, Windows and Linux. The <a href="/blog/why-we-are-building-immurok/">first post on the blog</a> is the original pitch.</p>
+
+        <h2>What we believe</h2>
+        <ul>
+          <li><strong>Biometrics stay on the device.</strong> Fingerprint templates are stored and matched on the key. What reaches your computer is a signed proof that a match happened.</li>
+          <li><strong>No cloud, no account, no telemetry.</strong> The key and the app work entirely offline. If we disappeared tomorrow, your immurok would keep working.</li>
+          <li><strong>Source you can read.</strong> The macOS, Windows and Linux apps, the PAM modules and the Windows Credential Provider are open source under Apache 2.0. The firmware and hardware designs are published under BSL 1.1 and convert to Apache 2.0 in 2030. Everything is at <a href="https://github.com/immurok" target="_blank" rel="noopener">github.com/immurok</a>.</li>
+          <li><strong>Say what it is not.</strong> immurok is not Touch ID, not a FIDO key and not a sandbox. Our FAQ and comparison pages say so in the first sentence.</li>
+        </ul>
+
+        <h2>The campaign</h2>
+        <p>immurok launched on Kickstarter in August 2026 with a goal of S$3,000. When the campaign closed on 22 September 2026, <strong>4,634 backers</strong> had pledged <strong>S$480,299</strong>. We are now in production, and the first batch ships in December 2026. Progress goes on <a href="https://www.kickstarter.com/projects/immurok/immurokwireless-fingerprint-auth-key-for-mac-and-linux" target="_blank" rel="noopener">Kickstarter</a> and on the <a href="/blog/">blog</a>, including the parts that go wrong, like the <a href="/blog/a-close-call-before-mass-production/">pilot run that taught us about two capacitors</a>.</p>
+
+        <h2>How it is built</h2>
+        <p>The electronics and firmware are ours, from a CH592 Bluetooth microcontroller and a capacitive sensor to the ECDSA-signed OTA pipeline that lets the key refuse forged firmware. The enclosure is CNC-machined and anodised aluminium. Assembly and final test happen at a contract manufacturer in China, and every unit goes through a QC procedure we wrote and published. The engineering blog covers the <a href="/blog/hardware-story-behind-a-tiny-wireless-fingerprint-key/">eight PCB revisions</a> and the <a href="/blog/how-immurok-verifies-its-own-firmware/">firmware verification</a> in detail.</p>
+
+        <h2>The company</h2>
+        <table>
+          <tr><td>Trading name</td><td>immurok</td></tr>
+          <tr><td>Company</td><td>Nervina Next Pte. Ltd.</td></tr>
+          <tr><td>Registration (UEN)</td><td>202128549C, Singapore</td></tr>
+          <tr><td>Address</td><td>24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</td></tr>
+          <tr><td>Email</td><td><a href="mailto:hello@immurok.com">hello@immurok.com</a></td></tr>
+          <tr><td>Store</td><td>immurok.com, checkout by Shopify at checkout.immurok.com</td></tr>
+        </table>
+        <p>Orders, warranty and refunds are governed by our <a href="https://checkout.immurok.com/policies/terms-of-service">terms of service</a>, <a href="https://checkout.immurok.com/policies/shipping-policy">shipping policy</a>, <a href="https://checkout.immurok.com/policies/refund-policy">refund policy</a> and <a href="https://checkout.immurok.com/policies/privacy-policy">privacy policy</a>. For anything else, <a href="/contact/">contact us</a>.</p>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">See the IK-1 &middot; US$69</a>
+          <a class="btn btn-outline btn-cta" href="/contact/">Contact us</a>
+        </div>
+      </div>
+    </div>
+  </section>

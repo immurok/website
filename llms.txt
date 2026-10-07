@@ -1,0 +1,73 @@
+# immurok
+
+> immurok IK-1 is a standalone wireless fingerprint key for Mac, Windows and Linux. One touch unlocks the screen, approves sudo and admin prompts, signs SSH and Git commits, unlocks password managers and gates AI coding agents. US$69, no subscription, no cloud. Pre-order, ships December 2026.
+
+## Key facts
+
+- Product: immurok IK-1, a standalone wireless fingerprint key (Bluetooth LE) for desktop authentication
+- What it does: Screen unlock, sudo and admin prompts, SSH and Git commit signing, 1Password / Bitwarden / LastPass / Proton Pass unlock, TOTP codes, and a fingerprint gate for AI coding agents (Claude Code, Cursor, Codex, Copilot)
+- Platforms: macOS 13.0 or later (Apple Silicon and Intel), Windows 10 and 11 (x64 and Arm64), Linux (Ubuntu, Fedora, Arch, Debian and most other distributions). Not ChromeOS. Not a FIDO / passkey device
+- Price: US$69 one-time. No subscription, no account, no cloud. Apps and firmware updates are free
+- Availability: Pre-order at https://immurok.com/ik-1/ ; ships December 2026. Cancel for a full refund any time before it ships
+- Shipping: Ships from China, tracked, to 49 countries. Rates shown per country before checkout. Import duties are the recipient's responsibility (DDU) except where marked as included
+- Warranty and returns: One-year limited warranty. Returns accepted for damaged or faulty devices within 7 days of delivery
+- Security: Fingerprint templates stored and matched on the device only. ECDH P-256 pairing, HMAC-signed events, ECDSA-signed firmware with anti-rollback, tamper switch wipes the key if the case is opened
+- Licences: macOS, Windows and Linux apps: Apache 2.0. Firmware and hardware: BSL 1.1, converting to Apache 2.0 in 2030. Source at https://github.com/immurok
+- Company: immurok is a trading name of Nervina Next Pte. Ltd., Singapore (UEN 202128549C), 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970. Email hello@immurok.com
+- Funding: Kickstarter campaign closed 22 September 2026 with 4,634 backers and S$480,299 pledged
+
+## Specifications
+
+- Connectivity: Bluetooth LE; pairs with up to 2 computers (dual-host), one connected at a time
+- Sensor: Capacitive fingerprint sensor, under 500 ms match, up to 5 enrolled fingerprints
+- Battery: 110 mAh LiPo, USB-C charging (charge only, no data), 1+ month per charge
+- Body: CNC anodized aluminium
+- Size and weight: 44 x 44 x 14.2 mm, about 40 g
+- GTIN: 00884400414250
+
+## Pages
+
+- [/](https://immurok.com/): Homepage: features, compatibility, comparison with Touch ID and USB dongles, pricing, FAQ
+- [/ik-1/](https://immurok.com/ik-1/): Product page: immurok IK-1 specifications, price, shipping, pre-order
+- [/mac-mini/](https://immurok.com/mac-mini/): Touch ID alternative for Mac mini, Mac Studio, iMac and clamshell MacBooks
+- [/linux/](https://immurok.com/linux/): Fingerprint login, sudo and PAM on Linux
+- [/windows/](https://immurok.com/windows/): Fingerprint sign-in on Windows desktops without Windows Hello hardware
+- [/ai-agents/](https://immurok.com/ai-agents/): A fingerprint gate for AI coding agents (imk run --agent)
+- [/vs/touch-id/](https://immurok.com/vs/touch-id/): immurok compared with Touch ID and the Magic Keyboard with Touch ID
+- [/vs/yubikey/](https://immurok.com/vs/yubikey/): immurok compared with YubiKey and FIDO security keys
+- [/download/](https://immurok.com/download/): Desktop apps for macOS, Windows and Linux, plus the user manual
+- [/about/](https://immurok.com/about/): Who makes immurok
+- [/contact/](https://immurok.com/contact/): How to reach us
+- [/blog/](https://immurok.com/blog/): Engineering notes and security deep-dives
+
+## FAQ pages in other languages
+
+Same fifteen answers as the English FAQ, translated: [日本語](https://immurok.com/ja/), [Español](https://immurok.com/es/), [Português](https://immurok.com/pt/), [Deutsch](https://immurok.com/de/), [한국어](https://immurok.com/ko/), [Русский](https://immurok.com/ru/), [Nederlands](https://immurok.com/nl/), [Polski](https://immurok.com/pl/), [Bahasa Indonesia](https://immurok.com/id/), [简体中文](https://immurok.com/zh-hans/), [繁體中文](https://immurok.com/zh-hant/).
+
+## Policies
+
+- [Shipping policy](https://checkout.immurok.com/policies/shipping-policy)
+- [Refund policy](https://checkout.immurok.com/policies/refund-policy)
+- [Privacy policy](https://checkout.immurok.com/policies/privacy-policy)
+- [Terms of service](https://checkout.immurok.com/policies/terms-of-service)
+
+## Blog
+
+- [Thank you, 4,634 backers](https://immurok.com/blog/kickstarter-thank-you/) (2026-09-23)
+- [Making the local channel as trustworthy as the device](https://immurok.com/blog/making-the-local-channel-as-trustworthy-as-the-device/) (2026-09-06)
+- [A close call before mass production](https://immurok.com/blog/a-close-call-before-mass-production/) (2026-08-30)
+- [One fingerprint key, two computers](https://immurok.com/blog/dual-host-fingerprint-key/) (2026-08-05)
+- [One touch, three paths: how immurok authenticates on macOS](https://immurok.com/blog/macos-authentication-modes/) (2026-07-08)
+- [How immurok verifies its own firmware: encryption, signatures, and OTA over BLE](https://immurok.com/blog/how-immurok-verifies-its-own-firmware/) (2026-07-04)
+- [Eight PCB revisions for a tiny wireless fingerprint key](https://immurok.com/blog/hardware-story-behind-a-tiny-wireless-fingerprint-key/) (2026-06-09)
+- [Why desktop fingerprint authentication is still awkward on Mac and Linux](https://immurok.com/blog/desktop-fingerprint-auth-on-mac-and-linux/) (2026-06-06)
+- [The immurok security model](https://immurok.com/blog/the-immurok-security-model/) (2026-05-28)
+- [A fingerprint gate for your AI coding agent](https://immurok.com/blog/fingerprint-gate-for-ai-agents/) (2026-05-08)
+- [Why we're building immurok](https://immurok.com/blog/why-we-are-building-immurok/) (2026-03-06)
+
+## Optional
+
+- [Full version with every FAQ answer](https://immurok.com/llms-full.txt)
+- [Source code](https://github.com/immurok)
+- [User manual (PDF)](https://immurok.com/manual/IK-1_User_Manual_EN.pdf)
+- [Discord](https://discord.gg/beavzPCanZ)

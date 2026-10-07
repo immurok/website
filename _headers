@@ -8,3 +8,7 @@
   X-Robots-Tag: noindex, nofollow, noarchive
 /qc
   X-Robots-Tag: noindex, nofollow, noarchive
+
+# Kickstarter shipping top-up form: reachable by link only, never indexed.
+/ks-shipping/*
+  X-Robots-Tag: noindex, nofollow, noarchive

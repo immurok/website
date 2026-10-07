@@ -1,0 +1,74 @@
+<!--meta
+{
+  "path": "/windows/",
+  "title": "Fingerprint Sign-in for Windows Desktops Without Windows Hello Hardware | immurok",
+  "description": "immurok is a wireless fingerprint key for Windows 10 and 11. A Credential Provider on the sign-in screen unlocks your PC with a touch, on any desktop or external keyboard, with no Windows Hello sensor. Plus SSH and Git signing, password manager unlock and TOTP.",
+  "crumb": "Windows"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Windows 10 &middot; Windows 11 &middot; x64 &middot; Arm64</p>
+    <h1>Fingerprint sign-in for the Windows PC that has no Hello sensor</h1>
+    <p class="page-lead">Windows Hello only works with sensors built into a laptop or a certified keyboard or webcam. immurok is a standalone wireless fingerprint key with its own Credential Provider, so a touch unlocks any desktop PC, and the same key signs your SSH and Git work.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/ik-1/">Pre-order &middot; US$69</a>
+      <a class="btn btn-outline" href="/download/">Download for Windows</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>Why a desktop PC has no fingerprint unlock</h2>
+        <p>Windows Hello is Microsoft's framework for biometric sensors, and it only accepts hardware that is built in or certified: a laptop's reader, a Hello-compatible webcam, a handful of keyboards. On a desktop with a mechanical keyboard, the usual answer is a wired USB dongle that does sign-in and nothing else, and needs a free port forever.</p>
+
+        <h2>What immurok does on Windows</h2>
+        <ul>
+          <li><strong>Lock screen and sign-in.</strong> immurok ships a Credential Provider, the same kind of component Windows uses for PIN and Hello. It runs inside the sign-in screen, so a touch unlocks the PC exactly as a Hello sensor would, on any desktop or external keyboard.</li>
+          <li><strong>SSH and Git signing.</strong> The Windows service includes an SSH agent that signs with the ECDSA key on the device. One toggle takes over the Windows ssh-agent pipe and points Git at the native OpenSSH, and puts both back when you turn it off.</li>
+          <li><strong>Password managers.</strong> Unlock 1Password, Bitwarden, LastPass or Proton Pass with a dedicated vault password stored on the key, separate from your Windows password.</li>
+          <li><strong>TOTP and keys.</strong> Two-factor seeds and SSH keys stay on the device and are managed from the desktop client or the command line.</li>
+          <li><strong>Firmware updates over the air.</strong> The client updates the key over Bluetooth; updates are signed and the key refuses downgrades.</li>
+          <li><strong>Two PCs, or a PC and a Mac.</strong> The key keeps two independent pairings. Enrol a switch finger and one touch hands it from your desktop to your laptop.</li>
+        </ul>
+
+        <h2>How it works</h2>
+        <p>The client has three parts: a Windows service that talks to the key over Bluetooth LE and holds the encrypted session, a desktop app for pairing, enrolment and settings, and the Credential Provider, a small C++ COM component that LogonUI loads on the sign-in screen. When you touch the key, the service verifies the HMAC-signed match and the Credential Provider submits your credential to Windows. Native installers for x64 and Arm64, Windows 10 and 11. Everything is open source under Apache 2.0 at <a href="https://github.com/immurok/app-win" target="_blank" rel="noopener">github.com/immurok/app-win</a>.</p>
+
+        <h2>Set-up</h2>
+        <ol>
+          <li>Run the installer for your architecture from the <a href="/download/">download page</a>. It installs the service and registers the Credential Provider; this needs administrator rights.</li>
+          <li>Pair the key in Windows Bluetooth settings, then open the immurok app and pair again there. Confirm the encrypted pairing by pressing the button on the underside of the key.</li>
+          <li>Enrol a fingerprint and switch on lock-screen unlock.</li>
+        </ol>
+
+        <h2>What it is not</h2>
+        <p>immurok is not a Windows Hello device and does not register with Hello. It does not replace a FIDO security key for signing in to websites, and it does not turn your PC into a passkey. What it removes is the password friction on the machine itself: the lock screen, your vault, your SSH and Git. <a href="/vs/yubikey/">immurok vs YubiKey</a> explains where the line is.</p>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Does it work with Windows Hello?</summary>
+            <p><strong>It does not need Windows Hello.</strong> immurok signs you in through its own Credential Provider inside the Windows sign-in screen, so it works on desktops and external keyboards that have no Hello sensor at all. Hello can stay enabled alongside it if your machine has it.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Windows on Arm?</summary>
+            <p><strong>Yes.</strong> There is a native Arm64 installer next to the x64 one. Both need Windows 10 or 11.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What happens if the key is not nearby?</summary>
+            <p><strong>Your PIN or password still works.</strong> The Credential Provider is one option on the sign-in screen, added next to the ones you already have, not a replacement for them.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it use a USB port?</summary>
+            <p><strong>Only to charge.</strong> The USB-C port carries no data. Pairing, fingerprint results and everything else go over Bluetooth LE, so the key needs no free port while you work.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>Ships December 2026. One-year warranty. No subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>

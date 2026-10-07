@@ -1,0 +1,78 @@
+<!--meta
+{
+  "path": "/mac-mini/",
+  "title": "Touch ID Alternative for Mac mini, Mac Studio, iMac & Clamshell MacBooks | immurok",
+  "description": "There is no Touch ID for a Mac mini, Mac Studio or iMac unless you buy Apple's keyboard. immurok is a standalone wireless fingerprint key: screen unlock, sudo and admin prompts, App Store, 1Password, SSH signing. Works with any keyboard. macOS 13+.",
+  "crumb": "Mac mini & desktop Macs"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">macOS &middot; Mac mini &middot; Mac Studio &middot; iMac &middot; clamshell MacBook</p>
+    <h1>Fingerprint unlock for the Macs that have no Touch ID</h1>
+    <p class="page-lead">Apple only builds Touch ID into MacBooks and one keyboard. immurok is a standalone wireless fingerprint key that sits next to whatever keyboard you already use and unlocks your desktop Mac, approves sudo and admin prompts, and signs your commits.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/ik-1/">Pre-order &middot; US$69</a>
+      <a class="btn btn-outline" href="/download/">Download the Mac app</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>Why your desktop Mac has no fingerprint reader</h2>
+        <p>Touch ID is fused to the Secure Enclave inside the Mac, so Apple ships it in exactly two places: the keyboard of a MacBook, and the Magic Keyboard with Touch ID, which costs US$149 to US$199 and only works with Apple Silicon Macs. There is no standalone Touch ID sensor, and no third party can make one.</p>
+        <p>If you use a Mac mini, a Mac Studio, an iMac, or a MacBook in clamshell mode with an external display, that leaves you typing your password for the lock screen, for <code>sudo</code>, for System Settings, for the App Store and for every admin dialog. If you prefer a mechanical keyboard, you cannot buy your way out of it at all.</p>
+
+        <h2>What immurok does on a Mac</h2>
+        <ul>
+          <li><strong>Screen unlock.</strong> Wake the display, touch the key, you are in. Works on a Mac mini, Mac Studio and iMac, and on a MacBook with the lid closed.</li>
+          <li><strong>sudo and system authorization.</strong> A PAM module, <code>pam_immurok.so</code>, sits in front of <code>sudo</code> and the system's authorization prompts. The touch is the credential; no password is stored or typed.</li>
+          <li><strong>App Store and the Passwords app.</strong> A touch signs you into the App Store and unlocks Apple's Passwords app, so you stop typing your Apple ID password.</li>
+          <li><strong>1Password, Bitwarden, LastPass, Proton Pass.</strong> When the unlock prompt appears, a touch fills in a dedicated vault password that lives on the key, stored separately from your login password.</li>
+          <li><strong>SSH and Git signing.</strong> The key holds an ECDSA P-256 key. <code>git push</code> and <code>ssh</code> ask for a touch instead of a passphrase, and the private key never leaves the hardware.</li>
+          <li><strong>TOTP codes.</strong> Keep two-factor seeds on the key rather than in an app on the Mac.</li>
+          <li><strong>Two Macs, one key.</strong> Bind it to a desk Mac and a MacBook. One dedicated finger switches between them; the target Mac reconnects on its own.</li>
+        </ul>
+
+        <h2>How it works</h2>
+        <p>immurok pairs over Bluetooth LE and shows up in macOS as a keyboard, which is what keeps the connection alive across sleep. The actual traffic goes over an encrypted GATT channel that the menu bar app owns. The app is a small Swift program, open source under Apache 2.0, that runs as a login item. macOS 13.0 or later, one universal build for Apple Silicon and Intel.</p>
+        <p>There is no single API on macOS that a fingerprint can plug into, so the app meets each surface with the mechanism that surface uses: PAM for <code>sudo</code> and authorization prompts, credential injection for the App Store and Passwords, and a documented bridge for the lock screen. The design and its trade-offs are written up in <a href="/blog/macos-authentication-modes/">One touch, three paths</a>.</p>
+
+        <h2>Setting it up takes three steps</h2>
+        <ol>
+          <li>Pair the key in System Settings &rarr; Bluetooth, as you would a wireless keyboard.</li>
+          <li>Open the immurok app and pair again there. This is the encrypted pairing; confirm it by pressing the button on the underside of the key.</li>
+          <li>Enrol a fingerprint: touch the sensor about a dozen times, lifting and tilting slightly each time.</li>
+        </ol>
+        <p>Then switch on the integrations you want in the app. The <a href="/manual/IK-1_User_Manual_EN.pdf">user manual</a> has the full walkthrough.</p>
+
+        <h2>What it is not</h2>
+        <p>immurok is not Touch ID and does not pretend to be. It has its own sensor and its own security model, and macOS does not treat it as a biometric. That means it cannot confirm Apple Pay purchases on the Mac, and apps that call Apple's own biometric prompt still expect Touch ID or your password. What immurok covers is the everyday password friction: unlock, <code>sudo</code>, admin dialogs, App Store, password managers, SSH. <a href="/vs/touch-id/">Side-by-side with Touch ID</a>.</p>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Does it work with a Mac mini or Mac Studio?</summary>
+            <p><strong>Yes.</strong> Any Mac running macOS 13.0 or later works, Apple Silicon or Intel. The key is a separate Bluetooth device, so a Mac mini, Mac Studio, iMac or Mac Pro is the same as any other Mac to it.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does it unlock a MacBook with the lid closed?</summary>
+            <p><strong>Yes.</strong> Clamshell mode is exactly the case immurok was built for. The MacBook's own Touch ID is under the closed lid; the key sits on the desk next to your external keyboard.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Can I keep using my own keyboard?</summary>
+            <p><strong>Yes, any keyboard.</strong> immurok is not a keyboard and does not replace one. It sits beside a mechanical board, an Apple keyboard without Touch ID, or no keyboard at all.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Do I still need a password at all?</summary>
+            <p><strong>Your account keeps its password; you just stop typing it.</strong> For <code>sudo</code> and authorization prompts the touch itself is the credential, through PAM. For the lock screen and the App Store the app supplies the stored credential on your behalf after a verified touch. If the key is out of reach, the password works as it always did.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>Ships December 2026. One-year warranty. No subscription.</p>
+        </div>
+      </div>
+    </div>
+  </section>

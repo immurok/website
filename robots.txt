@@ -3,6 +3,8 @@ Allow: /
 Disallow: /3d/
 Disallow: /.wrangler/
 Disallow: /qc
+# Kickstarter shipping top-up form: link-only, sent to backers by email.
+Disallow: /ks-shipping/
 # JSON API used by the blog like button; not a page.
 Disallow: /api/
 # Cloudflare-injected endpoints (email obfuscation, trace).

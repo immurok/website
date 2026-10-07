@@ -1,0 +1,82 @@
+<!--meta
+{
+  "path": "/ai-agents/",
+  "title": "A Fingerprint Gate for AI Coding Agents: Claude Code, Cursor, Codex, Copilot | immurok",
+  "description": "Let your AI coding agent run sudo, git push and read API keys, but only after your fingerprint. imk run --agent shows the exact command, waits for a touch, and kills the command if you say no. Works with Claude Code, Cursor, Codex, Aider, Cline and Copilot.",
+  "crumb": "AI coding agents",
+  "og_image": "https://immurok.com/img/ai-agent-flow-1920.webp"
+}
+-->
+  <section class="page-hero">
+    <p class="page-eyebrow">Claude Code &middot; Cursor &middot; Codex &middot; Aider &middot; Cline &middot; Copilot &middot; Gemini CLI</p>
+    <h1>Your fingerprint is the human in the loop</h1>
+    <p class="page-lead">AI coding agents want <code>sudo</code>, <code>git push</code> and your API keys. immurok lets them have those, one command at a time, after a touch on a real fingerprint sensor. Say no, and the command is killed.</p>
+    <div class="hero-cta">
+      <a class="btn btn-primary" href="/ik-1/">Pre-order &middot; US$69</a>
+      <a class="btn btn-outline" href="https://github.com/immurok/imk-skill" target="_blank" rel="noopener">imk-skill on GitHub</a>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container-sm">
+      <div class="prose">
+        <h2>The problem with agents and privileges</h2>
+        <p>An agent that writes code also wants to run the tests, restart the daemon, push the branch and read the deploy key. Today the choices are bad: give it passwordless <code>sudo</code> and a long-lived SSH key and hope; have it stop for a password every two minutes; or sandbox it so hard it cannot finish the job. Agents do not have fingers, which turns out to be the useful part.</p>
+
+        <h2>The wrap</h2>
+        <pre><code>imk run --agent -- sudo systemctl restart api
+imk run --agent -- git push origin main
+imk run --agent --env-file .env -- python deploy.py</code></pre>
+        <p>When the agent runs a command through <code>imk run --agent --</code>, the immurok app puts an overlay on your screen with the <strong>verbatim command</strong>, no summary and no paraphrase. Touch the key and the subprocess runs. Close the overlay, or let 30 seconds pass, and the subprocess is sent <code>SIGTERM</code> and the wrap exits with code 77, which the agent reads as &ldquo;the user said no&rdquo; and does not retry.</p>
+        <p>One touch covers the whole subprocess. Inside it, <code>sudo</code> finds an active five-minute pre-authorization and skips its prompt, SSH signing and secret reads are satisfied by the same touch, and a <code>git push</code> followed by an authenticated <code>curl</code> both work without a second overlay. The moment you dismiss the overlay the pre-authorization drops and the subprocess dies mid-flight, so there is no half-applied state.</p>
+
+        <h2>Secrets the agent never sees</h2>
+        <pre><code># .env
+OPENAI_KEY=imk://api/openai
+GITHUB_TOKEN=imk://api/github</code></pre>
+        <p>Store API keys on the device and put <code>imk://</code> URIs in <code>.env</code> instead of the values. <code>imk run --agent --env-file .env -- ...</code> resolves them after your touch and injects the real values into the child process's environment at <code>exec()</code> time. The agent, the parent shell and the agent's transcript only ever see the URI. The overlay bolds every <code>imk://</code> URI in the command so you always know which keys are being read.</p>
+
+        <h2>Why hardware, and not a password prompt</h2>
+        <ul>
+          <li><strong>One approval, brokered.</strong> A software password prompt belongs to the process that raised it. The immurok app sees <code>sudo</code>, SSH and secret reads together, so one touch can cover all three and one dismissal can cancel all three.</li>
+          <li><strong>Every approval is physical.</strong> There is no unattended mode. Walk away from the desk and the agent cannot push, cannot <code>sudo</code>, cannot read a key.</li>
+          <li><strong>No fatigue.</strong> The agent is not interrupted at every privilege boundary and you are not asked to rubber-stamp a dozen prompts. One command in the overlay, one touch.</li>
+        </ul>
+
+        <h2>Drop it into your agent</h2>
+        <p>The <a href="https://github.com/immurok/imk-skill" target="_blank" rel="noopener">imk-skill</a> repository is a single Markdown skill that teaches an agent when to wrap a command, when not to, and how to exit cleanly when refused.</p>
+        <table>
+          <tr><th>Agent</th><th>How to install</th></tr>
+          <tr><td>Claude Code</td><td><code>/plugin marketplace add immurok/imk-skill</code> then <code>/plugin install imk-tools@imk</code></td></tr>
+          <tr><td>Cursor, Cline, Continue, Windsurf</td><td>Vendor the skill into <code>.cursorrules</code>, <code>.clinerules</code> or <code>.continue/rules.md</code></td></tr>
+          <tr><td>Codex, Aider, Gemini CLI</td><td>Append it to <code>AGENTS.md</code>, <code>CONVENTIONS.md</code> or <code>GEMINI.md</code></td></tr>
+        </table>
+        <p>Once loaded, the agent recognises the triggers (<code>imk</code> on <code>$PATH</code>, an <code>~/.immurok/</code> directory, <code>imk://</code> URIs in <code>.env</code>) and starts wrapping privileged commands on its own. The full design is in <a href="/blog/fingerprint-gate-for-ai-agents/">A fingerprint gate for your AI coding agent</a>.</p>
+
+        <h2>Common questions</h2>
+        <div class="faq-list">
+          <details class="faq-item">
+            <summary>Which agents does it work with?</summary>
+            <p><strong>Any agent that runs shell commands and reads a rules file.</strong> Claude Code has a plugin; Cursor, Cline, Continue, Windsurf, Codex, Aider, Gemini CLI and GitHub Copilot take the skill as a rules or instructions file. <code>imk</code> itself is a CLI, so anything that can call a program can use it.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Is this a sandbox?</summary>
+            <p><strong>No, it is a gate.</strong> immurok does not restrict what the agent can see or write; it makes the privileged step wait for a human. Use it with whatever sandboxing you already have.</p>
+          </details>
+          <details class="faq-item">
+            <summary>What if I am not at my desk?</summary>
+            <p><strong>The command does not run.</strong> The overlay times out after 30 seconds, the subprocess is killed with SIGTERM and the agent gets exit code 77. There is no way to approve remotely or in advance, on purpose.</p>
+          </details>
+          <details class="faq-item">
+            <summary>Does the agent ever see the resolved secret?</summary>
+            <p><strong>No.</strong> Secrets are released from the key after your touch and injected only into the child process's environment. They do not pass through the agent, its shell or its transcript, and the overlay shows you which <code>imk://</code> URIs are about to be resolved.</p>
+          </details>
+        </div>
+
+        <div class="page-cta">
+          <a class="btn btn-primary btn-cta" href="/ik-1/">Pre-order IK-1 &middot; US$69</a>
+          <p>macOS, Windows and Linux. The imk CLI and skill are open source.</p>
+        </div>
+      </div>
+    </div>
+  </section>

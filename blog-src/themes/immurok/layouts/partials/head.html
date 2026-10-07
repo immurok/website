@@ -26,7 +26,8 @@
 <meta property="og:site_name" content="immurok">
 <meta property="og:image" content="{{ $img }}">
 <meta property="og:locale" content="en_US">
-{{ if .IsPage }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
+{{ if .IsPage }}<meta property="article:published_time" content="{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}">
+<meta property="article:modified_time" content="{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}">{{ end }}
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:site" content="@immurok_dev">
 <meta name="twitter:title" content="{{ $title }}">
@@ -36,7 +37,7 @@
 <!-- Fonts (identical to main site) -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 
 <!-- Styles: main-site design system first (nav/footer/buttons/palette),
      then blog.css for article-specific layout. -->
@@ -45,4 +46,36 @@
 
 {{ with .OutputFormats.Get "RSS" }}
 <link rel="alternate" type="application/rss+xml" title="{{ $.Site.Title }}" href="{{ .RelPermalink }}">
+{{ end }}
+
+<!-- Structured data. Posts: BlogPosting with the git lastmod as dateModified
+     (enableGitInfo in hugo.toml) plus a breadcrumb trail; the index: Blog.
+     The author is the organisation, which is how the posts are signed. -->
+{{ $org := dict "@type" "Organization" "@id" "https://immurok.com/#org" "name" "immurok" "url" "https://immurok.com/" "logo" (dict "@type" "ImageObject" "url" "https://immurok.com/favicon-512.png" "width" 512 "height" 512) }}
+{{ $blog := dict "@type" "Blog" "@id" "https://immurok.com/blog/#blog" "name" .Site.Title "url" "https://immurok.com/blog/" "description" .Site.Params.description "publisher" (dict "@id" "https://immurok.com/#org") "inLanguage" "en" }}
+{{ $crumbs := slice (dict "@type" "ListItem" "position" 1 "name" "immurok" "item" "https://immurok.com/") (dict "@type" "ListItem" "position" 2 "name" "Blog" "item" "https://immurok.com/blog/") }}
+{{ if .IsPage }}
+  {{ $crumbs = $crumbs | append (dict "@type" "ListItem" "position" 3 "name" .Title "item" .Permalink) }}
+  {{ $post := dict
+      "@type" "BlogPosting"
+      "@id" (printf "%s#article" .Permalink)
+      "mainEntityOfPage" .Permalink
+      "url" .Permalink
+      "headline" .Title
+      "description" $desc
+      "image" (slice $img)
+      "datePublished" (.Date.Format "2006-01-02T15:04:05Z07:00")
+      "dateModified" (.Lastmod.Format "2006-01-02T15:04:05Z07:00")
+      "author" (dict "@id" "https://immurok.com/#org")
+      "publisher" (dict "@id" "https://immurok.com/#org")
+      "isPartOf" (dict "@id" "https://immurok.com/blog/#blog")
+      "inLanguage" "en"
+      "wordCount" .WordCount
+  }}
+  {{ with .Params.tags }}{{ $post = merge $post (dict "keywords" (delimit . ", ")) }}{{ end }}
+  {{ $graph := slice $org $blog $post (dict "@type" "BreadcrumbList" "itemListElement" $crumbs) }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") | safeJS }}</script>
+{{ else }}
+  {{ $graph := slice $org $blog (dict "@type" "BreadcrumbList" "itemListElement" $crumbs) }}
+  <script type="application/ld+json">{{ dict "@context" "https://schema.org" "@graph" $graph | jsonify (dict "indent" "  ") | safeJS }}</script>
 {{ end }}

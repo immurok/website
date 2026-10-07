@@ -18,12 +18,13 @@ Usage:
 
 import argparse
 import html
+import importlib.util
 import json
 import os
 import sys
 
 SITE = "https://immurok.com"
-BUY = SITE + "/#pricing"
+BUY = SITE + "/ik-1/"
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
@@ -490,6 +491,114 @@ LANGS = {
 
 # ── Page template ───────────────────────────────────────────────────────────
 
+
+# ── Product block ───────────────────────────────────────────────────────────
+# A short, quotable product summary and a specs table in each language, so an
+# assistant answering "how much is immurok / does it work on Linux" in that
+# language can cite this page rather than a reseller. Values that are numbers
+# or product names stay as they are; labels and prose are translated.
+SPEC_VALUES = ["Bluetooth LE", "110 mAh", "USB-C", "44 × 44 × 14.2 mm", "macOS 13+, Windows 10/11, Linux"]
+
+PRODUCT = {
+"ja": {
+ "h1": "immurok：Mac / Windows / Linux 用ワイヤレス指紋キー",
+ "h2": "immurok IK-1 の概要",
+ "summary": "immurok IK-1 は Mac / Windows / Linux 用の単体ワイヤレス指紋キー（Bluetooth LE）です。指を一度触れるだけで画面ロックの解除、sudo と管理者承認、SSH と Git のコミット署名、1Password や Bitwarden の解除ができます。指紋はキーの中にだけ保存され、クラウドもアカウントもサブスクリプションもありません。",
+ "price": "価格：US$69（買い切り）。予約受付中、2026 年 12 月発送予定。",
+ "labels": ["接続", "センサー", "バッテリー", "本体", "サイズ", "対応 OS"],
+ "values": ["Bluetooth LE、2 台まで登録", "静電容量式、照合 0.5 秒未満", "110 mAh、USB-C、1 回の充電で 1 か月以上", "アルマイト処理アルミニウム", "44 × 44 × 14.2 mm、約 40 g", "macOS 13 以降、Windows 10/11、Linux"],
+},
+"es": {
+ "h1": "immurok: llave de huella dactilar inalámbrica para Mac, Windows y Linux",
+ "h2": "immurok IK-1 de un vistazo",
+ "summary": "immurok IK-1 es una llave de huella dactilar inalámbrica independiente (Bluetooth LE) para Mac, Windows y Linux. Un toque desbloquea la pantalla, aprueba sudo y los avisos de administrador, firma commits de SSH y Git y desbloquea 1Password o Bitwarden. Las huellas se guardan en la llave; sin nube, sin cuenta y sin suscripción.",
+ "price": "Precio: US$69, pago único. En reserva, se envía en diciembre de 2026.",
+ "labels": ["Conectividad", "Sensor", "Batería", "Cuerpo", "Tamaño", "Compatible con"],
+ "values": ["Bluetooth LE, hasta 2 ordenadores", "Capacitivo, <500 ms", "110 mAh, USB-C, más de 1 mes por carga", "Aluminio anodizado", "44 × 44 × 14,2 mm, ~40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"pt": {
+ "h1": "immurok: chave de impressão digital sem fio para Mac, Windows e Linux",
+ "h2": "immurok IK-1 em resumo",
+ "summary": "O immurok IK-1 é uma chave de impressão digital sem fio independente (Bluetooth LE) para Mac, Windows e Linux. Um toque desbloqueia a tela, aprova sudo e pedidos de administrador, assina commits de SSH e Git e desbloqueia o 1Password ou o Bitwarden. As impressões digitais ficam guardadas na chave; sem nuvem, sem conta e sem assinatura.",
+ "price": "Preço: US$69, pagamento único. Em pré-venda, envio em dezembro de 2026.",
+ "labels": ["Conectividade", "Sensor", "Bateria", "Corpo", "Tamanho", "Compatível com"],
+ "values": ["Bluetooth LE, até 2 computadores", "Capacitivo, <500 ms", "110 mAh, USB-C, mais de 1 mês por carga", "Alumínio anodizado", "44 × 44 × 14,2 mm, ~40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"de": {
+ "h1": "immurok: kabelloser Fingerabdruck-Schlüssel für Mac, Windows und Linux",
+ "h2": "immurok IK-1 auf einen Blick",
+ "summary": "immurok IK-1 ist ein eigenständiger kabelloser Fingerabdruck-Schlüssel (Bluetooth LE) für Mac, Windows und Linux. Eine Berührung entsperrt den Bildschirm, bestätigt sudo und Admin-Abfragen, signiert SSH- und Git-Commits und entsperrt 1Password oder Bitwarden. Die Fingerabdrücke bleiben auf dem Schlüssel; keine Cloud, kein Konto, kein Abo.",
+ "price": "Preis: US$69, einmalig. Vorbestellung, Versand im Dezember 2026.",
+ "labels": ["Verbindung", "Sensor", "Akku", "Gehäuse", "Größe", "Kompatibel mit"],
+ "values": ["Bluetooth LE, bis zu 2 Computer", "Kapazitiv, <500 ms", "110 mAh, USB-C, über 1 Monat pro Ladung", "Eloxiertes Aluminium", "44 × 44 × 14,2 mm, ca. 40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"ko": {
+ "h1": "immurok: Mac, Windows, Linux용 무선 지문 키",
+ "h2": "immurok IK-1 한눈에 보기",
+ "summary": "immurok IK-1은 Mac, Windows, Linux용 독립형 무선 지문 키(Bluetooth LE)입니다. 한 번의 터치로 화면 잠금을 해제하고, sudo와 관리자 승인을 처리하고, SSH와 Git 커밋에 서명하고, 1Password나 Bitwarden을 잠금 해제합니다. 지문은 키 안에만 저장되며 클라우드, 계정, 구독이 없습니다.",
+ "price": "가격: US$69, 1회 결제. 예약 판매 중, 2026년 12월 발송.",
+ "labels": ["연결", "센서", "배터리", "본체", "크기", "지원 OS"],
+ "values": ["Bluetooth LE, 최대 2대", "정전식, 0.5초 이내 인식", "110 mAh, USB-C, 1회 충전으로 1개월 이상", "아노다이징 알루미늄", "44 × 44 × 14.2 mm, 약 40 g", "macOS 13 이상, Windows 10/11, Linux"],
+},
+"ru": {
+ "h1": "immurok: беспроводной ключ с отпечатком пальца для Mac, Windows и Linux",
+ "h2": "immurok IK-1 кратко",
+ "summary": "immurok IK-1 — автономный беспроводной ключ с датчиком отпечатка пальца (Bluetooth LE) для Mac, Windows и Linux. Одно касание разблокирует экран, подтверждает sudo и запросы администратора, подписывает коммиты SSH и Git и открывает 1Password или Bitwarden. Отпечатки хранятся только на ключе; без облака, аккаунта и подписки.",
+ "price": "Цена: US$69, разовый платёж. Предзаказ, отправка в декабре 2026 года.",
+ "labels": ["Подключение", "Датчик", "Батарея", "Корпус", "Размер", "Совместимость"],
+ "values": ["Bluetooth LE, до 2 компьютеров", "Ёмкостный, <500 мс", "110 мА·ч, USB-C, более месяца от одной зарядки", "Анодированный алюминий", "44 × 44 × 14,2 мм, ~40 г", "macOS 13+, Windows 10/11, Linux"],
+},
+"nl": {
+ "h1": "immurok: draadloze vingerafdruksleutel voor Mac, Windows en Linux",
+ "h2": "immurok IK-1 in het kort",
+ "summary": "immurok IK-1 is een losse draadloze vingerafdruksleutel (Bluetooth LE) voor Mac, Windows en Linux. Eén aanraking ontgrendelt het scherm, keurt sudo en beheerdersprompts goed, ondertekent SSH- en Git-commits en ontgrendelt 1Password of Bitwarden. Vingerafdrukken blijven op de sleutel; geen cloud, geen account, geen abonnement.",
+ "price": "Prijs: US$69, eenmalig. Pre-order, verzending in december 2026.",
+ "labels": ["Verbinding", "Sensor", "Batterij", "Behuizing", "Afmetingen", "Werkt met"],
+ "values": ["Bluetooth LE, tot 2 computers", "Capacitief, <500 ms", "110 mAh, USB-C, ruim een maand per lading", "Geanodiseerd aluminium", "44 × 44 × 14,2 mm, ~40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"pl": {
+ "h1": "immurok: bezprzewodowy klucz z czytnikiem linii papilarnych do komputerów Mac, Windows i Linux",
+ "h2": "immurok IK-1 w skrócie",
+ "summary": "immurok IK-1 to samodzielny bezprzewodowy klucz z czytnikiem linii papilarnych (Bluetooth LE) dla komputerów Mac, Windows i Linux. Jedno dotknięcie odblokowuje ekran, zatwierdza sudo i monity administratora, podpisuje commity SSH i Git oraz odblokowuje 1Password lub Bitwarden. Odciski palców pozostają na kluczu; bez chmury, konta i subskrypcji.",
+ "price": "Cena: US$69, płatność jednorazowa. Przedsprzedaż, wysyłka w grudniu 2026.",
+ "labels": ["Łączność", "Czujnik", "Bateria", "Obudowa", "Wymiary", "Działa z"],
+ "values": ["Bluetooth LE, do 2 komputerów", "Pojemnościowy, <500 ms", "110 mAh, USB-C, ponad miesiąc na jednym ładowaniu", "Anodowane aluminium", "44 × 44 × 14,2 mm, ok. 40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"id": {
+ "h1": "immurok: kunci sidik jari nirkabel untuk Mac, Windows, dan Linux",
+ "h2": "immurok IK-1 sekilas",
+ "summary": "immurok IK-1 adalah kunci sidik jari nirkabel mandiri (Bluetooth LE) untuk Mac, Windows, dan Linux. Satu sentuhan membuka kunci layar, menyetujui sudo dan permintaan admin, menandatangani commit SSH dan Git, serta membuka 1Password atau Bitwarden. Sidik jari tersimpan di kunci saja; tanpa cloud, tanpa akun, tanpa langganan.",
+ "price": "Harga: US$69, sekali bayar. Pra-pesan, dikirim Desember 2026.",
+ "labels": ["Konektivitas", "Sensor", "Baterai", "Bodi", "Ukuran", "Kompatibel dengan"],
+ "values": ["Bluetooth LE, hingga 2 komputer", "Kapasitif, <500 md", "110 mAh, USB-C, lebih dari 1 bulan per pengisian", "Aluminium anodisasi", "44 × 44 × 14,2 mm, ~40 g", "macOS 13+, Windows 10/11, Linux"],
+},
+"zh-hans": {
+ "h1": "immurok：Mac、Windows、Linux 通用的无线指纹密钥",
+ "h2": "immurok IK-1 一览",
+ "summary": "immurok IK-1 是一把独立的无线指纹密钥（Bluetooth LE），支持 Mac、Windows 和 Linux。轻触一下即可解锁屏幕、通过 sudo 和管理员授权、为 SSH 和 Git 提交签名、解锁 1Password 或 Bitwarden。指纹只保存在密钥内部，没有云端、没有账号、没有订阅。",
+ "price": "价格：US$69，一次性付款。预售中，2026 年 12 月发货。",
+ "labels": ["连接", "传感器", "电池", "机身", "尺寸", "支持系统"],
+ "values": ["Bluetooth LE，最多绑定 2 台电脑", "电容式，识别 <500 ms", "110 mAh，USB-C，一次充电可用 1 个月以上", "阳极氧化铝", "44 × 44 × 14.2 mm，约 40 g", "macOS 13+、Windows 10/11、Linux"],
+},
+"zh-hant": {
+ "h1": "immurok：Mac、Windows、Linux 通用的無線指紋金鑰",
+ "h2": "immurok IK-1 一覽",
+ "summary": "immurok IK-1 是一把獨立的無線指紋金鑰（Bluetooth LE），支援 Mac、Windows 與 Linux。輕觸一下即可解鎖螢幕、通過 sudo 與管理員授權、為 SSH 與 Git 提交簽章、解鎖 1Password 或 Bitwarden。指紋只儲存在金鑰內部，沒有雲端、沒有帳號、沒有訂閱。",
+ "price": "價格：US$69，一次付清。預購中，2026 年 12 月出貨。",
+ "labels": ["連線", "感測器", "電池", "機身", "尺寸", "支援系統"],
+ "values": ["Bluetooth LE，最多綁定 2 台電腦", "電容式，辨識 <500 ms", "110 mAh，USB-C，一次充電可用 1 個月以上", "陽極處理鋁合金", "44 × 44 × 14.2 mm，約 40 g", "macOS 13+、Windows 10/11、Linux"],
+},
+}
+
+# Shared chrome (fonts, footer, product images) from the landing-page
+# generator, so all generated pages carry the same footer and font set.
+_spec = importlib.util.spec_from_file_location('build_pages', os.path.join(HERE, 'build-pages.py'))
+_bp = importlib.util.module_from_spec(_spec)
+_spec.loader.exec_module(_bp)
+FONTS = _bp.FONTS
+FOOTER_COLS = _bp.FOOTER_COLS
+PRODUCT_IMAGES = [SITE + p for p in _bp.PRODUCT_IMAGES]
+
 NAV_LOGO = '''      <a href="/" class="nav-logo">
         <img class="nav-logo-wordmark" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <img class="nav-logo-mark" src="/img/figma/logo-mark.png" width="33" height="28" alt="immurok">
@@ -528,21 +637,45 @@ def other_langs(current):
     return ',\n        '.join(parts)
 
 
-def faq_jsonld(data, code):
-    doc = {
-        "@context": "https://schema.org",
-        "@type": "FAQPage",
-        "@id": "%s/%s/#faq" % (SITE, code),
-        "inLanguage": tag(code),
-        "url": "%s/%s/" % (SITE, code),
-        "mainEntity": [
-            {"@type": "Question", "name": q,
-             "acceptedAnswer": {"@type": "Answer", "text": a}}
-            for q, a in data["qa"]
-        ],
-    }
-    body = json.dumps(doc, ensure_ascii=False, indent=2)
+def page_jsonld(data, code):
+    url = "%s/%s/" % (SITE, code)
+    prod = PRODUCT[code]
+    graph = [
+        {"@type": "WebPage", "@id": url + "#webpage", "url": url, "name": data["title"],
+         "description": data["desc"], "inLanguage": tag(code),
+         "isPartOf": {"@id": SITE + "/#site"}, "about": {"@id": SITE + "/ik-1/#product"}},
+        {"@type": "Product", "@id": SITE + "/ik-1/#product", "name": "immurok IK-1",
+         "description": prod["summary"], "inLanguage": tag(code),
+         "brand": {"@type": "Organization", "@id": SITE + "/#org", "name": "immurok"},
+         "image": PRODUCT_IMAGES, "url": SITE + "/ik-1/", "sku": "IK1-SILVER", "gtin14": "00884400414250",
+         "offers": {"@type": "Offer", "@id": SITE + "/ik-1/#offer", "url": SITE + "/ik-1/",
+                    "availability": "https://schema.org/PreOrder", "availabilityStarts": "2026-12-01",
+                    "priceCurrency": "USD", "price": "69", "priceValidUntil": "2027-09-14",
+                    "itemCondition": "https://schema.org/NewCondition",
+                    "seller": {"@id": SITE + "/#org"}}},
+        {"@type": "FAQPage", "@id": url + "#faq", "inLanguage": tag(code), "url": url,
+         "mainEntity": [{"@type": "Question", "name": q,
+                         "acceptedAnswer": {"@type": "Answer", "text": a}} for q, a in data["qa"]]},
+    ]
+    body = json.dumps({"@context": "https://schema.org", "@graph": graph}, ensure_ascii=False, indent=2)
     return '\n'.join('  ' + line for line in body.split('\n'))
+
+
+def product_block(code, data):
+    e = html.escape
+    prod = PRODUCT[code]
+    rows = '\n'.join('          <tr><td>%s</td><td>%s</td></tr>' % (e(l), e(v))
+                     for l, v in zip(prod["labels"], prod["values"]))
+    return '''      <div class="prose">
+        <h2>%s</h2>
+        <p>%s</p>
+        <table class="specs-table">
+%s
+        </table>
+        <p><strong>%s</strong></p>
+        <p><a class="btn btn-primary" href="%s">%s</a></p>
+      </div>
+''' % (e(prod["h2"]), e(prod["summary"]), rows, e(prod["price"]), BUY, e(data["cta"]))
 
 
 def render(code, data):
@@ -589,7 +722,7 @@ def render(code, data):
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="{fonts}" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json">
@@ -618,9 +751,11 @@ def render(code, data):
   <section class="section">
     <div class="container-sm">
       <div class="section-header">
-        <h1 class="section-title">immurok</h1>
+        <h1 class="section-title">{h1}</h1>
         <p class="section-subtitle">{lead}</p>
       </div>
+
+{product}
 
       <div class="faq-list">
 {items}
@@ -638,23 +773,16 @@ def render(code, data):
       <div class="footer-brand">
         <img class="footer-logo" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
+        <!-- Email is assembled by main.js (setupObfuscatedEmail); the raw
+             HTML never contains the address. Parts are reversed. -->
+        <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
-        <div class="footer-col">
-          <h4>Product</h4>
-          <a href="/">English site</a>
-          <a href="/download/">Download</a>
-          <a href="/blog/">Blog</a>
-        </div>
-        <div class="footer-col">
-          <h4>Community</h4>
-          <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
-          <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
-        </div>
+{footer_cols}
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 immurok</span>
+      <span>&copy; 2026 immurok &middot; Nervina Next Pte. Ltd. (UEN 202128549C) &middot; 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</span>
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>
@@ -664,7 +792,9 @@ def render(code, data):
 </html>
 '''.format(code=code, tag=tag(code), locale=locale(code),
            title=e(data["title"]), desc=e(data["desc"]),
-           site=SITE, alts=alternates(code), jsonld=faq_jsonld(data, code),
+           site=SITE, alts=alternates(code), jsonld=page_jsonld(data, code),
+           fonts=FONTS, h1=e(PRODUCT[code]["h1"]), product=product_block(code, data),
+           footer_cols=FOOTER_COLS,
            navlogo=NAV_LOGO, back=e(data["back"]), buy=BUY, cta=e(data["cta"]),
            lead=e(data["lead"]), items='\n'.join(items), langs=other_langs(code))
 
@@ -693,6 +823,9 @@ def zh_vocabulary_problems():
             continue
         text = ' '.join(q + ' ' + a for q, a in data["qa"])
         text += ' ' + data["title"] + ' ' + data["desc"] + ' ' + data["lead"]
+        prod = PRODUCT[slug]
+        text += ' ' + ' '.join([prod["h1"], prod["h2"], prod["summary"], prod["price"]]
+                               + prod["labels"] + prod["values"])
         for word in forbidden:
             if word in text:
                 problems.append('%s contains %r, which belongs to the other variant'

@@ -44,136 +44,187 @@
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="/css/style.css">
 
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "FAQPage",
-    "@id": "https://immurok.com/zh-hant/#faq",
-    "inLanguage": "zh-Hant",
-    "url": "https://immurok.com/zh-hant/",
-    "mainEntity": [
+    "@graph": [
       {
-        "@type": "Question",
-        "name": "支援哪些電腦和作業系統",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "macOS 13.0 以上、Windows 10 和 11，以及大多數 Linux 發行版。Mac 版是同時支援 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安裝程式，透過 Credential Provider 整合，所以在鎖定畫面上也能用。Linux 版是用 Rust 寫的常駐程式，整合 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上測試過，多數其他發行版也能編譯。因為這把鑰匙是獨立的藍牙裝置，不是嵌在筆電裡的感測器，所以在 Mac mini、Mac Studio、iMac、闔蓋的 MacBook、外接鍵盤和桌機上用法完全一樣。一把裝置可以同時綁定兩台電腦，用一根專門的手指在兩者之間切換。"
+        "@type": "WebPage",
+        "@id": "https://immurok.com/zh-hant/#webpage",
+        "url": "https://immurok.com/zh-hant/",
+        "name": "immurok 價格、購買方式與相容性 | 適用於 Mac、Windows、Linux 的無線指紋鑰匙",
+        "description": "immurok 的價格（US$69）、在哪購買、出貨國家、支援的系統、安全性、是否需要訂閱以及重置方法。",
+        "inLanguage": "zh-Hant",
+        "isPartOf": {
+          "@id": "https://immurok.com/#site"
+        },
+        "about": {
+          "@id": "https://immurok.com/ik-1/#product"
         }
       },
       {
-        "@type": "Question",
-        "name": "支援 Windows Hello 嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "它不是 Windows Hello 裝置，也不需要是。Windows Hello 是微軟給筆電內建感測器、認證鍵盤和攝影機準備的框架。immurok 走的是另一條路：一個跑在 Windows 登入畫面裡的 Credential Provider，所以觸碰一下就能像 Hello 感測器一樣解開鎖定畫面，而且在沒有 Hello 感測器的桌上型電腦和外接鍵盤上也一樣能用。然後它比 Hello 走得更遠。同一次觸碰還能為 SSH 和 Git 提交簽章、解鎖 1Password 和 Bitwarden、放出 TOTP 驗證碼，同一把鑰匙在 macOS 和 Linux 上也能用。"
+        "@type": "Product",
+        "@id": "https://immurok.com/ik-1/#product",
+        "name": "immurok IK-1",
+        "description": "immurok IK-1 是一把獨立的無線指紋金鑰（Bluetooth LE），支援 Mac、Windows 與 Linux。輕觸一下即可解鎖螢幕、通過 sudo 與管理員授權、為 SSH 與 Git 提交簽章、解鎖 1Password 或 Bitwarden。指紋只儲存在金鑰內部，沒有雲端、沒有帳號、沒有訂閱。",
+        "inLanguage": "zh-Hant",
+        "brand": {
+          "@type": "Organization",
+          "@id": "https://immurok.com/#org",
+          "name": "immurok"
+        },
+        "image": [
+          "https://immurok.com/img/device-in-hand-1920.webp",
+          "https://immurok.com/img/leather-case-1920.webp"
+        ],
+        "url": "https://immurok.com/ik-1/",
+        "sku": "IK1-SILVER",
+        "gtin14": "00884400414250",
+        "offers": {
+          "@type": "Offer",
+          "@id": "https://immurok.com/ik-1/#offer",
+          "url": "https://immurok.com/ik-1/",
+          "availability": "https://schema.org/PreOrder",
+          "availabilityStarts": "2026-12-01",
+          "priceCurrency": "USD",
+          "price": "69",
+          "priceValidUntil": "2027-09-14",
+          "itemCondition": "https://schema.org/NewCondition",
+          "seller": {
+            "@id": "https://immurok.com/#org"
+          }
         }
       },
       {
-        "@type": "Question",
-        "name": "支援 passkey 或 FIDO 嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "不支援。immurok 不是 FIDO 裝置。它不會作為 passkey 或安全金鑰註冊到網站上，也不能取代 YubiKey。它做的是低一層的事，在你面前這台電腦上：解鎖螢幕、核准 sudo 和系統管理員提示、為 SSH 和 Git 簽章、解鎖密碼管理器、放出 TOTP 驗證碼。登入網站繼續用你的 passkey 或安全金鑰，其餘的交給 immurok，我們很多人兩樣都用。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "支援 ChromeOS 嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "不支援。ChromeOS 不給第三方軟體任何參與螢幕解鎖或系統驗證的入口，immurok 沒有地方可以接進去。它支援 macOS 13 及以上、Windows 10 和 11，以及大多數 Linux 發行版。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "一把鑰匙能在多台電腦上用嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "能，最多兩台，但同一時間只連線其中一台。鑰匙內部保存兩份獨立的配對，各有各的金鑰，兩台電腦都一直綁著，但任一時刻只和其中一台通訊。你把一根手指錄成「切換指紋」，觸碰它鑰匙就從一台電腦切到另一台，目標電腦自動重新連線。移除其中一台只清掉那一份配對，另一台電腦和已錄入的指紋不受影響。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "能解鎖 1Password、Bitwarden、LastPass 或 Proton Pass 嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "四個都可以，在 macOS、Windows 和 Linux 上都支援。密碼管理器跳出解鎖框時，觸碰一下就會填入一段存在鑰匙上的專用密碼並送出，這段密碼與登入密碼分開保存、分開開關。只有在簽章白名單裡的應用程式才能拿到它。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "能用 USB 連接嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "只能用來充電。USB-C 埠只給電池充電，不走資料。配對、指紋結果和其他一切都走藍牙 LE，所以電腦需要有藍牙，而工作時鑰匙不佔任何連接埠。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "電池可以更換嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "可以。鑰匙用一顆 110 mAh 的可充電鋰電池，透過 USB-C 充電，正常使用一次充電能用一個多月。它是市面上的標準規格，不是客製件，你可以自己換。換之前先取消配對或回復原廠設定：已配對的鑰匙一開蓋就會觸發防拆開關，把資料全部清除。換好電池、闔上外殼，再重新配對。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "安全性如何，指紋存在哪裡",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "存在裝置裡，別的地方都沒有。指紋範本儲存在鑰匙內部，比對也在鑰匙內部完成，不會傳到你電腦的硬碟、網路或任何雲端服務。藍牙上傳輸的只是一則用 HMAC 簽章的「比對成功」通知，指紋本身不會出去。配對是裝置和電腦之間直接做 ECDH 金鑰交換。韌體更新都有簽章，安裝前會驗證。沒有帳號、沒有伺服器、沒有遙測，所以全程離線可用，就算我們哪天不在了也照樣能用。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "是開源的嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "全部原始碼都公開在 GitHub 上，採用兩種授權。macOS、Windows 和 Linux 的應用程式，包含 PAM 模組和 Windows Credential Provider，是 Apache 2.0 的開源軟體。韌體和硬體採 BSL 1.1 的原始碼公開授權，2030 年轉為 Apache 2.0。你可以讀全部程式碼、修改它、自己編譯並燒錄到自己的裝置上。轉換之前我們保留的唯一權利是販售與之競爭的硬體。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "能自己編譯、燒錄韌體嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "能。韌體和硬體的原始碼都是公開的，PCB 上預留了燒錄介面，你可以自己編譯韌體並燒進去。開蓋之前先把鑰匙重置，因為已配對的鑰匙開蓋會觸發防拆開關。一旦裝置跑的是你自己編譯的韌體，就不再享有保固，也不再收到官方韌體更新。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "和 YubiKey、密碼管理器、Touch ID 有什麼差別",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS、Windows、Linux 上都能一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "有沒有給 Mac 用的獨立 Touch ID",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "蘋果沒有出過。Touch ID 只內建在 MacBook 和帶 Touch ID 的巧控鍵盤裡，那把鍵盤賣 US$149 到 US$199，需要 Apple 晶片的 Mac，而且感測器和鍵盤綁死，你未必想要那把鍵盤。單獨的 Touch ID 感測器並不存在，Touch ID 和 Secure Enclave 綁在一起，第三方也做不出來。immurok 是最接近的東西：一把獨立的無線指紋鑰匙，放在桌上、挨著你現在用的任何鍵盤。在 Mac mini、Mac Studio、iMac 或闔上的 MacBook 上，它能解鎖螢幕、核准 sudo 和系統管理員提示、解鎖 1Password 和 Bitwarden、為 SSH 和 Git 提交簽章。它不是 Touch ID，也不假裝是：它是一台單獨的裝置，有自己的感測器和自己的安全模型，而且 Windows 和 Linux 也能用。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "需要訂閱嗎",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "不需要。沒有訂閱、沒有帳號、沒有雲端服務。裝置買一次就好。macOS、Windows 和 Linux 的應用程式免費，韌體更新也免費。就算你從來不把裝置連上網路，也不會有任何功能停掉，因為它根本不需要連網。"
-        }
-      },
-      {
-        "@type": "Question",
-        "name": "怎麼重置，遺失了怎麼辦",
-        "acceptedAnswer": {
-          "@type": "Answer",
-          "text": "按住按鈕約十秒鐘回復原廠設定。裝置會清除全部資料，包括配對金鑰、所有已錄入的指紋和儲存的憑證，然後重新啟動回到可配對狀態。這個動作無法復原。如果只是想把鑰匙換到另一台電腦而不做完全重置，在應用程式裡選擇解除配對。裝置遺失也沒人能取出你的指紋：範本不會離開硬體，強行撬開外殼會觸發防拆開關，把所有資料清除並讓指示燈恆亮紅色。每台裝置含一年保固。技術支援的聯絡方式印在使用手冊上，應用程式裡也看得到。"
-        }
+        "@type": "FAQPage",
+        "@id": "https://immurok.com/zh-hant/#faq",
+        "inLanguage": "zh-Hant",
+        "url": "https://immurok.com/zh-hant/",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "支援哪些電腦和作業系統",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "macOS 13.0 以上、Windows 10 和 11，以及大多數 Linux 發行版。Mac 版是同時支援 Apple Silicon 和 Intel 的通用版本。Windows 版提供 x64 和 Arm64 原生安裝程式，透過 Credential Provider 整合，所以在鎖定畫面上也能用。Linux 版是用 Rust 寫的常駐程式，整合 PAM 和 polkit，在 Ubuntu、Fedora、Arch、Debian 上測試過，多數其他發行版也能編譯。因為這把鑰匙是獨立的藍牙裝置，不是嵌在筆電裡的感測器，所以在 Mac mini、Mac Studio、iMac、闔蓋的 MacBook、外接鍵盤和桌機上用法完全一樣。一把裝置可以同時綁定兩台電腦，用一根專門的手指在兩者之間切換。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "支援 Windows Hello 嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "它不是 Windows Hello 裝置，也不需要是。Windows Hello 是微軟給筆電內建感測器、認證鍵盤和攝影機準備的框架。immurok 走的是另一條路：一個跑在 Windows 登入畫面裡的 Credential Provider，所以觸碰一下就能像 Hello 感測器一樣解開鎖定畫面，而且在沒有 Hello 感測器的桌上型電腦和外接鍵盤上也一樣能用。然後它比 Hello 走得更遠。同一次觸碰還能為 SSH 和 Git 提交簽章、解鎖 1Password 和 Bitwarden、放出 TOTP 驗證碼，同一把鑰匙在 macOS 和 Linux 上也能用。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "支援 passkey 或 FIDO 嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不支援。immurok 不是 FIDO 裝置。它不會作為 passkey 或安全金鑰註冊到網站上，也不能取代 YubiKey。它做的是低一層的事，在你面前這台電腦上：解鎖螢幕、核准 sudo 和系統管理員提示、為 SSH 和 Git 簽章、解鎖密碼管理器、放出 TOTP 驗證碼。登入網站繼續用你的 passkey 或安全金鑰，其餘的交給 immurok，我們很多人兩樣都用。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "支援 ChromeOS 嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不支援。ChromeOS 不給第三方軟體任何參與螢幕解鎖或系統驗證的入口，immurok 沒有地方可以接進去。它支援 macOS 13 及以上、Windows 10 和 11，以及大多數 Linux 發行版。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "一把鑰匙能在多台電腦上用嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "能，最多兩台，但同一時間只連線其中一台。鑰匙內部保存兩份獨立的配對，各有各的金鑰，兩台電腦都一直綁著，但任一時刻只和其中一台通訊。你把一根手指錄成「切換指紋」，觸碰它鑰匙就從一台電腦切到另一台，目標電腦自動重新連線。移除其中一台只清掉那一份配對，另一台電腦和已錄入的指紋不受影響。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "能解鎖 1Password、Bitwarden、LastPass 或 Proton Pass 嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "四個都可以，在 macOS、Windows 和 Linux 上都支援。密碼管理器跳出解鎖框時，觸碰一下就會填入一段存在鑰匙上的專用密碼並送出，這段密碼與登入密碼分開保存、分開開關。只有在簽章白名單裡的應用程式才能拿到它。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "能用 USB 連接嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "只能用來充電。USB-C 埠只給電池充電，不走資料。配對、指紋結果和其他一切都走藍牙 LE，所以電腦需要有藍牙，而工作時鑰匙不佔任何連接埠。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "電池可以更換嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "可以。鑰匙用一顆 110 mAh 的可充電鋰電池，透過 USB-C 充電，正常使用一次充電能用一個多月。它是市面上的標準規格，不是客製件，你可以自己換。換之前先取消配對或回復原廠設定：已配對的鑰匙一開蓋就會觸發防拆開關，把資料全部清除。換好電池、闔上外殼，再重新配對。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "安全性如何，指紋存在哪裡",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "存在裝置裡，別的地方都沒有。指紋範本儲存在鑰匙內部，比對也在鑰匙內部完成，不會傳到你電腦的硬碟、網路或任何雲端服務。藍牙上傳輸的只是一則用 HMAC 簽章的「比對成功」通知，指紋本身不會出去。配對是裝置和電腦之間直接做 ECDH 金鑰交換。韌體更新都有簽章，安裝前會驗證。沒有帳號、沒有伺服器、沒有遙測，所以全程離線可用，就算我們哪天不在了也照樣能用。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "是開源的嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "全部原始碼都公開在 GitHub 上，採用兩種授權。macOS、Windows 和 Linux 的應用程式，包含 PAM 模組和 Windows Credential Provider，是 Apache 2.0 的開源軟體。韌體和硬體採 BSL 1.1 的原始碼公開授權，2030 年轉為 Apache 2.0。你可以讀全部程式碼、修改它、自己編譯並燒錄到自己的裝置上。轉換之前我們保留的唯一權利是販售與之競爭的硬體。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "能自己編譯、燒錄韌體嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "能。韌體和硬體的原始碼都是公開的，PCB 上預留了燒錄介面，你可以自己編譯韌體並燒進去。開蓋之前先把鑰匙重置，因為已配對的鑰匙開蓋會觸發防拆開關。一旦裝置跑的是你自己編譯的韌體，就不再享有保固，也不再收到官方韌體更新。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "和 YubiKey、密碼管理器、Touch ID 有什麼差別",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "層次不同，可以一起用。YubiKey 和 passkey 解決的是向網站證明你是誰。immurok 解決的是眼前這台電腦上輸入密碼的麻煩：解鎖螢幕、sudo、系統管理員提示、SSH 和 Git 簽章。密碼管理器保存你的密碼；immurok 在 macOS、Windows、Linux 上都能一碰解鎖 1Password 和 Bitwarden，還能把 TOTP 種子存在裝置裡，這樣兩步驟驗證的種子就不用躺在桌面應用程式中。Touch ID 是蘋果自家的感測器，和 Secure Enclave 綁死在一起，第三方用不了，而且 Mac mini 和外接鍵盤上根本就沒有。immurok 是一台獨立裝置：sudo 和系統管理員提示走 PAM 這個真實的系統機制，解鎖螢幕走另一條單獨記錄在文件裡的輔助路徑。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "有沒有給 Mac 用的獨立 Touch ID",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "蘋果沒有出過。Touch ID 只內建在 MacBook 和帶 Touch ID 的巧控鍵盤裡，那把鍵盤賣 US$149 到 US$199，需要 Apple 晶片的 Mac，而且感測器和鍵盤綁死，你未必想要那把鍵盤。單獨的 Touch ID 感測器並不存在，Touch ID 和 Secure Enclave 綁在一起，第三方也做不出來。immurok 是最接近的東西：一把獨立的無線指紋鑰匙，放在桌上、挨著你現在用的任何鍵盤。在 Mac mini、Mac Studio、iMac 或闔上的 MacBook 上，它能解鎖螢幕、核准 sudo 和系統管理員提示、解鎖 1Password 和 Bitwarden、為 SSH 和 Git 提交簽章。它不是 Touch ID，也不假裝是：它是一台單獨的裝置，有自己的感測器和自己的安全模型，而且 Windows 和 Linux 也能用。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "需要訂閱嗎",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "不需要。沒有訂閱、沒有帳號、沒有雲端服務。裝置買一次就好。macOS、Windows 和 Linux 的應用程式免費，韌體更新也免費。就算你從來不把裝置連上網路，也不會有任何功能停掉，因為它根本不需要連網。"
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "怎麼重置，遺失了怎麼辦",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "按住按鈕約十秒鐘回復原廠設定。裝置會清除全部資料，包括配對金鑰、所有已錄入的指紋和儲存的憑證，然後重新啟動回到可配對狀態。這個動作無法復原。如果只是想把鑰匙換到另一台電腦而不做完全重置，在應用程式裡選擇解除配對。裝置遺失也沒人能取出你的指紋：範本不會離開硬體，強行撬開外殼會觸發防拆開關，把所有資料清除並讓指示燈恆亮紅色。每台裝置含一年保固。技術支援的聯絡方式印在使用手冊上，應用程式裡也看得到。"
+            }
+          }
+        ]
       }
     ]
   }
@@ -195,7 +246,7 @@
         <a href="/blog/">Blog</a>
       </div>
       <div class="nav-actions">
-        <a href="https://immurok.com/#pricing" class="btn btn-primary btn-sm">立即購買 · US$69</a>
+        <a href="https://immurok.com/ik-1/" class="btn btn-primary btn-sm">立即購買 · US$69</a>
       </div>
     </div>
   </nav>
@@ -204,9 +255,25 @@
   <section class="section">
     <div class="container-sm">
       <div class="section-header">
-        <h1 class="section-title">immurok</h1>
+        <h1 class="section-title">immurok：Mac、Windows、Linux 通用的無線指紋金鑰</h1>
         <p class="section-subtitle">關於 immurok 最常被問到的問題與答案。內容與英文站一致。</p>
       </div>
+
+      <div class="prose">
+        <h2>immurok IK-1 一覽</h2>
+        <p>immurok IK-1 是一把獨立的無線指紋金鑰（Bluetooth LE），支援 Mac、Windows 與 Linux。輕觸一下即可解鎖螢幕、通過 sudo 與管理員授權、為 SSH 與 Git 提交簽章、解鎖 1Password 或 Bitwarden。指紋只儲存在金鑰內部，沒有雲端、沒有帳號、沒有訂閱。</p>
+        <table class="specs-table">
+          <tr><td>連線</td><td>Bluetooth LE，最多綁定 2 台電腦</td></tr>
+          <tr><td>感測器</td><td>電容式，辨識 &lt;500 ms</td></tr>
+          <tr><td>電池</td><td>110 mAh，USB-C，一次充電可用 1 個月以上</td></tr>
+          <tr><td>機身</td><td>陽極處理鋁合金</td></tr>
+          <tr><td>尺寸</td><td>44 × 44 × 14.2 mm，約 40 g</td></tr>
+          <tr><td>支援系統</td><td>macOS 13+、Windows 10/11、Linux</td></tr>
+        </table>
+        <p><strong>價格：US$69，一次付清。預購中，2026 年 12 月出貨。</strong></p>
+        <p><a class="btn btn-primary" href="https://immurok.com/ik-1/">立即購買 · US$69</a></p>
+      </div>
+
 
       <div class="faq-list">
         <details class="faq-item">
@@ -293,23 +360,49 @@
       <div class="footer-brand">
         <img class="footer-logo" src="/img/figma/logo-wordmark.png" width="187" height="34" alt="immurok">
         <p class="footer-tagline">Wireless fingerprint authentication for Mac, Windows &amp; Linux.</p>
+        <!-- Email is assembled by main.js (setupObfuscatedEmail); the raw
+             HTML never contains the address. Parts are reversed. -->
+        <a class="footer-email" data-eu="olleh" data-ed="moc.korummi" rel="nofollow">Email us</a>
       </div>
       <nav class="footer-links" aria-label="Footer">
         <div class="footer-col">
           <h4>Product</h4>
-          <a href="/">English site</a>
+          <a href="/#features">Features</a>
+          <a href="/ik-1/">Buy IK-1</a>
+          <a href="/ik-1/#specs">Specs</a>
           <a href="/download/">Download</a>
+          <a href="/changelog/">Changelog</a>
           <a href="/blog/">Blog</a>
         </div>
         <div class="footer-col">
-          <h4>Community</h4>
+          <h4>Use cases</h4>
+          <a href="/mac-mini/">Mac mini &amp; desktop Macs</a>
+          <a href="/windows/">Windows</a>
+          <a href="/linux/">Linux</a>
+          <a href="/ai-agents/">AI coding agents</a>
+          <a href="/vs/touch-id/">vs Touch ID</a>
+          <a href="/vs/yubikey/">vs YubiKey</a>
+        </div>
+        <div class="footer-col">
+          <h4>Company</h4>
+          <a href="/about/">About</a>
+          <a href="/contact/">Contact</a>
           <a href="https://discord.gg/beavzPCanZ" target="_blank" rel="noopener">Discord</a>
           <a href="https://github.com/immurok" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://mariadb.com/bsl11/" target="_blank" rel="noopener">License</a>
+        </div>
+        <div class="footer-col">
+          <h4>Support</h4>
+          <a href="https://checkout.immurok.com/account">Order status</a>
+          <a href="https://checkout.immurok.com/policies/shipping-policy">Shipping policy</a>
+          <a href="https://checkout.immurok.com/policies/refund-policy">Refund policy</a>
+          <a href="https://checkout.immurok.com/policies/privacy-policy">Privacy policy</a>
+          <a href="https://checkout.immurok.com/policies/terms-of-service">Terms of service</a>
         </div>
       </nav>
     </div>
     <div class="footer-bottom">
-      <span>&copy; 2026 immurok</span>
+      <span>&copy; 2026 immurok &middot; Nervina Next Pte. Ltd. (UEN 202128549C) &middot; 24 Sin Ming Lane, #06-97, Midview City, Singapore 573970</span>
       <span>Apps: Apache 2.0 &middot; Firmware: BSL 1.1</span>
     </div>
   </footer>
