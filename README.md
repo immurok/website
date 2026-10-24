@@ -231,6 +231,68 @@ Images: the hero and gallery photos are WebP with `srcset` (the original
 4.5 MB hero PNG is gone). Convert new photos with `cwebp -q 80 -resize <w> 0`
 at 960/1440/2048 (hero) or 1280/2560 (gallery) widths.
 
+### Shopify order webhook (GA4 purchase backfill)
+
+### Download redirects (`/download/<target>`)
+
+`functions/download/[target].js` resolves `/download/mac`, `/download/win-x64`
+and `/download/win-arm64` to the newest asset of the matching GitHub release
+(`immurok/app-macos`, `immurok/app-win`) and answers with a 302, so the
+download page never needs editing when a version ships. Results are cached at
+the edge for 10 minutes, with a 7-day last-known-good copy used as a fallback
+when GitHub is unreachable; if even that is missing the user is sent to the
+repo's releases page instead of an error.
+
+`GITHUB_TOKEN` must be set as a Pages secret. Without it the lookup runs
+unauthenticated and GitHub rate-limits it per source IP (60 req/hour). Workers
+share Cloudflare's egress IPs with every other Worker on the platform, so that
+quota is usually already spent by other tenants and the lookup fails with 403
+no matter how little traffic we have. A fine-grained token with no
+permissions at all is enough for public repos (5000 req/hour, per token):
+
+```bash
+# GitHub -> Settings -> Developer settings -> Fine-grained tokens -> Generate:
+# Repository access "Public repositories (read-only)", no permissions, long expiry.
+npx wrangler pages secret put GITHUB_TOKEN --project-name=immurok
+# Takes effect immediately, no redeploy needed. Failures show up in
+# `wrangler pages deployment tail` as "download/<target>: GitHub API 403 ... token=NO".
+```
+
+`functions/api/shopify-order.js` receives Shopify's `orders/create` webhook
+and replays every order to GA4 through the Measurement Protocol. The
+checkout tag alone only reports buyers who accepted cookies and run no
+blocker (about 56% of orders in the Sept/Oct 2026 audit); the webhook makes
+the purchase count and revenue complete. Orders the browser already reported
+are deduplicated by GA4 (same client id + same transaction id); the rest go
+out under a synthetic client id and are tagged `cid_source=synthetic`.
+
+One-time setup:
+
+```bash
+# 1. Shopify Admin -> Settings -> Notifications -> Webhooks: copy the signing
+#    key shown at the bottom of the section ("All your webhooks will be
+#    signed with ...") and store it as a Pages secret. GA_MEASUREMENT_ID and
+#    GA_API_SECRET are the same ones /api/t uses.
+npx wrangler pages secret put SHOPIFY_WEBHOOK_SECRET --project-name=immurok
+npx wrangler pages secret list --project-name=immurok
+
+# 2. Deploy (step 3 above), then back in the Webhooks section: Create webhook,
+#    Event "Order creation", Format JSON, URL https://immurok.com/api/shopify-order.
+
+# 3. "Send test notification" on the new webhook: the sample order carries
+#    test=true, the function skips it and answers 200. Then watch the next
+#    real order arrive in GA4 Realtime as a purchase with backfill=webhook.
+npx wrangler pages deployment tail --project-name=immurok
+```
+
+Custom event parameters worth registering as custom dimensions in GA4
+(Admin -> Custom definitions, event scope): `backfill`, `cid_source`,
+`order_country`. Until then they are only visible in Realtime / DebugView.
+
+Idempotency uses the `LIKES` KV namespace under the `ga_txn:` prefix
+(7-day TTL); without the binding the function still forwards, it just
+cannot suppress a Shopify redelivery. Tests: `node --test tests/`.
+
 ## Markdown Features
 
 The blog theme supports:

@@ -293,9 +293,11 @@
 
   // GA4 ids for the server-side purchase backfill. They ride along as hidden
   // cart attributes (leading underscore: kept on the order, not shown to the
-  // buyer) so an orders/create webhook can resend purchase through the
-  // Measurement Protocol when the checkout tag never fires. The cookies only
-  // exist once gtag.js has loaded, i.e. after consent.
+  // buyer); functions/api/shopify-order.js reads them off the orders/create
+  // webhook and resends purchase through the Measurement Protocol, so orders
+  // the checkout tag never reported still reach GA4. The cookies only exist
+  // once gtag.js has loaded, i.e. after consent; without them the webhook
+  // falls back to a synthetic client id.
   var GA_MEASUREMENT_ID = 'G-N8YY5HG63Y';
 
   function gaIdsFromCookies(cookie, measurementId) {
@@ -502,6 +504,7 @@
             // Policy: say who pays, never guess how much. estimateImportCharges
             // stays available for internal checks but is not shown to buyers.
             if (country.taxIncluded) lines.push('<div>Import taxes included in shipping.</div>');
+            else if (country.customs === 'none') lines.push('<div>No import charges.</div>');
             else lines.push('<div class="buy-shipping-fine">Import duties, VAT and handling fees, if any, are charged by your local customs on delivery and are the recipient\'s responsibility.</div>');
             shipBox.innerHTML = lines.join('');
             shipBox.hidden = false;

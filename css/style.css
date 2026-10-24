@@ -2839,6 +2839,20 @@ body.order-open { overflow: hidden; }
 }
 .download-card-alt:hover { color: var(--text); }
 
+.download-card-formats {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text-secondary);
+  margin-bottom: 20px;
+}
+.download-card-formats a {
+  color: var(--text-secondary);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.2s var(--ease);
+}
+.download-card-formats a:hover { color: var(--text); }
+
 .download-card-releases {
   font-size: 13px;
   color: var(--text-muted);
