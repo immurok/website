@@ -2756,7 +2756,7 @@ body.order-open { overflow: hidden; }
 }
 
 /* ═════════════════════════ DOWNLOAD PAGE ═════════════════════════ */
-.download-page { padding-top: 160px; }
+.download-page { padding-top: 160px; position: relative; z-index: 2; } /* keeps open download menus above the next section */
 
 .download-eyebrow {
   font-family: var(--font-mono);
@@ -2852,20 +2852,6 @@ body.order-open { overflow: hidden; }
   transition: color 0.2s var(--ease);
 }
 .download-card-formats a:hover { color: var(--text); }
-.download-card-cmd {
-  display: inline-block;
-  margin-top: 4px;
-  padding: 3px 8px;
-  font-family: var(--font-mono);
-  font-size: 12.5px;
-  color: var(--text);
-  background: var(--gray-card);
-  border: 1px solid var(--border);
-  border-radius: 6px;
-  overflow-wrap: anywhere;
-  user-select: all;
-  -webkit-user-select: all;
-}
 
 .download-card-releases {
   font-size: 13px;
@@ -2873,6 +2859,127 @@ body.order-open { overflow: hidden; }
   margin-top: auto;
   padding-top: 8px;
 }
+
+/* ── Download dropdown (Windows / Linux variants) ── */
+.download-card { position: relative; }
+.download-card.is-menu-open { z-index: 10; }
+
+.dl-menu {
+  position: relative;
+  width: 100%;
+  margin-bottom: 14px;
+}
+.dl-menu .download-card-cta { margin-bottom: 0; }
+.dl-menu-chevron {
+  margin-left: -2px;
+  transition: transform 0.25s var(--ease);
+}
+.dl-menu.is-open .dl-menu-chevron { transform: rotate(180deg); }
+
+.dl-menu-list {
+  display: none;
+  position: absolute;
+  top: calc(100% + 8px);
+  left: 0;
+  right: 0;
+  z-index: 20;
+  margin: 0;
+  padding: 8px;
+  list-style: none;
+  text-align: left;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-md);
+}
+.dl-menu.is-open .dl-menu-list {
+  display: block;
+  animation: dl-menu-in 0.22s var(--ease);
+}
+@keyframes dl-menu-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.dl-menu-group {
+  padding: 8px 12px 4px;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.dl-menu-group + li { margin-top: 0; }
+.dl-menu-list li + .dl-menu-group {
+  margin-top: 4px;
+  border-top: 1px solid var(--border);
+}
+
+.dl-menu-list a {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  padding: 10px 12px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-decoration: none;
+  transition: background-color 0.15s var(--ease);
+}
+.dl-menu-list a span {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.dl-menu-list a:hover,
+.dl-menu-list a:focus-visible { background: var(--gray-card); }
+
+/* Homebrew row: a button that copies the command instead of downloading */
+.dl-menu-copy {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: baseline;
+  column-gap: 12px;
+  width: 100%;
+  padding: 10px 12px;
+  border: 0;
+  border-radius: var(--radius-sm);
+  background: none;
+  font: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--text);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color 0.15s var(--ease);
+}
+.dl-menu-copy:hover,
+.dl-menu-copy:focus-visible { background: var(--gray-card); }
+.dl-menu-copy-hint {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+.dl-menu-copy.is-copied .dl-menu-copy-hint { color: var(--green-deep); }
+.dl-menu-copy code {
+  grid-column: 1 / -1;
+  margin-top: 6px;
+  padding: 5px 8px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--text-secondary);
+  background: var(--gray-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+}
+.dl-menu-copy:hover code { background: var(--bg-card); }
 .download-card-releases:not(.download-card-releases--static):hover { color: var(--text-secondary); }
 
 .download-footnote {
