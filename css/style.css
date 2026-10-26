@@ -2852,6 +2852,20 @@ body.order-open { overflow: hidden; }
   transition: color 0.2s var(--ease);
 }
 .download-card-formats a:hover { color: var(--text); }
+.download-card-cmd {
+  display: inline-block;
+  margin-top: 4px;
+  padding: 3px 8px;
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text);
+  background: var(--gray-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  overflow-wrap: anywhere;
+  user-select: all;
+  -webkit-user-select: all;
+}
 
 .download-card-releases {
   font-size: 13px;

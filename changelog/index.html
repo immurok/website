@@ -171,6 +171,19 @@
         <p>The app checks <code>immurok.com/fw/manifest.json</code> and offers the latest build. Devices on 1.6.0 or later update directly; older devices go through the 1.6.0 bridge build first, which the app handles on its own. How the pipeline verifies a package is described in <a href="/blog/how-immurok-verifies-its-own-firmware/">How immurok verifies its own firmware</a>.</p>
 
         <div class="changelog-entry">
+          <h3>1.8.6 <span class="changelog-date">25 October 2026</span></h3>
+          <ul>
+            <li>Security: fixes a timer wrap that skipped the fingerprint check for 10 seconds every 71.6 minutes. The anti-rollback version is raised, so earlier firmware can no longer be installed afterwards.</li>
+            <li>Key generation now uses a hardware-seeded random generator.</li>
+            <li>Fixes pairing on host slot 2 overwriting host 1. Pairings are now stored per slot, so dual-boot computers no longer collide.</li>
+            <li>Removing the last authentication fingerprint while a switch fingerprint remains is now refused, and devices already in that state can recover.</li>
+            <li>Adds a low-battery mode and halves deep-sleep current.</li>
+            <li>The 32 kHz crystal load is now set explicitly so the connection stays stable during pairing and updates.</li>
+            <li>Advertising runs for 60 seconds and then stops until a touch or button press. Unpairing the only host performs a factory reset.</li>
+          </ul>
+        </div>
+
+        <div class="changelog-entry">
           <h3>1.7.10 <span class="changelog-date">5 September 2026</span></h3>
           <ul>
             <li>Fixes a bug where a full pairing store could erase the pairing of the host still in use.</li>

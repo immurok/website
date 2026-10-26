@@ -1,14 +1,14 @@
 {
   "schema": 1,
   "latest": {
-    "version": "1.7.10",
-    "sec_version": 1,
+    "version": "1.8.6",
+    "sec_version": 2,
     "format": "v2",
-    "url": "https://immurok.com/fw/immurok-ik1-v1.7.10.imfw",
-    "sha256": "d0639b92f7888dd31ef7362f081add1d80bcb17bf1b39d02654f6b63aad02bc1",
-    "size": 197256,
+    "url": "https://immurok.com/fw/immurok-ik1-v1.8.6.imfw",
+    "sha256": "235b9064bf22f4f774b191939bf123b2956f959fb0d3f824bdec876edb93edae",
+    "size": 195860,
     "min_direct": "1.6.0",
-    "notes": "Fixes a bug where a full pairing store could erase the pairing of the host still in use. Unpairing now disconnects cleanly before the device resets. Fixes the fingerprint sensor stopping after back-to-back authorization requests. Connection parameter requests now stop when the host rejects them."
+    "notes": "Security: fixes a timer wrap that skipped the fingerprint check for 10 seconds every 71.6 minutes, and raises the anti-rollback version so earlier firmware can no longer be installed afterwards. Key generation now uses a hardware-seeded random generator. Fixes pairing on host slot 2 overwriting host 1; pairings are now stored per slot so dual-boot computers no longer collide. Removing the last authentication fingerprint while a switch fingerprint remains is now refused, and devices already in that state can recover. Adds a low-battery mode and halves deep-sleep current. The 32 kHz crystal load is now set explicitly so the connection stays stable during pairing and updates. Advertising runs for 60 seconds and then stops until a touch or button press. Unpairing the only host performs a factory reset."
   },
   "bridge": {
     "version": "1.6.0",
